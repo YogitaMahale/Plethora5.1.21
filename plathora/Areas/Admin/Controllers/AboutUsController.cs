@@ -18,7 +18,7 @@ namespace appFoodDelivery.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]
-
+    //test
     // [Authorize(Roles = SD.Role_Admin)]
     public class AboutUsController : Controller
     {
