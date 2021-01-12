@@ -2408,6 +2408,27 @@
     <None Include="wwwroot\Bizdire\RTL\assets\scss-rtl\util\_typography.scss" />
     <None Include="wwwroot\Bizdire\RTL\assets\scss-rtl\util\_width.scss" />
     <None Include="wwwroot\Bizdire\RTL\assets\scss-rtl\_variables.scss" />
+    <None Include="wwwroot\Frontwebsitedesign\images\astrologers.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\cafe.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\courier-services.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\doctors.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\education.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\event.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\hospitals.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\hotels.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\immigration.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\interior.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\it.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\manufacturers.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\packers.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\pharma.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\properties.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\services-center-1.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\services-center.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\strong.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\tour-travels.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\images\training-institute.svg" />
+    <None Include="wwwroot\Frontwebsitedesign\js\Dflt.js" />
   </ItemGroup>
 
   <ItemGroup>
