@@ -64,7 +64,6 @@
     <Folder Include="wwwroot\uploads\slider\" />
     <Folder Include="wwwroot\uploads\social\" />
     <Folder Include="wwwroot\uploads\product\" />
-    <Folder Include="wwwroot\uploads\sector\" />
   </ItemGroup>
 
   <ItemGroup>

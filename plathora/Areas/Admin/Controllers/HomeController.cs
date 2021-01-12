@@ -22,6 +22,7 @@ using Microsoft.Data.SqlClient;
 using SectorRegistrationIndexViewModel = plathora.Models.SectorRegistrationIndexViewModel;
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace plathora.Controllers
 {
@@ -120,7 +121,8 @@ namespace plathora.Controllers
                 frontwebsiteModel objmodel = new frontwebsiteModel();
                 var parameter = new DynamicParameters();
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(12).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                
+                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(15).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                 {
                     id = x.id,
                     name = x.name,
@@ -128,6 +130,19 @@ namespace plathora.Controllers
                     photo = x.photo
 
                 }).ToList();
+                 
+
+              
+               
+                 
+                //objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(15).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                //{
+                //    id = x.id,
+                //    name = x.name,
+                //    img = x.img,
+                //    photo = x.photo
+
+                //}).ToList();
 
                 objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).OrderByDescending(x => x.id).Select(x => new NewIndexViewModel
                 {
@@ -141,6 +156,8 @@ namespace plathora.Controllers
                     createddate = x.createddate
 
                 }).ToList();
+               // ViewBag.sectorListt = objmodel.objSectorRegistration.ToList();
+                //ViewBag.StockList = JsonConvert.SerializeObject(objmodel.objSectorRegistration);
                 return View(objmodel);
             }
             catch (Exception obj)

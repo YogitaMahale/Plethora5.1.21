@@ -64,69 +64,12 @@
 
 <main class="gl-main">
     <div id="main">
-        <section class="gl-banner" style="display: none;">
-            <div class="owl-carousel">
-                <div id="gl-slider" class="carousel slide" data-ride="carousel">
-                    <div class="gl-slider-con">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators gl-slider-nav">
-                            <li data-target="#gl-slider" data-slide-to="0" data-toggle="tooltip" title="page 1" class="active"></li>
-                            <li data-target="#gl-slider" data-toggle="tooltip" title="page 2" data-slide-to="1"></li>
-                            <li data-target="#gl-slider" data-toggle="tooltip" title="page 3" data-slide-to="2"></li>
-                        </ol>
-                    </div>
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                        <div class="gl-banner-item item active">
-                            <img src="assets/media/banner3.png" alt="banner" class="w-100 hide-sm gl-banner-img">
-                            <img src="assets/media/sm-banner3.png" alt="banner" class="w-100 display-sm hide-md gl-banner-img">
-                            <div class="gl-banner-text">
-                                <div class="container">
-                                    <h1 class="gl-banner-title">
-                                        Top 10 <span>IT Companies</span>
-                                    </h1>
-                                    <div id="divITCompanies">  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Single Item-->
-                        <div class="gl-banner-item item">
-                            <img src="assets/media/banner2.png" alt="banner" class="w-100 hide-sm gl-banner-img">
-                            <img src="assets/media/sm-banner2.png" alt="banner" class="w-100 display-sm hide-md gl-banner-img">
-                            <div class="gl-banner-text">
-                                <div class="container">
-                                    <h1 class="gl-banner-title">
-                                        Top 10 <span>Trusted Hospitals</span>
-                                    </h1>
-                                    <div id="divHospitals">  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Item-->
-                        <!--Single Item-->
-                        <div class="gl-banner-item item">
-                            <img src="assets/media/banner1.png" alt="banner" class="w-100 hide-sm gl-banner-img">
-                            <img src="assets/media/sm-banner1.png" alt="banner" class="w-100 display-sm hide-md gl-banner-img">
-                            <div class="gl-banner-text">
-                                <div class="container">
-                                    <h1 class="gl-banner-title">
-                                        Top 10 <span>Educational Institutes</span>
-                                    </h1>
-                                    <div id="divEducationInstitutes">  </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End Single Item-->
-                        <!--End Single Item-->
-                    </div>
-                </div>
-            </div>
-        </section>
+         
         <div class="gt-homepage">
             <div class="row">
                 <section class="gl-cats">
                     <div class="container">
-                        <div class="gl-searchbar-con gl-flex expand-all" style="display: none;">
+                        @*<div class="gl-searchbar-con gl-flex expand-all" style="display: none;">
                             <div class="gl-inpfield expand hasicon selectfield">
                                 <i class="fa fa-map-pin inpicon"></i>
                                 <input name="txtActCity" type="text" id="txtActCity" readonly="readonly" value="Select City" class="form-control" onclick="javascript:divCities();return false;" />
@@ -178,20 +121,67 @@
                         </div>
 
                         <div class="gl-title">
+                        </div>*@
+                        <div id="DivCategories1" class="gl-cats-boxes" style="height: 100%; padding: 60px 0;">
+                            @foreach (var obj in Model)
+                            {
+
+                            <div class="gl-cats-box _1">
+                                <span class="gl-cats-icon">
+                                    <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
+                                        <img src='@obj.img' alt='category' width='75'>
+                                    </a>
+
+                                </span>
+                                <h4 class='gl-cats-title'>
+                                    <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
+                                        @obj.name
+                                    </a>
+
+
+                                </h4>
+                            </div>
+                            @* <div class="gl-cats-submenu _1">
+                                    <h4 class="gl-cats-submenu-title">
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
+                                            @obj.name
+                                        </a>
+
+
+                                    </h4>
+                                    <nav class="gl-cats-submenu-nav">
+                               <div onClick="javascript:clickDiv('" +CityName.replace( / /g,'-')+"','"+cityIdCategory+"','Travel-Agents')" class="gl-cats-submenu-link">Travel Agents </div>
+        <div onClick="javascript:clickDiv('" +CityName.replace( / /g,'-')+"','"+cityIdCategory+"','Family-Tour-Packages')" class="gl-cats-submenu-link">Family Tour Packages </div>
+        <div onClick="javascript:clickDiv('" +CityName.replace( / /g,'-')+"','"+cityIdCategory+"','International-Tour-Packages')" class="gl-cats-submenu-link">International Tour Packages </div>
+        <div onClick="javascript:clickDiv('" +CityName.replace( / /g,'-')+"','"+cityIdCategory+"','Domestic-Tour-Packages')" class="gl-cats-submenu-link">Domestic Tour Packages </div>
+        <div onClick="javascript:clickDiv('" +CityName.replace( / /g,'-')+"','"+cityIdCategory+"','Honeymoon-Tour-Packages')" class="gl-cats-submenu-link">Honeymoon Tour Packages</div>
+                                    </nav>
+                        </div>*@
+
+
+                                }
+
+
+
+
                         </div>
-                        <div id="DivCategories" class="gl-cats-boxes" style="height: 100%; padding: 60px 0;">
-                        </div>
+
+
+                         
                     </div>
                 </section>
             </div>
-            <div id="divScript" class="none">
+            @*<div id="divScript" class="none">
                 <script type="text/javascript" language="javascript">var Countries = [["1", "India"], ["10", "USA"]];</script>
-            </div>
+            </div>*@
+        </div>
         </div>
 </main>
-<script type="text/javascript" src="~/Frontwebsitedesign/js/Dflt.js"></script>
+@*<script type="text/javascript" src="~/Frontwebsitedesign/js/Dflt.js"></script>*@
 
-<script type="text/javascript">
+
+
+@*<script type="text/javascript">
     getLocation();
     function getLocation() {
         var value = document.getElementById('txtActCity').value.trim();
@@ -253,4 +243,6 @@
             submenu.siblings().removeClass('active');
         });
     });
-</script>
+</script>*@
+
+  
