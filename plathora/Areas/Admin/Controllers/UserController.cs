@@ -58,14 +58,20 @@ namespace CoreMoryatools.Areas.Admin.Controllers
             _userManager = userManager;
             //_usermanager = usermanager;
         }
-        public IActionResult Index(string type="")
+        public IActionResult Index(string type= "Affilate")
         {
             TempData["type"] = type;
             TempData.Keep("type");
             return View();
         }
 
-       
+
+        public IActionResult AffilateIndex(string type = "Affilate")
+        {
+            TempData["type"] = type;
+            TempData.Keep("type");
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Edit(string id)
@@ -343,11 +349,28 @@ namespace CoreMoryatools.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetALL()
         {
-            string type = TempData["type"].ToString();
+            string type="";
+            try
+            {
+                if (TempData["type"] != null)
+                {
+                    type = TempData["type"].ToString();
+                }
+                else
+                {
+                    type = "Affilate";
+                    TempData["type"]= "Affilate";
+                }
+                        //Affilate
+            }
+            catch {
+                type = "Affilate";
+            }
+            TempData.Keep("type");
             var paramter = new DynamicParameters();
             paramter.Add("@type", type);
 
-            IEnumerable<dashboardCustomerList> obj = _sP_Call.List<dashboardCustomerList>("RegisterUserbyType", paramter);
+           var obj = _sP_Call.List<dashboardCustomerList>("RegisterUserbyType", paramter);
 
 
 

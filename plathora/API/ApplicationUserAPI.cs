@@ -818,10 +818,10 @@ namespace plathora.API
                     {
 
 
-                        var parameter = new DynamicParameters();
-                        parameter.Add("@uniqueId", affilatereg.uniqueId);
+                        //var parameter = new DynamicParameters();
+                        //parameter.Add("@uniqueId", affilatereg.uniqueId);
 
-                       _sP_Call.Execute("LevelWiseCommissionRegistration", parameter);
+                        //_sP_Call.Execute("LevelWiseCommissionRegistration", parameter);
                         //-----------------
                         if (model.usertype.ToUpper().Trim() == "AFFILATE".Trim())
                         {

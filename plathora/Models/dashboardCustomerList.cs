@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Threading.Tasks;
 
 namespace plathora.Models
@@ -16,7 +17,7 @@ namespace plathora.Models
 
         public string profilephoto { get; set; }
         public string uniqueId { get; set; }
-
+        //public DateTime LockoutEnd { get; set; }
         public bool loginStatus { get; set; } = false;
     }
 }

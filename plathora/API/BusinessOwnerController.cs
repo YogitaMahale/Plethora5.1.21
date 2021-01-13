@@ -116,10 +116,10 @@ namespace plathora.API
                 obj.PaymentStatus = model.PaymentStatus;
                 obj.PaymentAmount = model.PaymentAmount;
                 obj.TransactionId = model.TransactionId;
-
+            obj.BusinessPackageId = BusinessPackageId;
 
                 // obj.MembershipId = model.MembershipId;
-                obj.house = model.house;
+            obj.house = model.house;
                 obj.landmark = model.landmark;
                 obj.street = model.street;
                 obj.cityid = model.cityid;
@@ -239,10 +239,10 @@ namespace plathora.API
                         else
                         {
 
-                                //commission calculateion
-                              var parameter = new DynamicParameters();
-                              parameter.Add("@id", postid);
-                             _sP_Call.Execute("LevelWiseCommissionBusinessReg", parameter);
+                    //commission calculateion
+                    //var parameter = new DynamicParameters();
+                    //parameter.Add("@id", postid);
+                    //_sP_Call.Execute("LevelWiseCommissionBusinessReg", parameter);
 
 
                     var customer1 = _BusinessOwnerRegiServices.GetById(id);                           

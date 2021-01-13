@@ -4915,6 +4915,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Vie
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\test1\test.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\test1\testt.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\test\Index.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\AffilateIndex.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Edit - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Edit.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs

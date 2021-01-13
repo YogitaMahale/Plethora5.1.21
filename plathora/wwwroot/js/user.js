@@ -18,9 +18,7 @@ function loadtable() {
             { "data": "email", "width": "10%" },
             { "data": "phoneNumber", "width": "10%" },
             { "data": "uniqueId", "width": "10%" },
-            //{ "data": "role", "width": "10%" },
-            //{ "data": "loginStatus", "width": "10%" },
-            //---------------------
+           
             {
                 "data": {
                     id: "loginStatus"
@@ -56,18 +54,34 @@ function loadtable() {
 
 
 
-                }, "width": "10%"
+                }, "width": "50%"
 
             },
 
-            //---------------------------------
+//            //---------------------------------
             {
                 "data": {
-                    id: "id", lockoutEnd: "lockoutEnd"
+                    id: "id"/*, lockoutEnd: "lockoutEnd"*/
                 },
                 "render": function (data) {
-                    var today = new Date().getTime();
-                    var lockout = new Date(data.lockoutEnd).getTime();
+                    //var today = new Date().getTime();
+
+                    //var lockout = new Date(data.lockoutEnd).getTime();
+                    
+                    //var dateOne = new Date(2010, 00, 15); //Year, Month, Date    
+                    //var dateTwo = new Date(2011, 00, 15); //Year, Month, Date    
+                    //if (dateOne > dateTwo) {
+                    //    alert("Date One is greater than Date Two.");
+                    //} else {
+                    //    alert("Date Two is greater than Date One.");
+                    //}    
+                     
+                    //var today = new Date();
+                    //var n1 = today.getFullYear();
+                 
+                    //var n2 = lockout.getFullYear();
+                    //var lockout = new Date(data.lockoutEnd);
+                    //alert("current " + n1 + " ," + n2);
 //                    return `
 //<div class="text-center">
 
@@ -79,15 +93,14 @@ function loadtable() {
         
    
 //</div>`
-                    if (lockout > today) {
+                    //if (lockout > today) {
+                    //if (n2>n1) {
                         return `
 <div class="text-center">
 
 
  
-  <a class="btn btn-danger btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}') >
-                                               <i class="fa fa-lock"></i> 
-                          </a>                        
+                    
 
                 
   <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${data.id}" >
@@ -107,36 +120,11 @@ function loadtable() {
 
 
 
-                    }
-                    else {
-                        return `
-<div class="text-center">
+                    
 
 
 
-    
-  <a class="btn btn-success btn-sm mb-1" style="cursor:pointer" onclick=Lockunlock('${data.id}') >
-                                               <i class="fa fa-unlock"></i> 
-                          </a>                        
-
-  <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${data.id}" >
-                                                <i class="fa fa-edit">
-                                                </i>
-                                            </a>
-                                            <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" 
-                                                style="cursor:pointer" onclick=Delete("/Admin/User/Delete/${data.id}")>
-                                                <i class="fa fa-trash-o">
-
-                                                </i>
-
-                                            </a>
-</div>`
-                    }
-
-
-
-
-                }, "width": "30%"
+                }, "width": "40%"
 
             }
 

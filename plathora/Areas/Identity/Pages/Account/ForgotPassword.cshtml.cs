@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using plathora.Entity;
+using System.Net;
+using System.IO;
 
 namespace plathora.Areas.Identity.Pages.Account
 {
@@ -63,7 +65,41 @@ namespace plathora.Areas.Identity.Pages.Account
                 await _emailSender.SendEmailAsync(
                     user.Email,
                     "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+                   );
+                StringBuilder strBul = new StringBuilder("<div>");
+                strBul = strBul.Append("<div>Please reset your password by <a href='{"+HtmlEncoder.Default.Encode(callbackUrl)+"}'>clicking here</a>.</div>");
+
+
+                //#region "sms"
+                //try
+                //{
+
+
+                //    string Msg = strBul.ToString();
+
+                //    string OPTINS = "STRLIT";
+
+                //    string type = "3";
+                //    string strUrl = "https://www.bulksmsgateway.in/sendmessage.php?user=ezacus&password=" + "Bingo@5151" + "&message=" + Msg.ToString() + "&sender=" + OPTINS + "&mobile=" + "9021517586"+ "&type=" + 3;
+
+                //    ServicePointManager.Expect100Continue = true;
+                //    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                //    System.Net.WebRequest request = System.Net.WebRequest.Create(strUrl);
+                //    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                //    Stream s = (Stream)response.GetResponseStream();
+                //    StreamReader readStream = new StreamReader(s);
+                //    string dataString = readStream.ReadToEnd();
+                //    response.Close();
+                //    s.Close();
+                //    readStream.Close();
+                //    //    Response.Write("Sent");
+                //}
+
+                //catch
+                //{ }
+                //#endregion
+
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

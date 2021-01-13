@@ -4,6 +4,8 @@ using Microsoft.Extensions.Options;
 //using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +15,16 @@ namespace plathora.Utility
     {
         public async Task  SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            
-            string fromemail = "info@tingtongindia.com";
-            string password = "Plethora@123";
+            StringBuilder strBul = new StringBuilder("<div>");
+            strBul = strBul.Append("<div>You can use the following link to reset your password: " + htmlMessage + ",</div>");
 
-            
+
+             
+
+
+
+            string fromemail = "info@tingtongindia.com";
+            string password = "Plethora@123";            
 
             bool send = false;
             MailMessage mail = new MailMessage();
@@ -25,9 +32,7 @@ namespace plathora.Utility
 
             mail.From = new MailAddress(fromemail, "Reset Password");
             mail.Subject = subject;
-            StringBuilder strBul = new StringBuilder("<div>");
-            strBul = strBul.Append("<div>You can use the following link to reset your password: " + htmlMessage + ",</div>");
-            
+          
             mail.Body = strBul.ToString();
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
