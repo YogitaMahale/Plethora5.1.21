@@ -32,17 +32,17 @@ namespace plathora.Models
 
         public string companyName { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "GST No")]
 
         public string gstno { get; set; }
-        [Required]
+        //[Required]
         [Display(Name = "Web Site")]
 
         public string Website { get; set; }
 
 
-        [Required]
+        
         [Display(Name = "House")]
 
         public string house { get; set; }
@@ -108,20 +108,20 @@ namespace plathora.Models
         [Display(Name = "Sunday Close")]
         public string SundayClose { get; set; }
 
-        [Display(Name = "sliderimg1")]
+        [Display(Name = "Image 1")]
         public IFormFile sliderimg1 { get; set; }
         public string sliderimg11 { get; set; }
 
-        [Display(Name = "sliderimg2")]
+        [Display(Name = "Image 2")]
         public IFormFile sliderimg2 { get; set; }
         public string sliderimg21 { get; set; }
-        [Display(Name = "sliderimg3")]
+        [Display(Name = "Image 3")]
         public IFormFile sliderimg3 { get; set; }
         public string sliderimg31 { get; set; }
-        [Display(Name = "sliderimg4")]
+        [Display(Name = "Image 4")]
         public IFormFile sliderimg4 { get; set; }
         public string sliderimg41 { get; set; }
-        [Display(Name = "sliderimg5")]
+        [Display(Name = "Image 5")]
         public IFormFile sliderimg5 { get; set; }
         public string sliderimg51 { get; set; }
 
@@ -151,7 +151,7 @@ namespace plathora.Models
         
 
 
-        [Display(Name = "Licenece")]
+        [Display(Name = "Licence")]
         public string lic { get; set; }
         [Display(Name = "Organization")]
         public string organization { get; set; }

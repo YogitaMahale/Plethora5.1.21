@@ -80,7 +80,7 @@ namespace plathora.Areas.Admin.Controllers
                 instagramLink = objfromdb.instagramLink,
                 linkedinLink = objfromdb.linkedinLink,
                 twitterLink = objfromdb.twitterLink,
-
+                youtubeLink = objfromdb.youtubeLink,
                 lic = objfromdb.lic,
                 MondayOpen = objfromdb.MondayOpen,
                 MondayClose = objfromdb.MondayClose,
