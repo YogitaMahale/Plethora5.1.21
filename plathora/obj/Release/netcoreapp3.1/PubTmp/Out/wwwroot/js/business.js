@@ -26,14 +26,16 @@ function loadtable() {
                 "data": {
                     id: "id"
                 },
-                "render": function (data) {                  
+                "render": function (data, type, row, meta) {                  
                    
                         return `
 <div class="text-center">
                 
-
+ <a class="btn btn-success btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${row['customerid']}" >
+                                              Profile   <i class="fa fa-edit">
+                                                </i></a>
   <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/BusinessDetails/Edit/${data.id}" >
-                                                <i class="fa fa-edit">
+                                          Business   <i class="fa fa-edit">
                                                 </i>
                                             </a>
   <a class="btn btn-danger btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/BusinessDetails/Delete/${data.id}" >

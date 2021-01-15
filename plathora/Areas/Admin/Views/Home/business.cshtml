@@ -71,7 +71,11 @@
         <div class="details-absolute">
             <div class="d-sm-flex container">
                 <div><a href="#" class="text-white d-inline-block mr-4 "><i class="icon icon-location-pin text-white mr-2"></i>@Model.objgetBusinessAllInfo.house , @Model.objgetBusinessAllInfo.landmark </a></div>
-                <div class="ml-auto"><a href="#" class="text-white d-inline-block mt-2 mt-sm-0 fs-18"><i class="icon icon-phone text-white mr-2 fs-14"></i>@Model.objgetBusinessAllInfo.PhoneNumber , @Model.objgetBusinessAllInfo.mobileno2 </a></div>
+                <div class="ml-auto"><a href="#" class="text-white d-inline-block mt-2 mt-sm-0 fs-18">
+    <i class="icon icon-phone text-white mr-2 fs-14"></i>
+    @Model.objgetBusinessAllInfo.PhoneNumber , @Model.objgetBusinessAllInfo.mobileno2
+ 
+</a></div>
             </div>
         </div>
     </div>
@@ -105,10 +109,10 @@
                             <a href="#" class="text-dark"><h3>@Model.objgetBusinessAllInfo.companyName</h3></a>
                             <div class=" d-flex">
                                 <ul class="d-flex mb-0">
-                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-briefcase text-muted mr-1"></i> Education</a></li>
-                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> USA</a></li>
-                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-calendar text-muted mr-1"></i> 5 hours ago</a></li>
-                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> 765</a></li>
+                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-briefcase text-muted mr-1"></i> @Model.objgetBusinessAllInfo.sectorname</a></li>
+                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> @Model.objgetBusinessAllInfo.cityname</a></li>
+                                    @*<li class="mr-5"><a href="#" class="icons"><i class="icon icon-calendar text-muted mr-1"></i> 5 hours ago</a></li>
+                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> 765</a></li>*@
                                 </ul>
                                 <div class="rating-stars d-flex mr-5">
                                     <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@Model.objgetBusinessAllInfo.rating">
@@ -130,13 +134,13 @@
                                         </div>
                                     </div> @Model.objgetBusinessAllInfo.rating
                                 </div>
-                                <div class="rating-stars d-flex">
+                                @*<div class="rating-stars d-flex">
                                     <div class="rating-stars-container mr-2">
                                         <div class="rating-star sm">
                                             <i class="fa fa-heart"></i>
                                         </div>
                                     </div> 135
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                         <div class="product-slider">

@@ -87,5 +87,7 @@ namespace plathora.Models.Dtos
 
         public string review { get; set; }
         public string customerid { get; set; }
+        public string sectorname { get; set; }
+        
     }
 }

@@ -3781,14 +3781,6 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\mul
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\bin\Release\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy (2).cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_front - Copy (2).cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.csprojAssemblyReference.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.csproj.CoreCompileInputs.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.RazorAssemblyInfo.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.RazorAssemblyInfo.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.AssemblyInfoInputs.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.AssemblyInfo.cs
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\packages\Microsoft.AspNet.WebApi.HelpPage.5.2.7\Content\Areas\HelpPage\Views\Web.config
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.exe.config
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\vbc.exe.config
@@ -4220,6 +4212,14 @@ E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\plathora.Services.p
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\plathora.Utility.pdb
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\plathora.Persistence.pdb
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\System.Web.Http.xml
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.csprojAssemblyReference.cache
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.csproj.CoreCompileInputs.cache
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.MvcApplicationPartsAssemblyInfo.cache
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.RazorAssemblyInfo.cache
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.RazorAssemblyInfo.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.AssemblyInfoInputs.cache
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.AssemblyInfo.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.TagHelpers.input.cache
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.TagHelpers.output.cache
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.RazorCoreGenerate.cache
@@ -4264,6 +4264,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\V
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CountryRegistration\Create.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CountryRegistration\Edit.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CountryRegistration\Index.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\BusinessListing.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\Profile.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Create.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Edit.cshtml.g.cs
@@ -4415,4 +4416,3 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\staticwebassets\pla
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\BusinessListing.cshtml.g.cs
