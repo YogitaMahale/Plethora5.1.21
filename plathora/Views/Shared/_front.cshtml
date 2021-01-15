@@ -443,10 +443,10 @@
                                     
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a href="#" class="dropdown-item">
-                                        <i class="dropdown-icon icon icon-user"></i> My Profile
+                                    <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
+                                        &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    @*<a class="dropdown-item" href="#">
                                         <i class="dropdown-icon icon icon-speech"></i> Inbox
                                     </a>
                                     <a class="dropdown-item" href="#">
@@ -454,7 +454,7 @@
                                     </a>
                                     <a href="#" class="dropdown-item">
                                         <i class="dropdown-icon  icon icon-settings"></i> Account Settings
-                                    </a>
+                                    </a>*@
                                     @*<a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Admin" })" class="dropdown-item">
                     <i class="dropdown-icon  icon icon-settings"></i> Logout
                 </a>*@
