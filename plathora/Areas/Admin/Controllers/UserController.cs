@@ -76,6 +76,14 @@ namespace CoreMoryatools.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Edit(string id)
         {
+
+            //var parameter = new DynamicParameters();
+            //parameter.Add("@Id", id);
+            //var objrolename = _sP_Call.OneRecord<getRoleName>("getRoleNamebyUserId", parameter);
+
+            
+
+
             var objfromdb = _db.applicationUsers.FirstOrDefault(u => u.Id == id);
             ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
             ViewBag.membershiplist = _MembershipServices.GetAll().ToList();
@@ -104,6 +112,7 @@ namespace CoreMoryatools.Areas.Admin.Controllers
             }
             var model = new EditApplicationUser
             {
+                //usertype=objrolename.Rolename,
                 Id = objfromdb.Id,
                 name = objfromdb.name,
                 MiddleName = objfromdb.MiddleName,
@@ -322,6 +331,24 @@ namespace CoreMoryatools.Areas.Admin.Controllers
                 }
                 var result = await _userManager.UpdateAsync(affilatereg);
                 // await _AffiltateRegistrationService.UpdateAsync(affilatereg);
+
+
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@Id", model.Id);
+                var objrolename = _sP_Call.OneRecord<getRoleName>("getRoleNamebyUserId", parameter);
+
+
+
+                if (objrolename.Rolename.ToString().ToUpper().Trim()== "Affilate".ToString().ToUpper().Trim())
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                if (objrolename.Rolename.ToString().ToUpper().Trim() == "Customer".ToString().ToUpper().Trim())
+                {
+                    return RedirectToAction("Index", "BusinessDetails");
+                }
                 return RedirectToAction(nameof(Index));
             }
             else

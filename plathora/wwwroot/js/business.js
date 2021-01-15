@@ -31,9 +31,9 @@ function loadtable() {
                         return `
 <div class="text-center">
                 
- <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${row['customerid']}" >
-                                              Profile  <i class="fa fa-edit">
-                                                </i>
+ <a class="btn btn-success btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/User/Edit/${row['customerid']}" >
+                                              Profile   <i class="fa fa-edit">
+                                                </i></a>
   <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" href="/Admin/BusinessDetails/Edit/${data.id}" >
                                           Business   <i class="fa fa-edit">
                                                 </i>

@@ -9,6 +9,7 @@ namespace plathora.Models
 {
     public class EditApplicationUser
     {
+        //public string usertype { get; set; }
         public string Id { get; set; }
 
         [Required]

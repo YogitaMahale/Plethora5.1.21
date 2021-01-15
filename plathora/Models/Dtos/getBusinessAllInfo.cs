@@ -86,6 +86,6 @@ namespace plathora.Models.Dtos
         public string businesstime { get; set; }
 
         public string review { get; set; }
-
+        public string customerid { get; set; }
     }
 }
