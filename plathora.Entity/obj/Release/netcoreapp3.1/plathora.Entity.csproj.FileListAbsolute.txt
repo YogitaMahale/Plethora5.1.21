@@ -102,3 +102,4 @@ E:\yogita 6.8.19\plathora\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Ent
 E:\yogita 6.8.19\plathora\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.AssemblyInfo.cs
 E:\yogita 6.8.19\plathora\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.dll
 E:\yogita 6.8.19\plathora\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.pdb
+E:\yogita 6.8.19\plathora\plathora.Entity\obj\Release\netcoreapp3.1\plathora.Entity.csprojAssemblyReference.cache

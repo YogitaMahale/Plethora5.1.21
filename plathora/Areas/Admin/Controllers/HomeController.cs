@@ -585,16 +585,58 @@ namespace plathora.Controllers
         //}
 
 
-        public IActionResult BusinessListing(int productid)
+        //public IActionResult BusinessListing(int productid)
+        //{
+        //   // LoginUserDetails();
+        //    BusinessListingViewModel obj = new BusinessListingViewModel();
+
+
+        //    try
+        //    {
+        //        int businessid = _productMasterServices.GetById(productid).businessid;
+        //        obj.objProductIndexViewModel = _productMasterServices.GetAll().Where(x=>x.businessid==businessid).Select(x => new ProductIndexViewModel
+        //        {
+
+
+        //            id = x.id,
+        //            //sectorid = x.se,
+        //            businessid = x.businessid,
+        //            productName = x.productName,
+        //            // BusinessRegistration = _BusinessRegistrationServiecess.GetById(x.businessid),
+        //            // SectorRegistration = _SectorRegistrationServices.GetById(_BusinessRegistrationServiecess.GetById(x.businessid).sectorid),
+        //            img = x.img
+
+        //        }).ToList();
+        //        var parameter = new DynamicParameters();
+        //        parameter.Add("@productid", productid);
+        //        // parameter.Add("@productid", 4);
+
+        //        //   obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
+
+        //        obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+
+        //    }
+        //    catch(Exception objmsg)
+        //    {
+        //        string p = objmsg.Message;
+        //    }
+
+
+
+
+        //    return View(obj);
+        //    //return View();
+        //}
+        public IActionResult BusinessListing(int businessid,int productid)
         {
-           // LoginUserDetails();
+            // LoginUserDetails();
             BusinessListingViewModel obj = new BusinessListingViewModel();
 
-           
+
             try
             {
-                int businessid = _productMasterServices.GetById(productid).businessid;
-                obj.objProductIndexViewModel = _productMasterServices.GetAll().Where(x=>x.businessid==businessid).Select(x => new ProductIndexViewModel
+                //int businessid = _productMasterServices.GetById(productid).businessid;
+                obj.objProductIndexViewModel = _productMasterServices.GetAll().Where(x => x.businessid == businessid).Select(x => new ProductIndexViewModel
                 {
 
 
@@ -616,17 +658,18 @@ namespace plathora.Controllers
                 obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
 
             }
-            catch(Exception objmsg)
+            catch (Exception objmsg)
             {
                 string p = objmsg.Message;
             }
-          
-             
 
-           
+
+
+
             return View(obj);
             //return View();
         }
+
 
 
 

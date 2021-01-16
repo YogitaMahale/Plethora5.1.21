@@ -95,7 +95,7 @@
                                     @*custom-checkbox*@
                                     @*<input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">*@
                                     <span class="custom-control-label">
-                                        <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing" asp-route-productid="@item.id" class="text-dark">@item.productName<span class="label label-primary float-right"></span></a>
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing"  asp-route-businessid="@item.businessid" asp-route-productid="@item.id" class="text-dark">@item.productName<span class="label label-primary float-right"></span></a>
                                     </span>
                                 </label>
                                 }
