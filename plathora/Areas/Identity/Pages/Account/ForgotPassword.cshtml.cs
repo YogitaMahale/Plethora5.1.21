@@ -62,14 +62,19 @@ namespace plathora.Areas.Identity.Pages.Account
                     values: new { area = "Identity", code },
                     protocol: Request.Scheme);
 
+
+                //StringBuilder strBul = new StringBuilder("<div>");
+                //strBul = strBul.Append("<div>Please reset your password by <a href='{" + HtmlEncoder.Default.Encode(callbackUrl) + "}'>clicking here</a>.</div>");
+                
                 await _emailSender.SendEmailAsync(
                     user.Email,
                     "Reset Password",
                     $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
-                   );
-                StringBuilder strBul = new StringBuilder("<div>");
-                strBul = strBul.Append("<div>Please reset your password by <a href='{"+HtmlEncoder.Default.Encode(callbackUrl)+"}'>clicking here</a>.</div>");
 
+                    
+                   // strBul.ToString()
+                   ) ;
+               
 
                 //#region "sms"
                 //try

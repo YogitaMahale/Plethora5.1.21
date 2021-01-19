@@ -23,6 +23,11 @@ using SectorRegistrationIndexViewModel = plathora.Models.SectorRegistrationIndex
 using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Text.Encodings.Web;
+using System.Text;
+using System.Net.Mail;
+using Microsoft.AspNetCore.Hosting;
 
 namespace plathora.Controllers
 {
@@ -46,7 +51,9 @@ namespace plathora.Controllers
        private readonly UserManager<IdentityUser> _usermanager;
         private readonly ICityRegistrationservices _cityRegistrationservices;
         private readonly IBusinessContactUsservices _businessContactUsservices;
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices, IBusinessContactUsservices businessContactUsservices)//, UserManager<ApplicationUser> usermanager
+        private readonly IEmailSender _emailSender;
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices, IBusinessContactUsservices businessContactUsservices, IEmailSender emailSender, IWebHostEnvironment hostingEnvironment)//, UserManager<ApplicationUser> usermanager
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -64,6 +71,8 @@ namespace plathora.Controllers
             _ratingsservices = ratingsservices;
             _cityRegistrationservices = cityRegistrationservices;
             _businessContactUsservices = businessContactUsservices;
+            _emailSender = emailSender;
+            _hostingEnvironment = hostingEnvironment;
         }
       
         public void LoginUserDetails()
@@ -428,7 +437,8 @@ namespace plathora.Controllers
 
             return "complete";
         }
-        [HttpPost]
+        [HttpPost]    
+
         public async Task<string> businessContactus(string name, string  email, string mobileno,string msg,int bussinessid)
         {
             //var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -444,6 +454,63 @@ namespace plathora.Controllers
             obj.Mobileno  = mobileno;
             obj.Message  = msg;
             await _businessContactUsservices.CreateAsync(obj);
+
+            var businessdetails = _businessOwnerRegiServices.GetById(bussinessid);
+            var BusinsssOwnerDetails = _db.applicationUsers.Where(x => x.Id == businessdetails.customerid).FirstOrDefault();
+
+
+            #region "Email Sent To Business Owner"
+            string pancardphotopath = _hostingEnvironment.WebRootPath + ("~/uploads/tingtong logo.png".Replace('/', '\\'));
+
+            StringBuilder str = new StringBuilder();
+            str = str.Append("<div>Hello ,</div>");
+            str = str.Append("<br />");
+            //str = str.Append("<div><img src="+ pancardphotopath + "/> </div>");
+            //str = str.Append("<br />");
+            str = str.Append("<div><h1>"+ businessdetails.companyName+ "</h1></div>");
+            str = str.Append("<br />");
+            str = str.Append("<div><h1>" + name+ " has sent you a message from your Business Profile.</div>");
+            str = str.Append("<br />");
+
+            
+
+            str = str.Append(@"            
+
+                   <table class='table table - condensed'>
+                    <tr>  
+                        <td> " + "Details  " + @" 
+                        </td>  
+
+                        
+                    </tr>
+                       <tr>  
+                        <td> " + " Name : "+name + @"  
+                        </td>                         
+                    </tr>
+                    <tr>  
+                        <td> " + " Email : " + email + @"  
+                        </td>                         
+                    </tr>
+                       <tr>  
+                        <td> " + " Mobile No : " + mobileno + @"  
+                        </td>                         
+                    </tr> 
+<tr>  
+                        <td> " + " Message : " + msg  + @"  
+                        </td>                         
+                    </tr> 
+               </table> 
+
+                ");
+            str = str.Append("<div>Thank you.</div>");
+
+
+            #endregion
+            await _emailSender.SendEmailAsync(
+                   BusinsssOwnerDetails.Email,
+                   "Message from "+name,
+                 str.ToString()
+                  );
 
             return "complete";
         }
