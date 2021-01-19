@@ -32,61 +32,59 @@
             <div class="single-page">
                 <div class="col-lg-5 col-xl-4 col-md-6 d-block mx-auto">
                     <div class="wrapper wrapper2">
-                        <div class="card-body">
-                            <h3>Register</h3>
-                            @*<div class="text-center">
-                                    <div class="btn-list d-flex">
-                                        <a href="https://www.google.com/gmail/" class="btn btn-google btn-block"><i class="fa fa-google fa-1x mr-2"></i> Google</a>
-                                        <a href="https://twitter.com/" class="btn btn-twitter"><i class="fa fa-twitter fa-1x"></i></a>
-                                        <a href="https://www.facebook.com/" class="btn btn-facebook"><i class="fa fa-facebook fa-1x"></i></a>
-                                    </div>
-                                </div>*@
+                        <h3>Register</h3>
+                        @*<div class="card-body">
+
+                       <div class="text-center">
+            <div class="btn-list d-flex">
+                <a href="https://www.google.com/gmail/" class="btn btn-google btn-block"><i class="fa fa-google fa-1x mr-2"></i> Google</a>
+                <a href="https://twitter.com/" class="btn btn-twitter"><i class="fa fa-twitter fa-1x"></i></a>
+                <a href="https://www.facebook.com/" class="btn btn-facebook"><i class="fa fa-facebook fa-1x"></i></a>
+            </div>
+        </div>
+                    </div>*@
+
+                    <form method="post" class="card-body" enctype="multipart/form-data" asp-action="Register">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="First Name">
+                            <input type="text" asp-for="name">
+                            <label asp-for="name"> </label>
+                            <span asp-validation-for="name" class="text-danger"></span>
+                        </div>
+                        <div class="Middle Name">
+                            <input type="text" name="middlename">
+                            <label asp-for="middlename"></label>
+                        </div>
+                        <div class="Surname">
+                            <input type="text" name="lastname">
+                            <label  asp-for="lastname" > </label>
+                        </div>
+                        <div class="name">
+                            <input type="text" asp-for="mobileno1">
+                            <label asp-for="mobileno1"> </label>
+                            <span asp-validation-for="mobileno1" class="text-danger"></span>
                         </div>
 
-                        <form method="post" enctype="multipart/form-data" asp-action="Register">
-                            <div asp-validation-summary="All" class="text-danger"></div>
-                            <div class="name">
-                                <input type="text" asp-for="name">
-                                <label asp-for="name"> </label>
-                                <span asp-validation-for="name" class="text-danger"></span>
-                            </div>
-                            <div class="name">
-                                <input type="text" asp-for="mobileno1">
-                                <label asp-for="mobileno1"> </label>
-                                <span asp-validation-for="mobileno1" class="text-danger"></span>
-                            </div>
+
+                        <div class="mail">
+                            <input type="email" asp-for="Email">
+                            <label asp-for="Email">Email</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
 
 
-                            <div class="mail">
-                                <input type="email" asp-for="Email">
-                                <label asp-for="Email">Email</label>
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
+                        <div class="submit">
+                            <button type="submit" class="btn btn-secondary btn-block">Register</button>
+                            @*<a class="btn btn-secondary btn-block" href="index.html">Register</a>*@
+                        </div>
+                        @*<p class="text-dark mb-0">Already have an account?<a href="login.html" class="text-secondary ml-1">Sign In</a></p>
 
 
 
+        <div class="col-md-4 col-md-offset-2">
 
-
-
-
-
-
-
-
-
-
-                            <div class="submit">
-                                <button type="submit"   class="btn btn-secondary btn-block">Register</button>
-                                @*<a class="btn btn-secondary btn-block" href="index.html">Register</a>*@
-                            </div>
-                            <p class="text-dark mb-0">Already have an account?<a href="login.html" class="text-secondary ml-1">Sign In</a></p>
-
-
-
-                            <div class="col-md-4 col-md-offset-2">
-
-                            </div>
-                        </form>
+        </div>*@
+                    </form>
                     </div>
                 </div>
             </div>

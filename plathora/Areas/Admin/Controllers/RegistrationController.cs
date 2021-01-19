@@ -41,9 +41,10 @@ namespace plathora.Areas.Admin.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string mobileno)
         {
             var model = new RegisterViewModel();
+            model.mobileno1 = mobileno;
             return View(model);
         }
         [HttpPost]
@@ -51,8 +52,7 @@ namespace plathora.Areas.Admin.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
 
-            if (ModelState.IsValid)
-            {
+            
                // returnUrl = returnUrl ?? Url.Content("~/");
                 //ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
                 if (ModelState.IsValid)
@@ -62,6 +62,9 @@ namespace plathora.Areas.Admin.Controllers
                     {
                         name = model.name
                        ,
+                        MiddleName=model.middlename,
+                        LastName=model.lastname,
+                        
                         UserName = model.mobileno1
                    ,
                         Email = model.Email
@@ -128,11 +131,7 @@ namespace plathora.Areas.Admin.Controllers
                 return View();
                 // If we got this far, something failed, redisplay form
 
-            }
-            else
-            {
-                return View();
-            }
+           
 
         }
     }

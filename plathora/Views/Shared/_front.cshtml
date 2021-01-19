@@ -57,7 +57,7 @@
     </style>
 </head>
 <body>
-    <script>
+    @*<script>
         
         var userAuthorized = false;   
         
@@ -71,7 +71,7 @@
   
         //var Newuser = false;
         //var OTPcnt = 0;
-    </script>
+    </script>*@
     <!--Loader-->
     <div id="global-loader">
         <img src="~/Bizdire/LTR/assets/images/products/products/loader.png" class="loader-img floating" alt="">
@@ -409,263 +409,88 @@
                             <li><a asp-area="Admin" asp-controller="Home" asp-action="Advertising">Advertising </a></li>
                             <li><a asp-area="Admin" asp-controller="Home" asp-action="ContactUs"> Contact Us <span class="wsarrow"></span></a></li>
                             <li><a class="btn-secondary  mb-0">Add Listing </a></li>
+                            
                             @if (SignInManager.IsSignedIn(User))
                             {
-                            <script>
+                                <script>
                                         userAuthorized = true;
 
                             localStorage.setItem("mobileno", @User.Identity.Name);
                             @*@User.Identity.Name*@
-                            </script>
+                                </script>
 
-                            @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
-                            @*<li class="nav-item">
-            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-        </li>*@
-                            @*<script type="text/javascript">
-            alert("login");
-        </script>*@
+                                @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
+                                @*<li class="nav-item">
+                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            </li>*@
+                                @*<script type="text/javascript">
+                alert("login");
+            </script>*@
 
-                            string userName = TempData["userName"].ToString();
-                            string profilephoto = TempData["profilephoto"].ToString();
+                                string userName = TempData["userName"].ToString();
+                                string profilephoto = TempData["profilephoto"].ToString();
 
-                            TempData.Keep("userName");
-                            TempData.Keep("profilephoto");
-
-
-                            <li class="dropdown">
-                                <a href="#" class="text-dark" data-toggle="dropdown">
-                                   
-                                    <img src="@profilephoto" style="width:30px;height:25px;">
-        <span> Hello @userName  </span>
+                                TempData.Keep("userName");
+                                TempData.Keep("profilephoto");
 
 
-                                    
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
-                                        &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
+                                <li class="dropdown">
+                                    <a href="#" class="text-dark" data-toggle="dropdown">
+
+                                        <img src="@profilephoto" style="width:30px;height:25px;">
+                                        <span> Hello @userName  </span>
+
+
+
                                     </a>
-                                    @*<a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon icon icon-speech"></i> Inbox
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="dropdown-icon icon icon-bell"></i> Notifications
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        <i class="dropdown-icon  icon icon-settings"></i> Account Settings
-                                    </a>*@
-                                    @*<a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "Admin" })" class="dropdown-item">
-                    <i class="dropdown-icon  icon icon-settings"></i> Logout
-                </a>*@
-                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
+                                            &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
+                                        </a>
+
+                                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
 
 
-                                        <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
-                                    </form>
+                                            <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
+                                        </form>
 
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
 
                             }
                             else
                             {
-                            <script>
-                                userAuthorized = false;
-                                localStorage.setItem("mobileno", "");
-                            </script>
+                                <script>
+                                    userAuthorized = false;
+                                    localStorage.setItem("mobileno", "");
+                                </script>
 
 
 
-                            @*<script type="text/javascript">
-            $("#loginModal").modal('show');
-            window.location.href = '/Admin/Home/Index';
-            alert("Logout");
-            //$("#loginModal").modal('show');
-        </script>*@
-                            @*<li class="nav-item">
-            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Register">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Login">Login</a>
-        </li>*@
 
 
-                            <li style="display:none;">
 
-                                <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
-                                    Register
-                                    @*btn btn-secondary btn-sm mt-4*@
+                                @*<li>
 
-                                    @*class="btn-secondary  mb-0"*@
-                                    @*<a href="#" class="text-dark"><i class="fa fa-user mr-1"></i> <span></span></a>*@
-                                </button>
-                            </li>
+                                    <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
+                                        Register
 
-                            <li style="display:none;">
-                                <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
-                                    Login
+                                    </button>
+                                </li>*@
 
-                                    @*<a href="#" class="text-dark"><i class="fa fa-user mr-1"></i> <span></span></a>*@
-                                </button>
-                                @*<a href="#" class="text-dark"><i class="fa fa-sign-in mr-1"></i> <span>Login</span></a>*@
-                            </li>
+                                <li>
+                                    <button id="btnShowModal" class="btn btn-secondary mb-0" data-toggle="modal" data-target="#loginModal">
+                                        Login
+                                    </button>
+
+                                </li>
 
                             }
 
-                            @*<li>
-            <a href="#">Widgets <span class="fa fa-caret-down m-0"></span></a>
-            <ul class="sub-menu">
-                <li><a href="#">Card Widgets</a></li>
-                <li><a href="#">Carousel Widgets</a></li>
-                <li><a href="#">Vertical Scroll Widgets</a></li>
-            </ul>
-        </li>*@
-                            @*<li>
-            <a href="#">Pages <span class="fa fa-caret-down m-0"></span></a>
-            <div class="horizontal-megamenu clearfix">
-                <div class="container">
-                    <div class="megamenu-content">
-                        <div class="row">
-                            <ul class="col link-list">
-                                <li class="title">Listing pages</li>
-                                <li><a href="business-list.html">Business List</a></li>
-                                <li><a href="business-list2.html">Business List 02</a></li>
-                                <li><a href="business-list3.html">Business List 03</a></li>
-                                <li><a href="business-list-right.html">Business List Right</a></li>
-                                <li><a href="business-list-map.html">Business Map list</a></li>
-                                <li><a href="business-list-map2.html">Business Map list 02</a></li>
-                                <li><a href="business-list-map3.html">Business Map style 03</a></li>
 
-                                <li class="title mb-0 mt-3">Add Post</li>
-                                <li><a href="edit-list.html">Edit-list</a></li>
-                                <li><a href="edit-list2.html">Edit-list 02</a></li>
-                                <li><a href="#">Ad List</a></li>
-                                <li><a href="ad-list2.html">Ad List2</a></li>
-                            </ul>
-                            <ul class="col link-list">
-                                <li class="title">Categories & My Dashboard</li>
-                                <li><a href="categories.html">Categories</a></li>
-                                <li><a href="categories2.html">Categories 02</a></li>
-                                <li><a href="#">My Dashboard</a></li>
-                                <li><a href="mylistings.html">Listings</a></li>
-                                <li><a href="mylistings-2.html">Listings 02</a></li>
-                                <li><a href="myfavorite.html">Favorite Listings</a></li>
-                                <li><a href="myfavorite-2.html">Favorite Listings 02</a></li>
-                                <li><a href="manged.html">Manged Listings</a></li>
-                                <li><a href="manged-2.html">Manged Listings 02</a></li>
-                                <li><a href="payments.html">Payments</a></li>
-                                <li><a href="orders.html"> Orders</a></li>
-                                <li><a href="#"> Settings</a></li>
-                                <li><a href="tips.html">Tips</a></li>
-                            </ul>
-                            <ul class="col link-list">
-                                <li class="title">User Pages</li>
-                                <li><a href="userprofile.html"> User Profile</a></li>
-                                <li><a href="personal-blog.html">Personal Profile</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="typography.html">Typography</a></li>
-                                <li><a href="inovice.html">Invoice</a></li>
-                                <li><a href="underconstruction.html">Under Constructions</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="login-2.html">Login 02</a></li>
-                                <li><a href="forgot.html">Forgot Password</a></li>
-                                <li><a href="lockscreen.html">Lock Screen</a></li>
-                                <li><a href="faq.html">Faq</a></li>
-                            </ul>
-                            <ul class="col link-list">
-                                <li class="title">Headers Styles</li>
-                                <li><a href="header-style1.html">Header Style 01</a></li>
-                                <li><a href="header-style2.html">Header Style 02</a></li>
-                                <li><a href="header-style3.html">Header Style 03</a></li>
-                                <li><a href="header-style4.html">Header Style 04</a></li>
-                                <li><a href="header-style5.html">Header Style 05</a></li>
-                                <li><a href="header-style6.html">Header Style 06</a></li>
-                                <li><a href="header-style7.html">Header Style 07</a></li>
-                                <li><a href="header-style8.html">Header Style 08</a></li>
-                                <li><a href="header-style9.html">Header Style 09</a></li>
-                                <li><a href="header-style10.html">Header Style 10</a></li>
-                            </ul>
-                            <ul class="col link-list">
-                                <li class="title">Footers Styles</li>
-                                <li><a href="footer-style.html">Footer Style 01</a></li>
-                                <li><a href="footer-style2.html">Footer Style 02</a></li>
-                                <li><a href="footer-style3.html">Footer Style 03</a></li>
-                                <li><a href="footer-style4.html">Footer Style 04</a></li>
-                                <li><a href="footer-style5.html">Footer Style 05</a></li>
-                                <li><a href="footer-style6.html">Footer Style 06</a></li>
-                                <li><a href="footer-style7.html">Footer Style 07</a></li>
-                                <li><a href="footer-style8.html">Footer Style 08</a></li>
-                                <li><a href="footer-style9.html">Footer Style 09</a></li>
-                                <li><a href="footer-style10.html">Footer Style 10</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>*@
-                            @*<li>
-            <a href="#">Blog <span class="fa fa-caret-down m-0"></span></a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="#">Blog Grid <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="blog-grid.html">Blog Grid Left</a></li>
-                        <li><a href="blog-grid-right.html">Blog Grid Right</a></li>
-                        <li><a href="blog-grid-center.html">Blog Grid Center</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Blog List <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="blog-list.html">Blog List Left</a></li>
-                        <li><a href="blog-list-right.html">Blog List Right</a></li>
-                        <li><a href="blog-list-center.html">Blog List Center</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Blog Details <i class="fa fa-angle-right float-right mt-1 d-none d-lg-block"></i></a>
-                    <ul class="sub-menu">
-                        <li><a href="blog-details.html">Blog Details Left</a></li>
-                        <li><a href="blog-details-right.html">Blog Details Right</a></li>
-                        <li><a href="blog-details-center.html">Blog Details Center</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>*@
-                            @*<li>
-            <a href="#">Categories <span class="fa fa-caret-down m-0"></span></a>
-            <ul class="sub-menu">
-                <li>
-                    <a href="business.html">Educational</a>
-                </li>
-                <li>
-                    <a href="business-2.html">Meditation</a>
-                </li>
-                <li>
-                    <a href="business-3.html">RealEstate</a>
-                </li>
-                <li>
-                    <a href="business-4.html">Restaurant</a>
-                </li>
-                <li>
-                    <a href="business-5.html">Backery</a>
-                </li>
-                <li>
-                    <a href="business-6.html">Beauty & Spa</a>
-                </li>
-                <li>
-                    <a href="business-right.html">Automobiles</a>
-                </li>
-            </ul>
-        </li>*@
 
-                            @*<li class="d-lg-none mt-5 pb-5 mt-lg-0">
-            <span><a class="btn btn-orange" href="#">Add Listing</a></span>
-        </li>*@
+
                         </ul>
                         <ul >
                            
@@ -812,6 +637,7 @@
                     </div>
                 </footer>
             </section>
+
             <!--Footer Section-->
             <!-- Back to top -->
             <a href="#top" id="back-to-top"><i class="fa fa-rocket"></i></a>
@@ -986,7 +812,7 @@ get OTP NO -->
 <script type="text/javascript">
     var mobileno = "", otpno = "";
     var OTPverifiy = false;
-       myFunction();
+       //myFunction();
    
     
      
@@ -1034,7 +860,7 @@ get OTP NO -->
                          window.location.href = '/Admin/Home/Index';
                      }
                      else {
-                        
+                         //alert(msg);
                          $("#inputOTPMobileNO").val($("#inputMobileNo").val());
                          $("#inputOldOTPNO").val(msg);
                           
@@ -1080,7 +906,7 @@ get OTP NO -->
                   //  alert("set true OTP CLICK");
                     localStorage.setItem('OTPverifiy', true);
                    // localStorage.setItem("mobileno", mobileNo);
-                    window.location.href = '../Admin/Registration/Register';
+                    window.location.href = '../Admin/Registration/Register?mobileno=' + mobileNo;
 
                 }
                 else {
@@ -1100,55 +926,31 @@ get OTP NO -->
     });
      
 
-    function myFunction() {
-        //alert("call");
+    //function myFunction() {
+        
 
-        //var obj = localStorage.getItem("mobileno");
-        //alert(obj);
-        //if (obj.length == 0) {
-        //    alert("length 0");
+    //    if (userAuthorized) {
 
-        //}
-        //else if (obj="OTP") {
-        //    alert("otp show");  
-        //}
-        //else if (obj.length >0) {
-        //    alert("Register");
-        //}
+    //         //alert("You\'re in the system");
+    //    }
+    //    else {
+    //        $("#loginModal").modal('show');
+    //        var a = false;
+    //         a = localStorage.getItem('OTPverifiy');
+    //        //alert("dsfsdfsd  " +a);
+    //        if (a === "false") {
+    //           // alert("hide mobile no");
+    //            $("#loginModal").modal('show');
+    //        }
+    //        else {
+    //            $("#loginModal").modal('hide');
 
-        if (userAuthorized) {
-
-             //alert("You\'re in the system");
-        }
-        else {
-            $("#loginModal").modal('show');
-            var a = false;
-             a = localStorage.getItem('OTPverifiy');
-            //alert("dsfsdfsd  " +a);
-            if (a === "false") {
-               // alert("hide mobile no");
-                $("#loginModal").modal('show');
-            }
-            else {
-                $("#loginModal").modal('hide');
-
-            }
-            //if (localStorage.getItem('OTPverifiy')) {
-            //    $("#loginModal").modal('hide');
-
-               
-            //}
-            //else {
-            //    $("#loginModal").modal('show');
-            //}
-           // $("#loginModal").modal('show');
+    //        }
            
-            //OTPModal
-            
-        }
+    //    }
  
 
 
 
-    }
+    //}
 </script>

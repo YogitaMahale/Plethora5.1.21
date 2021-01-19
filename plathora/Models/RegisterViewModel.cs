@@ -15,8 +15,17 @@ namespace plathora.Models
       
 
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "First Name")]
         public string name { get; set; }
+
+        [Required]
+        [Display(Name = "Middle Name")]
+        public string middlename { get; set; }
+
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string lastname { get; set; }
 
         [Display(Name = "Mobile No.")]
         public string mobileno1 { get; set; }

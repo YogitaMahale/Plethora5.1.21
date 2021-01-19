@@ -422,20 +422,27 @@ namespace plathora.Controllers
         public async Task<string> AddReview(string rating, int bussinessid, string review)
         {
             var customerId =User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if(customerId!=null)
+            {
+                // var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
+                businessrating obj = new businessrating();
+                obj.id = 0;
+                obj.CustomerId = customerId;
+                //obj.BusinessOwnerId =(int)businessId.id;
+                obj.BusinessOwnerId = (int)bussinessid;
+                obj.rating = rating;
+                obj.comment = review;
+                obj.isdeleted = false;
+                await _businessratingsServices.CreateAsync(obj);
+                return "complete";
+            }
+            else
+            {
+                return "Login";
+            }
 
-
-           // var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
-            businessrating obj = new businessrating();
-            obj.id = 0;
-            obj.CustomerId = customerId;
-            //obj.BusinessOwnerId =(int)businessId.id;
-            obj.BusinessOwnerId =(int)bussinessid;
-            obj.rating = rating;
-            obj.comment = review;
-            obj.isdeleted = false;
-            await _businessratingsServices.CreateAsync(obj);
-
-            return "complete";
+              
+          
         }
         [HttpPost]    
 
