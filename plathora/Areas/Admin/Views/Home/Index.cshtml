@@ -16,62 +16,71 @@
     </div>*@
 <!--Topbar-->
 <!--Sliders Section-->
-<div>
-    <div class="cover-image sptb-4 sptb-tab bg-background2" data-image-src="~/Bizdire/LTR/assets/images/banners/banner5.jpg" style="height: 300px;">
-        <div class="header-text mb-0" style="top: 0px;bottom:0px;">
-            <div class="container">
-                <div class="text-center text-white">
-                    <a href="" class="typewrite" data-period="2000" data-type='[ "Services at Your Doorsteps" ]'>
-                        <span class="wrap"></span>
-                    </a>
-                    <p class="fs-18 font-weight-light">Services and Products Directly Available Without any Middleman</p>
-                </div>
-                @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
-                {
-                    <div class="row">
-                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                            <div class="search-background py-3 px-4">
-                                <div class="form row row-sm">
+    <div>
+       
+        <div class="cover-image sptb-4 sptb-tab bg-background2" data-image-src="~/Bizdire/LTR/assets/images/banners/banner5.jpg" style="height: 300px;">
+            <div class="header-text mb-0" style="top: 0px;bottom:0px;">
+                <div class="container">
+                    <div class="text-center text-white">
+                        <a href="" class="typewrite" data-period="2000" data-type='[ "Services at Your Doorsteps" ]'>
+                            <span class="wrap"></span>
+                        </a>
+                        <p class="fs-18 font-weight-light">Services and Products Directly Available Without any Middleman</p>
+
+
+
+                    </div>
+                    @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
+                    {
+                        <div class="row">
+                            <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                                <div class="search-background py-3 px-4">
+                                    <div class="form row row-sm">
 
 
 
 
-                                    @*<div class="form-group col-xl-3 col-lg-2 col-md-12 mb-0" style="display:none;">
-                                        <input type="text" class="form-control input-lg location-input border-white" placeholder="Enter Location">
-                                        <span><img src="~/Bizdire/LTR/assets/images/svgs/gps.svg" class="location-gps" alt="img"></span>
-                                    </div>*@
-                                    <div class="form-group col-xl-3 col-lg-2 col-md-12 select2-lg mb-0 ">
-                                        @Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })
+                                        @*<div class="form-group col-xl-3 col-lg-2 col-md-12 mb-0" style="display:none;">
+                                            <input type="text" class="form-control input-lg location-input border-white" placeholder="Enter Location">
+                                            <span><img src="~/Bizdire/LTR/assets/images/svgs/gps.svg" class="location-gps" alt="img"></span>
+                                        </div>*@
+                                        <div class="form-group col-xl-3 col-lg-2 col-md-12 select2-lg mb-0 ">
+                                            @Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })
+
+                                        </div>
+                                        <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
+                                            <input id="txtsearch" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-2 col-md-12 mb-0">
+                                            <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
+
+                                            @*<a href="#" class="btn btn-lg btn-block btn-secondary">Search Here</a>*@
+                                        </div>
 
                                     </div>
-                                    <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
-                                        <input id="txtsearch" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
-                                    </div>
-                                    <div class="col-xl-3 col-lg-2 col-md-12 mb-0">
-                                        <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
-
-                                        @*<a href="#" class="btn btn-lg btn-block btn-secondary">Search Here</a>*@
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
 
-            </div>
-        </div><!-- /header-text -->
+                </div>
+            </div><!-- /header-text -->
+        </div>
     </div>
-</div>
 <!--Sliders Section-->
 <!-- Categories-->
 <section class="sptb bg-white">
     <div class="container">
+        @*https://api.whatsapp.com/send?phone=" + number + "&text=" + Uri.EscapeDataString(message));*@
+        @*<a href="https://web.whatsapp.com/send?phone=+917276541222&text=www.google.com" data-action="share/whatsapp/share">Share via Whatsapp web</a>*@
+
+        @*<a href="https://api.whatsapp.com/send?phone=7276541222&text=www.google.com" data-action="share/whatsapp/share">Share via Whatsapp web</a>
 
 
+        <a href="https://api.whatsapp.com/send?phone=+917276541222" data-action="share/whatsapp/share">Share 111 via Whatsapp web</a>*@
 
         @{
-            if(Model.objSectorRegistration!=null)
+            if (Model.objSectorRegistration != null)
             {
                 await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
             }
@@ -95,47 +104,47 @@
 
             //}
 
-            else  if (Model.SearchModelType == "NotFound")
+            else if (Model.SearchModelType == "NotFound")
             {
 
-                   <script>
+                <script>
                     alert("Record Not Found");
                 </script>
             }
         }
         @*<div class="row">
-                @foreach (var obj in Model.objSectorRegistration)
-                {
-                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6">
-                        <div class="card">
-                            <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
-                                <div class="card-body">
-                                    <div class="cat-item text-center">
+            @foreach (var obj in Model.objSectorRegistration)
+            {
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6">
+                    <div class="card">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
+                            <div class="card-body">
+                                <div class="cat-item text-center">
 
-                                        <div class="cat-img category-svg">
+                                    <div class="cat-img category-svg">
 
-                                            <img src="@obj.img" />
+                                        <img src="@obj.img" />
 
-                                        </div>
-                                        <div class="cat-desc">
-                                            <h5 class="mb-0">
-                                                @obj.name
+                                    </div>
+                                    <div class="cat-desc">
+                                        <h5 class="mb-0">
+                                            @obj.name
 
 
-                                            </h5>
-                                        </div>
+                                        </h5>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
+                        </a>
 
 
-                        </div>
                     </div>
-                }
-                <div class="col-12 text-center">
-                    <a asp-area="Admin" asp-controller="Home" asp-action="Category" class="btn btn-primary mt-5 pl-6 pr-6">View More</a>
                 </div>
-            </div>*@
+            }
+            <div class="col-12 text-center">
+                <a asp-area="Admin" asp-controller="Home" asp-action="Category" class="btn btn-primary mt-5 pl-6 pr-6">View More</a>
+            </div>
+        </div>*@
     </div>
 </section>
 <!--Categories-->

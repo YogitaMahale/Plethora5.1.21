@@ -59,10 +59,11 @@
                                 <li>
                                     <a class="social-icon" href="@Model.objgetBusinessAllInfo.googleplusLink"><i class="fa fa-google-plus"></i></a>
                                 </li>
+
                             </ul>
                             @*<a class="btn btn-info mb-1 mt-1" href="#"><i class="fa fa-heart-o"></i> Add Wishlist</a>
-                            <a class="btn btn-success mb-1 mt-1" href="#"><i class="fa fa-star"></i> Write Review</a>
-                            <a href="#" class="btn btn-danger icons mb-1 mt-1" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>*@
+                                <a class="btn btn-success mb-1 mt-1" href="#"><i class="fa fa-star"></i> Write Review</a>
+                                <a href="#" class="btn btn-danger icons mb-1 mt-1" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>*@
                         </div>
                     </div>
                 </div>
@@ -71,13 +72,26 @@
         <div class="details-absolute">
             <div class="d-sm-flex container">
                 <div><a href="#" class="text-white d-inline-block mr-4 "><i class="icon icon-location-pin text-white mr-2"></i>@Model.objgetBusinessAllInfo.house  </a></div>
-                <div class="ml-auto"><a href="#" class="text-white d-inline-block mt-2 mt-sm-0 fs-18">
-    <i class="icon icon-phone text-white mr-2 fs-14"></i>
-    @Model.objgetBusinessAllInfo.PhoneNumber 
-  
+                <div class="ml-auto">
+                    @{
+                        string linkk = "https://web.whatsapp.com/send?phone=+91" + @Model.objgetBusinessAllInfo.PhoneNumber + "&text=";
+
+                    }
+                    <a href="@linkk" class="text-white d-inline-block mt-2 mt-sm-0 fs-18">
+                        @*<i class="icon icon-phone text-white mr-2 fs-14"></i>*@
+                        <i class="fa fa-whatsapp text-white fa2x"></i>
+                        @Model.objgetBusinessAllInfo.PhoneNumber
 
 
-</a></div>
+
+
+                    </a>
+
+                    @*<a class="text-white d-inline-block mt-2 mt-sm-0 fs-18" href="@linkk" data-action="share/whatsapp/share">
+
+                        <i class="fa fa-whatsapp-square text-danger "></i>
+                    </a>*@
+                </div>
             </div>
         </div>
     </div>
@@ -89,10 +103,10 @@
         <div class="page-header">
             <h4 class="page-title">Business</h4>
             @*<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Categories</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Business</li>
-            </ol>*@
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Categories</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Business</li>
+                </ol>*@
         </div>
     </div>
 </div>
@@ -109,12 +123,26 @@
                     <div class="card-body">
                         <div class="item-det mb-4">
                             <a href="#" class="text-dark"><h3>@Model.objgetBusinessAllInfo.companyName</h3></a>
+
+                            @*<a href="https://web.whatsapp.com/send?phone=+91&text=www.google.com" data-action="share/whatsapp/share">
+                                    <i class="fa fa-whatsapp-square"></i>Whatsapp
+                                </a>*@
+                            @*@{
+                                string linkk = "https://web.whatsapp.com/send?phone=+91" + @Model.objgetBusinessAllInfo.PhoneNumber + "&text=";
+
+                            }*@
+                            @*<a href="@linkk" data-action="share/whatsapp/share">
+
+                                    <i class="fa fa-whatsapp-square bg-danger"></i>Whatsapp
+                                </a>*@
+
+
                             <div class=" d-flex">
                                 <ul class="d-flex mb-0">
                                     <li class="mr-5"><a href="#" class="icons"><i class="icon icon-briefcase text-muted mr-1"></i> @Model.objgetBusinessAllInfo.sectorname</a></li>
                                     <li class="mr-5"><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> @Model.objgetBusinessAllInfo.cityname</a></li>
                                     @*<li class="mr-5"><a href="#" class="icons"><i class="icon icon-calendar text-muted mr-1"></i> 5 hours ago</a></li>
-                                    <li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> 765</a></li>*@
+                                        <li class="mr-5"><a href="#" class="icons"><i class="icon icon-eye text-muted mr-1"></i> 765</a></li>*@
                                 </ul>
                                 <div class="rating-stars d-flex mr-5">
                                     <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@Model.objgetBusinessAllInfo.rating">
@@ -136,13 +164,18 @@
                                         </div>
                                     </div> @Model.objgetBusinessAllInfo.rating
                                 </div>
+
+
+
+
+
                                 @*<div class="rating-stars d-flex">
-                                    <div class="rating-stars-container mr-2">
-                                        <div class="rating-star sm">
-                                            <i class="fa fa-heart"></i>
-                                        </div>
-                                    </div> 135
-                                </div>*@
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-heart"></i>
+                                            </div>
+                                        </div> 135
+                                    </div>*@
                             </div>
                         </div>
                         <div class="product-slider">
@@ -151,11 +184,11 @@
                                 <div class="carousel-inner">
                                     @{
                                         bool flg = true;
-                                        }
-                                   
+                                    }
+
                                     @foreach (var item in Model.objBusinessSliderModel)
                                     {
-                                        @if(flg)
+                                        @if (flg)
                                         {
                                             <div class="carousel-item active"><img src="@item.imageName" style="width:740px;height:440px;" alt="img"> </div>
                                             flg = false;
@@ -167,10 +200,10 @@
 
                                     }
                                     @*<div class="carousel-item active"><img src="@Model.objgetBusinessAllInfo.sliderimg1" alt="img"> </div>
-        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg2" alt="img"> </div>
-        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg3" alt="img"> </div>
-        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg4" alt="img"> </div>
-        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg5" alt="img"> </div>*@
+                                        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg2" alt="img"> </div>
+                                        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg3" alt="img"> </div>
+                                        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg4" alt="img"> </div>
+                                        <div class="carousel-item"><img src="@Model.objgetBusinessAllInfo.sliderimg5" alt="img"> </div>*@
 
                                 </div>
                                 <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -190,14 +223,14 @@
 
                                             @foreach (var item in Model.objBusinessSliderModel)
                                             {
-                                                <div data-target="#carousel" data-slide-to="@i" class="thumb"><img  style="width:142px;height:108px;" src="@item.imageName" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="@i" class="thumb"><img style="width:142px;height:108px;" src="@item.imageName" alt="img"></div>
                                                 i++;
                                             }
                                             @*<div data-target="#carousel" data-slide-to="0" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg1" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg2" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg3" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg4" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg5" alt="img"></div>*@
+                                                <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg2" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg3" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg4" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg5" alt="img"></div>*@
 
                                         </div>
                                         <div class="carousel-item ">
@@ -210,10 +243,10 @@
 
                                             }
                                             @*<div data-target="#carousel" data-slide-to="0" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg1" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg2" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg3" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg4" alt="img"></div>
-        <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg5" alt="img"></div>*@
+                                                <div data-target="#carousel" data-slide-to="1" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg2" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="2" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg3" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="3" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg4" alt="img"></div>
+                                                <div data-target="#carousel" data-slide-to="4" class="thumb"><img src="@Model.objgetBusinessAllInfo.sliderimg5" alt="img"></div>*@
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#thumbcarousel" role="button" data-slide="prev">
@@ -293,7 +326,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer bg-white"  style="display:none;">
+                    <div class="card-footer bg-white" style="display:none;">
                         <div class="icons">
                             <a href="#" class="btn btn-info icons"><i class="icon icon-share mr-1"></i> Share Ad</a>
                             <a href="#" class="btn btn-pink icons"><i class="icon icon-heart  mr-1"></i> 678</a>
@@ -766,7 +799,7 @@
                         <div class="tab-menu-heading border-0 p-0">
                             <div class="tabs-menu1">
                                 <ul class="nav">
-                                    <li class=""><a href="#tab-contact" class="active" data-toggle="tab">Contat</a></li>
+                                    <li class=""><a href="#tab-contact" class="active" data-toggle="tab">Contact</a></li>
                                     <li><a href="#tab-timings" data-toggle="tab">Timings</a></li>
                                 </ul>
                             </div>
@@ -840,15 +873,15 @@
                     <div class="card-body">
                         <div class="map-header">
                             @*<div id="dvMap" style="width: 500px; height: 500px">
-                            </div>*@
+                                </div>*@
                             <div id="myDiv" class="map-header-layer"></div>
                             @*<div class="map-header-layer" id="map2"></div>*@
                         </div>
                         @*<div class="item-user mt-5">
-                            <div>
-                                <h6><span class="font-weight-semibold"><i class="fa fa-map mr-3 mb-0"></i></span><a href="#" class="text-body"> Mp-214, New York, NY 10012, US-52014</a></h6>
-                            </div>
-                        </div>*@
+                                <div>
+                                    <h6><span class="font-weight-semibold"><i class="fa fa-map mr-3 mb-0"></i></span><a href="#" class="text-body"> Mp-214, New York, NY 10012, US-52014</a></h6>
+                                </div>
+                            </div>*@
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-secondary" href="#Map-modal" data-toggle="modal" data-target="#Map-modal">Get Direction</a>
@@ -1314,7 +1347,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input    type="text" class="form-control" id="contactname" placeholder="Your Name">
+                    <input type="text" class="form-control" id="contactname" placeholder="Your Name">
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="contactMobileno" placeholder="Your Mobile No">
@@ -1522,33 +1555,33 @@
         }
 </script>
 @*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=API_Key"></script>
-<script type="text/javascript">
-    alert('sdf1');
-    var markers = @Html.Raw(ViewBag.Markers);
-    alert(markers[0].lat);
-    window.onload = function () {
-        alert('sdf2');
-            var mapOptions = {
-                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var infoWindow = new google.maps.InfoWindow();
-            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
-            for (i = 0; i < markers.length; i++) {
-                var data = markers[i]
-                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    title: data.title
-                });
-                (function (marker, data) {
-                    google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.description);
-                        infoWindow.open(map, marker);
+    <script type="text/javascript">
+        alert('sdf1');
+        var markers = @Html.Raw(ViewBag.Markers);
+        alert(markers[0].lat);
+        window.onload = function () {
+            alert('sdf2');
+                var mapOptions = {
+                    center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                    zoom: 8,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                for (i = 0; i < markers.length; i++) {
+                    var data = markers[i]
+                    var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        map: map,
+                        title: data.title
                     });
-                })(marker, data);
+                    (function (marker, data) {
+                        google.maps.event.addListener(marker, "click", function (e) {
+                            infoWindow.setContent(data.description);
+                            infoWindow.open(map, marker);
+                        });
+                    })(marker, data);
+                }
             }
-        }
-</script>*@
+    </script>*@
