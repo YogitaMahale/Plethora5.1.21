@@ -89,15 +89,15 @@
                 await Html.RenderPartialAsync("_SearchProductView", Model.objsearch_ProductIndexViewModel);
 
             }
-            else if (Model.SearchModelType == "businessowner")
-            {
-                await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
+            //else if (Model.SearchModelType == "businessowner")
+            //{
+            //    await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
 
-            }
+            //}
 
             else  if (Model.SearchModelType == "NotFound")
             {
-                
+
                    <script>
                     alert("Record Not Found");
                 </script>
@@ -142,7 +142,18 @@
 <!--Featured Listings-->.
 @*<h2>Latest Listings</h2>*@
 @{
-    await Html.RenderPartialAsync("_SearchBusinessListView", Model.objBusinessDetails);
+    if (Model.SearchModelType == "businessowner")
+    {
+        //await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
+
+    }
+    else
+    {
+        await Html.RenderPartialAsync("_SearchBusinessListView", Model.objBusinessDetails);
+
+    }
+
+
 }
 @*<section class="sptb">
     <div class="container">

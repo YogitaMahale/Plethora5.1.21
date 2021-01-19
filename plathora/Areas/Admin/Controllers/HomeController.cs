@@ -45,7 +45,8 @@ namespace plathora.Controllers
         private readonly Iratingsservices _ratingsservices;
        private readonly UserManager<IdentityUser> _usermanager;
         private readonly ICityRegistrationservices _cityRegistrationservices;
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices)//, UserManager<ApplicationUser> usermanager
+        private readonly IBusinessContactUsservices _businessContactUsservices;
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices, IBusinessContactUsservices businessContactUsservices)//, UserManager<ApplicationUser> usermanager
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -62,6 +63,7 @@ namespace plathora.Controllers
              _db = db;
             _ratingsservices = ratingsservices;
             _cityRegistrationservices = cityRegistrationservices;
+            _businessContactUsservices = businessContactUsservices;
         }
       
         public void LoginUserDetails()
@@ -426,7 +428,25 @@ namespace plathora.Controllers
 
             return "complete";
         }
+        [HttpPost]
+        public async Task<string> businessContactus(string name, string  email, string mobileno,string msg,int bussinessid)
+        {
+            //var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+
+            // var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
+            BusinessContactUs obj = new BusinessContactUs();
+            obj.Id = 0;
+            obj.businessid = bussinessid;
+            //obj.BusinessOwnerId =(int)businessId.id;
+            obj.Name  = name;
+            obj.Email = email;
+            obj.Mobileno  = mobileno;
+            obj.Message  = msg;
+            await _businessContactUsservices.CreateAsync(obj);
+
+            return "complete";
+        }
         [HttpGet]
         public IActionResult business(string id)
         {
@@ -438,6 +458,10 @@ namespace plathora.Controllers
             parameter.Add("@Id", id);
 
             obj.objgetBusinessAllInfo = _sP_Call.OneRecord<getBusinessAllInfo>("selectallBusinessDetailsAllInfo", parameter);
+
+            obj.objBusinessSliderModel = _sP_Call.List<BusinessSliderModel>("getBusinessSliderImagebyBusinessId", parameter);
+
+
 
             //var parameter1 = new DynamicParameters();
             //parameter1.Add("@BusinessOwnerId", id);

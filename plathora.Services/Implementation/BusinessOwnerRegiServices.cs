@@ -41,9 +41,13 @@ namespace plathora.Services.Implementation
            
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var obj = GetById(id);
+            obj.isdeleted = true;
+            _context.BusinessOwnerRegi.Update(obj);
+            // _context.Remove(affilate);
+            await _context.SaveChangesAsync();
         }
 
         /*

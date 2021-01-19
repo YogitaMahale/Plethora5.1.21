@@ -65,20 +65,23 @@
                                     @foreach (var item in Model)
                                     {
                                         @*<a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-white">*@
-
+                                        @*<div class="item-card7-icons">
+                                            <a href="#" class="item-card7-icons-l"><i class="fa fa-pencil"></i></a>
+                                            <a href="#" class="item-card7-icons-r"><i class="fa fa fa-heart-o"></i></a>
+                                        </div>*@
                                         <div class="card overflow-hidden">
                                             @*<div class="ribbon ribbon-top-left text-danger"><span class="bg-danger">New</span></div>*@
                                             <div class="d-md-flex">
                                                 <div class="item-card9-img">
                                                     <div class="item-card9-imgs">
                                                         <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id"></a>
-                                                        @if (item.sliderimg1 == null || item.sliderimg1 == "")
+                                                        @if (item.photo == null || item.photo == "")
                                                         {
                                                             <img src="~/uploads/blank1.jpg" alt="img" class="cover-image">
                                                         }
                                                         else
                                                         {
-                                                            <img src="@item.sliderimg1" alt="img" class="cover-image">
+                                                            <img src="@item.photo" alt="img" class="cover-image">
                                                         }
 
                                                         @*<img src="@item.sliderimg1" alt="img" class="cover-image">*@
@@ -97,7 +100,7 @@
                                                                 <h4 class="font-weight-semibold mt-1 mb-1">
                                                                     @item.companyName
                                                                     @*<i class="fa fa-exclamation-circle text-warning ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Not Verified">
-                                                            </i>*@
+                                        </i>*@
                                                                 </h4>
                                                             </a>
                                                             <div class="rating-stars d-flex mr-5">
@@ -119,17 +122,21 @@
                                                                         <i class="fa fa-star"></i>
                                                                     </div>
                                                                 </div> <a class="fs-13 leading-tight mt-1" href="#">@item.review Reviews</a>
+                                                               x
                                                             </div>
                                                             <div class="mt-2 mb-2">
                                                                 <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>@item.landmark</a>
                                                                 <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-1 text-muted">
-                                                                    <i class="fa fa-map-marker mr-1"></i>
+
+
+
 
                                                                     @item.house
 
 
 
                                                                 </a>
+                                                               
                                                             </div>
                                                             <p class="mb-0 leading-tight"><span class="font-weight-semibold text-dark"> Timings : </span>  10am - 10pm</p>
                                                         </div>
@@ -140,14 +147,24 @@
                                                                 <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
                                                                     <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i>@item.Email</a>
                                                                     <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i>@item.PhoneNumber</a>
+                                                                    
 
 
 
-                                                                   
                                                                 </div>
                                                             </div>
-                                                            <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
-                                                                <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
+                                                            <div class="ml-auto mt-3 mt-sm-0" >
+                                                                <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
+                                                                    <a asp-area="Admin" asp-controller="Customerprofile" asp-action="editBusiness" asp-route-id="@item.Id">
+                                                                        <i class="fa fa-pencil text-primary">
+                                                                        </i>
+
+                                                                    </a>
+                                                                    <a asp-area="Admin" asp-controller="Customerprofile" asp-action="deleteBusiness" asp-route-id="@item.Id">
+                                                                        <i class="fa fa-trash-o text-danger">
+                                                                        </i>
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

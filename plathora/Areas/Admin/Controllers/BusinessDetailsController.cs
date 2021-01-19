@@ -187,6 +187,7 @@ namespace plathora.Areas.Admin.Controllers
                 obj1.companyName = model.companyName;
                 obj1.gstno = model.gstno;
                 obj1.Website = model.Website;
+                     obj1.organization = model.organization;
                 //obj1.businessOperation = model.businessOperation;
                 //obj1.businessType = model.businessType;
 

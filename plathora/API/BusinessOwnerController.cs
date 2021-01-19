@@ -756,7 +756,44 @@ namespace plathora.API
         }
         catch { return BadRequest(); }
     }
-   
+
+
+        [HttpGet]
+        [Route("getbusinessSliderImagebyBusinessId")]
+        public async Task<IActionResult> getbusinessSliderImagebyBusinessId(int businessId)
+        {
+            try
+            {
+
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@Id", businessId);
+                var sliderImages = _sP_Call.List<BusinessSliderModel>("getBusinessSliderImagebyBusinessId", parameter);
+
+                //  var categories = await _context.CustomerRegistration.ToListAsync(); 
+                if (sliderImages == null)
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+                else
+                {
+
+                    return Ok(sliderImages);
+                }
+
+
+            }
+            catch (Exception obj)
+            {
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
+            }
+
+        }
+
     }
 }
 

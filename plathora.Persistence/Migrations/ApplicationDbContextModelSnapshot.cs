@@ -481,6 +481,35 @@ namespace plathora.Persistence.Migrations
                     b.ToTable("BankRegistration");
                 });
 
+            modelBuilder.Entity("plathora.Entity.BusinessContactUs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mobileno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("businessid")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("businessid");
+
+                    b.ToTable("BusinessContactUs");
+                });
+
             modelBuilder.Entity("plathora.Entity.BusinessOwnerRegi", b =>
                 {
                     b.Property<int>("id")
@@ -1716,6 +1745,15 @@ namespace plathora.Persistence.Migrations
                     b.HasOne("plathora.Entity.CityRegistration", "CityRegistration")
                         .WithMany()
                         .HasForeignKey("cityid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("plathora.Entity.BusinessContactUs", b =>
+                {
+                    b.HasOne("plathora.Entity.BusinessOwnerRegi", "BusinessOwnerRegi")
+                        .WithMany()
+                        .HasForeignKey("businessid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

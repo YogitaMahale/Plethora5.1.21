@@ -10,6 +10,7 @@ namespace plathora.Models
     public class businessDetailsViewModel
     {
         public getBusinessAllInfo objgetBusinessAllInfo { get; set; }
+        public IEnumerable<BusinessSliderModel> objBusinessSliderModel { get; set; }
         public IEnumerable<selectallBusinessRatingViewModel> objbusinessrating { get; set; }
     }
 }

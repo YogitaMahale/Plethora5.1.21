@@ -93,7 +93,7 @@ namespace plathora
             services.AddScoped<IsocialdetailsServices, socialdetailsServices>();
 
             services.AddScoped<ISubscribeServices, SubscribeServices>();
-
+            services.AddScoped<IBusinessContactUsservices, BusinessContactUsservices>();
 
             services.AddScoped<IContactUsServices, ContactUsServices>();
             services.AddScoped<IAboutUsServices, AboutUsServicesServices>();
