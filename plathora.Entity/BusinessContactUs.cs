@@ -15,5 +15,7 @@ namespace plathora.Entity
         [ForeignKey("BusinessOwnerRegi")]
         public int businessid { get; set; }
         public BusinessOwnerRegi BusinessOwnerRegi { get; set; }
+
+        public DateTime createddate { get; set; } = DateTime.Now;
     }
 }

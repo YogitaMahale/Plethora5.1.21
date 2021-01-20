@@ -503,6 +503,9 @@ namespace plathora.Persistence.Migrations
                     b.Property<int>("businessid")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("createddate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("businessid");
