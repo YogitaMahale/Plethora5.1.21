@@ -1499,8 +1499,10 @@
 
                 $("#contactemail").val("");
                 $("#contactmessage").val("");
+                swal('Your Enquiry has been Sent Successfully', '', 'success');
+                $("#contact").modal('hide');
 
-                window.location.reload();
+               // window.location.reload();
                 //alert($("#txttext").val());
                 //alert("Review Sent");
             },

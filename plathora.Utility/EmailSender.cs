@@ -77,35 +77,35 @@ namespace plathora.Utility
 
         //    //  throw new NotImplementedException();
         //}
-        private AlternateView Mail_Body(string bodytext)
-        {
+        //private AlternateView Mail_Body(string bodytext)
+        //{
            
-            string passbookphotopath = @"C:\Users\Admin\Desktop\tingtong logo.png";
+        //    string passbookphotopath = @"C:\Users\Admin\Desktop\tingtong logo.png";
              
 
-            LinkedResource passbookphotoImg = new LinkedResource(passbookphotopath, MediaTypeNames.Image.Jpeg);
-            passbookphotoImg.ContentId = "MyImage1";
+        //    LinkedResource passbookphotoImg = new LinkedResource(passbookphotopath, MediaTypeNames.Image.Jpeg);
+        //    passbookphotoImg.ContentId = "MyImage1";
 
 
 
-            //StringBuilder str = new StringBuilder();
-            //str = str.Append("<div>Hello Team,</div>");
-            //str = str.Append("<br />");
-            //str = str.Append("<div>Hope you are doing well, </div>");
-            //str = str.Append("<br />");
-            //str = str.Append("<div>We want create label for following account</div>");
-            //str = str.Append("<br />");
+        //    //StringBuilder str = new StringBuilder();
+        //    //str = str.Append("<div>Hello Team,</div>");
+        //    //str = str.Append("<br />");
+        //    //str = str.Append("<div>Hope you are doing well, </div>");
+        //    //str = str.Append("<br />");
+        //    //str = str.Append("<div>We want create label for following account</div>");
+        //    //str = str.Append("<br />");
             
           
 
-            //str = str.Append("<div>Thank you.</div>");
-            AlternateView AV =
-             AlternateView.CreateAlternateViewFromString(bodytext, null, MediaTypeNames.Text.Html);
+        //    //str = str.Append("<div>Thank you.</div>");
+        //    AlternateView AV =
+        //     AlternateView.CreateAlternateViewFromString(bodytext, null, MediaTypeNames.Text.Html);
 
              
-            AV.LinkedResources.Add(passbookphotoImg);
-            return AV;
-        }
+        //    AV.LinkedResources.Add(passbookphotoImg);
+        //    return AV;
+        //}
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
@@ -140,10 +140,11 @@ namespace plathora.Utility
 
             //htmlView.LinkedResources.Add(LinkedImage);
             //mail.AlternateViews.Add(htmlView);
-            mail.AlternateViews.Add(Mail_Body(htmlMessage.ToString()));
-
+            //mail.AlternateViews.Add(Mail_Body(htmlMessage.ToString()));
+           
+            
             //----------------------------
-           // mail.Body = htmlMessage.ToString();
+             mail.Body = htmlMessage.ToString();
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "103.250.184.62";

@@ -4417,3 +4417,4 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\staticwebassets\pla
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.genruntimeconfig.cache
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\testt.cshtml.g.cs

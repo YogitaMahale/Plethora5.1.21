@@ -450,7 +450,11 @@ namespace plathora.Controllers
         {
             //var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+            var webRootPath = _hostingEnvironment.WebRootPath;
 
+            string businesspath = "http://tingtongindia.com/Admin/Home/business/" + bussinessid;
+
+            string imagepath = "http://tingtongindia.com/uploads/tingtong.png";
             // var businessId = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == bussinessid).FirstOrDefault();
             BusinessContactUs obj = new BusinessContactUs();
             obj.Id = 0;
@@ -511,12 +515,240 @@ namespace plathora.Controllers
                 ");
             str = str.Append("<div>Thank you.</div>");
 
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<div style = 'margin:0 auto;padding:0px' bgcolor = '#ffffff'>" + 
+         //"<p style = 'padding-top:0;font-size:0px;line-height:0px;color:#ffffff' align = 'center'></p> "+
+          "<table border = '0' cellpadding = '0' cellspacing = '0' width = '100%' align = 'center' >" +
+
+                       "<tbody>" +
+                           "<tr>" +
+
+                               "<td align = 'center' valign = 'top' bgcolor = '#ffffff' >" +
+
+
+
+
+                                        "<table border = '0' cellpadding = '0' cellspacing = '0' width = '800' align = 'center' >" +
+
+
+                        "<tbody>" +
+                            "<tr>" +
+                                "<td align = 'center' valign='top' bgcolor='#ffffff'>" +
+                                    "<table border = '0' cellpadding='0' cellspacing='0' width='100%' align='center'>" +
+
+                                        "<tbody>" +
+                                            "<tr>" +
+                                                "<td align = 'center' valign='top' style='border-bottom:1px solid #cccfd2'>" +
+                                                    "<table border = '0' cellpadding='0' cellspacing='0' width='100%' align='center'>" +
+                                                        "<tbody>" +
+                                                            "<tr>" +
+                                                                "<td align = 'center' valign='top'>" +
+                                                                    "<table border = '0' cellpadding='0' cellspacing='0' align='center'>" +
+                                                                        "<tbody>" +
+                                                                            "<tr>" +
+                                                                                "<td class='m_-2128789134426773361pad_bot_4' align='center' valign='top' style='padding-top:24px;padding-bottom:31px'>" +
+                                                                                    "<a href = '"+ businesspath + "' style='text-decoration:none' target='_blank' >" +
+                                                                                        "<img src = '"+ imagepath + "' width='192' alt='Visit My Business' title='Google My Business' style='display:block;height:auto' >" +
+                                                                                    "</a>" +
+                                                                                "</td>" +
+                                                                            "</tr>" +
+
+                                                                        "</tbody>" +
+                                                                    "</table>" +
+                                                                "</td>" +
+                                                            "</tr>" +
+                                                            "<tr>" +
+                                                                "<td class='m_-2128789134426773361font_32' align='center' width='100%' style='color:#4a4a4a;font-family:Google Sans,Roboto,Helvetica,Arial,sans-serif;font-size:38px;font-weight:normal;line-height:44px;padding:0 0 8px 0;text-align:center'>" +
+                                                                    businessdetails.companyName+
+                                                                "</td>" +
+                                                            "</tr>" +
+                                                            "<tr>" +
+                                                                "<td class='m_-2128789134426773361font_22' align='center' width='100%' style='color:#80868b;font-family:Google Sans,Roboto,Helvetica,Arial,sans-serif;font-size:26px;font-weight:normal;line-height:33px;padding:0 20px 25px 20px;text-align:center'>" +
+                                                                    "<a href = '#m_-2128789134426773361_' style='color:#80868b;text-decoration:none'>" + businessdetails.house+"</a>" +
+                                                                "</td>" +
+                                                            "</tr>" +
+                                                        "</tbody>" +
+                                                    "</table>" +
+                                                "</td>" +
+                                            "</tr>" +
+
+
+                                            "<tr>" +
+                                                "<td align = 'center' valign='top'>" +
+                                                    "<table width = '530' border='0' cellspacing='0' cellpadding='0' class='m_-2128789134426773361table-main-gmail'>" +
+                                                        "<tbody>" +
+                                                            "<tr>" +
+                                                                "<td align = 'center' valign='top' style='padding-top:24px'>" +
+                                                                    "<a href = '#m_-2128789134426773361_' style='display:block;width:422px'>" +
+                                                                        "<img src = 'https://ci4.googleusercontent.com/proxy/WFMv2KGZ3Y1zuZFXIE-AFa9wz6ov5p_iJake0vtWudwsg6g9KpQzQt6uC7c7Y4BpRjSVK0f6CUw-ku1LAwUUTfEMFqYoryi8tx6V5JajNFvMXAtHtqZxlnHBlYmd4PnZ1UYcYH8lGnW2lBLv=s0-d-e1-ft#https://services.google.com/fh/files/emails/new_message_notification_hero_image_final.png' alt='SHASWAT SHETI ?????? ???? has sent you a message from your Business Profile.' title='SHASWAT SHETI ?????? ???? has sent you a message from your Business Profile.' width='422' style='display:block;width:422px;width:100%' class='CToWUd'>" +
+                                                                    "</a>" +
+                                                                "</td>" +
+                                                            "</tr>" +
+                                                            "<tr>" +
+                                                                "<td align = 'center' valign='top'>" +
+                                                                    "<table class='m_-2128789134426773361width_85' align='center' cellpadding='0' cellspacing='0' border='0' width='100%'>" +
+                                                                        "<tbody>" +
+                                                                            "<tr>" +
+                                                                                "<td class='m_-2128789134426773361head_font' align='center' style='color:#3c4043;font-family:Google Sans,Roboto,Helvetica,Arial,sans-serif;font-size:24px;line-height:32px;padding:17px 0 25px 0;text-align:center'>"
+                                                                                +    name +" has sent you a message from your Business Profile. </td>" +
+                                                                            "</tr>" +
+                                                                        "</tbody>" +
+                                                                    "</table>" +
+                                                                "</td>" +
+                                                            "</tr>" +
+
+                                                            "<tr>" +
+                                                                "<td align = 'center' valign='top'>" +
+                                                                    "<table class='m_-2128789134426773361but' width='100%' border='0' cellspacing='0' cellpadding='0'>" +
+                                                                        "<tbody>" +
+                                                                            "<tr>" +
+                                                                                "<td align = 'center' valign='middle' background='https://ci4.googleusercontent.com/proxy/03SIZpyYwBiobCVXMYJdcvJ-60g-PuuRLUpFhU7ngwK8STiK6jblC-GqxqMGodeqYjFssq7RbjhYLeDYQn5CmSKvmbkRuraMTSfqdE6agel7Bhh3LMP7kw=s0-d-e1-ft#https://services.google.com/fh/files/emails/cta_bg_for_outlook_2x.png' style='background-image:url(https://ci4.googleusercontent.com/proxy/03SIZpyYwBiobCVXMYJdcvJ-60g-PuuRLUpFhU7ngwK8STiK6jblC-GqxqMGodeqYjFssq7RbjhYLeDYQn5CmSKvmbkRuraMTSfqdE6agel7Bhh3LMP7kw=s0-d-e1-ft#https://services.google.com/fh/files/emails/cta_bg_for_outlook_2x.png);background-position:top left;background-repeat:no-repeat;height:46px;vertical-align:middle;background-size:cover' height='46'>" +
+
+                                                                                    "<table cellspacing = '0' cellpadding='0' align='center'>" +
+                                                                                        "<tbody>" +
+                                                                                            "<tr>" +
+                                                                                                "<td style = 'border-radius:2px;background-color:#1a73e8;color:#ffffff!important;text-align:center;vertical-align:middle' align='center'>" +
+                                                                                                    //"<a style = 'display:block;border-radius:2px;color:#ffffff;text-decoration:none;font-family:Google Sans,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:14px;line-height:16px;font-weight:500;border-top:15px solid #1a73e8;white-space:nowrap;border-right:23px solid #1a73e8;border-bottom:15px solid #1a73e8;border-left:23px solid #1a73e8;text-align:center' href='https://business.google.com/messaging/l/09174996291137165437?msgId=250F36F2-D45F-45B1-8470-10EDF6CF3B84&amp;webGroupId=%2B1-dec30638-367d-4b25-90ee-087c4f43ccdd&amp;lid=15407764329372838650&amp;trk=https%3A%2F%2Fwww.google.com%2Fappserve%2Fmkt%2Fp%2FAD-FnEx_oUVkJjYOn9o5dMJ2MdvoED3rAq0ZXYe7xq1j2agh68UJF5u78G1oTCAw7AKoFi6X_dvQDuLcu4EUsHzJ' target='_blank' data-saferedirecturl='https://www.google.com/url?q=https://business.google.com/messaging/l/09174996291137165437?msgId%3D250F36F2-D45F-45B1-8470-10EDF6CF3B84%26webGroupId%3D%252B1-dec30638-367d-4b25-90ee-087c4f43ccdd%26lid%3D15407764329372838650%26trk%3Dhttps%253A%252F%252Fwww.google.com%252Fappserve%252Fmkt%252Fp%252FAD-FnEx_oUVkJjYOn9o5dMJ2MdvoED3rAq0ZXYe7xq1j2agh68UJF5u78G1oTCAw7AKoFi6X_dvQDuLcu4EUsHzJ&amp;source=gmail&amp;ust=1611206143522000&amp;usg=AFQjCNHJtpW20MFA6KA_nnd3uyOcjfdJZg'> Respond</a>" +
+                                                                                                "</td>" +
+                                                                                            "</tr>" +
+                                                                                        "</tbody>" +
+                                                                                    "</table>" +
+
+                                                                                "</td>" +
+                                                                            "</tr>" +
+                                                                        "</tbody>" +
+                                                                    "</table>" +
+                                                                "</td>" +
+                                                            "</tr>" +
+                                                        "</tbody>" +
+                                                    "</table>" +
+                                                "</td>" +
+                                            "</tr>" +
+
+
+                                            "<tr>" +
+                                                "<td class='m_-2128789134426773361block' height='32' style='line-height:32px'>" +
+                                                    "<img src = 'https://ci3.googleusercontent.com/proxy/Zre1fAeZon4GoBOJld1BwQBOoDp_nPvbMfWpo_oz1aUl9pMZintgHpbeOa_lM19isQUdBIWybtskSbQzO011QdafXFOEgtL5DEZ2dw=s0-d-e1-ft#https://services.google.com/fh/files/emails/spacer_11.gif' width='1' height='1' border='0' alt='' style='display:block' class='CToWUd'>" +
+                                                "</td>" +
+                                            "</tr>" +
+
+
+
+                                            "<tr>" +
+                                                "<td align = 'center' valign='top'>" +
+                                                    "<table width = '496' border='0' cellspacing='0' cellpadding='0' class='m_-2128789134426773361width_445'>" +
+                                                        "<tbody>" +
+                                                            "<tr>" +
+                                                                "<td align = 'center' valign='top' style='border:#dfdfdf 1px solid;border-radius:10px;padding-bottom:11px'>" +
+                                                                    "<table width = '100%' border='0' cellspacing='0' cellpadding='0'>" +
+                                                                        "<tbody>" +
+                                                                            "<tr>" +
+                                                                                "<td align = 'center' valign='top' width=''>" +
+                                                                                    "<table width = '100%' cellpadding='0' cellspacing='0' border='0'>" +
+                                                                                        "<tbody>" +
+                                                                                            "<tr>" +
+                                                                                                "<td align = 'center' valign='top'>" +
+                                                                                                    "<table border = '0' cellspacing='0' cellpadding='0' bgcolor='#F5F5F5' style='max-width:496px;width:100%;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom:#dfdfdf 1px solid'>" +
+                                                                                                        "<tbody>" +
+                                                                                                            "<tr>" +
+                                                                                                                "<td align = 'center' valign='top' style='color:#3c4043;font-family:Google Sans,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:20px;padding:5px 0 5px 0;text-align:center'>" +
+                                                                                                                    "Details"+
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+                                                                                                        "</tbody>" +
+                                                                                                    "</table>" +
+                                                                                                "</td>" +
+                                                                                            "</tr>" +
+                                                                                        "</tbody>" +
+                                                                                    "</table>" +
+                                                                                "</td>" +
+                                                                            "</tr>" +
+                                                                            "<tr>" +
+                                                                                "<td align = 'center' valign='top' width=''>" +
+                                                                                    "<table width = '100%' cellpadding='0' cellspacing='0' border='0'>" +
+                                                                                        "<tbody>" +
+                                                                                            "<tr>" +
+                                                                                                "<td class='m_-2128789134426773361width_445' align='center' valign='top' width='496'>" +
+                                                                                                    "<table class='m_-2128789134426773361width_445' border='0' cellspacing='0' cellpadding='0' bgcolor='#ffffff' width='496' style='max-width:496px;width:100%'>" +
+                                                                                                        "<tbody>" +
+                                                                                                            "<tr>" +
+                                                                                                                "<td class='m_-2128789134426773361block' height='27' style='line-height:27px'>" +
+                                                                                                                    "<img src = 'https://ci3.googleusercontent.com/proxy/Zre1fAeZon4GoBOJld1BwQBOoDp_nPvbMfWpo_oz1aUl9pMZintgHpbeOa_lM19isQUdBIWybtskSbQzO011QdafXFOEgtL5DEZ2dw=s0-d-e1-ft#https://services.google.com/fh/files/emails/spacer_11.gif' width='1' height='1' border='0' alt='' style='display:block' class='CToWUd'>" +
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+                                                                                                            "<tr>" +
+                                                                                                                "<td style = 'color:#3c4043;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;line-height:20px;text-align:left;padding-bottom:15px;padding-left:40px;padding-right:40px' align='left'>" +
+                                                                                                                    "Name: <span style = 'color:#3c4043;font-size:14px;line-height:20px;text-align:center;font-weight:400' align='center'>" +name +"</span>" +
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+
+                                                                                                            "<tr>" +
+                                                                                                                "<td style = 'color:#3c4043;padding-bottom:4px;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;line-height:20px;text-align:left;padding-left:40px;padding-right:40px' align='left'>" +
+                                                                                                                    "Message:"+
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+                                                                                                            "<tr>" +
+                                                                                                                "<td class='m_-2128789134426773361padd28' style='color:#3c4043;padding-bottom:28px;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:14px;margin:0 auto;padding-left:40px;padding-right:40px' align='left'>" +
+                                                                                                                    msg+
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+                                                                                                            "<tr>" +
+                                                                                                                "<td style = 'color:#4a4a4a;padding-bottom:18px;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:10px;font-style:italic;line-height:14px;padding-left:40px;padding-right:40px' align='left'>" +
+                                                                                                                    "<em>" + "*This information has been supplied directly by the customer.</em>" +
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+                                                                                                        "</tbody>" +
+                                                                                                    "</table>" +
+                                                                                                "</td>" +
+                                                                                            "</tr>" +
+                                                                                        "</tbody>" +
+                                                                                    "</table>" +
+                                                                                "</td>" +
+                                                                            "</tr>" +
+                                                                        "</tbody>" +
+                                                                    "</table>" +
+                                                                "</td>" +
+                                                            "</tr>" +
+                                                        "</tbody>" +
+                                                    "</table>" +
+                                                "</td>" +
+                                            "</tr>" +
+
+
+
+
+
+
+                                        "</tbody>" +
+                                    "</table>" +
+                                "</td>" +
+                            "</tr>" +
+
+
+
+                        "</tbody>" +
+                    "</table>" +
+                "</td>" +
+            "</tr>" +
+        "</tbody>" +
+    "</table>" +
+
+
+
+
+"</div>");
+
+
+
+
+
+
 
             #endregion
             await _emailSender.SendEmailAsync(
                    BusinsssOwnerDetails.Email,
                    "Message from "+name,
-                 str.ToString()
+                 sb.ToString()
                   );
 
             return "complete";
@@ -749,6 +981,7 @@ namespace plathora.Controllers
                 }).ToList();
                 var parameter = new DynamicParameters();
                 parameter.Add("@productid", productid);
+                parameter.Add("@businessid", businessid);
                 // parameter.Add("@productid", 4);
 
                 //   obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
@@ -800,6 +1033,21 @@ namespace plathora.Controllers
         }
 
 
-        
+        [HttpGet]
+        public async  Task<IActionResult> testt()
+        {
+            BusinessContactUs obj = new BusinessContactUs();
+            obj.Id = 0;
+            obj.businessid = 1;
+            //obj.BusinessOwnerId =(int)businessId.id;
+            obj.Name = "yogita";
+            obj.Email = "test@gmail.com";
+            obj.Mobileno = "999999999999";
+            obj.Message = "hi";
+            await _businessContactUsservices.CreateAsync(obj);
+
+            
+            return View( );
+        }
     }
 }
