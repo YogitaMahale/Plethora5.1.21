@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_front.cshtml";
 }
 <!--Topbar-->
- 
-
 <!--Sliders Section-->
 <div>
     <div class="cover-image sptb-1 bg-background" data-image-src="../assets/images/banners/banner1.jpg">
@@ -18,32 +16,32 @@
                             <h1 class=""><span class="font-weight-bold"></span>Business Listings</h1>
                         </div>
                         @*<div class="search-background px-4 py-3 mt-4">
-                            <div class="form row row-sm">
-                                <div class="form-group  col-xl-6 col-lg-5 col-md-12 mb-0">
-                                    <input type="text" class="form-control input-lg" id="text" placeholder="Search Products">
+                                <div class="form row row-sm">
+                                    <div class="form-group  col-xl-6 col-lg-5 col-md-12 mb-0">
+                                        <input type="text" class="form-control input-lg" id="text" placeholder="Search Products">
+                                    </div>
+                                    <div class="form-group col-xl-4 col-lg-4 select2-lg  col-md-12 mb-0">
+                                        <select class="form-control select2-show-search w-100" data-placeholder="Select">
+                                            <optgroup label="Categories">
+                                                <option>Select</option>
+                                                <option value="1">AutoMobile</option>
+                                                <option value="2">Real Estate</option>
+                                                <option value="3">Computer</option>
+                                                <option value="4">Clothing</option>
+                                                <option value="5">Job</option>
+                                                <option value="6">Services</option>
+                                                <option value="7">Electronics</option>
+                                                <option value="8">Mobile</option>
+                                                <option value="9">Events</option>
+                                                <option value="10">Constructions</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-md-12 mb-0">
+                                        <a href="#" class="btn btn-lg btn-block btn-secondary">Search</a>
+                                    </div>
                                 </div>
-                                <div class="form-group col-xl-4 col-lg-4 select2-lg  col-md-12 mb-0">
-                                    <select class="form-control select2-show-search w-100" data-placeholder="Select">
-                                        <optgroup label="Categories">
-                                            <option>Select</option>
-                                            <option value="1">AutoMobile</option>
-                                            <option value="2">Real Estate</option>
-                                            <option value="3">Computer</option>
-                                            <option value="4">Clothing</option>
-                                            <option value="5">Job</option>
-                                            <option value="6">Services</option>
-                                            <option value="7">Electronics</option>
-                                            <option value="8">Mobile</option>
-                                            <option value="9">Events</option>
-                                            <option value="10">Constructions</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                <div class="col-xl-2 col-lg-3 col-md-12 mb-0">
-                                    <a href="#" class="btn btn-lg btn-block btn-secondary">Search</a>
-                                </div>
-                            </div>
-                        </div>*@
+                            </div>*@
                     </div>
                 </div>
             </div>
@@ -57,10 +55,10 @@
         <div class="page-header">
             <h4 class="page-title">Business list Right</h4>
             @*<ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Business list Right</li>
-            </ol>*@
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Business list Right</li>
+                </ol>*@
         </div>
     </div>
 </div>
@@ -71,17 +69,17 @@
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-12">
                 @*<div class="card">
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input type="text" class="form-control br-tl-3 br-bl-3" placeholder="Search">
-                            <div class="input-group-append ">
-                                <button type="button" class="btn btn-secondary br-tr-3 br-br-3">
-                                    Search
-                                </button>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <input type="text" class="form-control br-tl-3 br-bl-3" placeholder="Search">
+                                <div class="input-group-append ">
+                                    <button type="button" class="btn btn-secondary br-tr-3 br-br-3">
+                                        Search
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <div class="card mb-0">
                     <div class="card-header">
                         <h3 class="card-title">Product</h3>
@@ -91,13 +89,13 @@
                             <div class="filter-product-checkboxs">
                                 @foreach (var item in Model.objProductIndexViewModel)
                                 {
-                                <label class="custom-control  mb-3">
-                                    @*custom-checkbox*@
-                                    @*<input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">*@
-                                    <span class="custom-control-label">
-                                        <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing"  asp-route-businessid="@item.businessid" asp-route-productid="@item.id" class="text-dark">@item.productName<span class="label label-primary float-right"></span></a>
-                                    </span>
-                                </label>
+                                    <label class="custom-control  mb-3">
+                                        @*custom-checkbox*@
+                                        @*<input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">*@
+                                        <span class="custom-control-label">
+                                            <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing" asp-route-businessid="@item.businessid" asp-route-productid="@item.id" class="text-dark">@item.productName<span class="label label-primary float-right"></span></a>
+                                        </span>
+                                    </label>
                                 }
 
 
@@ -105,33 +103,33 @@
                         </div>
                     </div>
                     @*<div class="card-header border-top">
-                        <h3 class="card-title">Posted By</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="filter-product-checkboxs">
-                            <label class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">
-                                <span class="custom-control-label">
-                                    Dealer
-                                </span>
-                            </label>
-                            <label class="custom-control custom-checkbox mb-2">
-                                <input type="checkbox" class="custom-control-input" name="checkbox2" value="option2">
-                                <span class="custom-control-label">
-                                    Individual
-                                </span>
-                            </label>
-                            <label class="custom-control custom-checkbox mb-0">
-                                <input type="checkbox" class="custom-control-input" name="checkbox2" value="option2">
-                                <span class="custom-control-label">
-                                    Reseller
-                                </span>
-                            </label>
+                            <h3 class="card-title">Posted By</h3>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary btn-block">Apply Filter</a>
-                    </div>*@
+                        <div class="card-body">
+                            <div class="filter-product-checkboxs">
+                                <label class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">
+                                    <span class="custom-control-label">
+                                        Dealer
+                                    </span>
+                                </label>
+                                <label class="custom-control custom-checkbox mb-2">
+                                    <input type="checkbox" class="custom-control-input" name="checkbox2" value="option2">
+                                    <span class="custom-control-label">
+                                        Individual
+                                    </span>
+                                </label>
+                                <label class="custom-control custom-checkbox mb-0">
+                                    <input type="checkbox" class="custom-control-input" name="checkbox2" value="option2">
+                                    <span class="custom-control-label">
+                                        Reseller
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary btn-block">Apply Filter</a>
+                        </div>*@
                 </div>
             </div>
 
@@ -142,37 +140,37 @@
                     <div class="">
                         <div class="item2-gl business-list-01">
                             @*<div class="">
-            <div class="bg-white p-5 item2-gl-nav d-flex">
-                <h6 class="mb-0 mt-3">Showing 1 to 10 of 30 entries</h6>
-                <ul class="nav item2-gl-menu ml-auto mt-1">
-                    <li class=""><a href="#tab-11" class="active show" data-toggle="tab" title="List style"><i class="fa fa-list"></i></a></li>
-                    <li><a href="#tab-12" data-toggle="tab" class="" title="Grid"><i class="fa fa-th"></i></a></li>
-                </ul>
-                <div class="d-sm-flex">
-                    <label class="mr-2 mt-2 mb-sm-1 sort-label">Sort By:</label>
-                    <div class="selectgroup">
-                        <label class="selectgroup-item mb-md-0">
-                            <input type="radio" name="value" value="All" class="selectgroup-input" checked="">
-                            <span class="selectgroup-button d-md-flex">All <i class="fa fa-sort ml-2 mt-1"></i></span>
-                        </label>
-                        <label class="selectgroup-item mb-md-0">
-                            <input type="radio" name="value" value="Distance" class="selectgroup-input">
-                            <span class="selectgroup-button">Distance</span>
-                        </label>
-                        <label class="selectgroup-item mb-0">
-                            <input type="radio" name="value" value="Latest" class="selectgroup-input">
-                            <span class="selectgroup-button">Latest</span>
-                        </label>
-                        <label class="selectgroup-item mb-0">
-                            <input type="radio" name="value" value="Rating" class="selectgroup-input">
-                            <span class="selectgroup-button">Rating</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>*@
+                                    <div class="bg-white p-5 item2-gl-nav d-flex">
+                                        <h6 class="mb-0 mt-3">Showing 1 to 10 of 30 entries</h6>
+                                        <ul class="nav item2-gl-menu ml-auto mt-1">
+                                            <li class=""><a href="#tab-11" class="active show" data-toggle="tab" title="List style"><i class="fa fa-list"></i></a></li>
+                                            <li><a href="#tab-12" data-toggle="tab" class="" title="Grid"><i class="fa fa-th"></i></a></li>
+                                        </ul>
+                                        <div class="d-sm-flex">
+                                            <label class="mr-2 mt-2 mb-sm-1 sort-label">Sort By:</label>
+                                            <div class="selectgroup">
+                                                <label class="selectgroup-item mb-md-0">
+                                                    <input type="radio" name="value" value="All" class="selectgroup-input" checked="">
+                                                    <span class="selectgroup-button d-md-flex">All <i class="fa fa-sort ml-2 mt-1"></i></span>
+                                                </label>
+                                                <label class="selectgroup-item mb-md-0">
+                                                    <input type="radio" name="value" value="Distance" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Distance</span>
+                                                </label>
+                                                <label class="selectgroup-item mb-0">
+                                                    <input type="radio" name="value" value="Latest" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Latest</span>
+                                                </label>
+                                                <label class="selectgroup-item mb-0">
+                                                    <input type="radio" name="value" value="Rating" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Rating</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
 
-                             
+
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab-11">
                                     @foreach (var item in Model.objgetBusinessAllInfo)
@@ -210,7 +208,7 @@
                                                                 <h4 class="font-weight-semibold mt-1 mb-1">
                                                                     @item.companyName
                                                                     @*<i class="fa fa-exclamation-circle text-warning ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Not Verified">
-                                                </i>*@
+                                                                        </i>*@
                                                                 </h4>
                                                             </a>
                                                             <div class="rating-stars d-flex mr-5">
@@ -257,9 +255,9 @@
 
 
                                                                     @*<a class="" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i></a>
-                                                <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="458-965-856"><i class="fa fa-phone"></i></a>
-                                                <a class="" href="https://spruko.com" data-toggle="tooltip" data-placement="top" title="" data-original-title="https://spruko.com"><i class="fa fa-globe"></i></a>
-                                                <a class="" href="#"><i class="fa fa-share-alt"></i></a>*@
+                                                                        <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="458-965-856"><i class="fa fa-phone"></i></a>
+                                                                        <a class="" href="https://spruko.com" data-toggle="tooltip" data-placement="top" title="" data-original-title="https://spruko.com"><i class="fa fa-globe"></i></a>
+                                                                        <a class="" href="#"><i class="fa fa-share-alt"></i></a>*@
                                                                 </div>
                                                             </div>
                                                             <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
@@ -307,47 +305,87 @@
 <partial name="_Subscribe" />
 <!--/Newsletter-->
 <!--Footer Section-->
- 
 <!--Footer Section-->
 <!-- Message Modal -->
 @*<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="examplecontactLongTitle">Send Message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="contact-name" placeholder="Your Name">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="examplecontactLongTitle">Send Message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" id="contact-email" placeholder="Email Address">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="contact-name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="contact-email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group mb-0">
+                        <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Message"></textarea>
+                    </div>
                 </div>
-                <div class="form-group mb-0">
-                    <textarea class="form-control" name="example-textarea-input" rows="6" placeholder="Message"></textarea>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success">Send</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success">Send</button>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 <!-- Home Video Modal -->
 @*<div class="modal fade" id="homeVideo" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="pauseVid()"><i class="fa fa-times" aria-hidden="true"></i></button>
-            <div class="embed-responsive embed-responsive-16by9">
-                <video id="gossVideo" class="embed-responsive-item" controls="controls">
-                    <source src="../assets/video/300052515.mp4" type="video/mp4">
-                </video>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="pauseVid()"><i class="fa fa-times" aria-hidden="true"></i></button>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video id="gossVideo" class="embed-responsive-item" controls="controls">
+                        <source src="../assets/video/300052515.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
+
+
+<script>
+    var datatable;
+    $(document).ready(function () {
+
+       
+        loaddata();
+    });
+
+    function loaddata() {
+       // alert('hello');
+        $.ajax({
+            //base address/controller/Action
+            url: '/Admin/Home/BusinessListingGetALL',
+            type: 'GET',
+            data: {
+                //Passing Input parameter
+                //id: $('#txtId').val()
+            },
+            success: function (result) {
+                debugger;
+                    var items = '<table><tr><th>Name</th><th>Address</th></tr>';
+                $.each(result, function (i, country) {
+                    alert(i);
+                        //items += "<tr><td>" + country.companyName + "</td><td>" + country.id + "</td></tr>";
+                    });
+                items += "</table>";
+              
+                    //$('#rData').html(items); 
+                //write something
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+        return false;
+    }
+
+
+</script>

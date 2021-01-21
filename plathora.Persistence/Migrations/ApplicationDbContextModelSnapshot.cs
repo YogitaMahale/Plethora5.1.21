@@ -1312,6 +1312,43 @@ namespace plathora.Persistence.Migrations
                     b.ToTable("commission");
                 });
 
+            modelBuilder.Entity("plathora.Entity.commissionDistribution", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("affilateId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("commissionamount")
+                        .HasColumnType("decimal(18, 3)");
+
+                    b.Property<string>("commissiontype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("createddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("fromAffilateId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("registrationtype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("affilateId");
+
+                    b.HasIndex("fromAffilateId");
+
+                    b.ToTable("commissionDistribution");
+                });
+
             modelBuilder.Entity("plathora.Entity.dashboardTable", b =>
                 {
                     b.Property<int>("id")
@@ -1848,6 +1885,17 @@ namespace plathora.Persistence.Migrations
                     b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("customerId");
+                });
+
+            modelBuilder.Entity("plathora.Entity.commissionDistribution", b =>
+                {
+                    b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser1")
+                        .WithMany()
+                        .HasForeignKey("affilateId");
+
+                    b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser2")
+                        .WithMany()
+                        .HasForeignKey("fromAffilateId");
                 });
 
             modelBuilder.Entity("plathora.Entity.ApplicationUser", b =>

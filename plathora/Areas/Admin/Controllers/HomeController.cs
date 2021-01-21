@@ -957,6 +957,22 @@ namespace plathora.Controllers
         //    return View(obj);
         //    //return View();
         //}
+        [HttpGet]
+        public IActionResult BusinessListingGetALL()
+        {
+
+
+            var parameter = new DynamicParameters();
+            parameter.Add("@productid", 0);
+            parameter.Add("@businessid", 1063);
+            
+             var objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+
+            return Json(new { data = objgetBusinessAllInfo.ToList() });
+
+        }
+
+
         public IActionResult BusinessListing(int businessid,int productid)
         {
             // LoginUserDetails();
@@ -1034,19 +1050,19 @@ namespace plathora.Controllers
 
 
         [HttpGet]
-        public async  Task<IActionResult> testt()
+        public async  Task<IActionResult> CommissionCal()
         {
-            BusinessContactUs obj = new BusinessContactUs();
-            obj.Id = 0;
-            obj.businessid = 1;
-            //obj.BusinessOwnerId =(int)businessId.id;
-            obj.Name = "yogita";
-            obj.Email = "test@gmail.com";
-            obj.Mobileno = "999999999999";
-            obj.Message = "hi";
-            await _businessContactUsservices.CreateAsync(obj);
+            //BusinessContactUs obj = new BusinessContactUs();
+            //obj.Id = 0;
+            //obj.businessid = 1;
+            ////obj.BusinessOwnerId =(int)businessId.id;
+            //obj.Name = "yogita";
+            //obj.Email = "test@gmail.com";
+            //obj.Mobileno = "999999999999";
+            //obj.Message = "hi";
+            //await _businessContactUsservices.CreateAsync(obj);
 
-            
+            _sP_Call.Execute("calculatecommissionNightSP", null);
             return View( );
         }
     }

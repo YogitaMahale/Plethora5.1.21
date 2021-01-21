@@ -4874,6 +4874,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Vie
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\PrivacyPolicy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\productDetails.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\TermsandConditions.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\testt.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Membership\Create.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Membership\Edit.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Membership\Index.cshtml.g.cs
@@ -5002,4 +5003,6 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\staticwebassets\plath
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\testt.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CalcualteCommission.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CommissionCal.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\BusinessListing.cshtml.g.cs
