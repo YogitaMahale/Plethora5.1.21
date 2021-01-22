@@ -4,9 +4,32 @@
     ViewData["Title"] = "BusinessListing";
     Layout = "~/Views/Shared/_front.cshtml";
 }
+<style>
+    #myScroll {
+        border: 1px solid #999;
+    }
+
+    p {
+        border: 1px solid #ccc;
+        padding: 50px;
+        text-align: center;
+    }
+
+    .loading {
+        color: red;
+    }
+
+    .dynamic {
+        background-color: #ccc;
+        color: #000;
+    }
+</style>
 <!--Topbar-->
 <!--Sliders Section-->
 <div>
+    <input type="text" id="businessid1" value="@ViewBag.businessIdd" style="display:none;" />
+    <input type="text" id="productid1" value="@ViewBag.productidd" style="display:none;" />
+
     <div class="cover-image sptb-1 bg-background" data-image-src="../assets/images/banners/banner1.jpg">
         <div class="header-text1 mb-0">
             <div class="container">
@@ -172,109 +195,118 @@
 
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="tab-11">
-                                    @foreach (var item in Model.objgetBusinessAllInfo)
-                                    {
-                                        @*<a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-white">*@
-
-                                        <div class="card overflow-hidden">
-                                            @*<div class="ribbon ribbon-top-left text-danger"><span class="bg-danger">New</span></div>*@
-                                            <div class="d-md-flex">
-                                                <div class="item-card9-img">
-                                                    <div class="item-card9-imgs">
-                                                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id"></a>
-                                                        @if (item.sliderimg1 == null || item.sliderimg1 == "")
-                                                        {
-                                                            <img src="~/uploads/blank1.jpg" alt="img" class="cover-image">
-                                                        }
-                                                        else
-                                                        {
-                                                            <img src="@item.sliderimg1" alt="img" class="cover-image">
-                                                        }
-
-                                                        @*<img src="@item.sliderimg1" alt="img" class="cover-image">*@
-                                                    </div>
-                                                    <div class="item-card9-icons" style="display:none;">
-                                                        <a href="#" class="item-card9-icons1 wishlist"> <i class="fa fa fa-heart-o"></i></a>
-                                                    </div>
-                                                    <div style="display:none;" class="item-cardreview-absolute bg-secondary">RealEstate</div>
-                                                </div>
-                                                <div class="card border-0 mb-0">
-                                                    <div class="card-body">
-                                                        <div class="item-card9">
-                                                            <br />
-
-                                                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-dark">
-                                                                <h4 class="font-weight-semibold mt-1 mb-1">
-                                                                    @item.companyName
-                                                                    @*<i class="fa fa-exclamation-circle text-warning ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Not Verified">
-                                                                        </i>*@
-                                                                </h4>
-                                                            </a>
-                                                            <div class="rating-stars d-flex mr-5">
-                                                                <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@item.rating">
-                                                                <div class="rating-stars-container mr-2">
-                                                                    <div class="rating-star sm">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <div class="rating-star sm">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <div class="rating-star sm">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <div class="rating-star sm">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                    <div class="rating-star sm">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </div>
-                                                                </div> <a class="fs-13 leading-tight mt-1" href="#">@item.review Reviews</a>
-                                                            </div>
-                                                            <div class="mt-2 mb-2">
-                                                                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>@item.landmark</a>
-                                                                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-1 text-muted">
-                                                                    <i class="fa fa-map-marker mr-1"></i>
-
-                                                                    @item.house
+                                @*<div class="tab-pane active" id="tab-11" style="display:none;">
+            @if (Model.objgetBusinessAllInfo != null)
+            {
 
 
+            @foreach (var item in Model.objgetBusinessAllInfo)
+            {
 
-                                                                </a>
-                                                            </div>
-                                                            <p class="mb-0 leading-tight"><span class="font-weight-semibold text-dark"> Timings : </span>  10am - 10pm</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer pt-2 pb-2">
-                                                        <div class="item-card9-footer d-sm-flex">
-                                                            <div class="item-card9-cost">
-                                                                <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
-                                                                    <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i>@item.Email</a>
-                                                                    <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i>@item.PhoneNumber</a>
+                <div class="card overflow-hidden">
 
+                    <div class="d-md-flex">
+                        <div class="item-card9-img">
+                            <div class="item-card9-imgs">
+                                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id"></a>
+                                @if (item.sliderimg1 == null || item.sliderimg1 == "")
+                                {
+                                    <img src="~/uploads/blank1.jpg" alt="img" class="cover-image">
+                                }
+                                else
+                                {
+                                    <img src="@item.sliderimg1" alt="img" class="cover-image">
+                                }
 
+                            </div>
+                            <div class="item-card9-icons" style="display:none;">
+                                <a href="#" class="item-card9-icons1 wishlist"> <i class="fa fa fa-heart-o"></i></a>
+                            </div>
+                            <div style="display:none;" class="item-cardreview-absolute bg-secondary">RealEstate</div>
+                        </div>
+                        <div class="card border-0 mb-0">
+                            <div class="card-body">
+                                <div class="item-card9">
+                                    <br />
 
-                                                                    @*<a class="" href="#" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i></a>
-                                                                        <a class="" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="458-965-856"><i class="fa fa-phone"></i></a>
-                                                                        <a class="" href="https://spruko.com" data-toggle="tooltip" data-placement="top" title="" data-original-title="https://spruko.com"><i class="fa fa-globe"></i></a>
-                                                                        <a class="" href="#"><i class="fa fa-share-alt"></i></a>*@
-                                                                </div>
-                                                            </div>
-                                                            <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
-                                                                <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="text-dark">
+                                        <h4 class="font-weight-semibold mt-1 mb-1">
+                                            @item.companyName
+
+                                        </h4>
+                                    </a>
+                                    <div class="rating-stars d-flex mr-5">
+                                        <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="@item.rating">
+                                        <div class="rating-stars-container mr-2">
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
                                             </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="rating-star sm">
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                        </div> <a class="fs-13 leading-tight mt-1" href="#">@item.review Reviews</a>
+                                    </div>
+                                    <div class="mt-2 mb-2">
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>@item.landmark</a>
+                                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" class="mt-1 mb-1 mr-1 text-muted">
+                                            <i class="fa fa-map-marker mr-1"></i>
+
+                                            @item.house
+
+
+
+                                        </a>
+                                    </div>
+                                    <p class="mb-0 leading-tight"><span class="font-weight-semibold text-dark"> Timings : </span>  10am - 10pm</p>
+                                </div>
+                            </div>
+                            <div class="card-footer pt-2 pb-2">
+                                <div class="item-card9-footer d-sm-flex">
+                                    <div class="item-card9-cost">
+                                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
+                                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i>@item.Email</a>
+                                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@item.Id" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i>@item.PhoneNumber</a>
+
+
+
                                         </div>
+                                    </div>
+                                    <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
+                                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
-                                    }
+            }
+            }
+
+        </div>*@
+                                <div class="tab-pane active" id="businesslist">
 
 
                                 </div>
+                                <button id="btnPreviouspage" class="btn btn-secondary mb-0"  >
+                                    Previous
+                                </button>
+                                <button id="btnNextpage" class="btn btn-secondary mb-0"  >
+                                    Next
+                                </button>
+
+
 
                             </div>
 
@@ -349,43 +381,360 @@
         </div>
     </div>*@
 
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
-<script>
+<script type="text/javascript">
+    var finaldata;
+    var rows = '';
+    var RecordCount = @ViewBag.RecordCount ;
+     
     var datatable;
+    var counter = 0;
     $(document).ready(function () {
 
-       
-        loaddata();
+        rows = '';
+        appendData(counter);
+            //loaddata();
     });
-
     function loaddata() {
-       // alert('hello');
+
+        @*var businessIdd = @ViewBag.businessIdd;
+        var productidd = @ViewBag.productidd;*@
+
+        var businessIdd = $("#businessid1").val();
+        var productidd = $("#productid1").val();
+
+
+
+        //alert(businessIdd);
+        //alert(productidd);
         $.ajax({
-            //base address/controller/Action
+
+            type: "GET",
             url: '/Admin/Home/BusinessListingGetALL',
-            type: 'GET',
-            data: {
-                //Passing Input parameter
-                //id: $('#txtId').val()
-            },
-            success: function (result) {
-                debugger;
-                    var items = '<table><tr><th>Name</th><th>Address</th></tr>';
-                $.each(result, function (i, country) {
-                    alert(i);
-                        //items += "<tr><td>" + country.companyName + "</td><td>" + country.id + "</td></tr>";
-                    });
-                items += "</table>";
-              
-                    //$('#rData').html(items); 
-                //write something
-            },
-            error: function () {
-                alert("error");
-            }
+           // url: '/Admin/Home/BusinessListingGetALL?businessid=' + businessIdd + ' & productidd=' + productidd,
+          //  data: "businessid=" + businessIdd + "&productidd =" + productidd,
+            data: { "businessid": businessIdd, "productidd": productidd },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                finaldata = data;
+                appendData();
+//                //alert(JSON.stringify(data));
+//                $("#businesslist").html('');
+//                var DIV = '';
+//                var rows = '';
+//                $.each(data, function (i, item) {
+//                      rows += `
+//                        <div class="card overflow-hidden">
+
+//    <div class="d-md-flex">
+//        <div class="item-card9-img">
+//            <div class="item-card9-imgs">
+//                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+item.id+`"></a>
+
+//                    <img src="`+ item.sliderimg1 +`" style="width:300px;height:212px;" alt="img" class="cover-image">
+
+
+
+//            </div>
+//            <div class="item-card9-icons" style="display:none;">
+//                <a href="#" class="item-card9-icons1 wishlist"> <i class="fa fa fa-heart-o"></i></a>
+//            </div>
+//            <div style="display:none;" class="item-cardreview-absolute bg-secondary">RealEstate</div>
+//        </div>
+//        <div class="card border-0 mb-0">
+//            <div class="card-body">
+//                <div class="item-card9">
+
+//                    <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.id +`" class="text-dark">
+//                        <h4 class="font-weight-semibold mt-1 mb-1">
+//                            `+ item.companyName+`
+
+//                        </h4>
+//                    </a>
+//                    <div class="rating-stars d-flex mr-5">
+//                        <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value=" `+ item.rating +`">
+//                        <div class="rating-stars-container mr-2">
+//                            <div class="rating-star sm">
+//                                <i class="fa fa-star"></i>
+//                            </div>
+//                            <div class="rating-star sm">
+//                                <i class="fa fa-star"></i>
+//                            </div>
+//                            <div class="rating-star sm">
+//                                <i class="fa fa-star"></i>
+//                            </div>
+//                            <div class="rating-star sm">
+//                                <i class="fa fa-star"></i>
+//                            </div>
+//                            <div class="rating-star sm">
+//                                <i class="fa fa-star"></i>
+//                            </div>
+//                        </div> <a class="fs-13 leading-tight mt-1" href="#">`+ item.review +` Reviews</a>
+//                    </div>
+//                    <div class="mt-2 mb-2">
+//                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.Id +`" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>
+//   `+ item.landmark +`</a>
+//                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.Id +`" class="mt-1 mb-1 mr-1 text-muted">
+//                            <i class="fa fa-map-marker mr-1"></i>
+//                    `+ item.house +`
+
+
+
+
+//                        </a>
+//                    </div>
+//                    <p class="mb-0 leading-tight"><span class="font-weight-semibold text-dark"> Timings : </span>  10am - 10pm</p>
+//                </div>
+//            </div>
+//            <div class="card-footer pt-2 pb-2">
+//                <div class="item-card9-footer d-sm-flex">
+//                    <div class="item-card9-cost">
+//                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
+//                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id=" `+ item.Id + ` " data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.email +`</a>
+//                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id=" `+ item.Id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.phoneNumber +`</a>
+
+
+
+
+//                        </div>
+//                    </div>
+//                    <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
+//                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
+//                    </div>
+//                </div>
+//            </div>
+//        </div>
+//    </div>
+//</div>
+//                    `;
+
+//                    //var rows = "<tr>" +
+//                    //    "<td id='RegdNo'>" + item.companyName + "</td>" +
+//                    //    "<td id='Name'>" + item.id + "</td>" +
+
+//                    //    "</tr>";
+//                    //console.log(rows);
+//                    //$('#Table').append(rows);
+//                }); //End of foreach Loop
+//                $("#businesslist").html(rows);
+//                console.log(rows);
+//                console.log(data);
+
+            }, //End of AJAX Success function
+
+            failure: function (data) {
+                alert(data.responseText);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert(data.responseText);
+            } //End of AJAX error function
+
         });
-        return false;
     }
 
 
+    var cnt = 0;
+    //$(window).scroll(function () {
+
+    //    if ($(window).scrollTop() == $(document).height() - $(window).height() && counter < 16) {
+    //    //if ($(window).scrollTop() <= $(document).height() - $(window).height() && counter < 16) {
+    //       // alert(counter);
+    //        appendData(counter);
+    //    }
+    //});
+    function appendData(cnt) {
+
+
+        if (counter === 0) {
+            $("#btnPreviouspage").hide();
+        }
+        else {
+            $("#btnPreviouspage").show();
+        }
+
+        var cnt2 = RecordCount / 10;
+        var cnt1 = parseInt(cnt);
+
+        if (cnt1 < cnt2) {
+            cnt1++;
+        }
+        else {
+
+        }
+        if (counter < cnt1) {
+            $("#btnNextpage").show();
+        }
+        else {
+            $("#btnNextpage").hide();
+        }
+
+
+
+        rows = '';
+        var businessIdd = $("#businessid1").val();
+        var productidd = $("#productid1").val();
+        $.ajax({
+
+            type: "GET",
+            url: '/Admin/Home/BusinessListingGetALL',
+
+            data: {
+                "businessid": businessIdd, "productidd": productidd, "pageno": cnt},
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                finaldata = data;
+                var html = '';
+                var iindex = 0;
+                //var iindex = (counter+1);
+                for (iindex = 0; iindex < finaldata.length; iindex++) {
+                    cnt++;
+                    var item = finaldata[iindex];
+                    console.log('---------------------------');
+                    console.log(item);
+                    console.log('---------------------------');
+
+                    rows += `
+                        <div class="card overflow-hidden">
+
+    <div class="d-md-flex">
+        <div class="item-card9-img">
+            <div class="item-card9-imgs">
+                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.id + `"></a>
+
+                    <img src="`+ item.sliderimg1 + `" style="width:300px;height:212px;" alt="img" class="cover-image">
+
+
+
+            </div>
+            <div class="item-card9-icons" style="display:none;">
+                <a href="#" class="item-card9-icons1 wishlist"> <i class="fa fa fa-heart-o"></i></a>
+            </div>
+            <div style="display:none;" class="item-cardreview-absolute bg-secondary">RealEstate</div>
+        </div>
+        <div class="card border-0 mb-0">
+            <div class="card-body">
+                <div class="item-card9">
+
+                    <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.id + `" class="text-dark">
+                        <h4 class="font-weight-semibold mt-1 mb-1">
+                            `+ item.companyName + `
+
+                        </h4>
+                    </a>
+                    <div class="rating-stars d-flex mr-5">
+                        <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value=" `+ item.rating + `">
+                        <div class="rating-stars-container mr-2">
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div> <a class="fs-13 leading-tight mt-1" href="#">`+ item.review + ` Reviews</a>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.Id + `" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>
+   `+ item.landmark + `</a>
+                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.Id + `" class="mt-1 mb-1 mr-1 text-muted">
+                            <i class="fa fa-map-marker mr-1"></i>
+                    `+ item.house + `
+
+
+
+
+                        </a>
+                    </div>
+                  Timings `+ item.businesstime + `
+
+                </div>
+            </div>
+            <div class="card-footer pt-2 pb-2">
+                <div class="item-card9-footer d-sm-flex">
+                    <div class="item-card9-cost">
+                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
+                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id=" `+ item.Id + ` " data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.email + `</a>
+                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id=" `+ item.Id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.phoneNumber + `</a>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
+                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    `;
+                    //html += '<p class="dynamic">Dynamic Data :' + item.id + '  This is test data.<br />Next line.</p>';
+                }
+                console.log(rows);
+                $('#businesslist').html(rows);
+
+              //  counter++;
+
+            }, //End of AJAX Success function
+
+            failure: function (data) {
+                alert(data.responseText);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert(data.responseText);
+            } //End of AJAX error function
+
+        });
+
+
+
+
+
+
+        //if (counter == 2)
+        //    $('#myScroll').append('<button id="uniqueButton" style="margin-left: 50%; background-color: powderblue;">Click</button><br /><br />');
+    }
+
+   
+
+    $("#btnPreviouspage").click(function () {
+              
+       
+            counter--;
+            appendData(counter);   
+    });
+
+    $("#btnNextpage").click(function () {
+        //var cnt = RecordCount / 10;
+        //var cnt1 = parseInt(cnt);
+         
+        //if (cnt1 < cnt) {
+        //    cnt1++;
+        //}
+        //else {
+            
+        //}        
+        
+            counter++;
+            alert(counter);
+            appendData(counter);        
+        
+       
+    });
+
 </script>
+
+ 

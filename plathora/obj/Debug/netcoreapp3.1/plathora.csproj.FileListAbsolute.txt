@@ -4857,6 +4857,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Vie
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Index.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\about.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Advertising.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\BusinessListing.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\Index.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\business - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\business.cshtml.g.cs
@@ -4864,7 +4865,9 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Vie
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails1.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\BusinessListing.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CalcualteCommission.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Category.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CommissionCal.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\ContactUs.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy (2).cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy.cshtml.g.cs
@@ -5003,6 +5006,3 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\staticwebassets\plath
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CalcualteCommission.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CommissionCal.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\BusinessListing.cshtml.g.cs

@@ -681,7 +681,15 @@ namespace plathora.Controllers
                                                                                                                     "Name: <span style = 'color:#3c4043;font-size:14px;line-height:20px;text-align:center;font-weight:400' align='center'>" +name +"</span>" +
                                                                                                                 "</td>" +
                                                                                                             "</tr>" +
-
+                                                                                                            "<tr>" +
+                                                                                                                "<td style = 'color:#3c4043;padding-bottom:4px;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;line-height:20px;text-align:left;padding-left:40px;padding-right:40px' align='left'>" +
+                                                                                                                    "Mobile No. :" +
+                                                                                                                "</td>" +
+                                                                                                            "</tr>" +
+                                                                                                            "<tr>" +
+                                                                                                                "<td class='m_-2128789134426773361padd28' style='color:#3c4043;padding-bottom:28px;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:14px;margin:0 auto;padding-left:40px;padding-right:40px' align='left'>" +
+                                                                                                                    mobileno +
+                                                                                                                "</td>" +
                                                                                                             "<tr>" +
                                                                                                                 "<td style = 'color:#3c4043;padding-bottom:4px;font-family:Roboto,Helvetica,Arial,sans-serif;font-size:14px;font-weight:500;line-height:20px;text-align:left;padding-left:40px;padding-right:40px' align='left'>" +
                                                                                                                     "Message:"+
@@ -958,22 +966,30 @@ namespace plathora.Controllers
         //    //return View();
         //}
         [HttpGet]
-        public IActionResult BusinessListingGetALL()
+        public IEnumerable<getBusinessAllInfo> BusinessListingGetALL(int  businessid, int productidd,int pageno)
         {
 
-
-            var parameter = new DynamicParameters();
-            parameter.Add("@productid", 0);
-            parameter.Add("@businessid", 1063);
             
-             var objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+            //var parameter = new DynamicParameters();
+            //parameter.Add("@productid", 0);
+            //parameter.Add("@businessid", 1063);
 
-            return Json(new { data = objgetBusinessAllInfo.ToList() });
+            // var objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+
+            //return Json(new { data = objgetBusinessAllInfo.ToList() });
+            var parameter = new DynamicParameters();
+            parameter.Add("@productid", productidd);
+            parameter.Add("@businessid", businessid);
+            parameter.Add("@pageno", pageno);
+
+            IEnumerable<getBusinessAllInfo> objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+
+            return objgetBusinessAllInfo;
 
         }
 
 
-        public IActionResult BusinessListing(int businessid,int productid)
+        public IActionResult BusinessListing(int businessid,int productid )
         {
             // LoginUserDetails();
             BusinessListingViewModel obj = new BusinessListingViewModel();
@@ -981,6 +997,8 @@ namespace plathora.Controllers
 
             try
             {
+                ViewBag.businessIdd = businessid;
+                ViewBag.productidd = productid;
                 //int businessid = _productMasterServices.GetById(productid).businessid;
                 obj.objProductIndexViewModel = _productMasterServices.GetAll().Where(x => x.businessid == businessid).Select(x => new ProductIndexViewModel
                 {
@@ -1002,7 +1020,8 @@ namespace plathora.Controllers
 
                 //   obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
 
-                obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+                obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTestCount", parameter);
+                ViewBag.RecordCount = obj.objgetBusinessAllInfo.Count();
 
             }
             catch (Exception objmsg)
