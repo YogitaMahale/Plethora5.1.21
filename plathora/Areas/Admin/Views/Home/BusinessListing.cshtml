@@ -27,6 +27,7 @@
 <!--Topbar-->
 <!--Sliders Section-->
 <div>
+   
     <input type="text" id="businessid1" value="@ViewBag.businessIdd" style="display:none;" />
     <input type="text" id="productid1" value="@ViewBag.productidd" style="display:none;" />
 
@@ -37,6 +38,12 @@
                     <div class="col-xl-8 col-lg-12 col-md-12 d-block mx-auto">
                         <div class="text-center text-white ">
                             <h1 class=""><span class="font-weight-bold"></span>Business Listings</h1>
+                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.id + `" class="text-dark">
+                                <h4 class="font-weight-semibold mt-1 mb-1">
+                                    testt
+
+                                </h4>
+                            </a>
                         </div>
                         @*<div class="search-background px-4 py-3 mt-4">
                                 <div class="form row row-sm">
@@ -602,7 +609,7 @@
     <div class="d-md-flex">
         <div class="item-card9-img">
             <div class="item-card9-imgs">
-                <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.id + `"></a>
+                <a href="/Admin/Home/business?id=`+ item.id + `"></a>
 
                     <img src="`+ item.sliderimg1 + `" style="width:300px;height:212px;" alt="img" class="cover-image">
 
@@ -618,7 +625,7 @@
             <div class="card-body">
                 <div class="item-card9">
 
-                    <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.id + `" class="text-dark">
+                    <a href="/Admin/Home/business?id=`+ item.id + `" class="text-dark">
                         <h4 class="font-weight-semibold mt-1 mb-1">
                             `+ item.companyName + `
 
@@ -645,9 +652,9 @@
                         </div> <a class="fs-13 leading-tight mt-1" href="#">`+ item.review + ` Reviews</a>
                     </div>
                     <div class="mt-2 mb-2">
-                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.Id + `" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>
+                        <a href="/Admin/Home/business?id=`+ item.id + `" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>
    `+ item.landmark + `</a>
-                        <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="`+ item.Id + `" class="mt-1 mb-1 mr-1 text-muted">
+                        <a href="/Admin/Home/business?id=`+ item.id + `" class="mt-1 mb-1 mr-1 text-muted">
                             <i class="fa fa-map-marker mr-1"></i>
                     `+ item.house + `
 
@@ -664,8 +671,8 @@
                 <div class="item-card9-footer d-sm-flex">
                     <div class="item-card9-cost">
                         <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
-                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id=" `+ item.Id + ` " data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.email + `</a>
-                            <a class="" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id=" `+ item.Id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.phoneNumber + `</a>
+                            <a class="" href="/Admin/Home/business?id=`+ item.id + `"  data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.email + `</a>
+                            <a class="" href="/Admin/Home/business?id=`+ item.id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.phoneNumber + `</a>
 
 
 
