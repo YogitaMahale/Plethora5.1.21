@@ -48,8 +48,10 @@ namespace plathora.Areas.Admin.Controllers
         private readonly ISP_Call _sP_Call;
         private readonly ApplicationDbContext _db;
         private readonly IBusinessOwnerRegiServices _businessOwnerRegiServices;
+        private readonly IAdvertiseServices _advertiseServices;
+        private readonly ISectorRegistrationServices _sectorRegistrationServices;
         //private readonly UserManager<ApplicationUser> _usermanager;
-        public CustomerprofileController(ISP_Call sP_Call, ApplicationDbContext db, IMembershipServices MembershipServices, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices CityRegistrationservices, IAffilatePackageServices AffilatePackageServices, IStateRegistrationService StateRegistrationService, IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, IBusinessOwnerRegiServices businessOwnerRegiServices)
+        public CustomerprofileController(ISP_Call sP_Call, ApplicationDbContext db, IMembershipServices MembershipServices, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices CityRegistrationservices, IAffilatePackageServices AffilatePackageServices, IStateRegistrationService StateRegistrationService, IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, IBusinessOwnerRegiServices businessOwnerRegiServices, IAdvertiseServices advertiseServices, ISectorRegistrationServices sectorRegistrationServices)
         {
             _sP_Call = sP_Call;
             _db = db;
@@ -60,7 +62,9 @@ namespace plathora.Areas.Admin.Controllers
             _AffilatePackageServices = AffilatePackageServices;
             _hostingEnvironment = hostingEnvironment;
             _userManager = userManager;
+            _advertiseServices = advertiseServices;
             _businessOwnerRegiServices = businessOwnerRegiServices;
+            _sectorRegistrationServices = sectorRegistrationServices;
             //_usermanager = usermanager;
         }
 
@@ -347,7 +351,7 @@ namespace plathora.Areas.Admin.Controllers
             return View();
         }
 
-        
+
         [HttpGet]
         public IActionResult editBusiness(int id)
         {
@@ -488,7 +492,7 @@ namespace plathora.Areas.Admin.Controllers
                 obj1.companyName = model.companyName;
                 obj1.gstno = model.gstno;
                 obj1.Website = model.Website;
-                obj1.organization = model.organization ;
+                obj1.organization = model.organization;
                 //obj1.businessOperation = model.businessOperation;
                 //obj1.businessType = model.businessType;
 
@@ -596,6 +600,40 @@ namespace plathora.Areas.Admin.Controllers
         {
             await _businessOwnerRegiServices.Delete(id);
             return RedirectToAction(nameof(BusinessListing));
+        }
+
+        public IEnumerable<SelectListItem> GetAllCompanybyCustomerId()
+        {
+            var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var parameter = new DynamicParameters();
+            parameter.Add("@CustomerId", customerId);
+            IEnumerable<getbusinessListbyCustomerIdViewModel> businessList = _sP_Call.List<getbusinessListbyCustomerIdViewModel>("getbusinessListbyCustomerId", parameter);
+
+            return businessList.Select(emp => new SelectListItem()
+            {
+                Text = emp.companyName,
+                Value = emp.Id.ToString()
+            });
+        }
+        public JsonResult getAdvertisePakageDetails(int id)
+        {
+
+            Advertise obj = _advertiseServices.GetById(id);
+             
+            return Json(obj);
+        }
+        [HttpGet]
+        public IActionResult promoteBusiness()
+        {
+            ViewBag.AdvertiseList = _advertiseServices.GetAllAdvertise();
+            ViewBag.citiesList = _CityRegistrationservices.GetAllCities();
+            ViewBag.sectorList = _sectorRegistrationServices.GetAllsector();
+            ViewBag.CompanyList = GetAllCompanybyCustomerId();
+            var model = new AdvertisementInfoCreateViewModel();
+            return View(model);
+
+            //AdvertisementInfoCreateViewModel
+
         }
     }
 }

@@ -21,6 +21,18 @@
     <Compile Remove="Migrations\20201214070723_changes in business owner.Designer.cs" />
     <Compile Remove="Migrations\20201214073434_add payment details in Advertisement table .cs" />
     <Compile Remove="Migrations\20201214073434_add payment details in Advertisement table .Designer.cs" />
+    <Compile Remove="Migrations\20210123075200_add businessid in advertisement .cs" />
+    <Compile Remove="Migrations\20210123075200_add businessid in advertisement .Designer.cs" />
+    <Compile Remove="Migrations\20210123075520_add businessid in advertisement 1 .cs" />
+    <Compile Remove="Migrations\20210123075520_add businessid in advertisement 1 .Designer.cs" />
+    <Compile Remove="Migrations\20210123075927_add customerid in advertisement  .cs" />
+    <Compile Remove="Migrations\20210123075927_add customerid in advertisement  .Designer.cs" />
+    <Compile Remove="Migrations\20210123080914_add customerid in advertisement 2 .cs" />
+    <Compile Remove="Migrations\20210123080914_add customerid in advertisement 2 .Designer.cs" />
+    <Compile Remove="Migrations\20210123081508_add advertisement .cs" />
+    <Compile Remove="Migrations\20210123081508_add advertisement .Designer.cs" />
+    <Compile Remove="Migrations\20210123082125_add advertisement table.cs" />
+    <Compile Remove="Migrations\20210123082125_add advertisement table.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

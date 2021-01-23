@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace plathora.Services.Implementation
 {
   public  class AdvertiseServices : IAdvertiseServices
@@ -41,7 +43,14 @@ namespace plathora.Services.Implementation
             _context.Advertise.Update(obj);
             await _context.SaveChangesAsync();
         }
-
+        public IEnumerable<SelectListItem> GetAllAdvertise()
+        {
+            return GetAll().Select(emp => new SelectListItem()
+            {
+                Text = emp.name,
+                Value = emp.id.ToString()
+            });
+        }
 
 
     }

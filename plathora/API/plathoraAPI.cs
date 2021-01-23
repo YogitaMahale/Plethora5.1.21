@@ -393,7 +393,7 @@ namespace plathora.API
 
             advertisementInfo obj = new advertisementInfo();
             obj.id = 0;
-            obj.customerId = model.customerId;
+            //obj.customerId = model.customerId;
           //  obj.cusotmerid = model.cusotmerid;
             obj.advertiseid = model.advertiseid;
             obj.startdate = model.startdate;

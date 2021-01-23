@@ -1228,8 +1228,11 @@ namespace plathora.Persistence.Migrations
                     b.Property<int?>("advertiseid")
                         .HasColumnType("int");
 
-                    b.Property<string>("customerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("businessid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("cityIds")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("image1")
                         .HasColumnType("nvarchar(max)");
@@ -1242,6 +1245,9 @@ namespace plathora.Persistence.Migrations
 
                     b.Property<string>("longdesc")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("sectorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("shortdesc")
                         .HasColumnType("nvarchar(max)");
@@ -1259,7 +1265,9 @@ namespace plathora.Persistence.Migrations
 
                     b.HasIndex("advertiseid");
 
-                    b.HasIndex("customerId");
+                    b.HasIndex("businessid");
+
+                    b.HasIndex("sectorId");
 
                     b.ToTable("advertisementInfos");
                 });
@@ -1882,9 +1890,15 @@ namespace plathora.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("advertiseid");
 
-                    b.HasOne("plathora.Entity.ApplicationUser", "ApplicationUser")
+                    b.HasOne("plathora.Entity.BusinessOwnerRegi", "BusinessOwnerRegi")
                         .WithMany()
-                        .HasForeignKey("customerId");
+                        .HasForeignKey("businessid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("plathora.Entity.SectorRegistration", "SectorRegistration")
+                        .WithMany()
+                        .HasForeignKey("sectorId");
                 });
 
             modelBuilder.Entity("plathora.Entity.commissionDistribution", b =>

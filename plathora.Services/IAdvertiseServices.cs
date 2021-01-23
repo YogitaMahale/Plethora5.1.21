@@ -1,4 +1,5 @@
-﻿using plathora.Entity;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using plathora.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,5 +15,6 @@ namespace plathora.Services
         Task Delete(int id);
         // IEnumerable<SelectListItem> GetAllState(int businssid);
         IEnumerable<Advertise> GetAll();
+        IEnumerable<SelectListItem> GetAllAdvertise();
     }
 }

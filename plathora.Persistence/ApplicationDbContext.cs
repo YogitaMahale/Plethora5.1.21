@@ -36,7 +36,7 @@ namespace plathora.Persistence
         public DbSet<ModuleMaster> moduleMasters { get; set; }
         public DbSet<Videos> videos { get; set; }
 
-        public DbSet<advertisementInfo> advertisementInfos { get; set; }
+       public DbSet<advertisementInfo> advertisementInfos { get; set; }
         public DbSet<social> socials { get; set; }
         public DbSet<socialdetails> socialdetails { get; set; }
         public DbSet<slider> sliders { get; set; }
