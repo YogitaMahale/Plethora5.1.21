@@ -1,11 +1,11 @@
-﻿ <!DOCTYPE html>
+﻿<!DOCTYPE html>
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 <html lang="en" dir="ltr">
 <head>
     <!-- META DATA -->
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Bizdire - Business Directory and classifieds premium html5 CSS template">
@@ -26,7 +26,7 @@
 
     <!-- Font-awesome  Css -->
     <link href="~/Bizdire/LTR/assets/css/icons.css" rel="stylesheet" />
-   
+
     <!--Select2 Plugin -->
     <link href="~/Bizdire/LTR/assets/plugins/select2/select2.min.css" rel="stylesheet" />
 
@@ -44,6 +44,9 @@
 
     <!-- Color-Skins -->
     <link id="theme" href="~/Bizdire/LTR/assets/color-skins/color1.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <link href="~/css/custom-style.css" rel="stylesheet" />
+
     <style>
 
         .modelheader {
@@ -400,6 +403,9 @@
                             <h2 class="font-weight-semibold mb-0 fs-26 text-dark mt-1 pr-5">Plathora</h2>
                         </a>*@
                 </div>
+                <div class="Search">
+
+                </div>
                 <!--Nav-->
                 <nav class="horizontalMenu clearfix d-md-flex">
                     <ul class="horizontalMenu-list">
@@ -412,20 +418,20 @@
 
                         @if (SignInManager.IsSignedIn(User))
                         {
-                            <script>
+                        <script>
                                         userAuthorized = true;
 
                             localStorage.setItem("mobileno", @User.Identity.Name);
                             @*@User.Identity.Name*@
-                            </script>
+                        </script>
 
-                            @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
-                            @*<li class="nav-item">
-                                    <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                                </li>*@
-                            @*<script type="text/javascript">
-                                    alert("login");
-                                </script>*@
+                        @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
+                        @*<li class="nav-item">
+                                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                            </li>*@
+                        @*<script type="text/javascript">
+                                alert("login");
+                            </script>*@
 
                             string userName = TempData["userName"].ToString();
                             string profilephoto = TempData["profilephoto"].ToString();
@@ -434,57 +440,57 @@
                             TempData.Keep("profilephoto");
 
 
-                            <li class="dropdown">
-                                <a href="#" class="text-dark" data-toggle="dropdown">
+                        <li class="dropdown">
+                            <a href="#" class="text-dark" data-toggle="dropdown">
 
-                                    <img src="@profilephoto" style="width:30px;height:25px;">
-                                    <span> Hello @userName  </span>
+                                <img src="@profilephoto" style="width:30px;height:25px;">
+                                <span> Hello @userName  </span>
 
 
 
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
+                                    &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
-                                        &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
-                                    </a>
 
-                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
 
 
-                                        <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
-                                    </form>
+                                    <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
+                                </form>
 
-                                </div>
-                            </li>
+                            </div>
+                        </li>
 
                         }
                         else
                         {
-                            <script>
-                                userAuthorized = false;
-                                localStorage.setItem("mobileno", "");
-                            </script>
+                        <script>
+                            userAuthorized = false;
+                            localStorage.setItem("mobileno", "");
+                        </script>
 
 
 
 
 
 
-                            @*<li>
+                        @*<li>
 
-                                    <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
-                                        Register
+                                <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
+                                    Register
 
-                                    </button>
-                                </li>*@
-
-                            <li>
-                                <button id="btnShowModal" class="btn btn-secondary mb-0" data-toggle="modal" data-target="#loginModal">
-                                    Login
                                 </button>
+                            </li>*@
 
-                            </li>
+                        <li>
+                            <button id="btnShowModal" class="btn btn-secondary mb-0" data-toggle="modal" data-target="#loginModal">
+                                Login
+                            </button>
+
+                        </li>
 
                         }
 
@@ -702,6 +708,9 @@
 
     <!-- Custom Js-->
     <script src="~/Bizdire/LTR/assets/js/custom.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js">
+
+    </script>*@
     @*<script src="~/Bizdire/LTR/assets/js/sweet-alert.js"></script>*@
 
 </body>
@@ -805,18 +814,17 @@ get OTP NO -->
 </div>
 
 <!--            -->
-@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
 
-    </script>*@
+
 @*<script src="bootstrap/js/bootstrap.min.js"></script>*@
 @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
 <script type="text/javascript">
     var mobileno = "", otpno = "";
     var OTPverifiy = false;
        //myFunction();
-   
-    
-     
+
+
+
     $(document).ready(function () {
 
 
@@ -857,19 +865,19 @@ get OTP NO -->
                      if (msg == 'Login') {
                          //document.cookie = "LoginUserMobileno='" + mobileno+"';";
                          $("#loginModal").modal('hide');
-                         
+
                          window.location.href = '/Admin/Home/Index';
                      }
                      else {
                          //alert(msg);
                          $("#inputOTPMobileNO").val($("#inputMobileNo").val());
                          $("#inputOldOTPNO").val(msg);
-                          
+
                          localStorage.setItem("mobileno", "OTP");
                        $("#loginModal").modal('hide');
                          $("#OTPModal").modal('show');
                          //alert('OTP Recive : '+msg);
-                         
+
                      }
 
 
@@ -912,7 +920,7 @@ get OTP NO -->
 
                 }
                 else {
-                   
+
                     $("#inputOTPNo").val("");
                     alert("Please Enter Proper OTP Number");
                 }
@@ -926,10 +934,10 @@ get OTP NO -->
 
 
     });
-     
+
 
     //function myFunction() {
-        
+
 
     //    if (userAuthorized) {
 
@@ -948,9 +956,9 @@ get OTP NO -->
     //            $("#loginModal").modal('hide');
 
     //        }
-           
+
     //    }
- 
+
 
 
 

@@ -1,0 +1,130 @@
+.container {
+	max-width: 84%;
+}
+.modelheader {
+	background-color: #6f42c1;
+	text-align: center;
+}
+.horizontalMenu > .horizontalMenu-list > li {
+	padding: 1.25rem 0;
+}
+.horizontalMenu > .horizontalMenu-list > li > a {
+	color: #000 !important;
+}
+.desktoplogo {
+	padding: 1.25rem 0;
+}
+
+#sticky-wrapper .bg-white {
+	box-shadow: 2px 3px 4.7px 0.3px rgba(0, 0, 0, 0.04);
+}
+
+/*----new-update-css---*/
+.site-wrapper {
+	margin-top: 80px;
+}
+.page-wrapper {
+	padding: 30px 0;
+	background: #fff;
+}
+.gl-cats-boxes .gl-cats-box._1 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0 0 5px;
+	background: rgba(220,220,220,.4);
+	padding: 5px 5px;
+	width: inherit !important;
+	height: inherit !important;
+}
+.gl-cats-boxes .gl-cats-icon{
+	margin-right: 20px;
+}
+.gl-cats-boxes .gl-cats-icon img {
+	max-width: 44px;
+	width: 44px;
+	height: 44px;
+	margin: 0;
+}
+.gl-cats-boxes .gl-cats-title{
+	margin: 0;
+}
+
+.banner-slider{
+
+}
+
+
+.horizontal-mainwrapper .Search {
+	float: left;
+	width: 410px;
+	margin-left: 20%;
+}
+.horizontal-mainwrapper .Search .xdsoft_autocomplete .xdsoft_input {
+	position: relative;
+	z-index: 2;
+	padding: 6px 18px 6px 2px !important;
+	border: 1px solid #f2f2f2d6 !important;
+}
+.horizontal-mainwrapper .Search .form.row.row-sm {
+	margin: 0;
+}
+.horizontal-mainwrapper .search-background.py-3.px-4 {
+	padding: 20px 15px !important;
+	/*height: 80px;*/
+}
+
+.horizontal-mainwrapper .Search .btn-lg {
+	font-size: 14px;
+	min-width: 90px;
+	font-weight: 400;
+	padding: 8px 4px;
+	letter-spacing: 0;
+}
+
+.gl-cats {
+	/*position: fixed;
+	height: 100vh;
+	width: 100%;
+	max-width: 375px;
+	max-width: 19%;*/
+}
+#DivCategories1 {
+	/*height: calc(100% - 150px);
+	overflow: hidden;
+	overflow-y: scroll;
+	position: absolute;
+	top: 0px;*/
+	width: 100%;
+}
+.gl-cats .sticky-pin {
+	top: 100px;
+	width: 100%;
+	overflow-y: scroll;
+	box-shadow: 2px 3px 4.7px 0.3px rgba(0, 0, 0, 0.6);
+}
+
+.content .sptb .container {
+	max-width: 100%;
+}
+/*---------------------footer-------------------------*/
+footer {
+	position: relative;
+	z-index: 99999;
+}
+
+/*------------------------media---------------------*/
+
+@media (max-width: 1600px){
+	.horizontalMenu > .horizontalMenu-list > li > a {
+		padding: 9px 9px;
+	}
+	.horizontal-mainwrapper .Search {
+		margin-left: 10%;
+	}
+}
+@media (max-width: 1440px){
+	.horizontal-mainwrapper .Search {
+		margin-left: 2%;
+	}
+}

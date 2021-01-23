@@ -52,7 +52,7 @@
                     <partial name="_customerDashboardMenu" />
 
                 </div>
-              
+
             </div>
             <div class="col-xl-9 col-lg-12 col-md-12">
                 <div class="card mb-xl-0">
@@ -92,12 +92,12 @@
                                         <div class="control-group form-group">
                                             <div class="form-group">
 
-                                                <label class="form-label text-dark"  >Package Amount</label>
-                                                <input type="text"  readonly class="form-control" id="pkgAmount">
+                                                <label class="form-label text-dark">Package Amount</label>
+                                                <input type="text" readonly class="form-control" id="pkgAmount">
                                             </div>
                                         </div>
 
- 
+
 
                                         <div class="form-group">
                                             <div class="form-group">
@@ -112,10 +112,12 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label class="form-label text-dark" asp-for="cityIds"></label>
-                                                <select name="cityIds" id="cityIds" asp-for="cityIds" class="form-control" multiple="multiple"
+                                                <select name="cityIds" id="cityIds" asp-for="cityIds" class="form-control select2"
                                                         asp-items="@ViewBag.citiesList">
-                                                    @*<option>--- Select  ---</option>*@
+
+                                                    <option>--- Select  ---</option>
                                                 </select>
+                                                <input type="hidden" id="hfPackage" />
                                                 <span asp-validation-for="cityIds" class="text-danger"></span>
                                             </div>
                                         </div>
@@ -167,7 +169,7 @@
                                             <div class="form-group">
 
                                                 <label class="form-label text-dark">Amount</label>
-                                                <input type="text" readonly class="form-control" id="FinalAmount">
+                                                <input type="text" readonly class="form-control" asp-for="PaymentAmount" id="PaymentAmount">
                                             </div>
                                         </div>
                                     </div>
@@ -314,17 +316,32 @@
 
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js">
+
+</script>
 <script type="text/javascript">
 
-   
+
     //$("#advertiseid").change(function () {
-       
+
     //    cal();
     //});
-    $("#cityIds").change(function () {
-        cal();
 
+    $("#cityIds").select2({
+        
+        placeholder: "Select Package",
+        //theme: "classic",
+        allowClear: true
+
+    }).on('change.select2', function () {
+        $("#hfPackage").val($(this).val());
     });
+
+
+    //$("#cityIds").change(function () {
+    //    cal();
+
+    //});
     function cal() {
         //var array = $('#cityIds').val().split(',');
         //console.log(array);
@@ -332,7 +349,7 @@
         //alert($("#cityIds").val());
         var str = $("#cityIds").val();
         console.log(str);
-       
+
         var splits = String(str).split(",");
 
         //$("#pkgAmount").val(data.amount);
@@ -345,12 +362,12 @@
         var gstamt = ((tot * $("#pkgGST").val()) / 100);
         var tot1 = tot + gstamt;
        // alert(tot1);
-        $("#FinalAmount").val(tot1);
+        $("#PaymentAmount").val(tot1);
        // alert(splits.length); // output: this
     }
 
     $("#advertiseid").change(function () {
-       
+
         //pkgAmount
         //pkgGST
         //alert('sfdgsd');
