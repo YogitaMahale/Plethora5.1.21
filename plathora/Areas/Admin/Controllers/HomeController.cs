@@ -28,7 +28,7 @@ using System.Text.Encodings.Web;
 using System.Text;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Hosting;
-
+using plathora.Utility;
 namespace plathora.Controllers
 {
     [Area("Admin")]
@@ -115,7 +115,15 @@ namespace plathora.Controllers
             TempData.Keep("userName");
             TempData.Keep("profilephoto");
         }
-
+       
+        public string TempdataCity(int id)
+        {
+            
+           TempData["TempdataCity"] = id;
+            TempData.Keep("TempdataCity");
+            return "set";
+        }
+        //[HttpPost]
         public JsonResult getCity(int id)
         {
 

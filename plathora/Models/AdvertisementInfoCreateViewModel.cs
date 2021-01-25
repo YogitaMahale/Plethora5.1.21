@@ -25,11 +25,11 @@ namespace plathora.Models
         [Display(Name = "Register by Unique ID")]
         public string AfilateuniqueId { get; set; }
 
-      
-      
+
+
 
         [Display(Name = "Start Date")]
-        public DateTime startdate { get; set; }
+        public DateTime startdate { get; set; } = DateTime.Now;
         [Display(Name = "Title")]
         public string title { get; set; }
         [Display(Name = "Website Link")]
@@ -53,7 +53,8 @@ namespace plathora.Models
         
         public decimal PaymentAmount { get; set; }
         public string TransactionId { get; set; }
+        public string uniqueId { get; set; }
+        
 
-      
     }
 }

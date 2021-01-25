@@ -37,6 +37,7 @@ namespace plathora.Areas.Admin.Controllers
     [Authorize(Roles = SD.Role_Customer)]
     public class CustomerprofileController : Controller
     {
+        private readonly IadvertisementInfoServices _advertisementInfoServices;
         private readonly IWebHostEnvironment _hostingEnvironment;
         //  private readonly IAffiltateRegistrationService _AffiltateRegistrationService;
         private readonly IMembershipServices _MembershipServices;
@@ -51,7 +52,7 @@ namespace plathora.Areas.Admin.Controllers
         private readonly IAdvertiseServices _advertiseServices;
         private readonly ISectorRegistrationServices _sectorRegistrationServices;
         //private readonly UserManager<ApplicationUser> _usermanager;
-        public CustomerprofileController(ISP_Call sP_Call, ApplicationDbContext db, IMembershipServices MembershipServices, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices CityRegistrationservices, IAffilatePackageServices AffilatePackageServices, IStateRegistrationService StateRegistrationService, IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, IBusinessOwnerRegiServices businessOwnerRegiServices, IAdvertiseServices advertiseServices, ISectorRegistrationServices sectorRegistrationServices)
+        public CustomerprofileController(ISP_Call sP_Call, ApplicationDbContext db, IMembershipServices MembershipServices, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices CityRegistrationservices, IAffilatePackageServices AffilatePackageServices, IStateRegistrationService StateRegistrationService, IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, IBusinessOwnerRegiServices businessOwnerRegiServices, IAdvertiseServices advertiseServices, ISectorRegistrationServices sectorRegistrationServices, IadvertisementInfoServices advertisementInfoServices)
         {
             _sP_Call = sP_Call;
             _db = db;
@@ -65,6 +66,7 @@ namespace plathora.Areas.Admin.Controllers
             _advertiseServices = advertiseServices;
             _businessOwnerRegiServices = businessOwnerRegiServices;
             _sectorRegistrationServices = sectorRegistrationServices;
+            _advertisementInfoServices = advertisementInfoServices;
             //_usermanager = usermanager;
         }
 
@@ -619,7 +621,7 @@ namespace plathora.Areas.Admin.Controllers
         {
 
             Advertise obj = _advertiseServices.GetById(id);
-             
+
             return Json(obj);
         }
         [HttpGet]
@@ -635,8 +637,83 @@ namespace plathora.Areas.Admin.Controllers
             //AdvertisementInfoCreateViewModel
 
         }
+        [HttpPost]
+        public async Task<IActionResult> promoteBusiness(AdvertisementInfoCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                advertisementInfo obj = new advertisementInfo();
+                obj.id = 0;
+                //obj.customerId = model.customerId;
+                //  obj.cusotmerid = model.cusotmerid;
+                obj.businessid = model.businessid;
+                obj.cityIds = model.cityIds;
+                obj.sectorId = model.sectorId;
+                
+
+                obj.advertiseid = model.advertiseid;
+                obj.startdate = model.startdate;
+                obj.title = model.title;
+                obj.videourl = model.videourl;
+                obj.shortdesc = model.shortdesc;
+                obj.longdesc = model.longdesc;
+                obj.isdeleted = false;
+
+                obj.PaymentAmount = model.PaymentAmount;
+                obj.PaymentStatus = model.PaymentStatus;
+                obj.TransactionId = model.TransactionId;
 
 
-        
+                int idd = (int)model.advertiseid;
+                int pkgMonth = _advertiseServices.GetById(idd).period;
+                obj.Expirydate = model.startdate.AddMonths(pkgMonth);
+                obj.AfilateuniqueId = model.uniqueId;
+                if (model.image1 != null)
+                {
+
+                    var uploadDir = @"uploads/advertisementInfo";
+                    var fileName = Path.GetFileNameWithoutExtension(model.image1.FileName);
+                    var extesion = Path.GetExtension(model.image1.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.image1.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.image1 = '/' + uploadDir + '/' + fileName;
+
+
+                }
+                else
+                {
+                    obj.image1 = "";
+
+                }
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+
+                    var postid = await _advertisementInfoServices.CreateAsync(obj);
+                    int id = Convert.ToInt32(postid);
+                    return View("promoteBusiness");
+
+                }
+            }
+            else
+            {
+                return View(model);
+
+            }
+
+
+
+
+
+
+
+        }
+
+
     }
 }

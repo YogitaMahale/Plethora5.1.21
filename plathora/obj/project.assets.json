@@ -29,6 +29,9 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "chosen/1.2.0": {
+        "type": "package"
+      },
       "Dapper/2.0.35": {
         "type": "package",
         "dependencies": {
@@ -3430,6 +3433,20 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "chosen/1.2.0": {
+      "sha512": "nrcF57kN5LRb/drcnK43W+cDKuAxDXhVlTBI4wOmm2eTjQW1/nRjV/G9zs+xavsgtquTH7CeJbYDbZZOsMrABw==",
+      "type": "package",
+      "path": "chosen/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "chosen.1.2.0.nupkg.sha512",
+        "chosen.nuspec",
+        "content/Content/chosen-sprite.png",
+        "content/Content/chosen-sprite@2x.png",
+        "content/Content/chosen.css"
       ]
     },
     "Dapper/2.0.35": {
@@ -10223,6 +10240,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
       "Nancy >= 2.0.0",
       "System.Net.Http >= 4.3.3",
+      "chosen >= 1.2.0",
       "plathora.Entity >= 1.0.0",
       "plathora.Services >= 1.0.0",
       "plathora.Utility >= 1.0.0"
@@ -10334,6 +10352,10 @@
           "System.Net.Http": {
             "target": "Package",
             "version": "[4.3.3, )"
+          },
+          "chosen": {
+            "target": "Package",
+            "version": "[1.2.0, )"
           }
         },
         "imports": [

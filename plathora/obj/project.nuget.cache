@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "+GOfqdd0HOduhzCsZOZ1nVZEwywtnCEpYLj1en5BSUEARwme+sj1LWDCQ+jmNHMnnfdd9B+rsXQ32MttyuyNag==",
+  "dgSpecHash": "PmhxZfE2fuwxeoo9BFYDWLQW3A7QTNLgdLMh8pZVgOFIlcTGJPxeetfDz4we4TPJU8Zqq5YeF4PmemhZ4HTqGw==",
   "success": true,
   "projectFilePath": "E:\\yogita 6.8.19\\plathora\\plathora\\plathora.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\chosen\\1.2.0\\chosen.1.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.0.35\\dapper.2.0.35.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",

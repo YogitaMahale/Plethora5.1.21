@@ -384,6 +384,10 @@
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.3, )"
+            },
+            "chosen": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             }
           },
           "imports": [
