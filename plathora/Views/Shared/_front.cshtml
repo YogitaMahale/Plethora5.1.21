@@ -998,7 +998,9 @@ get OTP NO -->
                     $("#cityid").html(item);
                 }
         )
-        // var markers = @Html.Raw(ViewBag.Markers);
+        var selectedcity = @Html.Raw(TempData["TempdataCity"]);
+        alert(selectedcity);
+      //  $("#cityid").val(selectedcity);
     }
 
 
