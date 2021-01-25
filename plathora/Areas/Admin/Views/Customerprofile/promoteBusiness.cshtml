@@ -62,6 +62,8 @@
                     <div class="card-body">
                         <form id="commentForm" method="get" class="form-horizontal mb-0">
                             <div id="rootwizard" class="border pt-0">
+                                 
+
                                 <ul class="nav nav-tabs nav-justified">
                                     <li class="nav-item"><a href="#first" data-toggle="tab" class="nav-link font-bold">Select Package</a></li>
                                     <li class="nav-item"><a href="#second" data-toggle="tab" class="nav-link font-bold">Details</a></li>
@@ -110,14 +112,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <input type="hidden" id="hfPackage" />
                                             <div class="form-group">
                                                 <label class="form-label text-dark" asp-for="cityIds"></label>
-                                                <select name="cityIds" id="cityIds" asp-for="cityIds" class="form-control select2"
+                                                <select name="cityIds" id="cityIds"  class="form-control select2"
                                                         asp-items="@ViewBag.citiesList">
 
                                                     <option>--- Select  ---</option>
                                                 </select>
-                                                <input type="hidden" id="hfPackage" />
+
                                                 <span asp-validation-for="cityIds" class="text-danger"></span>
                                             </div>
                                         </div>

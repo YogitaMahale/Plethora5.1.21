@@ -27,7 +27,7 @@ namespace plathora.Models
 
 
         public Boolean isdeleted { get; set; }
-        
+        [Display(Name = "Active")]
         public Boolean isactive { get; set; }
     }
 }

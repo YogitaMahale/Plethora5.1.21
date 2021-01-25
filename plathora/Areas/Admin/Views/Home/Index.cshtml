@@ -7,6 +7,33 @@
     Layout = "~/Views/Shared/_front.cshtml";
     // Layout = "~/Views/Shared/_front.cshtml";
 }
+    <link href="~/css/businessListUL.css" rel="stylesheet" />
+@*<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+       /*// background-color: #333333;*/
+    }
+
+    li {
+        float: left;
+    }
+
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+            /*li a:hover {
+                background-color: #111111;
+            }*/
+</style>*@
 
 <!--Loader-->
 @*<div id="global-loader">
@@ -16,21 +43,21 @@
     </div>*@
 <!--Topbar-->
 <!--Sliders Section-->
-    <div style="display:none;">
-       
-        <div class="cover-image sptb-4 sptb-tab bg-background2" data-image-src="~/Bizdire/LTR/assets/images/banners/banner5.jpg" style="height: 300px;">
-            <div class="header-text mb-0" style="top: 0px;bottom:0px;">
-                <div class="container">
-                    <div class="text-center text-white">
-                        <a href="" class="typewrite" data-period="2000" data-type='[ "Services at Your Doorsteps" ]'>
-                            <span class="wrap"></span>
-                        </a>
-                        <p class="fs-18 font-weight-light">Services and Products Directly Available Without any Middleman</p>
+<div style="display:none;">
+
+    <div class="cover-image sptb-4 sptb-tab bg-background2" data-image-src="~/Bizdire/LTR/assets/images/banners/banner5.jpg" style="height: 300px;">
+        <div class="header-text mb-0" style="top: 0px;bottom:0px;">
+            <div class="container">
+                <div class="text-center text-white">
+                    <a href="" class="typewrite" data-period="2000" data-type='[ "Services at Your Doorsteps" ]'>
+                        <span class="wrap"></span>
+                    </a>
+                    <p class="fs-18 font-weight-light">Services and Products Directly Available Without any Middleman</p>
 
 
 
-                    </div>
-                    @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
+                </div>
+                @*@using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
                     {
                         <div class="row">
                             <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
@@ -40,10 +67,7 @@
 
 
 
-                                        @*<div class="form-group col-xl-3 col-lg-2 col-md-12 mb-0" style="display:none;">
-                                            <input type="text" class="form-control input-lg location-input border-white" placeholder="Enter Location">
-                                            <span><img src="~/Bizdire/LTR/assets/images/svgs/gps.svg" class="location-gps" alt="img"></span>
-                                        </div>*@
+
                                         <div class="form-group col-xl-3 col-lg-2 col-md-12 select2-lg mb-0 ">
                                             @Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })
 
@@ -54,19 +78,19 @@
                                         <div class="col-xl-3 col-lg-2 col-md-12 mb-0">
                                             <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
 
-                                            @*<a href="#" class="btn btn-lg btn-block btn-secondary">Search Here</a>*@
+
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    }
+                    }*@
 
-                </div>
-            </div><!-- /header-text -->
-        </div>
+            </div>
+        </div><!-- /header-text -->
     </div>
+</div>
 <!--Sliders Section-->
 <!-- Categories-->
 <section class="sptb bg-white" style="display:none;">
@@ -77,7 +101,7 @@
         @*<a href="https://api.whatsapp.com/send?phone=7276541222&text=www.google.com" data-action="share/whatsapp/share">Share via Whatsapp web</a>
 
 
-        <a href="https://api.whatsapp.com/send?phone=+917276541222" data-action="share/whatsapp/share">Share 111 via Whatsapp web</a>*@
+            <a href="https://api.whatsapp.com/send?phone=+917276541222" data-action="share/whatsapp/share">Share 111 via Whatsapp web</a>*@
 
         @{
             if (Model.objSectorRegistration != null)
@@ -113,38 +137,38 @@
             }
         }
         @*<div class="row">
-            @foreach (var obj in Model.objSectorRegistration)
-            {
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6">
-                    <div class="card">
-                        <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
-                            <div class="card-body">
-                                <div class="cat-item text-center">
+                @foreach (var obj in Model.objSectorRegistration)
+                {
+                    <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6">
+                        <div class="card">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="businessDetails" asp-route-sectorid="@obj.id">
+                                <div class="card-body">
+                                    <div class="cat-item text-center">
 
-                                    <div class="cat-img category-svg">
+                                        <div class="cat-img category-svg">
 
-                                        <img src="@obj.img" />
+                                            <img src="@obj.img" />
 
-                                    </div>
-                                    <div class="cat-desc">
-                                        <h5 class="mb-0">
-                                            @obj.name
+                                        </div>
+                                        <div class="cat-desc">
+                                            <h5 class="mb-0">
+                                                @obj.name
 
 
-                                        </h5>
+                                            </h5>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
 
 
+                        </div>
                     </div>
+                }
+                <div class="col-12 text-center">
+                    <a asp-area="Admin" asp-controller="Home" asp-action="Category" class="btn btn-primary mt-5 pl-6 pr-6">View More</a>
                 </div>
-            }
-            <div class="col-12 text-center">
-                <a asp-area="Admin" asp-controller="Home" asp-action="Category" class="btn btn-primary mt-5 pl-6 pr-6">View More</a>
-            </div>
-        </div>*@
+            </div>*@
     </div>
 </section>
 
@@ -157,10 +181,10 @@
                         <div class="row">
                             <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
                                 <div class="sticky12">
-                                    @{ 
+                                    @{
                                         await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
                                     }
-                                    
+
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-sm-12 col-12">
@@ -202,6 +226,79 @@
                                         </div>
                                     </div><!--banner-slider-->
                                     <!--Categories-->
+                                    @*business*@
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Popular Services</h3>
+                                                </div>
+                                                <div class="card-body p-0">
+                                                    <div class="list-catergory">
+                                                        <div class="item-list">
+
+                                                             
+
+                                                            <ul  class="items">
+                                                                @foreach (var objj in Model.objBusineesActive)
+                                                                {
+                                                                    <li>
+                                                                        <a asp-area="Admin" asp-controller="Home" asp-action="BusinessListing" asp-route-businessid="@objj.id"  asp-route-productid="0" class="text-dark">
+                                                                            @*<img src="~/green.png"  style="width:20px;height:20px;"  alt="My Image">*@
+                                                                           
+                                                                            <img src="@objj.photo" alt="Icon"  style="width:20px;height:20px;" />
+                                                                            @*<i class="fa fa-building bg-secondary text-secondary"></i>*@ @objj.name
+                                                                            @*<span class="badgetext badge badge-pill badge-light mb-0 mt-1">14</span>*@
+                                                                        </a>
+                                                                    </li>
+                                                                }
+
+                                                                @*<li class="list-group-item">
+            <a href="#" class="text-dark">
+                <i class="fa fa-bed bg-success text-success"></i> Hostel &amp; Travels
+                <span class="badgetext badge badge-pill badge-light mb-0 mt-1">63</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="text-dark">
+                <i class="fa fa-heartbeat bg-info text-info"></i> Health &amp; Fitness
+                <span class="badgetext badge badge-pill badge-light mb-0 mt-1">25</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="text-dark">
+                <i class="fa fa-cutlery bg-warning text-warning"></i> Restaurant
+                <span class="badgetext badge badge-pill badge-light mb-0 mt-1">74</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="text-dark">
+                <i class="fa fa-laptop bg-danger text-danger"></i> Computer
+                <span class="badgetext badge badge-pill badge-light mb-0 mt-1">18</span>
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="#" class="text-dark">
+                <i class="fa fa-mobile bg-blue text-blue"></i> Mobile
+                <span class="badgetext badge badge-pill badge-light mb-0 mt-1">32</span>
+            </a>
+        </li>
+        <li class="list-group-item border-bottom-0">
+            <a href="#" class="text-dark">
+                <i class="fa fa-pencil-square  bg-primary text-pink"></i> Education
+                <span class="badgetext badge badge-pill badge-light mb-0 mt-1">08</span>
+            </a>
+        </li>*@
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    @*business*@
+
                                     <!--Featured Listings-->.
                                     @*<h2>Latest Listings</h2>*@
                                     @{
@@ -219,93 +316,93 @@
 
                                     }
                                     @*<section class="sptb">
-            <div class="container">
-                <div class="section-title center-block text-center">
-                    <h2>Latest Listings</h2>
-                    <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
-                </div>
+                                            <div class="container">
+                                                <div class="section-title center-block text-center">
+                                                    <h2>Latest Listings</h2>
+                                                    <p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>
+                                                </div>
 
 
 
-                <div id="myCarousel2" class="owl-carousel owl-carousel-icons" style="display:none;">
+                                                <div id="myCarousel2" class="owl-carousel owl-carousel-icons" style="display:none;">
 
-                    @foreach (var obj in Model.objBusinessDetails)
-                    {
-                        <div class="item">
-                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-white">@obj.name </a>
+                                                    @foreach (var obj in Model.objBusinessDetails)
+                                                    {
+                                                        <div class="item">
+                                                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-white">@obj.name </a>
 
-                            <div class="card mb-0 overflow-hidden">
-                                <div class="arrow-ribbon bg-danger">Open</div>
-                                <div class="item-card7-imgs">
+                                                            <div class="card mb-0 overflow-hidden">
+                                                                <div class="arrow-ribbon bg-danger">Open</div>
+                                                                <div class="item-card7-imgs">
 
-                                    <img style="height:248px;" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
+                                                                    <img style="height:248px;" asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" src="@obj.profilephoto" alt="img" class="cover-image">
 
-                                </div>
-                                <div class="item-card7-overlaytext">
-                                    <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-white">@obj.name </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="item-card7-desc">
-                                        <div class="item-card7-text">
-                                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-dark"><h4 class="">@obj.name</h4></a>
-                                        </div>
-                                        <ul class="item-cards7-ic mb-0">
-                                            <li><a href="#"><span class=""><i class="icon icon-clock mr-1"></i> @obj.businesstime</span></a></li>
+                                                                </div>
+                                                                <div class="item-card7-overlaytext">
+                                                                    <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-white">@obj.name </a>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="item-card7-desc">
+                                                                        <div class="item-card7-text">
+                                                                            <a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="text-dark"><h4 class="">@obj.name</h4></a>
+                                                                        </div>
+                                                                        <ul class="item-cards7-ic mb-0">
+                                                                            <li><a href="#"><span class=""><i class="icon icon-clock mr-1"></i> @obj.businesstime</span></a></li>
 
-                                            <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> @obj.cityname</a></li>
-                                            <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-envelope text-muted mr-1"></i> @obj.Email</a></li>
-                                            <li class="mb-0"><a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="icons"><i class="icon icon-phone text-muted mr-1"></i> @obj.PhoneNumber</a></li>
-                                        </ul>
-                                        <p class="mb-0">@obj.description</p>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    }
+                                                                            <li><a href="#" class="icons"><i class="icon icon-location-pin text-muted mr-1"></i> @obj.cityname</a></li>
+                                                                            <li class="mb-md-0"><a href="#" class="icons"><i class="icon icon-envelope text-muted mr-1"></i> @obj.Email</a></li>
+                                                                            <li class="mb-0"><a asp-area="Admin" asp-controller="Home" asp-action="business" asp-route-id="@obj.Id" class="icons"><i class="icon icon-phone text-muted mr-1"></i> @obj.PhoneNumber</a></li>
+                                                                        </ul>
+                                                                        <p class="mb-0">@obj.description</p>
 
 
-                </div>
-            </div>
-        </section>*@
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    }
+
+
+                                                </div>
+                                            </div>
+                                        </section>*@
                                     <!--/Featured Listings-->
                                     <!--post section-->
                                     <partial name="_Subscribe" />
                                     @*<section>
-            <div class="cover-image sptb bg-background-color" data-image-src="../assets/images/banners/banner5.jpg">
-                <div class="content-text mb-0">
-                    <div class="content-text mb-0">
-                        <div class="container">
+                                            <div class="cover-image sptb bg-background-color" data-image-src="../assets/images/banners/banner5.jpg">
+                                                <div class="content-text mb-0">
+                                                    <div class="content-text mb-0">
+                                                        <div class="container">
 
-                            <div class="text-center text-white ">
-                                <h2 class="mb-2">Subscribe</h2>
-                                <p class="fs-16 mb-0">It is a long established fact that a reader will be distracted by the readable.</p>
-                                <div class="row">
+                                                            <div class="text-center text-white ">
+                                                                <h2 class="mb-2">Subscribe</h2>
+                                                                <p class="fs-16 mb-0">It is a long established fact that a reader will be distracted by the readable.</p>
+                                                                <div class="row">
 
-                                    <div class="col-lg-8 mx-auto d-block">
-                                        <div class="mt-5">
-                                            <div class="input-group sub-input mt-1">
-                                                <input id="lblScribeEmail" type="text" class="form-control input-lg " placeholder="Enter your Email">
-                                                <div class="input-group-append ">
-                                                    <button id="btnsubscribe" type="button" class="btn btn-secondary btn-lg br-tr-3 br-br-3 pl-5 pr-5">
-                                                    </button>
+                                                                    <div class="col-lg-8 mx-auto d-block">
+                                                                        <div class="mt-5">
+                                                                            <div class="input-group sub-input mt-1">
+                                                                                <input id="lblScribeEmail" type="text" class="form-control input-lg " placeholder="Enter your Email">
+                                                                                <div class="input-group-append ">
+                                                                                    <button id="btnsubscribe" type="button" class="btn btn-secondary btn-lg br-tr-3 br-br-3 pl-5 pr-5">
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
+                                        </section>*@
                                     <!--/post section-->
                                     <!--Blogs-->
                                     <section class="sptb">
@@ -389,133 +486,133 @@
                                     <!--Blogs-->
                                     <!--Our Customers Says-->
                                     @*<section class="sptb bg-white">
-            <div class="container">
-                <div class="section-title center-block text-center">
-                    <h2 class=" position-relative">Our Customers Says</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="">
-                            <div id="myCarousel" class="owl-carousel testimonial-owl-carousel">
-                                <div class="item text-center">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-8 col-md-12 d-block mx-auto">
-                                                <div class="">
-                                                    <div class="testimonia-img mx-auto mb-3">
-                                                        <img src="~/Bizdire/LTR/assets/images/faces/female/11.jpg" class="img-thumbnail rounded-circle alt=" alt="">
-                                                    </div>
-                                                    <p>
-                                                        <i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cum accusamus eveniet molestias voluptatum inventore laboriosam labore sit, aspernatur praesentium iste impedit quidem dolor veniam.
-                                                    </p>
-                                                    <div class="testimonia-data">
-                                                        <h4 class="fs-20 mb-1">Heather Bell</h4>
-                                                        <div class="rating-stars">
-                                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="3">
-                                                            <div class="rating-stars-container">
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
+                                            <div class="container">
+                                                <div class="section-title center-block text-center">
+                                                    <h2 class=" position-relative">Our Customers Says</h2>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="">
+                                                            <div id="myCarousel" class="owl-carousel testimonial-owl-carousel">
+                                                                <div class="item text-center">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-xl-8 col-md-12 d-block mx-auto">
+                                                                                <div class="">
+                                                                                    <div class="testimonia-img mx-auto mb-3">
+                                                                                        <img src="~/Bizdire/LTR/assets/images/faces/female/11.jpg" class="img-thumbnail rounded-circle alt=" alt="">
+                                                                                    </div>
+                                                                                    <p>
+                                                                                        <i class="fa fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore cum accusamus eveniet molestias voluptatum inventore laboriosam labore sit, aspernatur praesentium iste impedit quidem dolor veniam.
+                                                                                    </p>
+                                                                                    <div class="testimonia-data">
+                                                                                        <h4 class="fs-20 mb-1">Heather Bell</h4>
+                                                                                        <div class="rating-stars">
+                                                                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="3">
+                                                                                            <div class="rating-stars-container">
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
+                                                                <div class="item text-center">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-xl-8 col-md-12 d-block mx-auto">
+                                                                                <div class="">
+                                                                                    <div class="testimonia-img mx-auto mb-3">
+                                                                                        <img src="~/Bizdire/LTR/assets/images/faces/male/42.jpg" class="img-thumbnail rounded-circle alt=" alt="">
+                                                                                    </div>
+                                                                                    <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore. </p>
+                                                                                    <div class="testimonia-data">
+                                                                                        <h4 class="fs-20 mb-1">David Blake</h4>
+                                                                                        <div class="rating-stars">
+                                                                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="3">
+                                                                                            <div class="rating-stars-container">
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
+                                                                <div class="item text-center">
+                                                                    <div class="card-body">
+                                                                        <div class="row">
+                                                                            <div class="col-xl-8 col-md-12 d-block mx-auto">
+                                                                                <div class="">
+                                                                                    <div class="testimonia-img mx-auto mb-3">
+                                                                                        <img src="~/Bizdire/LTR/assets/images/faces/female/20.jpg" class="img-thumbnail rounded-circle alt=" alt="">
+                                                                                    </div>
+                                                                                    <p><i class="fa fa-quote-left"></i> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                                                                                    <div class="testimonia-data">
+                                                                                        <h4 class="fs-20 mb-1">Sophie Carr</h4>
+                                                                                        <div class="rating-stars">
+                                                                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="3">
+                                                                                            <div class="rating-stars-container">
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                                <div class="rating-star sm">
+                                                                                                    <i class="fa fa-star"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item text-center">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-8 col-md-12 d-block mx-auto">
-                                                <div class="">
-                                                    <div class="testimonia-img mx-auto mb-3">
-                                                        <img src="~/Bizdire/LTR/assets/images/faces/male/42.jpg" class="img-thumbnail rounded-circle alt=" alt="">
-                                                    </div>
-                                                    <p><i class="fa fa-quote-left"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore. </p>
-                                                    <div class="testimonia-data">
-                                                        <h4 class="fs-20 mb-1">David Blake</h4>
-                                                        <div class="rating-stars">
-                                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="3">
-                                                            <div class="rating-stars-container">
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item text-center">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-xl-8 col-md-12 d-block mx-auto">
-                                                <div class="">
-                                                    <div class="testimonia-img mx-auto mb-3">
-                                                        <img src="~/Bizdire/LTR/assets/images/faces/female/20.jpg" class="img-thumbnail rounded-circle alt=" alt="">
-                                                    </div>
-                                                    <p><i class="fa fa-quote-left"></i> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                                                    <div class="testimonia-data">
-                                                        <h4 class="fs-20 mb-1">Sophie Carr</h4>
-                                                        <div class="rating-stars">
-                                                            <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value="3">
-                                                            <div class="rating-stars-container">
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                                <div class="rating-star sm">
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>*@
+                                        </section>*@
                                     <!--/Our Customers Says-->
                                     <!--Locations-->
                                     <section class="sptb">
@@ -569,85 +666,85 @@
                                                             </div>
                                                             <div class="card-footer">
                                                                 @*<div class="footerimg d-flex mt-0 mb-0">
-                                        <div class="d-flex footerimg-l mb-0">
-                                            <img src="../assets/images/faces/female/19.jpg" alt="image" class="avatar brround  mr-2">
-                                            <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Elizabeth<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></h5>
-                                        </div>
-                                        <div class="mt-2 footerimg-r ml-auto">
-                                            <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Wishlist"><i class="fa fa-heart"></i></a>
-                                        </div>
-                                    </div>*@
+                                                                        <div class="d-flex footerimg-l mb-0">
+                                                                            <img src="../assets/images/faces/female/19.jpg" alt="image" class="avatar brround  mr-2">
+                                                                            <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Elizabeth<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></h5>
+                                                                        </div>
+                                                                        <div class="mt-2 footerimg-r ml-auto">
+                                                                            <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                                                        </div>
+                                                                    </div>*@
                                                             </div>
                                                         </div>
                                                     </div>
                                                 }
 
                                                 @*<div class="col-lg-4 col-md-12 col-xl-4">
-                        <div class="card overflow-hidden mb-lg-0">
-                            <div class="item-card2-img">
-                                <a href="widgets.html"></a>
-                                <img src="../assets/images/products/products/h2.jpg" alt="img" class="cover-image">
-                                <div class="blog--category">Realestate</div>
-                            </div>
-                            <div class="item-card2-icons">
-                                <a href="#" class="item-card2-icons-r"><i class="fa fa fa-heart"></i></a>
-                                <a href="#" class="item-card2-icons-l"><i class="fa fa-home"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-card2">
-                                    <div class="item-card2-desc">
-                                        <p class="text-muted fs-12 mb-1">22 November 2019.</p>
-                                        <h4 class="font-weight-semibold">GilkonStar Hotel</h4>
-                                        <p class="mb-0">Lorem ipsum dolor sit amet, quis nostrum exercieds ullam corporis suscipit laboriosam</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="footerimg d-flex mt-0 mb-0">
-                                    <div class="d-flex footerimg-l mb-0">
-                                        <img src="../assets/images/faces/male/19.jpg" alt="image" class="avatar brround  mr-2">
-                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Loosiues<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></h5>
-                                    </div>
-                                    <div class="mt-2 footerimg-r ml-auto">
-                                        <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Wishlist"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-xl-4">
-                        <div class="card overflow-hidden mb-0">
-                            <div class="item-card2-img">
-                                <a href="widgets.html"></a>
-                                <img src="../assets/images/products/products/v1.jpg" alt="img" class="cover-image">
-                                <div class="blog--category">AutoMobiles</div>
-                            </div>
-                            <div class="item-card2-icons">
-                                <a href="#" class="item-card2-icons-r"><i class="fa fa fa-heart"></i></a>
-                                <a href="#" class="item-card2-icons-l"><i class="fa fa-car"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <div class="item-card2">
-                                    <div class="item-card2-desc">
-                                        <p class="text-muted fs-12 mb-1">22 November 2019.</p>
-                                        <h4 class="font-weight-semibold">Seep Automobiles</h4>
-                                        <p class="mb-0">Lorem ipsum dolor sit amet, quis nostrum exercieds ullam corporis suscipit laboriosam</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="footerimg d-flex mt-0 mb-0">
-                                    <div class="d-flex footerimg-l mb-0">
-                                        <img src="../assets/images/faces/female/18.jpg" alt="image" class="avatar brround  mr-2">
-                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Lilly Wisely<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></h5>
-                                    </div>
-                                    <div class="mt-2 footerimg-r ml-auto">
-                                        <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Wishlist"><i class="fa fa-heart"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
+                                                        <div class="card overflow-hidden mb-lg-0">
+                                                            <div class="item-card2-img">
+                                                                <a href="widgets.html"></a>
+                                                                <img src="../assets/images/products/products/h2.jpg" alt="img" class="cover-image">
+                                                                <div class="blog--category">Realestate</div>
+                                                            </div>
+                                                            <div class="item-card2-icons">
+                                                                <a href="#" class="item-card2-icons-r"><i class="fa fa fa-heart"></i></a>
+                                                                <a href="#" class="item-card2-icons-l"><i class="fa fa-home"></i></a>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="item-card2">
+                                                                    <div class="item-card2-desc">
+                                                                        <p class="text-muted fs-12 mb-1">22 November 2019.</p>
+                                                                        <h4 class="font-weight-semibold">GilkonStar Hotel</h4>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, quis nostrum exercieds ullam corporis suscipit laboriosam</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="footerimg d-flex mt-0 mb-0">
+                                                                    <div class="d-flex footerimg-l mb-0">
+                                                                        <img src="../assets/images/faces/male/19.jpg" alt="image" class="avatar brround  mr-2">
+                                                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Loosiues<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></h5>
+                                                                    </div>
+                                                                    <div class="mt-2 footerimg-r ml-auto">
+                                                                        <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12 col-xl-4">
+                                                        <div class="card overflow-hidden mb-0">
+                                                            <div class="item-card2-img">
+                                                                <a href="widgets.html"></a>
+                                                                <img src="../assets/images/products/products/v1.jpg" alt="img" class="cover-image">
+                                                                <div class="blog--category">AutoMobiles</div>
+                                                            </div>
+                                                            <div class="item-card2-icons">
+                                                                <a href="#" class="item-card2-icons-r"><i class="fa fa fa-heart"></i></a>
+                                                                <a href="#" class="item-card2-icons-l"><i class="fa fa-car"></i></a>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="item-card2">
+                                                                    <div class="item-card2-desc">
+                                                                        <p class="text-muted fs-12 mb-1">22 November 2019.</p>
+                                                                        <h4 class="font-weight-semibold">Seep Automobiles</h4>
+                                                                        <p class="mb-0">Lorem ipsum dolor sit amet, quis nostrum exercieds ullam corporis suscipit laboriosam</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <div class="footerimg d-flex mt-0 mb-0">
+                                                                    <div class="d-flex footerimg-l mb-0">
+                                                                        <img src="../assets/images/faces/female/18.jpg" alt="image" class="avatar brround  mr-2">
+                                                                        <h5 class="time-title text-muted p-0 leading-normal mt-2 mb-0">Lilly Wisely<i class="icon icon-check text-success fs-12 ml-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="verified"></i></h5>
+                                                                    </div>
+                                                                    <div class="mt-2 footerimg-r ml-auto">
+                                                                        <a href="business.html" class="text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Wishlist"><i class="fa fa-heart"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
                                             </div>
 
 

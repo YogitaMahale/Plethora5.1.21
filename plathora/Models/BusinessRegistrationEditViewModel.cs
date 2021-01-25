@@ -25,5 +25,7 @@ namespace plathora.Models
         [Display(Name = "Image")]
         public IFormFile photo { get; set; }
         public string photo1 { get; set; }
+        [Display(Name = "Active")]
+        public Boolean isactive { get; set; }
     }
 }

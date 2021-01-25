@@ -30,6 +30,7 @@
                                         <th>Business Name</th>
                                         <th>Icon</th>
                                         <th>Image</th>
+                                        <th>Active</th>
                                         <th class="text-warning">Actions</th>
 
                                     </tr>
@@ -68,7 +69,19 @@
                                                 <img src="@item.photo" style="width:150px;height:100px;" alt="img">
                                             }
                                         </td>
+                                        <td>
+                                            @*@if(item.photo)
+                                            {
 
+
+                                            }
+                                            else
+                                            {
+
+                                            }*@
+                                            <input type="checkbox"  checked="@item.isactive">
+                                             
+                                        </td>
                                         <td>
                                             <a class="btn btn-primary btn-sm mb-1" data-toggle="tooltip" data-original-title="View" asp-action="Edit" asp-route-id="@item.id">  <i class="fa fa-edit"></i> </a>
                                             <a class="btn btn-danger btn-sm text-white mb-1" data-toggle="tooltip" data-original-title="Delete" asp-action="Delete" asp-route-id="@item.id"><i class="fa fa-trash-o"></i></a><br>

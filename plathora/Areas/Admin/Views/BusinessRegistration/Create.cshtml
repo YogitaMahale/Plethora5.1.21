@@ -41,6 +41,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <div class="form-group">
@@ -60,6 +61,18 @@
                                             <input asp-for="photo" type="file" value="Upload" />
                                             <span asp-validation-for="photo" class="text-danger"></span>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="isactive"></label>
+                                        @*<input  type="checkbox" checked="" asp-for="isactive"  >*@
+                                        <input type="checkbox" asp-for="isactive"   checked="@Model.isactive">
+
+                                        <span asp-validation-for="isactive" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>

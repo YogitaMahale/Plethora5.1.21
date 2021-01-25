@@ -56,7 +56,8 @@ namespace plathora.Controllers
             return View("test");
 
         }
-        
+      
+
         public JsonResult getstatebyid(int id)
         {
 
@@ -74,6 +75,7 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            // ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
             // ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
             ViewBag.Countries = _CountryRegistrationservices.GetAll().ToList();
           //  ViewBag.StateEnabled = false;

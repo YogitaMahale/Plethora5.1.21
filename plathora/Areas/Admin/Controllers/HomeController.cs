@@ -115,6 +115,15 @@ namespace plathora.Controllers
             TempData.Keep("userName");
             TempData.Keep("profilephoto");
         }
+
+        public JsonResult getCity(int id)
+        {
+
+            IList<CityRegistration> obj = _cityRegistrationservices.GetAll().ToList();
+            obj.Insert(0, new CityRegistration { id = 0, cityName = "select", isactive = false, isdeleted = false });
+            return Json(new SelectList(obj, "id", "cityName"));
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -127,8 +136,8 @@ namespace plathora.Controllers
 
 
 
-                IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
-                ViewData["cities"] = cities;
+                //IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
+                //ViewData["cities"] = cities;
                 frontwebsiteModel objmodel = new frontwebsiteModel();
                 var parameter = new DynamicParameters();
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
@@ -141,11 +150,20 @@ namespace plathora.Controllers
                     photo = x.photo
 
                 }).ToList();
-                 
 
-              
-               
-                 
+                objmodel.objBusineesActive = _BusinessRegistrationServieces.GetAll().Where(x=>x.isactive==true).Select(x => new BusinessRegistrationIndexViewModel
+                {
+                    id = x.id,
+                    sectorid = x.sectorid,
+                    name = x.name,
+                    
+                    img = x.img,
+                    photo = x.photo
+
+                }).ToList();
+
+
+
                 //objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(15).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                 //{
                 //    id = x.id,

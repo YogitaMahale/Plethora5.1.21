@@ -39,7 +39,8 @@ namespace plathora.Controllers
                 name = x.name,
                 SectorRegistration = _SectorRegistrationServices.GetById(x.sectorid),
                 img=x.img,
-                photo=x.photo
+                photo=x.photo,
+                isactive=x.isactive
 
             }).ToList();
             return View(statedetails);
@@ -66,7 +67,7 @@ namespace plathora.Controllers
                     sectorid = model.sectorid,
                     name = model.name,
                     isdeleted = false,
-                    isactive = false
+                    isactive = model.isactive
                 };
                 if (model.img != null && model.img.Length > 0)
                 {
@@ -116,7 +117,8 @@ namespace plathora.Controllers
                 sectorid = objbusiness.sectorid ,
                 name = objbusiness.name ,
                 img1 = objbusiness.img,
-                photo1 = objbusiness.photo
+                photo1 = objbusiness.photo,
+                isactive=objbusiness.isactive
 
             };
             return View(model);
@@ -137,6 +139,7 @@ namespace plathora.Controllers
                 objbusiness.id = model.id;
                 objbusiness.sectorid = model.sectorid;
                 objbusiness.name = model.name;
+                objbusiness.isactive = model.isactive;
 
                 if (model.img != null && model.img.Length > 0)
                 {

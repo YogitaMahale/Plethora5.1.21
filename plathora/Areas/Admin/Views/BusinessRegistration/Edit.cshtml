@@ -87,6 +87,18 @@
                                 </div>
 
                             </div>
+
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" asp-for="isactive"></label>
+                                        <input type="checkbox" asp-for="isactive"    checked="@Model.isactive">
+                                        
+                                        <span asp-validation-for="isactive" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
                             <button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>
                             <a asp-action="index" class="btn btn-rounded btn-info float-right"><i class="fa fa-backward" style="margin-right:0.7em"></i>Back</a>
 

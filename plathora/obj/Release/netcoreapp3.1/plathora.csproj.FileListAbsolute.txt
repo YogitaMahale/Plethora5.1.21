@@ -3781,8 +3781,6 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\mul
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\bin\Release\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy (2).cshtml.g.cs
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_front - Copy (2).cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\packages\Microsoft.AspNet.WebApi.HelpPage.5.2.7\Content\Areas\HelpPage\Views\Web.config
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.exe.config
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\vbc.exe.config
@@ -4166,6 +4164,8 @@ E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\ja\Microsoft.CodeAn
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
@@ -4267,11 +4267,13 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\V
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\BusinessListing.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\editBusiness.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\Profile.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\promoteBusiness.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Create.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Edit.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Index.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\about.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Advertising.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\BusinessListing.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\Index.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\business - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\business.cshtml.g.cs
@@ -4279,7 +4281,9 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\V
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails1.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\BusinessListing.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CalcualteCommission.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Category.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CommissionCal.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\ContactUs.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy (2).cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy.cshtml.g.cs
@@ -4289,6 +4293,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\V
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\PrivacyPolicy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\productDetails.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\TermsandConditions.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\testt.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Membership\Create.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Membership\Edit.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Membership\Index.cshtml.g.cs
@@ -4417,8 +4422,3 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\staticwebassets\pla
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\testt.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CalcualteCommission.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CommissionCal.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\BusinessListing.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Customerprofile\promoteBusiness.cshtml.g.cs
