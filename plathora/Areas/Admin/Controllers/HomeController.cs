@@ -139,13 +139,10 @@ namespace plathora.Controllers
             try
             {
 
-               
-
-
-
 
                 //IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
                 //ViewData["cities"] = cities;
+
                 frontwebsiteModel objmodel = new frontwebsiteModel();
                 var parameter = new DynamicParameters();
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
@@ -1015,6 +1012,23 @@ namespace plathora.Controllers
 
         }
 
+        //[HttpGet]
+        //public IEnumerable<getAdvertisementSliderImagebySectorandCity> AdvertiseSliderbyBusinessIdandCity(int businessid, int cityId)
+        //{
+
+
+             
+        //    var parameter = new DynamicParameters();
+        //    parameter.Add("@businessid", businessid);
+        //    parameter.Add("@cityIds", cityId);
+           
+
+        //    IEnumerable<getAdvertisementSliderImagebySectorandCity> objSlider = _sP_Call.List<getAdvertisementSliderImagebySectorandCity>("getAdvertiseSliderImagesbyBusinessIdandCityId", parameter);
+
+        //    return objSlider;
+
+        //}
+
 
         public IActionResult BusinessListing(int businessid,int productid )
         {
@@ -1049,6 +1063,19 @@ namespace plathora.Controllers
 
                 obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTestCount", parameter);
                 ViewBag.RecordCount = obj.objgetBusinessAllInfo.Count();
+
+                //-------slider----
+                if(TempData["TempdataCity"]!=null)
+                {
+                    var parameter1 = new DynamicParameters();
+                    parameter1.Add("@businessid", businessid);
+                    parameter1.Add("@cityIds", TempData["TempdataCity"].ToString());
+
+                    obj.objSlider = _sP_Call.List<getAdvertisementSliderImagebySectorandCity>("getAdvertiseSliderImagesbyBusinessIdandCityId", parameter1);
+
+                }
+
+
 
             }
             catch (Exception objmsg)

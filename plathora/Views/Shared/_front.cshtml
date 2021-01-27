@@ -404,52 +404,61 @@
                         </a>*@
                 </div>
                 <div class="Search">
-                    
 
-                         
-                                     
-                                    @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
+
+
+
+                    @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
                     {
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                                            <div class="search-background py-3 px-4">
-                                                <div class="form row row-sm">
+                    <div class="row">
 
-                                                    @{
-                                                        var cityid = TempData["TempdataCity"].ToString();
-                                                        var cityid1 = TempData["TempdataCity"].ToString();
-                                                        TempData.Keep("TempdataCity");
-                                                    }
+                       
+
+                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                            <div class="search-background py-3 px-4">
+                                <div class="form row row-sm">
+
+                                    @{
+                                        @if (TempData["TempdataCity"] != null)
+                                        {
+                                            var cityid = TempData["TempdataCity"].ToString();
+                                            var cityid1 = TempData["TempdataCity"].ToString();
+                                            TempData.Keep("TempdataCity");
+                                        }
+
+                                    }
 
 
-                                                    
-                                                    <div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
-                                                        @*@Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })*@
-                                                        <select name="cityid" id="cityid"    class="form-control"
-                                                                asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+
+                                    <div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
+                                        @*@Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })*@
+                                        <select name="cityid" id="cityid" class="form-control"
+                                                asp-items="@(new SelectList(String.Empty,"id","cityName"))">
 
 
-                                                            <option>--- Select  ---</option>
-                                                        </select>
+                                            <option>--- Select  ---</option>
+                                        </select>
 
-                                                    </div>
-                                                    <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
-                                                        <input id="txtsearch" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
-                                                    </div>
-                                                    <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
-                                                        <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
-
-                                                         
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
+                                    <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
+                                        <input id="txtsearch" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
+                                    </div>
+                                    <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
+                                        <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
                     }
 
-                               
-                   
+
+
                 </div>
                 <!--Nav-->
                 <nav class="horizontalMenu clearfix d-md-flex">
@@ -472,11 +481,11 @@
 
                             @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
                             @*<li class="nav-item">
-                <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-            </li>*@
+                                    <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                                </li>*@
                             @*<script type="text/javascript">
-                alert("login");
-            </script>*@
+                                    alert("login");
+                                </script>*@
 
                             string userName = TempData["userName"].ToString();
                             string profilephoto = TempData["profilephoto"].ToString();
@@ -524,11 +533,11 @@
 
                             @*<li>
 
-                <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
-                    Register
+                                    <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
+                                        Register
 
-                </button>
-            </li>*@
+                                    </button>
+                                </li>*@
 
                             <li>
                                 <button id="btnShowModal" class="btn btn-secondary mb-0" data-toggle="modal" data-target="#loginModal">
@@ -755,7 +764,7 @@
     <script src="~/Bizdire/LTR/assets/js/custom.js"></script>
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js">
 
-    </script>*@
+        </script>*@
     @*<script src="~/Bizdire/LTR/assets/js/sweet-alert.js"></script>*@
 
 </body>
@@ -859,8 +868,6 @@ get OTP NO -->
 </div>
 
 <!--            -->
-
-
 @*<script src="bootstrap/js/bootstrap.min.js"></script>*@
 @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
 <script type="text/javascript">
@@ -992,14 +999,31 @@ get OTP NO -->
                     $("#cityid").empty();
                     $.each(data, function (i, row) {
 
-                        item += "<option value='" + row.value + "'>" + row.text + "  </option > ";
+                            //item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
+                        if (@TempData["TempdataCity"] != null) {
+                            if (row.value == @TempData["TempdataCity"].ToString()) {
+                                
+                                item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
+                            }
+                            else {
+                                 
+                                item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
+                            }
+                             
+                          }
                        // alert(row);
                     });
                     $("#cityid").html(item);
                 }
         )
-        var selectedcity = @Html.Raw(TempData["TempdataCity"]);
-        alert(selectedcity);
+
+
+       // var selectedcity = @Html.Raw(TempData["TempdataCity"]);
+               @*if (@TempData["TempdataCity"] != null) {
+                  // alert(@TempData["TempdataCity"].ToString());
+               }*@
+
+
       //  $("#cityid").val(selectedcity);
     }
 

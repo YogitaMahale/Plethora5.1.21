@@ -393,8 +393,11 @@ namespace plathora.API
 
             advertisementInfo obj = new advertisementInfo();
             obj.id = 0;
-            //obj.customerId = model.customerId;
-          //  obj.cusotmerid = model.cusotmerid;
+            obj.businessid = model.businessid;
+            obj.sectorId = model.sectorId;
+            obj.cityIds = model.cityIds;
+
+            //--------------
             obj.advertiseid = model.advertiseid;
             obj.startdate = model.startdate;
             obj.title = model.title;
@@ -426,23 +429,23 @@ namespace plathora.API
                 System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image1));
                 obj.image1 = "/uploads/advertisementInfo/" + filename;
             }
-            if (model.image2 == null || model.image2 == string.Empty)
-            {
-                obj.image2 = "";
+            //if (model.image2 == null || model.image2 == string.Empty)
+            //{
+            //    obj.image2 = "";
 
-            }
-            else
-            {
-                string filename = Guid.NewGuid().ToString();
-                filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
-                var folderpath = _hostEnvironment.WebRootPath + @"\uploads\advertisementInfo";
-                if (!System.IO.Directory.Exists(folderpath))
-                {
-                    System.IO.Directory.CreateDirectory(folderpath);
-                }
-                System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image2));
-                obj.image2 = "/uploads/advertisementInfo/" + filename;
-            }
+            //}
+            //else
+            //{
+            //    string filename = Guid.NewGuid().ToString();
+            //    filename = DateTime.UtcNow.ToString("yymmssfff") + filename + ".jpg";
+            //    var folderpath = _hostEnvironment.WebRootPath + @"\uploads\advertisementInfo";
+            //    if (!System.IO.Directory.Exists(folderpath))
+            //    {
+            //        System.IO.Directory.CreateDirectory(folderpath);
+            //    }
+            //    System.IO.File.WriteAllBytes(Path.Combine(folderpath, filename), Convert.FromBase64String(model.image2));
+            //    obj.image2 = "/uploads/advertisementInfo/" + filename;
+            //}
 
           
 
