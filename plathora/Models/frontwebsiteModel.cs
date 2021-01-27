@@ -22,5 +22,7 @@ namespace plathora.Models
         public IEnumerable<search_BusinessOwnerRegistrationDtos> objsearch_BusinessOwnerRegistrationDtos { get; set; }
 
         public IEnumerable<BusinessRegistrationIndexViewModel> objBusineesActive { get; set; }
+        public IEnumerable<sliderIndexViewModel> objmainSlider { get; set; }
+
     }
 }

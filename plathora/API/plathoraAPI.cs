@@ -1492,5 +1492,43 @@ namespace plathora.API
             }
 
         }
+
+
+        [HttpGet]
+        [Route("BusinessDetailsbyCustomerId")]
+        public async Task<IActionResult> BusinessDetailsbyCustomerId(string customerId)
+        {
+            try
+            {
+
+
+                var parameter = new DynamicParameters();
+                parameter.Add("@CustomerId", customerId);
+                IEnumerable<getbusinessListbyCustomerIdViewModel> businessList = _sP_Call.List<getbusinessListbyCustomerIdViewModel>("getbusinessListbyCustomerId", parameter);
+
+                if (businessList == null)
+                {
+
+                    string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                    return NotFound(myJson);
+                }
+                else
+                {
+
+                    return Ok(businessList);
+                }
+
+
+            }
+            catch (Exception obj)
+            {
+                string myJson = "{\"Message\": " + "\"Bad Request\"" + "}";
+                return BadRequest(myJson);
+
+            }
+
+        }
+
+
     }
 }

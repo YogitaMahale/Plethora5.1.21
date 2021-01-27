@@ -711,7 +711,10 @@ namespace plathora.API
 
     }
 
-    [HttpGet]
+
+     
+
+        [HttpGet]
     [Route("getLeadListbyCustomerid")]
     public async Task<IActionResult> getLeadListbyCustomerid(string  customerid)
     {
@@ -795,6 +798,10 @@ namespace plathora.API
         }
 
     }
+
+
+    
+
 }
 
 /*

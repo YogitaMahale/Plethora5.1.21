@@ -53,7 +53,8 @@ namespace plathora.Controllers
         private readonly IBusinessContactUsservices _businessContactUsservices;
         private readonly IEmailSender _emailSender;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices, IBusinessContactUsservices businessContactUsservices, IEmailSender emailSender, IWebHostEnvironment hostingEnvironment)//, UserManager<ApplicationUser> usermanager
+        private readonly IsliderServices _sliderServices;
+        public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices, IBusinessContactUsservices businessContactUsservices, IEmailSender emailSender, IWebHostEnvironment hostingEnvironment, IsliderServices sliderServices)//, UserManager<ApplicationUser> usermanager
         {
             //_logger = logger;
             _sP_Call = sP_Call;
@@ -73,6 +74,7 @@ namespace plathora.Controllers
             _businessContactUsservices = businessContactUsservices;
             _emailSender = emailSender;
             _hostingEnvironment = hostingEnvironment;
+            _sliderServices = sliderServices;
         }
       
         public void LoginUserDetails()
@@ -139,7 +141,8 @@ namespace plathora.Controllers
             try
             {
 
-
+                TempData["TempdataCity"] = 0;
+                TempData.Keep("TempdataCity");
                 //IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
                 //ViewData["cities"] = cities;
 
@@ -190,7 +193,15 @@ namespace plathora.Controllers
                     createddate = x.createddate
 
                 }).ToList();
-               // ViewBag.sectorListt = objmodel.objSectorRegistration.ToList();
+
+                objmodel.objmainSlider = _sliderServices.GetAll().Where(x => x.isdeleted == false).Select(x => new sliderIndexViewModel
+                {
+                    id = x.id
+                  ,
+                    name = x.name
+
+                }).ToList();
+                // ViewBag.sectorListt = objmodel.objSectorRegistration.ToList();
                 //ViewBag.StockList = JsonConvert.SerializeObject(objmodel.objSectorRegistration);
                 return View(objmodel);
             }
