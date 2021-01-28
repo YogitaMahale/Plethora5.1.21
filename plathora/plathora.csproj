@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Admin\Views\Home\back\**" />
+    <Content Remove="Areas\Admin\Views\Home\back\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Home\back\**" />
+    <None Remove="Areas\Admin\Views\Home\back\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Areas\Admin\Controllers\BusinessOwnerController.cs" />
     <Compile Remove="Areas\Identity\Pages\Account\EditRegister.cshtml.cs" />
     <Compile Remove="Controllers\CustomerAPIController.cs" />
@@ -14,6 +21,7 @@
 
   <ItemGroup>
     <Content Remove="Areas\Admin\Views\Home\BusinessList.cshtml" />
+    <Content Remove="Areas\Admin\Views\Home\Indexmain.cshtml" />
     <Content Remove="Areas\Admin\Views\User\Edit1.cshtml" />
     <Content Remove="Areas\Identity\Pages\Account\EditRegister.cshtml" />
   </ItemGroup>

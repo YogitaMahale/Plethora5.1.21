@@ -239,8 +239,9 @@ namespace plathora.Controllers
                 frontwebsiteModel objmodel = new frontwebsiteModel();
                 var parameter = new DynamicParameters();
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-                
-                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(15).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+
+                //objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(15).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
                 {
                     id = x.id,
                     name = x.name,
@@ -259,17 +260,7 @@ namespace plathora.Controllers
                     photo = x.photo
 
                 }).ToList();
-
-
-
-                //objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Take(15).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
-                //{
-                //    id = x.id,
-                //    name = x.name,
-                //    img = x.img,
-                //    photo = x.photo
-
-                //}).ToList();
+                             
 
                 objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).OrderByDescending(x => x.id).Select(x => new NewIndexViewModel
                 {
@@ -309,34 +300,19 @@ namespace plathora.Controllers
             {
                 IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
                 ViewData["cities"] = cities;
-                //ViewBag.cities = _cityRegistrationservices.GetAll().Where(x => x.isdeleted == false).ToList();
+               
                 ViewBag.search = txtsearch;
                 frontwebsiteModel objmodel = new frontwebsiteModel();
-                //  ViewBag.search = txtsearch;                var parameter = new DynamicParameters();
-                //IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+                {
+                    id = x.id,
+                    name = x.name,
+                    img = x.img,
+                    photo = x.photo
+
+                }).ToList();
                 objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-                //if (txtsearch == null || txtsearch.Trim() == "")
-                //{
-                //    objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().OrderByDescending(x => x.id).Where(x => x.isdeleted == false).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
-                //    {
-                //        id = x.id,
-                //        name = x.name,
-                //        img = x.img,
-                //        photo = x.photo
-
-                //    }).ToList();
-                //}
-                //else
-                //{
-                //    objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Where(x => x.name.Contains(txtsearch) && x.isdeleted == false).Select(x => new plathora.Models.SectorRegistrationIndexViewModel
-                //    {
-                //        id = x.id,
-                //        name = x.name,
-                //        img = x.img,
-                //        photo = x.photo
-
-                //    }).ToList();
-                //}
+               
                 objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).Select(x => new NewIndexViewModel
                 {
                     id = x.id,
@@ -349,7 +325,26 @@ namespace plathora.Controllers
                     createddate = x.createddate
 
                 });
+                objmodel.objmainSlider = _sliderServices.GetAll().Where(x => x.isdeleted == false).Select(x => new sliderIndexViewModel
+                {
+                    id = x.id
+               ,
+                    name = x.name
+
+                }).ToList();
+                objmodel.objBusineesActive = _BusinessRegistrationServieces.GetAll().Where(x => x.isactive == true).Select(x => new BusinessRegistrationIndexViewModel
+                {
+                    id = x.id,
+                    sectorid = x.sectorid,
+                    name = x.name,
+
+                    img = x.img,
+                    photo = x.photo
+
+                }).ToList();
                 //------------------------------------------------------------------------------------
+                #region //search Code
+                /*
                 DataSet ds = new DataSet();
 
                 string connString = this.Configuration.GetConnectionString("DefaultConnection");
@@ -445,45 +440,7 @@ namespace plathora.Controllers
                                 });
 
 
-                                //objmodel.SearchModelType = "businessowner".ToString().ToLower().Trim();
-                                ////public IEnumerable<search_BusinessOwnerRegistrationDtos> objsearch_BusinessOwnerRegistrationDtos { get; set; }
-                                //objmodel.objsearch_BusinessOwnerRegistrationDtos = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessOwnerRegistrationDtos
-                                //{
-                                //    id = Convert.ToString(row["id"].ToString()),
-                                //    name = Convert.ToString(row["name"].ToString()),
-                                //    profilephoto = row["profilephoto"].ToString(),
-                                //    mobileno1 = row["mobileno1"].ToString(),
-                                //    mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
-                                //    emailid1 = Convert.ToString(row["emailid1"].ToString()),
-                                //    emailid2 = row["emailid2"].ToString(),
-                                //    adharcardno = row["adharcardno"].ToString(),
-                                //    adharcardphoto = Convert.ToString(row["adharcardphoto"].ToString()),
-                                //    pancardno = Convert.ToString(row["pancardno"].ToString()),
-                                //    pancardphoto = row["pancardphoto"].ToString(),
-                                //    gender = row["gender"].ToString(),
-                                //    DOB = Convert.ToDateTime(row["DOB"].ToString()),
-                                //    house = Convert.ToString(row["house"].ToString()),
-                                //    landmark = row["landmark"].ToString(),
-                                //    street = row["street"].ToString(),
-
-                                //    cityid = row["cityid"].ToString(),
-                                //    zipcode = row["zipcode"].ToString(),
-                                //    latitude = Convert.ToString(row["latitude"].ToString()),
-                                //    longitude = Convert.ToString(row["longitude"].ToString()),
-                                //    companyName = row["companyName"].ToString(),
-                                //    designation = row["designation"].ToString(),
-                                //    gstno = Convert.ToString(row["gstno"].ToString()),
-                                //    Website = Convert.ToString(row["Website"].ToString()),
-                                //    Regcertificate = row["Regcertificate"].ToString(),
-                                //    businessid = row["businessid"].ToString(),
-                                //    productid = Convert.ToString(row["productid"].ToString()),
-                                //    lic = row["lic"].ToString(),
-                                //    registerbyAffilateID = row["registerbyAffilateID"].ToString(),
-
-                                //    deviceid = Convert.ToString(row["deviceid"].ToString()),
-                                //    type = row["type"].ToString(),
-
-                                //});
+                               
 
 
 
@@ -512,7 +469,8 @@ namespace plathora.Controllers
                 }
                 finally { con.Close(); }
 
-
+                */
+                #endregion 
                 //--------------------------------------------------------------------------------------
                 return View(objmodel);
             }
@@ -521,27 +479,31 @@ namespace plathora.Controllers
 
             }
             return View();
-            //try
-            //{
-            //    ViewBag.search = txtsearch;
-
-            //    var parameter = new DynamicParameters();
-            //    //  parameter.Add("@businessid", businessid);
-            //    // var obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null );
-            //    IEnumerable<selectallBusinessDetailsDtos> obj = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-
-            //    return View(obj);
-
-
-            //}
-            //catch (Exception obj)
-            //{
-
-            //}
-            //return View();
+           
         }
         //private Task<IdentityUser> GetCurrentUserAsync() =>  _usermanager.GetUserAsync(this.User);
-        
+
+
+        [HttpGet]
+        public IEnumerable<getBusinessAllInfo> BusinessListingByCityandSearchText(int cityId, string searchtext, int pageno)
+        {
+
+
+             
+            var parameter = new DynamicParameters();
+            parameter.Add("@searchkeyword", searchtext);
+            parameter.Add("@cityid", cityId);
+            parameter.Add("@Latitude", 0);
+            parameter.Add("@Longitude", 0);            
+            parameter.Add("@pageno", pageno);
+           // IEnumerable<getBusinessAllInfo> objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
+             IEnumerable<getBusinessAllInfo> objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("searchqueryFrontWebsite", parameter);
+
+            return objgetBusinessAllInfo;
+
+        }
+
+
         [HttpPost]
         public async Task<string> AddReview(string rating, int bussinessid, string review)
         {
@@ -1033,63 +995,7 @@ namespace plathora.Controllers
             return View();
         }
 
-        //private void AddDetails(EmpModel obj)
-        //{
-        //    connection();
-        //    SqlCommand com = new SqlCommand("AddEmp", con);
-        //    com.CommandType = CommandType.StoredProcedure;
-        //    com.Parameters.AddWithValue("@Name", obj.Name);
-        //    com.Parameters.AddWithValue("@City", obj.City);
-        //    com.Parameters.AddWithValue("@Address", obj.Address);
-        //    con.Open();
-        //    com.ExecuteNonQuery();
-        //    con.Close();
-
-        //}
-
-
-        //public IActionResult BusinessListing(int productid)
-        //{
-        //   // LoginUserDetails();
-        //    BusinessListingViewModel obj = new BusinessListingViewModel();
-
-
-        //    try
-        //    {
-        //        int businessid = _productMasterServices.GetById(productid).businessid;
-        //        obj.objProductIndexViewModel = _productMasterServices.GetAll().Where(x=>x.businessid==businessid).Select(x => new ProductIndexViewModel
-        //        {
-
-
-        //            id = x.id,
-        //            //sectorid = x.se,
-        //            businessid = x.businessid,
-        //            productName = x.productName,
-        //            // BusinessRegistration = _BusinessRegistrationServiecess.GetById(x.businessid),
-        //            // SectorRegistration = _SectorRegistrationServices.GetById(_BusinessRegistrationServiecess.GetById(x.businessid).sectorid),
-        //            img = x.img
-
-        //        }).ToList();
-        //        var parameter = new DynamicParameters();
-        //        parameter.Add("@productid", productid);
-        //        // parameter.Add("@productid", 4);
-
-        //        //   obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductId", parameter);
-
-        //        obj.objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
-
-        //    }
-        //    catch(Exception objmsg)
-        //    {
-        //        string p = objmsg.Message;
-        //    }
-
-
-
-
-        //    return View(obj);
-        //    //return View();
-        //}
+         
         [HttpGet]
         public IEnumerable<getBusinessAllInfo> BusinessListingGetALL(int  businessid, int productidd,int pageno)
         {
