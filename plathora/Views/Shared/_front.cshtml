@@ -47,6 +47,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <link href="~/css/custom-style.css" rel="stylesheet" />
 
+
+    @*/Multiple select dropwdon/*@
+    <link rel="stylesheet" href="~/dropdownselect/docsupport/style.css">
+    <link rel="stylesheet" href="~/dropdownselect/docsupport/prism.css">
+    <link rel="stylesheet" href="~/dropdownselect/chosen.css">
+
+
+
     <style>
 
         .modelheader {
@@ -358,9 +366,9 @@
 
                 @*
 
-             <div class="horizontal-main bg-white  clearfix">
+                         <div class="horizontal-main bg-white  clearfix">
 
-        <div class="horizontal-mainwrapper container clearfix">
+                    <div class="horizontal-mainwrapper container clearfix">
                 *@
                 <div class="desktoplogo">
                     <a href="#">
@@ -376,57 +384,60 @@
 
                 </div>
 
-                
+
                 <div class="Search">
 
 
                     @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
                     {
-                    <div class="row">
+                        <div class="row">
 
 
 
-                        <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
-                            <div class="search-background py-3 px-4">
-                                <div class="form row row-sm">
+                            <div class="col-xl-10 col-lg-12 col-md-12 d-block mx-auto">
+                                <div class="search-background py-3 px-4">
+                                    <div class="form row row-sm">
 
-                                    @{
-                                        @if (TempData["TempdataCity"] != null)
-                                        {
-                                            var cityid = TempData["TempdataCity"].ToString();
-                                            var cityid1 = TempData["TempdataCity"].ToString();
-                                            TempData.Keep("TempdataCity");
+                                        @{
+                                            @if (TempData["TempdataCity"] != null)
+                                            {
+                                                var cityid = TempData["TempdataCity"].ToString();
+                                                var cityid1 = TempData["TempdataCity"].ToString();
+                                                TempData.Keep("TempdataCity");
+                                            }
+
                                         }
 
-                                    }
 
 
+                                        <div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
+                                            @*@Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })*@
+                                            <select name="cityid" id="cityid" class="form-control"
+                asp-items="@(new SelectList(String.Empty,"id","cityName"))">
 
-                                    <div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
-                                        @*@Html.DropDownList("cityid", (IEnumerable<SelectListItem>)ViewData["cities"], new { @class = "form-control input-lg keywords-input border-white" })*@
-                                        <select name="cityid" id="cityid" class="form-control"
-                                                asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+
+            <option>--- Select  ---</option>
+        </select>
+
+                                             
+
+                                           
+                                        </div>
+                                        <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
+                                            <input id="txtsearch" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
+                                        </div>
+                                        <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
+                                            <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
 
 
-                                            <option>--- Select  ---</option>
-                                        </select>
+                                        </div>
 
                                     </div>
-                                    <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
-                                        <input id="txtsearch" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
-                                        <button id="btnSearch" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
-
-
-                                    </div>
-
                                 </div>
                             </div>
+
+
                         </div>
-
-
-                    </div>
                     }
 
 
@@ -437,7 +448,7 @@
                 <!--Nav-->
                 <nav class="horizontalMenu clearfix d-md-flex">
                     <ul class="horizontalMenu-list">
-                       
+
                         <li><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home </a></li>
                         @*<li><a asp-area="Admin" asp-controller="Home" asp-action="about">About Us </a></li>*@
                         @*<li><a asp-area="Admin" asp-controller="Home" asp-action="Category">Category </a></li>*@
@@ -447,20 +458,20 @@
 
                         @if (SignInManager.IsSignedIn(User))
                         {
-                        <script>
+                            <script>
                                         userAuthorized = true;
 
                             localStorage.setItem("mobileno", @User.Identity.Name);
                             @*@User.Identity.Name*@
-                        </script>
+                            </script>
 
-                        @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
-                        @*<li class="nav-item">
-                    <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-                </li>*@
-                        @*<script type="text/javascript">
-                    alert("login");
-                </script>*@
+                            @*<input type="button" value="Create" onclick="javascript:myFunction()" />*@
+                            @*<li class="nav-item">
+                                    <a class="nav-link text-primary" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+                                </li>*@
+                            @*<script type="text/javascript">
+                                    alert("login");
+                                </script>*@
 
                             string userName = TempData["userName"].ToString();
                             string profilephoto = TempData["profilephoto"].ToString();
@@ -468,58 +479,58 @@
                             TempData.Keep("userName");
                             TempData.Keep("profilephoto");
 
-                        <li><a asp-area="Admin" asp-controller="Customerprofile" asp-action="promoteBusiness">Advertising </a></li>
-                        <li class="dropdown">
-                            <a href="#" class="text-dark" data-toggle="dropdown">
+                            <li><a asp-area="Admin" asp-controller="Customerprofile" asp-action="promoteBusiness">Advertising </a></li>
+                            <li class="dropdown">
+                                <a href="#" class="text-dark" data-toggle="dropdown">
 
-                                <img src="@profilephoto" style="width:30px;height:25px;">
-                                <span> Hello @userName  </span>
+                                    <img src="@profilephoto" style="width:30px;height:25px;">
+                                    <span> Hello @userName  </span>
 
 
 
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
-                                    &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a asp-area="Admin" asp-controller="Customerprofile" asp-action="Profile">
+                                        &nbsp; &nbsp; <i class="dropdown-icon icon icon-user"></i> My Profile
+                                    </a>
 
-                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
 
 
 
-                                    <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
-                                </form>
+                                        <button type="submit" class="nav-link btn btn-link text-primary"><i class="dropdown-icon  icon icon-settings"></i>Logout</button>
+                                    </form>
 
-                            </div>
-                        </li>
+                                </div>
+                            </li>
 
                         }
                         else
                         {
-                        <script>
-                            userAuthorized = false;
-                            localStorage.setItem("mobileno", "");
-                        </script>
+                            <script>
+                                userAuthorized = false;
+                                localStorage.setItem("mobileno", "");
+                            </script>
 
 
 
 
 
 
-                        @*<li>
+                            @*<li>
 
-                    <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
-                        Register
+                                    <button id="btnShowModal" class="btn btn-secondary btn-sm mt-4" data-toggle="modal" data-target="#loginModal">
+                                        Register
 
-                    </button>
-                </li>*@
+                                    </button>
+                                </li>*@
 
-                        <li>
-                            <button id="btnShowModal" class="btn btn-secondary mb-0" data-toggle="modal" data-target="#loginModal">
-                                Login
-                            </button>
+                            <li>
+                                <button id="btnShowModal" class="btn btn-secondary mb-0" data-toggle="modal" data-target="#loginModal">
+                                    Login
+                                </button>
 
-                        </li>
+                            </li>
 
                         }
 
@@ -531,8 +542,8 @@
 
 
                         @*<li class="mt-2 d-none d-lg-flex">
-                    <span><a class="btn btn-secondary ad-post" href="#"><i class="fa fa-plus text-white"></i> Add Listing</a></span>
-                </li>*@
+                                <span><a class="btn btn-secondary ad-post" href="#"><i class="fa fa-plus text-white"></i> Add Listing</a></span>
+                            </li>*@
                     </ul>
                 </nav>
                 <!--Nav-->
@@ -742,6 +753,14 @@
         </script>*@
     @*<script src="~/Bizdire/LTR/assets/js/sweet-alert.js"></script>*@
 
+
+    @*multiple select dropdown*@
+
+    @*<script src="~/dropdownselect/docsupport/jquery-3.2.1.min.js" type="text/javascript"></script>*@
+    <script src="~/dropdownselect/chosen.jquery.js" type="text/javascript"></script>
+    <script src="~/dropdownselect/docsupport/prism.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/dropdownselect/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
+
 </body>
 </html>
 @*<html>
@@ -852,7 +871,7 @@ get OTP NO -->
 
 
     $(document).ready(function () {
-        loadCity();
+      loadCity();
 
        // $("#loginModal").modal('show');
             $("#btnShowModal").click(function () {
@@ -972,6 +991,7 @@ get OTP NO -->
                 //   console.log(data);
                     var item = '';
                     $("#cityid").empty();
+
                     $.each(data, function (i, row) {
 
                             //item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
@@ -980,6 +1000,7 @@ get OTP NO -->
 
                         }
                         else {
+
                               if (row.value == @TempData["TempdataCity"].ToString()) {
 
                                 item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
@@ -991,6 +1012,7 @@ get OTP NO -->
                         }
                        // alert(row);
                     });
+                    console.log(item);
                     $("#cityid").html(item);
                 }
         )
@@ -1025,31 +1047,5 @@ get OTP NO -->
 
 
 
-    //function myFunction() {
-
-
-    //    if (userAuthorized) {
-
-    //         //alert("You\'re in the system");
-    //    }
-    //    else {
-    //        $("#loginModal").modal('show');
-    //        var a = false;
-    //         a = localStorage.getItem('OTPverifiy');
-    //        //alert("dsfsdfsd  " +a);
-    //        if (a === "false") {
-    //           // alert("hide mobile no");
-    //            $("#loginModal").modal('show');
-    //        }
-    //        else {
-    //            $("#loginModal").modal('hide');
-
-    //        }
-
-    //    }
-
-
-
-
-    //}
+    
 </script>

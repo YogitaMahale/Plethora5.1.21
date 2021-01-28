@@ -54,6 +54,7 @@ namespace plathora.Controllers
         private readonly IEmailSender _emailSender;
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IsliderServices _sliderServices;
+        
         public HomeController(ILogger<HomeController> logger, ISP_Call sP_Call, IConfiguration _Configuration, ISectorRegistrationServices SectorRegistrationServices, IBusinessRegistrationServieces BusinessRegistrationServieces, IProductMasterServices productMasterServices, IAboutUsServices aboutUsServices, IContactUsServices ContactUsServices, IbusinessratingsServices businessratingsServices, IBusinessOwnerRegiServices businessOwnerRegiServices, INewsServices newsServices, ApplicationDbContext db, Iratingsservices ratingsservices, UserManager<IdentityUser> usermanager, ICityRegistrationservices cityRegistrationservices, IBusinessContactUsservices businessContactUsservices, IEmailSender emailSender, IWebHostEnvironment hostingEnvironment, IsliderServices sliderServices)//, UserManager<ApplicationUser> usermanager
         {
             //_logger = logger;
@@ -133,6 +134,95 @@ namespace plathora.Controllers
             obj.Insert(0, new CityRegistration { id = 0, cityName = "select", isactive = false, isdeleted = false });
             return Json(new SelectList(obj, "id", "cityName"));
         }
+
+        [HttpPost]
+        public JsonResult AutoCompleteSearchTextBox(string prefix)
+        {
+            IEnumerable<AutocompleteSearchTextbox> obj = null;
+            DataSet ds = new DataSet();
+
+            string connString = this.Configuration.GetConnectionString("DefaultConnection");
+            SqlConnection con = new SqlConnection(connString);
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand();
+                //cmd.CommandText = "searchquery";
+                cmd.CommandText = "searchquery";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@searchkeyword", prefix);              
+
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+               
+                if (ds != null)
+                {
+                    try
+                    {                        
+
+                        if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "sector".ToString().ToLower().Trim())
+                        {
+                            obj = ds.Tables[0].AsEnumerable().Select(row => new AutocompleteSearchTextbox
+                            {                                
+                                searchname = row["name"].ToString()                                
+                            });
+
+                            // public IEnumerable<SectorRegistrationIndexViewModel> objSectorRegistration { get; set; }
+                        }
+                        else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "business".ToString().ToLower().Trim())
+                        {
+                            obj = ds.Tables[0].AsEnumerable().Select(row => new AutocompleteSearchTextbox
+                            {
+                                searchname = row["name"].ToString()
+                            });                          
+
+                        }
+                        else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "product".ToString().ToLower().Trim())
+                        {
+                            obj = ds.Tables[0].AsEnumerable().Select(row => new AutocompleteSearchTextbox
+                            {
+                                searchname = row["productName"].ToString()
+                            });                         
+
+                        }
+                        else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "businessowner".ToString().ToLower().Trim())
+                        {
+                            obj = ds.Tables[0].AsEnumerable().Select(row => new AutocompleteSearchTextbox
+                            {
+                                searchname = row["name"].ToString()
+                            });                            
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    catch (Exception obj1)
+                    {
+                        //objmodel.SearchModelType = "NotFound";
+                    }
+                }
+                else
+                {
+                   // objmodel.SearchModelType = "NotFound";
+                }
+
+            }
+            catch (Exception obj11)
+            {
+                //objmodel.SearchModelType = "Record Not Found";
+                //string myJson2 = "{\"Message\": " + "\"Not Found\"" + "}";
+                //return NotFound(myJson2);
+            }
+            finally { con.Close(); }
+
+
+            //--------------------------------------------------------------------------------------
+            return Json(obj.ToList());
+        }
+
 
         [HttpGet]
         public IActionResult Index()
@@ -1148,6 +1238,14 @@ namespace plathora.Controllers
 
             _sP_Call.Execute("calculatecommissionNightSP", null);
             return View( );
+        }
+
+
+        [HttpGet]
+        public IActionResult test1()
+        {
+            ViewBag.citiesList = _cityRegistrationservices.GetAllCities();
+            return View();
         }
     }
 }

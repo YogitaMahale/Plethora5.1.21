@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -9,12 +10,13 @@ using appFoodDelivery.Services.Implementation;
 using Dapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using plathora.Entity;
 using plathora.Models;
 using plathora.Persistence;
 using plathora.Services;
-
+using Microsoft.Data.SqlClient;
 namespace plathora.Controllers
 {
     [Area("Admin")]
@@ -24,6 +26,8 @@ namespace plathora.Controllers
         private readonly ISubscribeServices _subscribeServices;
         private readonly ApplicationDbContext _db;
         private readonly SignInManager<IdentityUser> _signInManager;
+
+        
 
 
 
@@ -134,7 +138,6 @@ namespace plathora.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-
-
+       
     }
 }
