@@ -29,6 +29,7 @@ using System.Text;
 using System.Net.Mail;
 using Microsoft.AspNetCore.Hosting;
 using plathora.Utility;
+using plathora.Utility;
 namespace plathora.Controllers
 {
     [Area("Admin")]
@@ -122,8 +123,10 @@ namespace plathora.Controllers
         public string TempdataCity(int id)
         {
             
-           TempData["TempdataCity"] = id;
-            TempData.Keep("TempdataCity");
+           //TempData["TempdataCity"] = id;
+           // TempData.Keep("TempdataCity");
+            
+            SD.cityId = id;
             return "set";
         }
         //[HttpPost]
@@ -227,6 +230,11 @@ namespace plathora.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if(SD.cityId==0)
+            {
+                SD.cityId = 2;
+            }
+
             LoginUserDetails();
             try
             {
@@ -282,6 +290,10 @@ namespace plathora.Controllers
                     name = x.name
 
                 }).ToList();
+
+               
+               
+
                 // ViewBag.sectorListt = objmodel.objSectorRegistration.ToList();
                 //ViewBag.StockList = JsonConvert.SerializeObject(objmodel.objSectorRegistration);
                 return View(objmodel);
@@ -296,6 +308,8 @@ namespace plathora.Controllers
         [ActionName("Index")]
         public IActionResult Index1(string txtsearch,int cityid)
         {
+            SD.searchText = txtsearch;
+            SD.cityId = cityid;
             try
             {
                 IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
@@ -485,19 +499,22 @@ namespace plathora.Controllers
 
 
         [HttpGet]
-        public IEnumerable<getBusinessAllInfo> BusinessListingByCityandSearchText(int cityId, string searchtext, int pageno)
+        public IEnumerable<searchqueryFrontWebsiteModel> BusinessListingByCityandSearchText(int pageno)
         {
 
+           // int cityId = SD.cityId;
 
-             
+
             var parameter = new DynamicParameters();
-            parameter.Add("@searchkeyword", searchtext);
-            parameter.Add("@cityid", cityId);
+            parameter.Add("@searchkeyword", SD.searchText);
+            parameter.Add("@cityid", SD.cityId);
+            //parameter.Add("@cityid", TempData["TempdataCity"].ToString());
+          //  parameter.Add("@cityid", cityId);
             parameter.Add("@Latitude", 0);
             parameter.Add("@Longitude", 0);            
             parameter.Add("@pageno", pageno);
            // IEnumerable<getBusinessAllInfo> objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("selectallBusinessDetailsAllInfo_byyProductIdTest", parameter);
-             IEnumerable<getBusinessAllInfo> objgetBusinessAllInfo = _sP_Call.List<getBusinessAllInfo>("searchqueryFrontWebsite", parameter);
+             IEnumerable<searchqueryFrontWebsiteModel> objgetBusinessAllInfo = _sP_Call.List<searchqueryFrontWebsiteModel>("searchqueryFrontWebsite", parameter);
 
             return objgetBusinessAllInfo;
 

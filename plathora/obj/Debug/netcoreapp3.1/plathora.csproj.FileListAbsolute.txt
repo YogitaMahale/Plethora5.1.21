@@ -4655,6 +4655,8 @@ E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\plathora.Views.pdb
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\AutoMapper.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Dapper.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Elasticsearch.Net.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\FreeGeoIPCore.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\System.Web.Mvc.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
@@ -4713,6 +4715,7 @@ E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Microsoft.VisualStudi
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Nancy.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Nest.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
@@ -4924,6 +4927,8 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Vie
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\video\Create.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\video\Edit.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\video\Index.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Weather\Index.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Weather\Index1.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs

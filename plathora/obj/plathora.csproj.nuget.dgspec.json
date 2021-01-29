@@ -333,6 +333,10 @@
               "target": "Package",
               "version": "[8.1.0, )"
             },
+            "FreeGeoIPCore": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
             "Microsoft.AspNet.Mvc": {
               "target": "Package",
               "version": "[5.2.7, )"
@@ -376,6 +380,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.10.1, )"
             },
             "Nancy": {
               "target": "Package",

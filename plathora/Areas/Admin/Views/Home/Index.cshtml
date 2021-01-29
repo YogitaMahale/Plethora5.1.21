@@ -295,15 +295,18 @@
 
                                     }
                                     <!--Right Side Content-->
-                                    <div class="col-xl-9 col-lg-9 col-md-12">
+                                    <div class="col-xl-12 col-lg-9 col-md-12">
                                         <!--Add lists-->
                                         <div class=" mb-lg-0">
                                             <div class="">
-                                                <div class="item2-gl business-list-01">                                                   
-
-
+                                                <div class="center-block text-center">
+                                                    <h2>Latest Listings</h2>
+                                                    @*<p>Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula</p>*@
+                                                </div>
+                                                <div class="item2-gl business-list-01">
+                                                    
                                                     <div class="tab-content">
-                                                       
+
                                                         <div class="tab-pane active" id="businesslistDashboard">
 
 
@@ -321,18 +324,18 @@
 
                                                 </div>
                                                 @*<div class="center-block text-center" style="display:none;">
-                                                    <ul class="pagination mb-5">
-                                                        <li class="page-item page-prev disabled">
-                                                            <a class="page-link" href="#" tabindex="-1">Prev</a>
-                                                        </li>
-                                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                        <li class="page-item page-next">
-                                                            <a class="page-link" href="#">Next</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>*@
+            <ul class="pagination mb-5">
+                <li class="page-item page-prev disabled">
+                    <a class="page-link" href="#" tabindex="-1">Prev</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item page-next">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </div>*@
                                             </div>
                                         </div>
                                         <!--/Add lists-->
@@ -735,12 +738,12 @@
     var finaldata;
     var rows = '';
     var cnt = 0;
-    var RecordCount = 100;//@ViewBag.RecordCount ;
+    var RecordCount = 0;//@ViewBag.RecordCount ;
 
     var datatable;
     var counter = 0;
     $(document).ready(function () {
-        alert("call");
+        //alert("call");
         rows = '';
         appendData(counter);
 
@@ -753,32 +756,33 @@
     function appendData(cnt) {
 
 
-        if (counter === 0) {
-            $("#btnPreviouspage").hide();
-        }
-        else {
-            $("#btnPreviouspage").show();
-        }
+        //if (counter === 0) {
+        //    $("#btnPreviouspage").hide();
+        //}
+        //else {
+        //    $("#btnPreviouspage").show();
+        //}
 
-        var cnt2 = RecordCount / 10;
-        var cnt1 = parseInt(cnt);
+        //var cnt2 = RecordCount / 10;
+        //var cnt1 = parseInt(cnt);
 
-        if (cnt1 < cnt2) {
-            cnt1++;
-        }
-        else {
+        //if (cnt1 < cnt2) {
+        //    cnt1++;
+        //}
+        //else {
 
-        }
-        if (counter < cnt1) {
-            $("#btnNextpage").show();
-        }
-        else {
-            $("#btnNextpage").hide();
-        }
+        //}
+        //if (counter < cnt1) {
+        //    $("#btnNextpage").show();
+        //}
+        //else {
+        //    $("#btnNextpage").hide();
+        //}
 
 
 
         rows = '';
+        var searchtextt = '';
         //var businessIdd = $("#businessid1").val();
         //var productidd = $("#productid1").val();
         $.ajax({
@@ -787,22 +791,74 @@
             url: '/Admin/Home/BusinessListingByCityandSearchText',
 
             data: {
-                "cityId": 2, "searchtext": "", "pageno": cnt
+                  "pageno": cnt
             },
             
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
                 finaldata = data;
+                RecordCount = finaldata[0].totalRecords;
+                console.log("rows :" + RecordCount);
+
+                //-----------
+
+
+              //  alert(RecordCount);
+                if (counter === 0) {
+                    $("#btnPreviouspage").hide();
+                }
+                else {
+                    $("#btnPreviouspage").show();
+                }
+              //  alert(RecordCount);
+                var cnt2 = (RecordCount / 10);
+                 //alert("RecordCount : " + RecordCount);
+                //alert("cnt2 :" +cnt2);
+                var cnt1 = parseInt(cnt);
+               // alert(parseInt(RecordCount / 10));
+                var paging = Math.ceil(RecordCount / 10);
+                alert(paging);
+                //if (cnt1 < cnt2) {
+                //    cnt1++;
+                //}
+                //else {
+
+                //}
+             //   alert(counter + ',' + cnt1);
+                //if (counter < cnt1) {
+                if (counter < paging-1) {
+                    $("#btnNextpage").show();
+                }
+                else {
+                    $("#btnNextpage").hide();
+                }
+
+
+                //if (cnt1 < cnt2) {
+                //    cnt1++;
+                //}
+                //else {
+
+                //}
+                //if (counter < cnt1) {
+                //    $("#btnNextpage").show();
+                //}
+                //else {
+                //    $("#btnNextpage").hide();
+                //}
+
+                //-----------
+               
+              //  console.log(finaldata);
+                 
                 var html = '';
                 var iindex = 0;
-                //var iindex = (counter+1);
+                 
                 for (iindex = 0; iindex < finaldata.length; iindex++) {
                     cnt++;
                     var item = finaldata[iindex];
-                    console.log('---------------------------');
-                    console.log(item);
-                    console.log('---------------------------');
+                 
 
                     rows += `
                         <div class="card overflow-hidden">
@@ -872,8 +928,8 @@
                 <div class="item-card9-footer d-sm-flex">
                     <div class="item-card9-cost">
                         <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
-                            <a class="" href="/Admin/Home/business?id=`+ item.id + `"  data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.email + `</a>
-                            <a class="" href="/Admin/Home/business?id=`+ item.id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.phoneNumber + `</a>
+                            <a class="" href="/Admin/Home/business?id=`+ item.id + `"  data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.owneremail + `</a>
+                            <a class="" href="/Admin/Home/business?id=`+ item.id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.ownerPhoneNumber + `</a>
 
 
 
@@ -891,7 +947,7 @@
                     `;
                     //html += '<p class="dynamic">Dynamic Data :' + item.id + '  This is test data.<br />Next line.</p>';
                 }
-                console.log(rows);
+                //console.log(rows);
                 $('#businesslistDashboard').html(rows);
 
               //  counter++;
@@ -909,11 +965,33 @@
 
 
 
+       // alert(RecordCount);
+       // if (counter === 0) {
+       //     $("#btnPreviouspage").hide();
+       // }
+       // else {
+       //     $("#btnPreviouspage").show();
+       // }
+       // alert(RecordCount);
+       // var cnt2 = (RecordCount / 10);
+       //// alert("RecordCount : " + RecordCount);
+       // //alert("cnt2 :" +cnt2);
+       // var cnt1 = parseInt(cnt);
+        
+       // if (cnt1 < cnt2) {
+       //     cnt1++;
+       // }
+       // else {
 
+       // }
+       // if (counter < cnt1) {
+       //     $("#btnNextpage").show();
+       // }
+       // else {
+       //     $("#btnNextpage").hide();
+       // }
 
-
-        //if (counter == 2)
-        //    $('#myScroll').append('<button id="uniqueButton" style="margin-left: 50%; background-color: powderblue;">Click</button><br /><br />');
+        
     }
 
 

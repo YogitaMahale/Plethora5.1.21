@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@using plathora.Utility; 
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -392,13 +393,14 @@
                     {
                         <br />
 
-                        @if (TempData["TempdataCity"] != null)
-                        {
-                            var cityid = TempData["TempdataCity"].ToString();
-                            var cityid1 = TempData["TempdataCity"].ToString();
-                            TempData.Keep("TempdataCity");
-                        }
-
+                        @*@{
+                var cityid = SD.cityId;
+                // var cityid = TempData["TempdataCity"].ToString();
+                //var cityid1 = TempData["TempdataCity"].ToString();
+                //TempData.Keep("TempdataCity");
+            }*@
+                   <input id="lblCityID" type="hidden" value="@SD.cityId" />
+                    int cityid = SD.cityId;
 
                         <div class="row" style="width:550px;">
 
@@ -408,9 +410,9 @@
                                         asp-items="@(new SelectList(String.Empty,"id","cityName"))">
                                 </select>
                                 @*<select name="cityid"  data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                                            id="cityid"   style="width:150px;"
-                                           >
-                                    </select>*@
+                            id="cityid"   style="width:150px;"
+                           >
+                    </select>*@
 
                             </div>
                             <div class="col-sm">
@@ -427,24 +429,24 @@
 
                             @*<div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
 
-                                    <select name="cityid" id="cityid" style="width:100px;"
-                                            data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+                    <select name="cityid" id="cityid" style="width:100px;"
+                            data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
+                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
 
 
-                                        <option selected='selected' value='0'>select  </option>
-                                        <option value="2">Nashik  </option>
-                                        <option value="3">Mumbai  </option>
+                        <option selected='selected' value='0'>select  </option>
+                        <option value="2">Nashik  </option>
+                        <option value="3">Mumbai  </option>
 
-                                    </select>
+                    </select>
 
-                                </div>
-                                <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
+                </div>
+                <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
 
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
 
-                                </div>*@
+                </div>*@
 
                         </div>
 
@@ -886,7 +888,7 @@ get OTP NO -->
     var OTPverifiy = false;
     //myFunction();
 
-
+    //alert($("#lblCityID").val());
     $(document).ready(function () {
       loadCity();
 
@@ -1012,13 +1014,13 @@ get OTP NO -->
                     $.each(data, function (i, row) {
 
                             //item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
-                        if (@TempData["TempdataCity"] == null) {
+                        @*if (@TempData["TempdataCity"] == null) {
 
 
                         }
-                        else {
+                        else {*@
 
-                              if (row.value == @TempData["TempdataCity"].ToString()) {
+                              if (row.value == $("#lblCityID").val()) {
 
                                 item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
 
@@ -1028,7 +1030,7 @@ get OTP NO -->
                                 item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
 
                             }
-                        }
+                       // }
                        // alert(row);
                     });
                     console.log(item);
@@ -1094,5 +1096,5 @@ get OTP NO -->
             minLength: 1
         });*@
 
-   
+
 </script>
