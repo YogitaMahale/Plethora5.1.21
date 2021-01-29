@@ -4273,11 +4273,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\V
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\CustomerRegistration\Index.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\about.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Advertising.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\BusinessListing.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\back\Index.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\business - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\business.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\businessDetails1.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\BusinessListing.cshtml.g.cs
@@ -4285,10 +4281,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\V
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Category.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\CommissionCal.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\ContactUs.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy (2).cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Indexmain.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Privacy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\PrivacyPolicy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\productDetails.cshtml.g.cs
@@ -4395,14 +4388,9 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\View.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_customerDashboardMenu.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_front - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_front.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_getOtpNo.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layout - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Layoutmain.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LayoutNew.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartial - Copy.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_Notification.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\_SearchBusinessListView.cshtml.g.cs
@@ -4422,3 +4410,26 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\staticwebassets\pla
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\plathora.genruntimeconfig.cache
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\Elasticsearch.Net.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\FreeGeoIPCore.dll
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\Nest.dll
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\test1.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Weather\Index.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Weather\Index1.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\Details.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\Error.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\View.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_CookieConsentPartial.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_customerDashboardMenu.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_front - Copy.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_getOtpNo.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_Layout - Copy.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_Layoutmain.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_LayoutNew.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_LoginPartial - Copy.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_Notification.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_SearchBusinessListView.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_SearchBusinessView.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_SearchProductView.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_Subscribe.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_ValidationScriptsPartial.cshtml.g.cs

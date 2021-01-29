@@ -406,13 +406,23 @@
 
 
                             <div class="col-sm">
-                                <select name="cityid" id="cityid" class="form-control" style="width:150px;"
-                                        asp-items="@(new SelectList(String.Empty,"id","cityName"))">
-                                </select>
+                                @*<select name="cityid" id="cityid" class="form-control" style="width:150px;"
+                asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+        </select>*@
                                 @*<select name="cityid"  data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                            id="cityid"   style="width:150px;"
-                           >
-                    </select>*@
+                id="cityid"   style="width:150px;"
+               >
+        </select>*@
+                                <select name="cityid" id="cityid" data-placeholder="Choose a Country..." tabindex="2" class="form-control"
+                                        style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+                                </select>
+                                @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2">
+                                    
+                                </select>*@
+                                @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
+                style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+
+        </select>*@
 
                             </div>
                             <div class="col-sm">
@@ -1002,6 +1012,8 @@ get OTP NO -->
     function loadCity() {
 
            //alert($("#countryid").val());
+         
+
         var url = '@Url.Content("~/")' + 'Admin/Home/getCity';
           //  var ddlsource = "#countryid";
             $.getJSON(url,
@@ -1009,43 +1021,36 @@ get OTP NO -->
                 function (data) {
                 //   console.log(data);
                     var item = '';
-                    $("#cityid").empty();
-
+                   // $("#cityid").empty();
+                    var s = '<option value="-1">Please Select a Department</option>';
                     $.each(data, function (i, row) {
+                      
 
-                            //item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
-                        @*if (@TempData["TempdataCity"] == null) {
+                      s += '<option value="' +row.value + '">' + row.text + '</option>';
+                       
+                        
+                        
 
+                            //  if (row.value == $("#lblCityID").val()) {
 
-                        }
-                        else {*@
+                            //    item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
 
-                              if (row.value == $("#lblCityID").val()) {
+                            //}
+                            //else {
 
-                                item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
+                            //    item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
 
-                            }
-                            else {
-
-                                item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
-
-                            }
-                       // }
-                       // alert(row);
+                            //}
+                        
                     });
+                    $("#cityid").html(s);
                     console.log(item);
-                    $("#cityid").html(item);
+                   // $("#cityid").html(item);
                 }
         )
 
 
-       // var selectedcity = @Html.Raw(TempData["TempdataCity"]);
-               @*if (@TempData["TempdataCity"] != null) {
-                  // alert(@TempData["TempdataCity"].ToString());
-               }*@
-
-
-      //  $("#cityid").val(selectedcity);
+       
     }
 
 
@@ -1066,35 +1071,7 @@ get OTP NO -->
     });
 
 
-    //$("#txtsearch").autocomplete(function () {
-    //    alert($("#txtsearch").val());
-    //});
-
-    @*$("#txtCustomer").autocomplete({
-
-            source: function (request, response) {
-                $.ajax({
-                    url: '@Url.Content("~/")' +'Admin/Home/AutoCompleteSearchTextBox/',
-                    data: { "prefix": request.term },
-                    type: "POST",
-                    success: function (data) {
-                        response($.map(data, function (item) {
-                            return item;
-                        }))
-                    },
-                    error: function (response) {
-                        alert(response.responseText);
-                    },
-                    failure: function (response) {
-                        alert(response.responseText);
-                    }
-                });
-            },
-            select: function (e, i) {
-                $("#hfCustomer").val(i.item.val);
-            },
-            minLength: 1
-        });*@
+   
 
 
 </script>
