@@ -4434,3 +4434,10 @@ E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_Subscribe.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Views\Shared\backup\_ValidationScriptsPartial.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Release\netcoreapp3.1\Razor\Areas\Admin\Views\Home\search.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\.bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\package.json
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\.bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\package.json
+E:\yogita 6.8.19\plathora\plathora\bin\Release\netcoreapp3.1\wwwroot1\dropdownselect\composer.json

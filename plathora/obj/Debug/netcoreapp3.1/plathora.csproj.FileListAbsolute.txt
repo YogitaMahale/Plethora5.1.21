@@ -5019,3 +5019,10 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\staticwebassets\plath
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.genruntimeconfig.cache
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\.bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\package.json
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\.bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\bower.json
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\package.json
+E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\dropdownselect\composer.json

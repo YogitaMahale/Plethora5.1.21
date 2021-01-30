@@ -908,7 +908,7 @@ get OTP NO -->
         </div>
     </div>
 </div>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!--            -->
 @*<script src="bootstrap/js/bootstrap.min.js"></script>*@
 @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
@@ -940,8 +940,10 @@ get OTP NO -->
 
                 mobileno = $("#inputMobileNo").val();
               //  alert($("#inputMobileNo").val());
-                if (mobileno.length != 10 || mobileno == "") {
-                    alert("Enter Proper Mobile No");
+            if (mobileno.length != 10 || mobileno == "") {
+                
+                swal("Please Enter Mobile No.", "", "error");
+                    //alert("Enter Proper Mobile No");
                     $("#loginModal").modal('show');
                 }
                 else {
