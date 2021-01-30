@@ -135,7 +135,7 @@ namespace plathora.Controllers
         {
 
             IList<CityRegistration> obj = _cityRegistrationservices.GetAll().ToList();
-            obj.Insert(0, new CityRegistration { id = 0, cityName = "select", isactive = false, isdeleted = false });
+          //  obj.Insert(0, new CityRegistration { id = 0, cityName = "select", isactive = false, isdeleted = false });
             return Json(new SelectList(obj, "id", "cityName"));
         }
 

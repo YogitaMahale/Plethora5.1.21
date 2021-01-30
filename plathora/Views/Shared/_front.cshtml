@@ -404,9 +404,10 @@
 
                 <div class="row" style="width:550px;">
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <select id="cityid" data-rel="chosen" style="width: 120px;" class="form-control"  data-placeholder="select City">
-                                @*multiple=""*@
+                        <div class="input-group-prepend" style="margin-right: 5px;">
+                            <select id="cityid" data-rel="chosen" style="width:150px;height:25px;" class="form-control" data-placeholder="select City">
+
+                                @*multiple=""  *@
                             </select>
                         </div>
 
@@ -1033,10 +1034,10 @@ get OTP NO -->
             $.getJSON(url,
 
                 function (data) {
-                //   console.log(data);
+                console.log(data);
                     var item = '';
                    // $("#cityid").empty();
-                    var s = '<option value="-1">Please Select a Department</option>';
+                    var s = '';
                     $.each(data, function (i, row) {
 
 
