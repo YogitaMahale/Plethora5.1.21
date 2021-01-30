@@ -120,13 +120,14 @@ namespace plathora.Controllers
             TempData.Keep("profilephoto");
         }
        
-        public string TempdataCity(int id)
+        public string TempdataCity(int id,string searchtext)
         {
             
            //TempData["TempdataCity"] = id;
            // TempData.Keep("TempdataCity");
             
             SD.cityId = id;
+            SD.searchText = searchtext;
             return "set";
         }
         //[HttpPost]
@@ -304,195 +305,223 @@ namespace plathora.Controllers
             return View();
         }
 
+
+        [HttpPost]        
+        public IActionResult search(string txtsearch, int cityid)
+        {
+            SD.searchText = txtsearch;
+            SD.cityId = cityid;
+
+            frontwebsiteModel objmodel = new frontwebsiteModel();
+             
+            objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+            {
+                id = x.id,
+                name = x.name,
+                img = x.img,
+                photo = x.photo
+
+            }).ToList();
+
+            return View(objmodel);
+        }
+
+
+
         [HttpPost]
         [ActionName("Index")]
         public IActionResult Index1(string txtsearch,int cityid)
         {
             SD.searchText = txtsearch;
             SD.cityId = cityid;
-            try
-            {
-                IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
-                ViewData["cities"] = cities;
+
+            return RedirectToAction("Index", "Search", new { @searchtext = txtsearch , @cityId = cityid });
+           
+//            try
+//            {
+//                IEnumerable<SelectListItem> cities = _cityRegistrationservices.GetAllCities();
+//                ViewData["cities"] = cities;
                
-                ViewBag.search = txtsearch;
-                frontwebsiteModel objmodel = new frontwebsiteModel();
-                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
-                {
-                    id = x.id,
-                    name = x.name,
-                    img = x.img,
-                    photo = x.photo
+//                ViewBag.search = txtsearch;
+//                frontwebsiteModel objmodel = new frontwebsiteModel();
+//                objmodel.objSectorRegistration = _SectorRegistrationServices.GetAll().Select(x => new plathora.Models.SectorRegistrationIndexViewModel
+//                {
+//                    id = x.id,
+//                    name = x.name,
+//                    img = x.img,
+//                    photo = x.photo
 
-                }).ToList();
-                objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+//                }).ToList();
+//                objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
                
-                objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).Select(x => new NewIndexViewModel
-                {
-                    id = x.id,
-                    title = x.title,
-                    img = x.img,
-                    description = x.description,
-                    isdeleted = x.isdeleted,
-                    isactive = x.isactive,
-                    date1 = x.date1,
-                    createddate = x.createddate
+//                objmodel.objNews = _newsServices.GetAll().Where(x => x.isdeleted == false).Select(x => new NewIndexViewModel
+//                {
+//                    id = x.id,
+//                    title = x.title,
+//                    img = x.img,
+//                    description = x.description,
+//                    isdeleted = x.isdeleted,
+//                    isactive = x.isactive,
+//                    date1 = x.date1,
+//                    createddate = x.createddate
 
-                });
-                objmodel.objmainSlider = _sliderServices.GetAll().Where(x => x.isdeleted == false).Select(x => new sliderIndexViewModel
-                {
-                    id = x.id
-               ,
-                    name = x.name
+//                });
+//                objmodel.objmainSlider = _sliderServices.GetAll().Where(x => x.isdeleted == false).Select(x => new sliderIndexViewModel
+//                {
+//                    id = x.id
+//               ,
+//                    name = x.name
 
-                }).ToList();
-                objmodel.objBusineesActive = _BusinessRegistrationServieces.GetAll().Where(x => x.isactive == true).Select(x => new BusinessRegistrationIndexViewModel
-                {
-                    id = x.id,
-                    sectorid = x.sectorid,
-                    name = x.name,
+//                }).ToList();
+//                objmodel.objBusineesActive = _BusinessRegistrationServieces.GetAll().Where(x => x.isactive == true).Select(x => new BusinessRegistrationIndexViewModel
+//                {
+//                    id = x.id,
+//                    sectorid = x.sectorid,
+//                    name = x.name,
 
-                    img = x.img,
-                    photo = x.photo
+//                    img = x.img,
+//                    photo = x.photo
 
-                }).ToList();
-                //------------------------------------------------------------------------------------
-                #region //search Code
-                /*
-                DataSet ds = new DataSet();
+//                }).ToList();
+//                //------------------------------------------------------------------------------------
+//                #region //search Code
+//                /*
+//                DataSet ds = new DataSet();
 
-                string connString = this.Configuration.GetConnectionString("DefaultConnection");
-                SqlConnection con = new SqlConnection(connString);
-                try
-                {
+//                string connString = this.Configuration.GetConnectionString("DefaultConnection");
+//                SqlConnection con = new SqlConnection(connString);
+//                try
+//                {
 
-                    SqlCommand cmd = new SqlCommand();
-                    //cmd.CommandText = "searchquery";
-                    cmd.CommandText = "searchqueryFrontWebsite";
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Connection = con;
-                    cmd.Parameters.AddWithValue("@searchkeyword", txtsearch);
-                    cmd.Parameters.AddWithValue("@Latitude", 0);
-                    cmd.Parameters.AddWithValue("@Longitude", 0);
-                    cmd.Parameters.AddWithValue("@cityid",cityid);
+//                    SqlCommand cmd = new SqlCommand();
+//                    //cmd.CommandText = "searchquery";
+//                    cmd.CommandText = "searchqueryFrontWebsite";
+//                    cmd.CommandType = CommandType.StoredProcedure;
+//                    cmd.Connection = con;
+//                    cmd.Parameters.AddWithValue("@searchkeyword", txtsearch);
+//                    cmd.Parameters.AddWithValue("@Latitude", 0);
+//                    cmd.Parameters.AddWithValue("@Longitude", 0);
+//                    cmd.Parameters.AddWithValue("@cityid",cityid);
                     
-                    con.Open();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    da.Fill(ds);
-                    
-
+//                    con.Open();
+//                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+//                    da.Fill(ds);
                     
 
-
-                    if (ds != null)
-                    {
-                        try
-                        {
+                    
 
 
-                            if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "sector".ToString().ToLower().Trim())
-                            {
-                                objmodel.SearchModelType = "sector".ToString().ToLower().Trim();
-                                objmodel.objSectorRegistration = ds.Tables[0].AsEnumerable().Select(row => new SectorRegistrationIndexViewModel
-                                {
-                                    id = Convert.ToInt32(row["id"].ToString()),
-                                    name = row["name"].ToString(),
-                                    img = row["img"].ToString()
-                                });
-
-                                // public IEnumerable<SectorRegistrationIndexViewModel> objSectorRegistration { get; set; }
-                            }
-                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "business".ToString().ToLower().Trim())
-                            {
-                                objmodel.SearchModelType = "business".ToString().ToLower().Trim();
-                                //   public IEnumerable<search_BusinessRegistrationIndexViewModel> objsearch_BusinessRegistrationIndexViewModel { get; set; }
-                                objmodel.objsearch_BusinessRegistrationIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessRegistrationIndexViewModel
-                                {
-                                    id = Convert.ToInt32(row["id"].ToString()),
-                                    name = row["name"].ToString(),
-                                    img = row["img"].ToString(),
-                                    sectorid = Convert.ToInt32(row["sectorid"].ToString()),
-                                    type = row["type"].ToString()
-                                });
-
-                            }
-                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "product".ToString().ToLower().Trim())
-                            {
-                                objmodel.SearchModelType = "product".ToString().ToLower().Trim();
-                                // public IEnumerable<search_ProductIndexViewModel> objsearch_ProductIndexViewModel { get; set; }
-                                objmodel.objsearch_ProductIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_ProductIndexViewModel
-                                {
-                                    id = Convert.ToInt32(row["id"].ToString()),
-                                    businessid = Convert.ToInt32(row["businessid"].ToString()),
-                                    productName = row["productName"].ToString(),
-                                    img = row["img"].ToString(),
-
-                                    type = row["type"].ToString()
-                                });
-
-                            }
-                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "businessowner".ToString().ToLower().Trim())
-                            {
-                                // selectallBusinessDetailsDtos
-                                //objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
-
-                                objmodel.objBusinessDetails = ds.Tables[0].AsEnumerable().Select(row => new selectallBusinessDetailsDtos
-                                {         //                        
-
-                                    Id = Convert.ToString(row["Id"].ToString()),
-                                    name = Convert.ToString(row["name"].ToString()),
-                                    description = row["description"].ToString(),
-                                    profilephoto = row["profilephoto"].ToString(),
-                                    mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
-                                    PhoneNumber = Convert.ToString(row["PhoneNumber"].ToString()),
-                                    rating = Convert.ToInt32(row["rating"].ToString()),
-                                    cityname = row["cityname"].ToString(),
-                                    businesstime = Convert.ToString(row["businesstime"].ToString()),
-                                    Email = Convert.ToString(row["Email"].ToString()),
+//                    if (ds != null)
+//                    {
+//                        try
+//                        {
 
 
-                                });
+//                            if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "sector".ToString().ToLower().Trim())
+//                            {
+//                                objmodel.SearchModelType = "sector".ToString().ToLower().Trim();
+//                                objmodel.objSectorRegistration = ds.Tables[0].AsEnumerable().Select(row => new SectorRegistrationIndexViewModel
+//                                {
+//                                    id = Convert.ToInt32(row["id"].ToString()),
+//                                    name = row["name"].ToString(),
+//                                    img = row["img"].ToString()
+//                                });
+
+//                                // public IEnumerable<SectorRegistrationIndexViewModel> objSectorRegistration { get; set; }
+//                            }
+//                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "business".ToString().ToLower().Trim())
+//                            {
+//                                objmodel.SearchModelType = "business".ToString().ToLower().Trim();
+//                                //   public IEnumerable<search_BusinessRegistrationIndexViewModel> objsearch_BusinessRegistrationIndexViewModel { get; set; }
+//                                objmodel.objsearch_BusinessRegistrationIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_BusinessRegistrationIndexViewModel
+//                                {
+//                                    id = Convert.ToInt32(row["id"].ToString()),
+//                                    name = row["name"].ToString(),
+//                                    img = row["img"].ToString(),
+//                                    sectorid = Convert.ToInt32(row["sectorid"].ToString()),
+//                                    type = row["type"].ToString()
+//                                });
+
+//                            }
+//                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "product".ToString().ToLower().Trim())
+//                            {
+//                                objmodel.SearchModelType = "product".ToString().ToLower().Trim();
+//                                // public IEnumerable<search_ProductIndexViewModel> objsearch_ProductIndexViewModel { get; set; }
+//                                objmodel.objsearch_ProductIndexViewModel = ds.Tables[0].AsEnumerable().Select(row => new search_ProductIndexViewModel
+//                                {
+//                                    id = Convert.ToInt32(row["id"].ToString()),
+//                                    businessid = Convert.ToInt32(row["businessid"].ToString()),
+//                                    productName = row["productName"].ToString(),
+//                                    img = row["img"].ToString(),
+
+//                                    type = row["type"].ToString()
+//                                });
+
+//                            }
+//                            else if (ds.Tables[0].Rows[0]["type"].ToString().ToLower().Trim() == "businessowner".ToString().ToLower().Trim())
+//                            {
+//                                // selectallBusinessDetailsDtos
+//                                //objmodel.objBusinessDetails = _sP_Call.List<selectallBusinessDetailsDtos>("selectallBusinessDetails", null);
+
+//                                objmodel.objBusinessDetails = ds.Tables[0].AsEnumerable().Select(row => new selectallBusinessDetailsDtos
+//                                {         //                        
+
+//                                    Id = Convert.ToString(row["Id"].ToString()),
+//                                    name = Convert.ToString(row["name"].ToString()),
+//                                    description = row["description"].ToString(),
+//                                    profilephoto = row["profilephoto"].ToString(),
+//                                    mobileno2 = Convert.ToString(row["mobileno2"].ToString()),
+//                                    PhoneNumber = Convert.ToString(row["PhoneNumber"].ToString()),
+//                                    rating = Convert.ToInt32(row["rating"].ToString()),
+//                                    cityname = row["cityname"].ToString(),
+//                                    businesstime = Convert.ToString(row["businesstime"].ToString()),
+//                                    Email = Convert.ToString(row["Email"].ToString()),
+
+
+//                                });
 
 
                                
 
 
 
-                            }
-                            else
-                            {
+//                            }
+//                            else
+//                            {
 
-                            }
-                        }
-                        catch (Exception obj)
-                        {
-                            objmodel.SearchModelType = "NotFound";
-                        }
-                    }
-                    else
-                    {
-                        objmodel.SearchModelType = "NotFound";
-                    }
+//                            }
+//                        }
+//                        catch (Exception obj)
+//                        {
+//                            objmodel.SearchModelType = "NotFound";
+//                        }
+//                    }
+//                    else
+//                    {
+//                        objmodel.SearchModelType = "NotFound";
+//                    }
 
-                }
-                catch(Exception obj)
-                {
-                    objmodel.SearchModelType = "Record Not Found";
-                    //string myJson2 = "{\"Message\": " + "\"Not Found\"" + "}";
-                    //return NotFound(myJson2);
-                }
-                finally { con.Close(); }
+//                }
+//                catch(Exception obj)
+//                {
+//                    objmodel.SearchModelType = "Record Not Found";
+//                    //string myJson2 = "{\"Message\": " + "\"Not Found\"" + "}";
+//                    //return NotFound(myJson2);
+//                }
+//                finally { con.Close(); }
 
-                */
-                #endregion 
-                //--------------------------------------------------------------------------------------
-                return View(objmodel);
-            }
-            catch (Exception obj)
-            {
+//                */
+//#endregion
+//            //--------------------------------------------------------------------------------------
+//            return View(objmodel);
+//            }
+//            catch (Exception obj)
+//            {
 
-            }
-            return View();
+//            }
+
+          
+//            return View();
            
         }
         //private Task<IdentityUser> GetCurrentUserAsync() =>  _usermanager.GetUserAsync(this.User);
@@ -1089,11 +1118,11 @@ namespace plathora.Controllers
                 ViewBag.RecordCount = obj.objgetBusinessAllInfo.Count();
 
                 //-------slider----
-                if(TempData["TempdataCity"]!=null)
+                if(SD.cityId!=0)
                 {
                     var parameter1 = new DynamicParameters();
                     parameter1.Add("@businessid", businessid);
-                    parameter1.Add("@cityIds", TempData["TempdataCity"].ToString());
+                    parameter1.Add("@cityIds", SD.cityId.ToString());
 
                     obj.objSlider = _sP_Call.List<getAdvertisementSliderImagebySectorandCity>("getAdvertiseSliderImagesbyBusinessIdandCityId", parameter1);
 

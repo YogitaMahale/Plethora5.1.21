@@ -1,0 +1,361 @@
+﻿ 
+@model plathora.Models.frontwebsiteModel
+@{
+
+
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_front.cshtml";
+    // Layout = "~/Views/Shared/_front.cshtml";
+}
+<link href="~/css/businessListUL.css" rel="stylesheet" />
+
+
+<!--Loader-->
+@*<div id="global-loader">
+        <img src="~/loader.png" class="loader-img floating" alt="">
+
+
+    </div>*@
+<!--Topbar-->
+<!--Sliders Section-->
+<!--Sliders Section-->
+<!-- Categories-->
+
+
+<div class="site-wrapper">
+    <section class="page-wrapper">
+        <div class="container">
+            <main class="gl-main">
+                <div id="main">
+                    <div class="gt-homepage">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
+                                <div class="sticky12">
+                                    @{
+                                        if (Model.objSectorRegistration!=null)
+                                        {
+
+
+                                            await Html.RenderPartialAsync("_SectorPartialView", Model.objSectorRegistration);
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-lg-9 col-sm-12 col-12">
+                                <div class="content">
+                                    <div class="center-block text-center">
+                                        <h2>Latest Listings</h2>
+                                       
+                                    </div>
+                                    <div class="tab-pane active" id="businesslistDashboard">
+
+
+                                    </div>
+                                    <button id="btnPreviouspage" class="btn btn-secondary mb-0">
+                                        Previous
+                                    </button>
+                                    <button id="btnNextpage" class="btn btn-secondary mb-0">
+                                        Next
+                                    </button>
+
+
+
+
+
+
+
+
+
+                                </div><!--content-->
+                            </div>
+
+                        </div><!-- -row -->
+                    </div><!-- gt-homepage -->
+                </div><!-- main -->
+            </main>
+        </div>
+    </section>
+    <!--Categories-->
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    var finaldata;
+    var rows = '';
+    var cnt = 0;
+    var RecordCount = 0;//@ViewBag.RecordCount ;
+
+    var datatable;
+    var counter = 0;
+    $(document).ready(function () {
+        //alert("call");
+        rows = '';
+        $("#btnPreviouspage").hide();
+    
+        $("#btnNextpage").hide();
+        appendData(counter);
+
+        //LoadSlider();
+            //loaddata();
+    });
+
+
+
+    function appendData(cnt) {
+
+
+
+        rows = '';
+        var searchtextt = '';
+        //var businessIdd = $("#businessid1").val();
+        //var productidd = $("#productid1").val();
+        $.ajax({
+
+            type: "GET",
+            url: '/Admin/Home/BusinessListingByCityandSearchText',
+
+            data: {
+                  "pageno": cnt
+            },
+
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                finaldata = data;
+                RecordCount = finaldata[0].totalRecords;
+                console.log("rows :" + RecordCount);
+
+                //-----------
+
+
+              //  alert(RecordCount);
+                if (counter === 0) {
+                    $("#btnPreviouspage").hide();
+                }
+                else {
+                    $("#btnPreviouspage").show();
+                }
+              //  alert(RecordCount);
+                var cnt2 = (RecordCount / 10);
+                 //alert("RecordCount : " + RecordCount);
+                //alert("cnt2 :" +cnt2);
+                var cnt1 = parseInt(cnt);
+               // alert(parseInt(RecordCount / 10));
+                var paging = Math.ceil(RecordCount / 10);
+               // alert(paging);
+                //if (cnt1 < cnt2) {
+                //    cnt1++;
+                //}
+                //else {
+
+                //}
+             //   alert(counter + ',' + cnt1);
+                //if (counter < cnt1) {
+                if (counter < paging-1) {
+                    $("#btnNextpage").show();
+                }
+                else {
+                    $("#btnNextpage").hide();
+                }
+
+
+                //if (cnt1 < cnt2) {
+                //    cnt1++;
+                //}
+                //else {
+
+                //}
+                //if (counter < cnt1) {
+                //    $("#btnNextpage").show();
+                //}
+                //else {
+                //    $("#btnNextpage").hide();
+                //}
+
+                //-----------
+
+              //  console.log(finaldata);
+
+                var html = '';
+                var iindex = 0;
+
+                for (iindex = 0; iindex < finaldata.length; iindex++) {
+                    cnt++;
+                    var item = finaldata[iindex];
+
+
+                    rows += `
+                        <div class="card overflow-hidden">
+
+    <div class="d-md-flex">
+        <div class="item-card9-img">
+            <div class="item-card9-imgs">
+                <a href="/Admin/Home/business?id=`+ item.id + `"></a>
+
+                    <img src="`+ item.sliderimg1 + `" style="width:300px;height:212px;" alt="img" class="cover-image">
+
+
+
+            </div>
+            <div class="item-card9-icons" style="display:none;">
+                <a href="#" class="item-card9-icons1 wishlist"> <i class="fa fa fa-heart-o"></i></a>
+            </div>
+            <div style="display:none;" class="item-cardreview-absolute bg-secondary">RealEstate</div>
+        </div>
+        <div class="card border-0 mb-0">
+            <div class="card-body">
+                <div class="item-card9">
+
+                    <a href="/Admin/Home/business?id=`+ item.id + `" class="text-dark">
+                        <h4 class="font-weight-semibold mt-1 mb-1">
+                            `+ item.companyName + `
+
+                        </h4>
+                    </a>
+                    <div class="rating-stars d-flex mr-5">
+                        <input type="number" readonly="readonly" class="rating-value star" name="rating-stars-value" value=" `+ item.rating + `">
+                        <div class="rating-stars-container mr-2">
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="rating-star sm">
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div> <a class="fs-13 leading-tight mt-1" href="#">`+ item.review + ` Reviews</a>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <a href="/Admin/Home/business?id=`+ item.id + `" class="mt-1 mb-1 mr-3 text-dark"><i class="fa fa-globe mr-1"></i>
+   `+ item.landmark + `</a>
+                        <a href="/Admin/Home/business?id=`+ item.id + `" class="mt-1 mb-1 mr-1 text-muted">
+                            <i class="fa fa-map-marker mr-1"></i>
+                    `+ item.house + `
+
+
+
+
+                        </a>
+                    </div>
+                  Timings `+ item.businesstime + `
+
+                </div>
+            </div>
+            <div class="card-footer pt-2 pb-2">
+                <div class="item-card9-footer d-sm-flex">
+                    <div class="item-card9-cost">
+                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc">
+                            <a class="" href="/Admin/Home/business?id=`+ item.id + `"  data-toggle="modal" data-target="#contact"><i class="fa fa-envelope"></i> ` + item.owneremail + `</a>
+                            <a class="" href="/Admin/Home/business?id=`+ item.id + `" data-toggle="modal" data-target="#contact"><i class="fa fa-phone"></i> ` + item.ownerPhoneNumber + `</a>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="ml-auto mt-3 mt-sm-0" style="display:none;">
+                        <div class="text-dark font-weight-normal mb-0 mt-0 item-card2-desc"><a href="#"><i class="fa fa-map-signs"></i>  Get Directions</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    `;
+                    //html += '<p class="dynamic">Dynamic Data :' + item.id + '  This is test data.<br />Next line.</p>';
+                }
+                //console.log(rows);
+                $('#businesslistDashboard').html(rows);
+
+              //  counter++;
+
+            }, //End of AJAX Success function
+
+            failure: function (data) {
+                alert(data.responseText);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert(data.responseText);
+            } //End of AJAX error function
+
+        });
+
+
+
+       // alert(RecordCount);
+       // if (counter === 0) {
+       //     $("#btnPreviouspage").hide();
+       // }
+       // else {
+       //     $("#btnPreviouspage").show();
+       // }
+       // alert(RecordCount);
+       // var cnt2 = (RecordCount / 10);
+       //// alert("RecordCount : " + RecordCount);
+       // //alert("cnt2 :" +cnt2);
+       // var cnt1 = parseInt(cnt);
+
+       // if (cnt1 < cnt2) {
+       //     cnt1++;
+       // }
+       // else {
+
+       // }
+       // if (counter < cnt1) {
+       //     $("#btnNextpage").show();
+       // }
+       // else {
+       //     $("#btnNextpage").hide();
+       // }
+
+
+    }
+
+
+
+    $("#btnPreviouspage").click(function () {
+
+
+            counter--;
+            appendData(counter);
+    });
+
+    $("#btnNextpage").click(function () {
+        //var cnt = RecordCount / 10;
+        //var cnt1 = parseInt(cnt);
+
+        //if (cnt1 < cnt) {
+        //    cnt1++;
+        //}
+        //else {
+
+        //}
+
+            counter++;
+            //alert(counter);
+            appendData(counter);
+
+
+    });
+
+
+
+
+
+</script>
+
+
+
+
+
+
+

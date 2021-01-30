@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-@using plathora.Utility; 
+@using plathora.Utility;
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -389,40 +389,40 @@
                 <div class="Search">
 
 
-                    @using (Html.BeginForm("Index", "Home", new { area = "Admin" }, FormMethod.Post))
+                    @using (Html.BeginForm("search", "Home", new { area = "Admin" }, FormMethod.Post))
                     {
                         <br />
 
                         @*@{
-                var cityid = SD.cityId;
-                // var cityid = TempData["TempdataCity"].ToString();
-                //var cityid1 = TempData["TempdataCity"].ToString();
-                //TempData.Keep("TempdataCity");
-            }*@
-                   <input id="lblCityID" type="hidden" value="@SD.cityId" />
-                    int cityid = SD.cityId;
+                                var cityid = SD.cityId;
+                                // var cityid = TempData["TempdataCity"].ToString();
+                                //var cityid1 = TempData["TempdataCity"].ToString();
+                                //TempData.Keep("TempdataCity");
+                            }*@
+                        <input id="lblCityID" type="hidden" value="@SD.cityId" />
+                        int cityid = SD.cityId;
 
                         <div class="row" style="width:550px;">
 
 
                             <div class="col-sm">
                                 @*<select name="cityid" id="cityid" class="form-control" style="width:150px;"
-                asp-items="@(new SelectList(String.Empty,"id","cityName"))">
-        </select>*@
+                                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+                                    </select>*@
                                 @*<select name="cityid"  data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                id="cityid"   style="width:150px;"
-               >
-        </select>*@
+                                            id="cityid"   style="width:150px;"
+                                           >
+                                    </select>*@
                                 <select name="cityid" id="cityid" data-placeholder="Choose a Country..." tabindex="2" class="form-control"
                                         style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
                                 </select>
                                 @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2">
-                                    
-                                </select>*@
-                                @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
 
-        </select>*@
+                                    </select>*@
+                                @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
+                                            style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+
+                                    </select>*@
 
                             </div>
                             <div class="col-sm">
@@ -439,24 +439,24 @@
 
                             @*<div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
 
-                    <select name="cityid" id="cityid" style="width:100px;"
-                            data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+                                    <select name="cityid" id="cityid" style="width:100px;"
+                                            data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
+                                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
 
 
-                        <option selected='selected' value='0'>select  </option>
-                        <option value="2">Nashik  </option>
-                        <option value="3">Mumbai  </option>
+                                        <option selected='selected' value='0'>select  </option>
+                                        <option value="2">Nashik  </option>
+                                        <option value="3">Mumbai  </option>
 
-                    </select>
+                                    </select>
 
-                </div>
-                <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
+                                </div>
+                                <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
 
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
 
-                </div>*@
+                                </div>*@
 
                         </div>
 
@@ -787,7 +787,7 @@
     @*<script src="/path/to/cdn/jquery.slim.min.js"></script>
         <script src="/path/to/jquery.autocomplete.min.js"></script>*@
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js" type="text/javascript"></script>*@
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.min.js" type="text/javascript"></script>*@
 
 
 </body>
@@ -1012,7 +1012,7 @@ get OTP NO -->
     function loadCity() {
 
            //alert($("#countryid").val());
-         
+
 
         var url = '@Url.Content("~/")' + 'Admin/Home/getCity';
           //  var ddlsource = "#countryid";
@@ -1024,12 +1024,12 @@ get OTP NO -->
                    // $("#cityid").empty();
                     var s = '<option value="-1">Please Select a Department</option>';
                     $.each(data, function (i, row) {
-                      
+
 
                       s += '<option value="' +row.value + '">' + row.text + '</option>';
-                       
-                        
-                        
+
+
+
 
                             //  if (row.value == $("#lblCityID").val()) {
 
@@ -1041,7 +1041,7 @@ get OTP NO -->
                             //    item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
 
                             //}
-                        
+
                     });
                     $("#cityid").html(s);
                     console.log(item);
@@ -1050,28 +1050,48 @@ get OTP NO -->
         )
 
 
-       
+
     }
 
 
     $("#cityid").change(function () {
 
-        var url = '@Url.Content("~/")' + 'Admin/Home/TempdataCity';
+        @*var url = '@Url.Content("~/")' + 'Admin/Home/TempdataCity';*@
+         var url = '@Url.Content("~/")' + "Admin/Home/TempdataCity/?id=" + $(ddlsource).val() + "&searchtext=" + $('#txtsearch').val();
         var ddlsource = "#cityid";
-            $.getJSON(url,
-                { id: $(ddlsource).val() },
+
+
+
+        $.getJSON(url,
+                { id: $(ddlsource).val()},
                 function (data) {
                     alert(data);
 
 
                 }
             )
-        //cityidd = $("#cityid").val();
-        //alert(cityidd);
+
     });
 
+    $('#txtsearch').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+                var url = '@Url.Content("~/")' + "Admin/Home/TempdataCity/?id=" + $(ddlsource).val() + "&searchtext=" + $('#txtsearch').val();
+        var ddlsource = "#cityid";
 
-   
+
+
+        $.getJSON(url,
+                { id: $(ddlsource).val()},
+                function (data) {
+                    alert(data);
+
+
+                }
+            )
+            return false; // prevent the button click from happening
+        }
+    });
+
 
 
 </script>
