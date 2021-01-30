@@ -1481,7 +1481,15 @@
     //btnSentReply
     $(document).ready(function () {
         DisplayGoogleMap();
-        $("#btnContactUs").click(function(){
+        $("#btnContactUs").click(function () {
+            //alert($("#contactname").val().length);
+            if ($("#contactname").val().length < 1 || $("#contactmessage").val().length < 1 || $("#contactemail").val().length < 1 ||  $("#contactMobileno").val().length < 1) {
+              //  swal("Please Enter All Data", "", "danger");
+                swal("Please Enter All Values", {
+                                         icon: "warning",
+                                     });
+                return false;
+            }
             //contactname
             //contactMobileno
             //contactemail
@@ -1499,7 +1507,8 @@
 
                 $("#contactemail").val("");
                 $("#contactmessage").val("");
-                swal('Your Enquiry has been Sent Successfully', '', 'success');
+               swal('Your Enquiry has been Sent Successfully', '', 'success');
+
                 $("#contact").modal('hide');
 
                // window.location.reload();
