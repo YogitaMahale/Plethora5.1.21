@@ -402,63 +402,77 @@
                         <input id="lblCityID" type="hidden" value="@SD.cityId" />
                         int cityid = SD.cityId;
 
-                        <div class="row" style="width:550px;">
-
-
-                            <div class="col-sm">
-                                @*<select name="cityid" id="cityid" class="form-control" style="width:150px;"
-                                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
-                                    </select>*@
-                                @*<select name="cityid"  data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                                            id="cityid"   style="width:150px;"
-                                           >
-                                    </select>*@
-                                <select name="cityid" id="cityid" data-placeholder="Choose a Country..." tabindex="2" class="form-control"
-                                        style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
-                                </select>
-                                @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2">
-
-                                    </select>*@
-                                @*<select name="cityid" id="cityid" data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                                            style="width:150px;" asp-items="@(new SelectList(String.Empty,"id","cityName"))">
-
-                                    </select>*@
-
-                            </div>
-                            <div class="col-sm">
-                                <input id="txtsearch" style="width:200px;" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">
-                            </div>
-                            <div class="col-sm">
-                                <button id="btnSearch" style="width:100px;" type="submit" class="btn btn-lg btn-block btn-secondary">Search Here</button>
-                            </div>
-
-
-
-
-
-
-                            @*<div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
-
-                                    <select name="cityid" id="cityid" style="width:100px;"
-                                            data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
-                                            asp-items="@(new SelectList(String.Empty,"id","cityName"))">
-
-
-                                        <option selected='selected' value='0'>select  </option>
-                                        <option value="2">Nashik  </option>
-                                        <option value="3">Mumbai  </option>
-
-                                    </select>
-
-                                </div>
-                                <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
-
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
-
-                                </div>*@
-
+                <div class="row" style="width:550px;">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <select id="cityid" data-rel="chosen" style="width: 120px;" class="form-control"  data-placeholder="select City">
+                                @*multiple=""*@
+                            </select>
                         </div>
+
+                        @*<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">*@
+                        <input id="txtsearch" name="txtsearch" style="width:100px;" type="text" required class="form-control" value="@SD.searchText">
+                        @*<input id="txtsearch" style="width:200px;" name="txtsearch" type="text" required class="form-control input-lg keywords-input border-white" value="@ViewBag.search">*@
+                        <div class="input-group-append">
+                            @*<button class="btn btn-outline-secondary" type="button">Button</button>*@
+                            <button id="btnSearch" type="submit" class="btn btn-secondary">Search Here</button>
+                        </div>
+                    </div>
+
+                    @*<div class="col-sm">
+
+
+
+
+
+        </div>*@
+                    @*<div class="col-sm">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <select id="cityid" data-rel="chosen" style="width: 100px;" data-placeholder="select City">
+                                    
+                                </select>
+                            </div>
+
+                             
+                            <input id="txtsearch" name="txtsearch" style="width:100px;" type="text" required class="form-control" value="@ViewBag.search">
+                           
+                            <div class="input-group-append">
+                                 
+                                <button id="btnSearch" type="submit" class="btn btn-outline-secondary">Search Here</button>
+                            </div>
+                        </div>
+
+                    </div>*@
+
+
+
+
+
+
+
+                    @*<div class="form-group col-xl-3 col-lg-4 col-md-12 select2-lg mb-0 ">
+
+            <select name="cityid" id="cityid" style="width:100px;"
+                    data-placeholder="Choose a Country..." class="chosen-select" tabindex="2"
+                    asp-items="@(new SelectList(String.Empty,"id","cityName"))">
+
+
+                <option selected='selected' value='0'>select  </option>
+                <option value="2">Nashik  </option>
+                <option value="3">Mumbai  </option>
+
+            </select>
+
+        </div>
+        <div class="form-group col-xl-6 col-lg-4 col-md-12 mb-0">
+
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-12 mb-0">
+
+        </div>*@
+
+                </div>
 
                     }
 
@@ -1013,7 +1027,7 @@ get OTP NO -->
 
            //alert($("#countryid").val());
 
-
+        $("[data-rel='chosen']").chosen();
         var url = '@Url.Content("~/")' + 'Admin/Home/getCity';
           //  var ddlsource = "#countryid";
             $.getJSON(url,
@@ -1026,24 +1040,25 @@ get OTP NO -->
                     $.each(data, function (i, row) {
 
 
-                      s += '<option value="' +row.value + '">' + row.text + '</option>';
+                      //s += '<option value="' +row.value + '">' + row.text + '</option>';
 
 
+                        console.log(row.value + ',' + $("#lblCityID").val());
 
-
-                            //  if (row.value == $("#lblCityID").val()) {
-
+                              if (row.value == $("#lblCityID").val()) {
+                                  s += '<option selected="'+"selected"+'" value="' + row.value + '">' + row.text + '</option>';
                             //    item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
 
-                            //}
-                            //else {
+                            }
+                            else {
+                                  s += '<option value="' + row.value + '">' + row.text + '</option>';
+                              //  item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
 
-                            //    item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
-
-                            //}
+                            }
 
                     });
                     $("#cityid").html(s);
+                    $("[data-rel='chosen']").trigger("chosen:updated");
                     console.log(item);
                    // $("#cityid").html(item);
                 }
@@ -1056,6 +1071,8 @@ get OTP NO -->
 
     $("#cityid").change(function () {
 
+        //$("#select-id").chosen().val()
+      //  alert($("#cityid").val());
         @*var url = '@Url.Content("~/")' + 'Admin/Home/TempdataCity';*@
          var url = '@Url.Content("~/")' + "Admin/Home/TempdataCity/?id=" + $(ddlsource).val() + "&searchtext=" + $('#txtsearch').val();
         var ddlsource = "#cityid";
