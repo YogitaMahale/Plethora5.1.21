@@ -1,4 +1,4 @@
-﻿ 
+﻿
 @model plathora.Models.frontwebsiteModel
 @{
 
@@ -20,7 +20,13 @@
 <!--Sliders Section-->
 <!--Sliders Section-->
 <!-- Categories-->
+@{
+    if (Model.objAdvertisementSlider != null)
+    {
+        await Html.RenderPartialAsync("_advertiseSlider", Model.objAdvertisementSlider);
+    }
 
+}
 
 <div class="site-wrapper">
     <section class="page-wrapper">
@@ -32,7 +38,7 @@
                             <div class="col-xl-3 col-lg-3 col-sm-12 col-12">
                                 <div class="sticky12">
                                     @{
-                                        if (Model.objSectorRegistration!=null)
+                                        if (Model.objSectorRegistration != null)
                                         {
 
 
@@ -46,7 +52,7 @@
                                 <div class="content">
                                     <div class="center-block text-center">
                                         <h2>Latest Listings</h2>
-                                       
+
                                     </div>
                                     <div class="tab-pane active" id="businesslistDashboard">
 
@@ -93,7 +99,7 @@
         //alert("call");
         rows = '';
         $("#btnPreviouspage").hide();
-    
+
         $("#btnNextpage").hide();
         appendData(counter);
 

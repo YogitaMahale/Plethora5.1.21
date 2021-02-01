@@ -16,6 +16,7 @@ namespace plathora.Models
         public IEnumerable<BusinessRegistrationIndexViewModel> objBusineesActive { get; set; }
         public IEnumerable<NewIndexViewModel> objNews { get; set; }
         public IEnumerable<selectallBusinessDetailsDtos> objBusinessDetails { get; set; }
+        public IEnumerable<getAdvertisementSliderImagebySectorandCity> objAdvertisementSlider { get; set; }
      
 
 

@@ -323,6 +323,22 @@ namespace plathora.Controllers
 
             }).ToList();
 
+            if (SD.cityId != 0)
+            {
+                var parameter1 = new DynamicParameters();
+                parameter1.Add("@searchkeyword",SD.searchText.Trim().ToString());
+                parameter1.Add("@cityid", SD.cityId);
+                parameter1.Add("@Latitude", 0);
+                parameter1.Add("@Longitude", 0);
+
+
+
+                 
+
+                objmodel.objAdvertisementSlider = _sP_Call.List<getAdvertisementSliderImagebySectorandCity>("getAdvertiseSliderImagesbyCityIdandSearchkeyword", parameter1);
+
+            }
+
             return View(objmodel);
         }
 

@@ -4995,6 +4995,7 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ba
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Details.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\View.cshtml.g.cs
+E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_advertiseSlider.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_customerDashboardMenu.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_front.cshtml.g.cs
@@ -5019,10 +5020,3 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\staticwebassets\plath
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\.bower.json
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\bower.json
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\LTR\assets\plugins\ion.rangeSlider\package.json
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\.bower.json
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\bower.json
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\Bizdire\RTL\assets\plugins\ion.rangeSlider\package.json
-E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\wwwroot1\dropdownselect\composer.json
