@@ -138,6 +138,28 @@ namespace plathora.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-       
+
+        [HttpPost]
+        public string checkUniqueId(string uniqueId)
+        {
+            var obj = _db.applicationUsers.FirstOrDefault(x => x.uniqueId == uniqueId);
+            //  var businessSrNo1 = _businessOwnerRegiServices.GetAll().Where(x => x.customerid == obj.Id).FirstOrDefault().id;
+            if (obj != null)
+            {
+
+                //string myJson = "{\"Message\": " + "\"Record Found\"" + "}";
+                return "Present";
+            }
+            else
+            {
+
+                // string myJson = "{\"Message\": " + "\"Not Found\"" + "}";
+                return "NotFound";
+            }
+            return "dsf";
+            
+        }
+
+
     }
 }

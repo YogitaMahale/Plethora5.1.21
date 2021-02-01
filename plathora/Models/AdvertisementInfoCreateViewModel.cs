@@ -10,6 +10,11 @@ namespace plathora.Models
     public class AdvertisementInfoCreateViewModel
     {
         public int id { get; set; }
+
+        [Display(Name = "Register by AffilateId")]
+        public string registerbyAffilateId { get; set; }
+
+
         [Display(Name = "City")]
         public string cityIds { get; set; }
         [Display(Name = "Sector")]
@@ -53,7 +58,7 @@ namespace plathora.Models
         
         public decimal PaymentAmount { get; set; }
         public string TransactionId { get; set; }
-        public string uniqueId { get; set; }
+        //public string uniqueId { get; set; }
         
 
     }

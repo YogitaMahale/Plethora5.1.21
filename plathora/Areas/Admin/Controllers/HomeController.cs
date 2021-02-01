@@ -30,6 +30,8 @@ using System.Net.Mail;
 using Microsoft.AspNetCore.Hosting;
 using plathora.Utility;
 using plathora.Utility;
+using Nancy.Session;
+
 namespace plathora.Controllers
 {
     [Area("Admin")]
@@ -122,10 +124,11 @@ namespace plathora.Controllers
        
         public string TempdataCity(int id,string searchtext)
         {
+
+            //TempData["TempdataCity"] = id;
+            // TempData.Keep("TempdataCity");
             
-           //TempData["TempdataCity"] = id;
-           // TempData.Keep("TempdataCity");
-            
+
             SD.cityId = id;
             SD.searchText = searchtext;
             return "set";
@@ -310,7 +313,7 @@ namespace plathora.Controllers
         public IActionResult search(string txtsearch, int cityid)
         {
             SD.searchText = txtsearch;
-            SD.cityId = cityid;
+            //SD.cityId = cityid;
 
             frontwebsiteModel objmodel = new frontwebsiteModel();
              

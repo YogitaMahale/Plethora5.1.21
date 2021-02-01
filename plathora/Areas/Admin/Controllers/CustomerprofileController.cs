@@ -29,6 +29,8 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 using plathora.Models.Dtos;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+//using Microsoft.AspNetCore.Mvc.RazorPages;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace plathora.Areas.Admin.Controllers
@@ -667,7 +669,10 @@ namespace plathora.Areas.Admin.Controllers
                 int idd = (int)model.advertiseid;
                 int pkgMonth = _advertiseServices.GetById(idd).period;
                 obj.Expirydate = model.startdate.AddMonths(pkgMonth);
-                obj.AfilateuniqueId = model.uniqueId;
+                obj.AfilateuniqueId = model.registerbyAffilateId;
+
+
+
                 if (model.image1 != null)
                 {
 
@@ -687,21 +692,78 @@ namespace plathora.Areas.Admin.Controllers
                     obj.image1 = "";
 
                 }
-                if (obj == null)
+
+               
+
+                if (model == null)
                 {
                     return NotFound();
                 }
                 else
                 {
 
+                    decimal plethoraamt = 0, affilateamt = 0;
+                    if (model.registerbyAffilateId != null)
+                    {
+                        affilateamt = (model.PaymentAmount * 10) / 100;
+                        plethoraamt = model.PaymentAmount - affilateamt;
+
+                    }
+                    else
+                    {
+
+                        plethoraamt = model.PaymentAmount;
+                    }
+
+
+                    var businessdetails = _businessOwnerRegiServices.GetById(model.businessid);
+                    var customerDetails = _db.applicationUsers.Where(x => x.Id == businessdetails.customerid).FirstOrDefault();
+                    int lastId = _advertisementInfoServices.GetAll().OrderByDescending(x => x.id).FirstOrDefault().id;
+
+                    string affilateuniqueId = _db.applicationUsers.Where(x => x.uniqueId == model.registerbyAffilateId).FirstOrDefault().uniqueId;
+
+
+                    string salt = SD.Salt;
+                    string Key = SD.MerchantKey;
+                    string env = "prod";
+                    string amount = model.PaymentAmount.ToString();
+                    string firstname = customerDetails.name;
+                    string email = customerDetails.Email;
+                    string phone = customerDetails.PhoneNumber;
+                    string productinfo = model.title;
+                    string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
+                    string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
+                    string Txnid = (lastId + 1).ToString();
+                    string UDF1 = "";
+                    string UDF2 = "";
+                    string UDF3 = "";
+                    string UDF4 = "";
+                    string UDF5 = "";
+                    string split_payments= "{ '"+ affilateuniqueId + "' : "+ affilateamt + ", '"+ "PLE010890" + "' : "+ plethoraamt + "}";
+                string Show_payment_mode = "";
+                    Easebuzz t = new Easebuzz(salt, Key, env);
+                    string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode);
+                    //   Page.Controls.Add(new LiteralControl(strForm));
                     var postid = await _advertisementInfoServices.CreateAsync(obj);
                     int id = Convert.ToInt32(postid);
-                    return View("promoteBusiness");
+                    return Content(strForm, System.Net.Mime.MediaTypeNames.Text.Html);
+
+                    //ViewBag.strForm = strForm;
+
+                    //return RedirectToAction("SuccessAction", "Customerprofile");
+
+
+                    // return View("promoteBusiness");
 
                 }
             }
             else
             {
+                ViewBag.AdvertiseList = _advertiseServices.GetAllAdvertise();
+                ViewBag.citiesList = _CityRegistrationservices.GetAllCities();
+                ViewBag.sectorList = _sectorRegistrationServices.GetAllsector();
+                ViewBag.CompanyList = GetAllCompanybyCustomerId();
+                 
                 return View(model);
 
             }
@@ -714,6 +776,15 @@ namespace plathora.Areas.Admin.Controllers
 
         }
 
-
+        [HttpGet]
+        public IActionResult SuccessAction()
+        {
+            return View();
+        }
+        [HttpGet]
+        public IActionResult FailureAction()
+        {
+            return View();
+        }
     }
 }

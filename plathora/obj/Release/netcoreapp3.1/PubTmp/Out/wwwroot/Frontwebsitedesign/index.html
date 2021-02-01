@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head id="Head1">
+    <title>Search Anything In India :: Grotal.com</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=5; IE=8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="Description" content="" />
+    <meta name="Keywords" content="Search, indian cities, search in city, Search in india, add business, Advertise your business" />
+    <meta name="Revisit-after" content="30 days" />
+    <meta name="ROBOTS" content="INDEX, FOLLOW" />
+    <link rel="shortcut icon" type="image/x-icon" href="" />
+    <link href="css/theme.css" rel="stylesheet" type="text/css" />
+    <!-- End Alexa Certify Javascript -->
+    <!--Structured Data Code-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <form method="post" action="./default.aspx" id="form1">
+      <input name="txtHdnCityId" type="hidden" id="txtHdnCityId" value="0" />
+      <input name="HdnCityName" type="hidden" id="HdnCityName" value="0" />
+      <input name="HdnCityIDNew" type="hidden" id="HdnCityIDNew" value="0" />
+      <input name="txtHdnCountryId" type="hidden" id="txtHdnCountryId" value="1" />
+      <input type="hidden" id="txtHdnAreaId" value="0" />
+      <div style="display: none;" id="imgload" class="ldimg">
+      </div>
+      
+      <main class="gl-main">
+        <div id="main">          
+          <section class="gl-banner"  style="display: none;">
+            <div class="owl-carousel">
+              <div id="gl-slider" class="carousel slide" data-ride="carousel">
+                <div class="gl-slider-con">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators gl-slider-nav">
+                    <li data-target="#gl-slider" data-slide-to="0" data-toggle="tooltip" title="page 1" class="active"></li>
+                    <li data-target="#gl-slider" data-toggle="tooltip" title="page 2" data-slide-to="1"></li>
+                    <li data-target="#gl-slider" data-toggle="tooltip" title="page 3" data-slide-to="2"></li>
+                  </ol>
+                </div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="gl-banner-item item active">
+                    <img src="assets/media/banner3.png" alt="banner" class="w-100 hide-sm gl-banner-img">
+                    <img src="assets/media/sm-banner3.png" alt="banner" class="w-100 display-sm hide-md gl-banner-img">
+                    <div class="gl-banner-text">
+                      <div class="container">
+                        <h1 class="gl-banner-title">
+                        Top 10 <span>IT Companies</span>
+                        </h1>
+                        <div id="divITCompanies">  </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Single Item-->
+                  <div class="gl-banner-item item">
+                    <img src="assets/media/banner2.png" alt="banner" class="w-100 hide-sm gl-banner-img">
+                    <img src="assets/media/sm-banner2.png" alt="banner" class="w-100 display-sm hide-md gl-banner-img">
+                    <div class="gl-banner-text">
+                      <div class="container">
+                        <h1 class="gl-banner-title">
+                        Top 10 <span>Trusted Hospitals</span>
+                        </h1>
+                        <div id="divHospitals">  </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Single Item-->
+                  <!--Single Item-->
+                  <div class="gl-banner-item item">
+                    <img src="assets/media/banner1.png" alt="banner" class="w-100 hide-sm gl-banner-img">
+                    <img src="assets/media/sm-banner1.png" alt="banner" class="w-100 display-sm hide-md gl-banner-img">
+                    <div class="gl-banner-text">
+                      <div class="container">
+                        <h1 class="gl-banner-title">
+                        Top 10 <span>Educational Institutes</span>
+                        </h1>
+                        <div id="divEducationInstitutes">  </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Single Item-->
+                  <!--End Single Item-->
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="gt-homepage">
+            <div class="row">
+            <section class="gl-cats">
+              <div class="container">                
+              <div class="gl-searchbar-con gl-flex expand-all" style="display: none;">
+                <div class="gl-inpfield expand hasicon selectfield">
+                  <i class="fa fa-map-pin inpicon"></i>
+                  <input name="txtActCity" type="text" id="txtActCity" readonly="readonly" value="Select City" class="form-control" onclick="javascript:divCities();return false;" />
+                  <div id="divcity" style="width: 100%" class="layer">
+                    <div>
+                      <input type="text" id="txtCity" autocomplete="off" class="form-control" onkeyup="javascript:return showSeletedCity(event)"
+                      onfocus="javascript:setFocus(this,'Type City')" onblur="javascript:outFocus(this,'Type City')" />
+                    </div>
+                    <div id="divAllCities" class="layerContents cl bdrColor">
+                    </div>
+                  </div>
+                </div>
+                <div class="gl-inpfield expand selectfield hide-sm">
+                  <input type="text" id="txtArea" readonly="readonly" value="Any Area" class="form-control"
+                  onclick="javascript:divArea()" />
+                  <div style="width: 100%" id="divArea" class="layer">
+                    <div>
+                      <input type="text" id="txtTempArea" autocomplete="off" class="fl form-control"
+                      onfocus="javascript:setFocus(this,'Type Area')" onblur="javascript:outFocus(this,'Type Area')"
+                      onkeyup="javascript:showSeletedArea(event)" />
+                    </div>
+                    <div id="divAllArea" class="layerContents bdrColor">
+                    </div>
+                  </div>
+                </div>
+                <div class="gl-inpfield expand">
+                  <div class="input-group">
+                    <div id="txtCityDiv">
+                      <input type="text" name="textfield" autocomplete="Off" onkeypress="javascript:return GoToNamingSearch(event);"
+                      onfocus="javascript:setFocus(this,'Search by Business Name, Product Name or Service');hideArea()"
+                      onblur="javascript:outFocus(this,'Search by Business Name, Product Name or Service')"
+                      onkeyup="javascript:shwRst(this.value, event); stopHere();" id="txt_srctxt" maxlength="80"
+                      class="search_txtBox form-control" />
+                    </div>
+                  </div>
+                  <div id="livesearch" class="livesearch cl">
+                  </div>
+                </div>
+                <div class="gl-inpbutton">
+                  <div onmouseover="javascript:ShowContent('uniquename3'); return true;" onmouseout="javascript:HideContent('uniquename3'); return true;"
+                    class="hideContent fr">
+                    <input type="button" class="btn btn-default home-srchBtn gl-btn gl-btn-primary uppercase" name="search" onclick="javascript:return GoToNamingSearch(event)"
+                    onkeyup="javascript:return GoToNamingSearch(event)" id="Button1" value="Search" />
+                    <div id="uniquename3" class="fr">
+                    Search by Business, Product and Service.</div>
+                  </div>
+                </div>
+              </div>
+            
+                <div class="gl-title">
+                </div>
+                <div id="DivCategories" class="gl-cats-boxes" style="height: 100%; padding: 60px 0;">
+                </div>
+              </div>
+            </section>
+          </div>          
+          <div id="divScript" class="none">
+            <script type="text/javascript" language="javascript">var Countries= [["1","India"],["10","USA"]];</script>
+          </div>
+        </div>
+        </main>
+        <script type="text/javascript" src="js/Dflt.js"></script>
+        
+        <script type="text/javascript">
+        getLocation();
+        function getLocation() {
+        var value = document.getElementById('txtActCity').value.trim();
+        if (value.toUpperCase() == 'SELECT CITY') {
+        geoFindMe();
+        }
+        }
+        function geoFindMe() {
+        var output = document.getElementById("out");
+        if (!navigator.geolocation) {
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+        }
+        function success(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        //   output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+        var urlnew = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + '%2C' + longitude + '&key=AIzaSyAk0qng6it4CgTLmj2d144QIjcinfiXEE8';
+        $.ajax({
+        type: "GET",
+        url: 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + '%2C' + longitude + '&key=AIzaSyAk0qng6it4CgTLmj2d144QIjcinfiXEE8',
+        dataType: "json",
+        success: processJSON
+        }).success(function (data) {
+        processJSON(data);
+        });
+        }
+        function processJSON(json) {
+        document.getElementById("HdnCityName").value = json.results[0].address_components[4].long_name;
+        //   alert(document.getElementById("HdnCityName").value);
+        // alert("Postal Code:" + json.results[0].address_components[4].long_name);
+        }
+        function error() {
+        output.innerHTML = "Unable to retrieve your location";
+        }
+        output.innerHTML = "<p>Locating…</p>";
+        navigator.geolocation.getCurrentPosition(success, error);
+        }
+        </script>
+        <script type="text/javascript">
+        jQuery(window).scroll(function () {
+        var scroll = jQuery(window).scrollTop();
+        if (scroll >= 50) {
+        jQuery("body").addClass("gl-header-shrink");
+        } else {
+        jQuery("body").removeClass("gl-header-shrink");
+        }
+        });
+        jQuery(document).ready(function () {
+        jQuery('.glmenu').click(function () {
+        jQuery('body').toggleClass('showmenu');
+        });
+        jQuery('.gl-menus-close').click(function () {
+        jQuery('body').removeClass('showmenu');
+        });
+        jQuery('.gl-cats-box').click(function () {
+        var submenu = jQuery(this);
+        submenu.toggleClass('active');
+        submenu.siblings().removeClass('active');
+        });
+        });
+        </script>
+      </form>
+    </body>
+  </html>
