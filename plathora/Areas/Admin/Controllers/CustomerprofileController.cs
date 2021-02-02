@@ -30,6 +30,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 using plathora.Models.Dtos;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text;
+using System.Security.Cryptography;
 //using Microsoft.AspNetCore.Mvc.RazorPages;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -725,14 +727,16 @@ namespace plathora.Areas.Admin.Controllers
 
                     string salt = SD.Salt;
                     string Key = SD.MerchantKey;
-                    string env = "prod";
+                    string env = "test";
                     string amount = model.PaymentAmount.ToString();
                     string firstname = customerDetails.name;
                     string email = customerDetails.Email;
                     string phone = customerDetails.PhoneNumber;
                     string productinfo = model.title;
-                    string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
-                    string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
+                    string surl = "https://localhost:44322/Admin/Customerprofile/SuccessAction";
+                    string furl = "https://localhost:44322/Admin/Customerprofile/FailureAction";
+                    //string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
+                    //string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
                     string Txnid = (lastId + 1).ToString();
                     string UDF1 = "";
                     string UDF2 = "";
@@ -775,10 +779,84 @@ namespace plathora.Areas.Admin.Controllers
 
 
         }
+        public string Easebuzz_Generatehash512(string text)
+        {
 
+            byte[] message = Encoding.UTF8.GetBytes(text);
+
+            UnicodeEncoding UE = new UnicodeEncoding();
+            byte[] hashValue;
+            SHA512Managed hashString = new SHA512Managed();
+            string hex = "";
+            hashValue = hashString.ComputeHash(message);
+            foreach (byte x in hashValue)
+            {
+                hex += String.Format("{0:x2}", x);
+            }
+            return hex;
+
+        }
         [HttpGet]
         public IActionResult SuccessAction()
         {
+            try
+            {
+
+                string[] merc_hash_vars_seq;
+                string merc_hash_string = string.Empty;
+                string merc_hash = string.Empty;
+                string order_id = string.Empty;
+                string hash_seq = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
+
+
+                merc_hash_vars_seq = hash_seq.Split('|');
+                Array.Reverse(merc_hash_vars_seq);
+                merc_hash_string = SD.Salt + "|" + Request.Form["status"];
+
+
+                foreach (string merc_hash_var in merc_hash_vars_seq)
+                {
+                    merc_hash_string += "|";
+                    merc_hash_string = merc_hash_string + (HttpContext.Request.Form[merc_hash_var].ToString() != null ? HttpContext.Request.Form[merc_hash_var].ToString() :"");
+
+                }
+                merc_hash = Easebuzz_Generatehash512(merc_hash_string).ToLower();
+
+
+
+                if (merc_hash != Request.Form["hash"])
+                {
+                    //  Response.Write("Hash value did not matched");
+                    ViewBag.result = "Hash value did not matched";
+                }
+                else
+                {
+                    order_id = Request.Form["txnid"];
+                    ViewBag.result = "value matched";
+                    //Response.Write("value matched");
+                    if (Request.Form["status"] == "success")
+                    {
+                        ViewBag.result = Request.Form;
+                        //Response.Write(Request.Form);
+                       
+                    }
+                    else
+                    {
+                         ViewBag.result = Request.Form;
+                       // Response.Write(Request.Form);
+                         
+                    }
+                    //Hash value did not matched
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.result = "<span style='color:red'>" + ex.Message + "</span>";
+             //   Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+
+            }
             return View();
         }
         [HttpGet]
