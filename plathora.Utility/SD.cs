@@ -15,8 +15,12 @@ namespace plathora.Utility
     public static int cityId { get; set; }
     public static string searchText {get;set; }
 
-        public static String MerchantKey = "43JVTVB1CX";
 
-        public static String Salt = "T9B5988XNR";
+        //public static String MerchantKey = "43JVTVB1CX";
+        //public static String Salt = "T9B5988XNR";
+
+        ////test 
+        public static String MerchantKey = "2PBP7IABZ2";
+        public static String Salt = "DAH88E3UWQ";
     }
 }

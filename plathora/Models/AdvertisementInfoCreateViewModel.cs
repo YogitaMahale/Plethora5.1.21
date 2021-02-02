@@ -17,6 +17,7 @@ namespace plathora.Models
 
         [Display(Name = "City")]
         public string cityIds { get; set; }
+         
         [Display(Name = "Sector")]
         public int? sectorId { get; set; } = null;
 
@@ -59,7 +60,14 @@ namespace plathora.Models
         public decimal PaymentAmount { get; set; }
         public string TransactionId { get; set; }
         //public string uniqueId { get; set; }
-        
+
+
+        public decimal affilateamt { get; set; }
+        public decimal plethoraamt { get; set; }
+
+        public decimal affilateTotalamt { get; set; }
+        public decimal plethoraTotalamt { get; set; }
+
 
     }
 }

@@ -105,6 +105,29 @@
 
                                                 <label class="form-label text-dark">Package Amount</label>
                                                 <input type="text" readonly class="form-control" id="pkgAmount">
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group form-group">
+                                            <div class="form-group">
+
+                                                <label class="form-label text-dark">Affilate Amount</label>
+                                                <input type="text" readonly class="form-control" id="affilateamt">
+                                                <input type="text" readonly class="form-control" id="affilateTotalamt" asp-for="affilateTotalamt">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="control-group form-group">
+                                            <div class="form-group">
+
+                                                <label class="form-label text-dark">Pleathora Amount</label>
+                                                <input type="text" readonly class="form-control" id="plethoraamt">
+
+                                                <input type="text"  readonly class="form-control" id="plethoraTotalamt" asp-for="plethoraTotalamt">
+
                                             </div>
                                         </div>
 
@@ -118,10 +141,10 @@
                                                     <option>--- Choose Company ---</option>
                                                 </select>
                                                 @*<select data-placeholder="Choose a Country..." name="businessid" id="businessid" asp-for="businessid" class="chosen-select form-control"
-                                                            asp-items="@ViewBag.CompanyList" tabindex="2">
-                                                        <option value=""></option>
+                        asp-items="@ViewBag.CompanyList" tabindex="2">
+                    <option value=""></option>
 
-                                                    </select>*@
+                </select>*@
                                                 <span asp-validation-for="businessid" class="text-danger"></span>
                                             </div>
                                         </div>
@@ -136,11 +159,11 @@
                                                     <option>--- Select  ---</option>
                                                 </select>
                                                 @*<select name="cityIds" id="cityIds" asp-for="cityIds" class="form-control"
-                                                            asp-items="@ViewBag.citiesList">
+                        asp-items="@ViewBag.citiesList">
 
 
-                                                        <option>--- Select  ---</option>
-                                                    </select>*@
+                    <option>--- Select  ---</option>
+                </select>*@
 
 
                                                 <span asp-validation-for="cityIds" class="text-danger"></span>
@@ -296,7 +319,7 @@
         //var array = $('#cityIds').val().split(',');
         //console.log(array);
         //alert(array.length);
-        //alert($("#cityIds").val());
+        alert($("#cityIds").val());
         var str = $("#cityIds").val();
         console.log(str);
 
@@ -313,7 +336,15 @@
         var tot1 = tot + gstamt;
        // alert(tot1);
         $("#PaymentAmount").val(tot1);
-       // alert(splits.length); // output: this
+
+
+             
+            var affilateamt1 = splits.length * $("#affilateamt").val();
+        $("#affilateTotalamt").val(affilateamt1);
+
+            var plethoraamt1 = splits.length * $("#plethoraamt").val();
+            $("#plethoraTotalamt").val(plethoraamt1);
+         
     }
 
     $("#advertiseid").change(function () {
@@ -331,6 +362,14 @@
 
                     $("#pkgAmount").val(data.amount);
                     $("#pkgGST").val(data.gst);
+
+
+                    $("#affilateamt").val(data.affilateamt);
+                    $("#plethoraamt").val(data.plethoraamt);
+
+ 
+
+
                    // FinalAmount
                     //var item = '';
                     //$("#stateid").empty();

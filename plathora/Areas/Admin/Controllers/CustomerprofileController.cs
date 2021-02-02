@@ -38,7 +38,7 @@ using System.Security.Cryptography;
 namespace plathora.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = SD.Role_Customer)]
+    //[Authorize(Roles = SD.Role_Customer)]
     public class CustomerprofileController : Controller
     {
         private readonly IadvertisementInfoServices _advertisementInfoServices;
@@ -73,6 +73,8 @@ namespace plathora.Areas.Admin.Controllers
             _advertisementInfoServices = advertisementInfoServices;
             //_usermanager = usermanager;
         }
+
+      // public  advertisementInfo obj = new advertisementInfo();
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -646,6 +648,8 @@ namespace plathora.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+               // string[] cityarr = model.cityIds.Split(',');
+
                 advertisementInfo obj = new advertisementInfo();
                 obj.id = 0;
                 //obj.customerId = model.customerId;
@@ -664,7 +668,7 @@ namespace plathora.Areas.Admin.Controllers
                 obj.isdeleted = false;
 
                 obj.PaymentAmount = model.PaymentAmount;
-                obj.PaymentStatus = model.PaymentStatus;
+                obj.PaymentStatus = "pending";
                 obj.TransactionId = model.TransactionId;
 
 
@@ -718,9 +722,15 @@ namespace plathora.Areas.Admin.Controllers
                     }
 
 
+                    //TempData["advertisementInfo"] = obj;
+                    //TempData.Keep("advertisementInfo");
+                    var postid = await _advertisementInfoServices.CreateAsync(obj);
+                    int id = Convert.ToInt32(postid);
+
+
                     var businessdetails = _businessOwnerRegiServices.GetById(model.businessid);
                     var customerDetails = _db.applicationUsers.Where(x => x.Id == businessdetails.customerid).FirstOrDefault();
-                    int lastId = _advertisementInfoServices.GetAll().OrderByDescending(x => x.id).FirstOrDefault().id;
+                   // int lastId = _advertisementInfoServices.GetAll().OrderByDescending(x => x.id).FirstOrDefault().id;
 
                     string affilateuniqueId = _db.applicationUsers.Where(x => x.uniqueId == model.registerbyAffilateId).FirstOrDefault().uniqueId;
 
@@ -728,6 +738,7 @@ namespace plathora.Areas.Admin.Controllers
                     string salt = SD.Salt;
                     string Key = SD.MerchantKey;
                     string env = "test";
+                   // string env = "prod";
                     string amount = model.PaymentAmount.ToString();
                     string firstname = customerDetails.name;
                     string email = customerDetails.Email;
@@ -737,27 +748,24 @@ namespace plathora.Areas.Admin.Controllers
                     string furl = "https://localhost:44322/Admin/Customerprofile/FailureAction";
                     //string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
                     //string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
-                    string Txnid = (lastId + 1).ToString();
+                    string Txnid = postid.ToString();//(lastId + 1).ToString();
                     string UDF1 = "";
                     string UDF2 = "";
                     string UDF3 = "";
                     string UDF4 = "";
                     string UDF5 = "";
-                    string split_payments= "{ '"+ affilateuniqueId + "' : "+ affilateamt + ", '"+ "PLE010890" + "' : "+ plethoraamt + "}";
-                string Show_payment_mode = "";
+                    //string split_payments= "{ '"+ affilateuniqueId + "' : "+(affilateamt*cityarr.Length)+ ", '"+ "PLE010890" + "' : "+ (plethoraamt * cityarr.Length)+ "}";
+                    string split_payments = "{ '" + affilateuniqueId + "' : " + model.affilateTotalamt + ", '" + "PLE010890" + "' : " +model.plethoraTotalamt + "}";
+                    string Show_payment_mode = "";
                     Easebuzz t = new Easebuzz(salt, Key, env);
-                    string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode);
+                    string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode, split_payments);
                     //   Page.Controls.Add(new LiteralControl(strForm));
-                    var postid = await _advertisementInfoServices.CreateAsync(obj);
-                    int id = Convert.ToInt32(postid);
+                    //var postid = await _advertisementInfoServices.CreateAsync(obj);
+                    //int id = Convert.ToInt32(postid);
+
                     return Content(strForm, System.Net.Mime.MediaTypeNames.Text.Html);
 
-                    //ViewBag.strForm = strForm;
-
-                    //return RedirectToAction("SuccessAction", "Customerprofile");
-
-
-                    // return View("promoteBusiness");
+                     
 
                 }
             }
@@ -797,7 +805,15 @@ namespace plathora.Areas.Admin.Controllers
 
         }
         [HttpGet]
-        public IActionResult SuccessAction()
+        [ActionName("SuccessAction")]
+        public IActionResult SuccessAction1()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("SuccessAction")]
+        public async Task<IActionResult> SuccessAction()
         {
             try
             {
@@ -817,7 +833,7 @@ namespace plathora.Areas.Admin.Controllers
                 foreach (string merc_hash_var in merc_hash_vars_seq)
                 {
                     merc_hash_string += "|";
-                    merc_hash_string = merc_hash_string + (HttpContext.Request.Form[merc_hash_var].ToString() != null ? HttpContext.Request.Form[merc_hash_var].ToString() :"");
+                    merc_hash_string = merc_hash_string + (Request.Form[merc_hash_var].ToString() != null ? Request.Form[merc_hash_var].ToString() :"");
 
                 }
                 merc_hash = Easebuzz_Generatehash512(merc_hash_string).ToLower();
@@ -836,13 +852,21 @@ namespace plathora.Areas.Admin.Controllers
                     //Response.Write("value matched");
                     if (Request.Form["status"] == "success")
                     {
-                        ViewBag.result = Request.Form;
+
+                        var obj1 = _advertisementInfoServices.GetById(Convert.ToInt32(order_id));
+                        obj1.TransactionId = order_id;
+                        obj1.PaymentStatus = "Paid";
+                       await  _advertisementInfoServices.UpdateAsync(obj1);
+                        //int id = Convert.ToInt32(postid);
+
+                          
+                       ViewBag.result = "Payment Done Successfully";
                         //Response.Write(Request.Form);
                        
                     }
                     else
                     {
-                         ViewBag.result = Request.Form;
+                         ViewBag.result = "Failed";
                        // Response.Write(Request.Form);
                          
                     }
@@ -853,13 +877,14 @@ namespace plathora.Areas.Admin.Controllers
 
             catch (Exception ex)
             {
-                ViewBag.result = "<span style='color:red'>" + ex.Message + "</span>";
-             //   Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+                ViewBag.result = "Failed";
+                //   ViewBag.result = "<span style='color:red'>" + ex.Message + "</span>";
+                //   Response.Write("<span style='color:red'>" + ex.Message + "</span>");
 
             }
             return View();
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult FailureAction()
         {
             return View();

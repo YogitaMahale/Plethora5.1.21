@@ -24,7 +24,7 @@ namespace plathora.Utility
 			env = ENV;
 		}
 		// this function is required to initiate payment
-		public string initiatePaymentAPI(string Amount, String Firstname, String Email, String Phone, String Productinfo, String Surl, String Furl, String Txnid, String Udf1, String Udf2, String Udf3, String Udf4, String Udf5, String Show_payment_mode)
+		public string initiatePaymentAPI(string Amount, String Firstname, String Email, String Phone, String Productinfo, String Surl, String Furl, String Txnid, String Udf1, String Udf2, String Udf3, String Udf4, String Udf5, String Show_payment_mode,string split_payments)
 		{
 			string[] hashVarsSeq;
 			string hash_string = string.Empty;
@@ -42,6 +42,7 @@ namespace plathora.Utility
 			string udf4 = Udf4;
 			string udf5 = Udf5;
 			string ShowPaymentMode = Show_payment_mode;
+			string split_payments1 = split_payments;
 			// Generate transaction ID -> make sure this is unique for all transactions
 			Random rnd = new Random();
 			string strHash = Easebuzz_Generatehash512(rnd.ToString() + DateTime.Now);
@@ -57,7 +58,7 @@ namespace plathora.Utility
 			data.Add("txnid", txnid);
 			data.Add("key", Key);
 			//string AmountForm = Convert.ToDecimal(amount.Trim()).ToString("g29");// eliminating trailing zeros
-			amount = amount;
+			//amount = amount;
 			data.Add("amount", amount);
 			data.Add("firstname", firstname.Trim());
 			data.Add("email", email.Trim());
@@ -83,7 +84,7 @@ namespace plathora.Utility
 			gen_hash = Easebuzz_Generatehash512(hash_string).ToLower();        //generating hash
 			data.Add("hash", gen_hash);
 			data.Add("show_payment_mode", ShowPaymentMode.Trim());
-
+			data.Add("split_payments", split_payments1.Trim());
 			string strForm = Easebuzz_PreparePOSTForm(easebuzz_action_url, data);
 			return strForm;
 
