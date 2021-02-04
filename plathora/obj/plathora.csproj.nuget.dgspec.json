@@ -389,6 +389,10 @@
               "target": "Package",
               "version": "[2.0.0, )"
             },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.11.7, )"
+            },
             "System.Net.Http": {
               "target": "Package",
               "version": "[4.3.3, )"

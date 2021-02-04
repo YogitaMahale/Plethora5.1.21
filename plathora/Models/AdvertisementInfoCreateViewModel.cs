@@ -17,7 +17,8 @@ namespace plathora.Models
 
         [Display(Name = "City")]
         public string cityIds { get; set; }
-         
+        public string multiplecityIds { get; set; }
+
         [Display(Name = "Sector")]
         public int? sectorId { get; set; } = null;
 

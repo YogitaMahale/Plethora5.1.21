@@ -149,14 +149,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="hidden" id="hfPackage" />
+                                            <input type="hidden" id="multiplecityIds"  asp-for="multiplecityIds" />
                                             <div class="form-group">
                                                 <label class="form-label text-dark" asp-for="cityIds"></label>
                                                 <select name="cityIds" id="cityIds" asp-for="cityIds" data-placeholder="Choose City..." class="chosen-select form-control" multiple tabindex="4"
                                                         asp-items="@ViewBag.citiesList">
 
 
-                                                    <option>--- Select  ---</option>
+                                                    @*<option>--- Select  ---</option>*@
                                                 </select>
                                                 @*<select name="cityIds" id="cityIds" asp-for="cityIds" class="form-control"
                         asp-items="@ViewBag.citiesList">
@@ -253,8 +253,7 @@
         </div>
     </div>
 </section>
-
-
+ 
 <partial name="_Subscribe" />
 
 
@@ -269,7 +268,8 @@
 <script src="~/dropdownselect/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-
+    console.log($("#split_payments").val());
+    //alert($("split_payments").val());
     $("#registerbyAffilateId").change(function () {
          
               $.ajax({
@@ -311,7 +311,7 @@
     });
     $("#cityIds").change(function () {
 
-
+         
         cal();
 
     });
@@ -319,9 +319,11 @@
         //var array = $('#cityIds').val().split(',');
         //console.log(array);
         //alert(array.length);
-        alert($("#cityIds").val());
+     //   alert($("#cityIds").val());
         var str = $("#cityIds").val();
-        console.log(str);
+        $("#multiplecityIds").val($("#cityIds").val());
+        
+        //console.log(str);
 
         var splits = String(str).split(",");
 

@@ -42,3 +42,4 @@ E:\yogita 6.8.19\plathora\plathora.Utility\obj\Debug\netcoreapp3.1\plathora.Util
 E:\yogita 6.8.19\plathora\plathora.Utility\obj\Debug\netcoreapp3.1\plathora.Utility.AssemblyInfo.cs
 E:\yogita 6.8.19\plathora\plathora.Utility\obj\Debug\netcoreapp3.1\plathora.Utility.dll
 E:\yogita 6.8.19\plathora\plathora.Utility\obj\Debug\netcoreapp3.1\plathora.Utility.pdb
+E:\yogita 6.8.19\plathora\plathora.Utility\obj\Debug\netcoreapp3.1\plathora.Utility.csprojAssemblyReference.cache

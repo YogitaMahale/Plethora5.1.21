@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/7DFdnZArzh+zObcY+6fm3KYYnccjN/dNUCJiSP4Xh6QoKDIqV79oLrH6zFKLoQdEwHTdqDqzJ7Jy+o4D81Y0g==",
+  "dgSpecHash": "aNyeqQyd9K2QS9id9KYUjeo9dMONuyhp+wcgzJBesAH0poVqLBkDitEWPNoYhPuaIspZwPRNJREM1m4R9FOtcA==",
   "success": true,
   "projectFilePath": "E:\\yogita 6.8.19\\plathora\\plathora\\plathora.csproj",
   "expectedPackageFiles": [
@@ -112,6 +112,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",

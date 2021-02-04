@@ -24,7 +24,7 @@ namespace plathora.Utility
 			env = ENV;
 		}
 		// this function is required to initiate payment
-		public string initiatePaymentAPI(string Amount, String Firstname, String Email, String Phone, String Productinfo, String Surl, String Furl, String Txnid, String Udf1, String Udf2, String Udf3, String Udf4, String Udf5, String Show_payment_mode,string split_payments)
+		public string initiatePaymentAPI(string Amount, String Firstname, String Email, String Phone, String Productinfo, String Surl, String Furl, String Txnid, String Udf1, String Udf2, String Udf3, String Udf4, String Udf5, String Show_payment_mode,string split_payments,string registerbyAffilateid)
 		{
 			string[] hashVarsSeq;
 			string hash_string = string.Empty;
@@ -71,6 +71,16 @@ namespace plathora.Utility
 			data.Add("udf3", udf3.Trim());
 			data.Add("udf4", udf4.Trim());
 			data.Add("udf5", udf5.Trim());
+			data.Add("show_payment_mode", ShowPaymentMode.Trim());
+			if (String.IsNullOrEmpty(registerbyAffilateid))
+			{
+
+			}
+			else
+			{
+				//string test = "'" + "{\"YOG191362\" : 2.00,\"PLE010890\" : 2.17}" + "'";
+				data.Add("split_payments", split_payments1);
+			}
 
 			// generate hash
 			hashVarsSeq = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10".Split('|'); // spliting hash sequence from config
@@ -83,9 +93,13 @@ namespace plathora.Utility
 			hash_string += salt;// appending SALT
 			gen_hash = Easebuzz_Generatehash512(hash_string).ToLower();        //generating hash
 			data.Add("hash", gen_hash);
-			data.Add("show_payment_mode", ShowPaymentMode.Trim());
-			data.Add("split_payments", split_payments1.Trim());
+			
+			
+			//data.Add("split_payments", split_payments1.Trim());
 			string strForm = Easebuzz_PreparePOSTForm(easebuzz_action_url, data);
+
+		//	string strForm = "<form id=\"PostForm\" name=\"PostForm\" action=\"https://pay.easebuzz.in/pay/secure\" method=\"POST\"><input type=\"hidden\" name=\"firstname\" value=\"YOGESH\"><input type=\"hidden\" name=\"hash\" value=\"caac45be61e52e4e5a71cb98d3bff35487237a98271c326afa3cbade72eb2588104ba41bcaebaa5191c118e0c6a9f97cb44232836245a5b9b52ff4ccdfca752c\"><input type=\"hidden\" name=\"amount\" value=\"2.36\">< input type =\"hidden\" name=\"split_payments\" value=\"\"><input type=\"hidden\" name=\"udf4\" value=\"\"><input type=\"hidden\" name=\"txnid\" value=\"110\"><input type=\"hidden\" name=\"furl\" value=\"https://localhost:44322/Admin/Customerprofile/FailureAction\"><input type=\"hidden\" name=\"phone\" value=\"7276541222\"><input type=\"hidden\" name=\"udf5\" value=\"\"><input type=\"hidden\" name=\"udf2\" value=\"\"><input type=\"hidden\" name=\"email\" value=\"manekar.yogesh1@gmail.com\"><input type=\"hidden\" name=\"key\" value=\"43JVTVB1CX\"><input type=\"hidden\" name=\"show_payment_mode\" value=\"NB,DC,CC,UPI\"><input type=\"hidden\" name=\"udf3\" value=\"\"><input type=\"hidden\" name=\"productinfo\" value=\"test\"><input type=\"hidden\" name=\"surl\" value=\"https://localhost:44322/Admin/Customerprofile/SuccessAction\"><input type=\"hidden\" name=\"udf1\" value=\"\"></form><script language='javascript'>var vPostForm = document.PostForm;vPostForm.submit();</script>";
+			//string strForm = "<form id=\"PostForm\" name=\"PostForm\" action=\"https://pay.easebuzz.in/pay/secure\" method=\"POST\"><input type=\"hidden\" name=\"firstname\" value=\"YOGESH\"><input type=\"hidden\" name=\"amount\" value=\"2.36\"><input type=\"hidden\" name=\"udf5\" value=\"\"><input type=\"hidden\" name=\"hash\" value=\"5c12bdd89ded7e8f293a7ed0e68be6421af4addf1f5452934b9ec863d33292e2c2aacbbdb2e169deda2487f804e27bc58bdfaa9f70c96803f6dfd8f885fe12bb\"><input type=\"hidden\" name=\"furl\" value=\"https://localhost:44322/Admin/Customerprofile/FailureAction\"><input type=\"hidden\" name=\"phone\" value=\"7276541222\"><input type=\"hidden\" name=\"txnid\" value=\"97\"><input type=\"hidden\" name=\"show_payment_mode\" value=\"NB,DC,CC,UPI\"><input type=\"hidden\" name=\"key\" value=\"43JVTVB1CX\"><input type=\"hidden\" name=\"surl\" value=\"https://localhost:44322/Admin/Customerprofile/SuccessAction\"><input type=\"hidden\" name=\"udf3\" value=\"\"><input type=\"hidden\" name=\"split_payments\" value={\"YOG191362\" : 2.00, \"PLE010890\" : 2.00}><input type=\"hidden\" name=\"udf2\" value=\"\"><input type=\"hidden\" name=\"email\" value=\"manekar.yogesh1@gmail.com\"><input type=\"hidden\" name=\"productinfo\" value=\"test payment1\"><input type=\"hidden\" name=\"udf4\" value=\"\"><input type=\"hidden\" name=\"udf1\" value=\"\"></form><script language='javascript'>var vPostForm = document.PostForm;vPostForm.submit();</script>";
 			return strForm;
 
 		}
@@ -103,9 +117,18 @@ namespace plathora.Utility
 
 			foreach (System.Collections.DictionaryEntry key in data)
 			{
-
-				strForm.Append("<input type=\"hidden\" name=\"" + key.Key +
+				if (key.Key.ToString().Contains("split_payments"))
+				{
+					//strForm.Append("<input type=\"hidden\" name=\"split_payments\" value='{\"YOG191362\" : 0.19,\"PLE010890\" : 2.17}'>");
+					strForm.Append("<input type=\"hidden\" name=\"" + key.Key +
+							  "\" value=\'" + key.Value + "\'>");
+				}
+				else
+				{
+					strForm.Append("<input type=\"hidden\" name=\"" + key.Key +
 							   "\" value=\"" + key.Value + "\">");
+				}
+
 			}
 			strForm.Append("</form>");
 			//Build the JavaScript which will do the Posting operation.

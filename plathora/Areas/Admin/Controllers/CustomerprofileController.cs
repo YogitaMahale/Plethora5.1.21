@@ -32,11 +32,21 @@ using plathora.Models.Dtos;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
+using Nancy.Json.Simple;
+using RestSharp;
+using JsonObject = Nancy.Json.Simple.JsonObject;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
 //using Microsoft.AspNetCore.Mvc.RazorPages;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace plathora.Areas.Admin.Controllers
 {
+
+    class split_payments { public string YOG191362 = "0.19"; public string PLE010890 = "2.17"; };
+
+
     [Area("Admin")]
     //[Authorize(Roles = SD.Role_Customer)]
     public class CustomerprofileController : Controller
@@ -55,8 +65,13 @@ namespace plathora.Areas.Admin.Controllers
         private readonly IBusinessOwnerRegiServices _businessOwnerRegiServices;
         private readonly IAdvertiseServices _advertiseServices;
         private readonly ISectorRegistrationServices _sectorRegistrationServices;
+        private readonly IBusinessPackageServices _BusinessPackageServices;
+        private readonly IPackageRegistrationServices _PackageRegistrationServices;
+
+        private readonly IBusinessRegistrationServieces _businessRegistrationServieces;
+        private readonly IProductMasterServices _productMasterServices;
         //private readonly UserManager<ApplicationUser> _usermanager;
-        public CustomerprofileController(ISP_Call sP_Call, ApplicationDbContext db, IMembershipServices MembershipServices, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices CityRegistrationservices, IAffilatePackageServices AffilatePackageServices, IStateRegistrationService StateRegistrationService, IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, IBusinessOwnerRegiServices businessOwnerRegiServices, IAdvertiseServices advertiseServices, ISectorRegistrationServices sectorRegistrationServices, IadvertisementInfoServices advertisementInfoServices)
+        public CustomerprofileController(ISP_Call sP_Call, ApplicationDbContext db, IMembershipServices MembershipServices, ICountryRegistrationservices CountryRegistrationservices, ICityRegistrationservices CityRegistrationservices, IAffilatePackageServices AffilatePackageServices, IStateRegistrationService StateRegistrationService, IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager, IBusinessOwnerRegiServices businessOwnerRegiServices, IAdvertiseServices advertiseServices, ISectorRegistrationServices sectorRegistrationServices, IadvertisementInfoServices advertisementInfoServices, IBusinessPackageServices BusinessPackageServices, IPackageRegistrationServices PackageRegistrationServices, IBusinessRegistrationServieces businessRegistrationServieces, IProductMasterServices productMasterServices)
         {
             _sP_Call = sP_Call;
             _db = db;
@@ -71,10 +86,14 @@ namespace plathora.Areas.Admin.Controllers
             _businessOwnerRegiServices = businessOwnerRegiServices;
             _sectorRegistrationServices = sectorRegistrationServices;
             _advertisementInfoServices = advertisementInfoServices;
+            _BusinessPackageServices = BusinessPackageServices;
+            _PackageRegistrationServices = PackageRegistrationServices;
+            _productMasterServices = productMasterServices;
+            _businessRegistrationServieces = businessRegistrationServieces;
             //_usermanager = usermanager;
         }
 
-      // public  advertisementInfo obj = new advertisementInfo();
+        // public  advertisementInfo obj = new advertisementInfo();
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -643,21 +662,21 @@ namespace plathora.Areas.Admin.Controllers
             //AdvertisementInfoCreateViewModel
 
         }
+
         [HttpPost]
         public async Task<IActionResult> promoteBusiness(AdvertisementInfoCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
-               // string[] cityarr = model.cityIds.Split(',');
+                // string[] cityarr = model.cityIds.Split(',');
 
                 advertisementInfo obj = new advertisementInfo();
                 obj.id = 0;
                 //obj.customerId = model.customerId;
                 //  obj.cusotmerid = model.cusotmerid;
                 obj.businessid = model.businessid;
-                obj.cityIds = model.cityIds;
+                obj.cityIds = model.multiplecityIds;
                 obj.sectorId = model.sectorId;
-                
 
                 obj.advertiseid = model.advertiseid;
                 obj.startdate = model.startdate;
@@ -699,7 +718,7 @@ namespace plathora.Areas.Admin.Controllers
 
                 }
 
-               
+
 
                 if (model == null)
                 {
@@ -722,23 +741,18 @@ namespace plathora.Areas.Admin.Controllers
                     }
 
 
-                    //TempData["advertisementInfo"] = obj;
-                    //TempData.Keep("advertisementInfo");
+
                     var postid = await _advertisementInfoServices.CreateAsync(obj);
                     int id = Convert.ToInt32(postid);
 
 
                     var businessdetails = _businessOwnerRegiServices.GetById(model.businessid);
                     var customerDetails = _db.applicationUsers.Where(x => x.Id == businessdetails.customerid).FirstOrDefault();
-                   // int lastId = _advertisementInfoServices.GetAll().OrderByDescending(x => x.id).FirstOrDefault().id;
-
                     string affilateuniqueId = _db.applicationUsers.Where(x => x.uniqueId == model.registerbyAffilateId).FirstOrDefault().uniqueId;
-
-
                     string salt = SD.Salt;
                     string Key = SD.MerchantKey;
-                    string env = "test";
-                   // string env = "prod";
+                   // string env = "test";
+                    string env = "prod";
                     string amount = model.PaymentAmount.ToString();
                     string firstname = customerDetails.name;
                     string email = customerDetails.Email;
@@ -754,18 +768,34 @@ namespace plathora.Areas.Admin.Controllers
                     string UDF3 = "";
                     string UDF4 = "";
                     string UDF5 = "";
-                    //string split_payments= "{ '"+ affilateuniqueId + "' : "+(affilateamt*cityarr.Length)+ ", '"+ "PLE010890" + "' : "+ (plethoraamt * cityarr.Length)+ "}";
-                    string split_payments = "{ '" + affilateuniqueId + "' : " + model.affilateTotalamt + ", '" + "PLE010890" + "' : " +model.plethoraTotalamt + "}";
-                    string Show_payment_mode = "";
+
+                    // class split_payments { public string YOG191362 = "0.19"; public string PLE010890 = "2.17"; };
+                    //string str = "{'PLE010890': 2.17,'YOG191362': 0.19 }";
+                    string str = "{'PLE010890': "+model.plethoraTotalamt+",'"+model.registerbyAffilateId+"': "+model.affilateTotalamt+" }";
+
+                    //  string jsonstr = JsonConvert.SerializeObject(str);
+                    // jsonstr = jsonstr.Replace("\"", "#").Replace("\'", "\"").Replace("#", "\'");
+                    String jsonstr = str.Replace("\'", "\"");
+
+
+                    String split_para = "{'PLE010890':" + model.plethoraTotalamt + ", '" + model.registerbyAffilateId + "':" + model.affilateTotalamt + "}";
+                    Console.WriteLine("The Value is : {0}", split_para);
+
+                   // String jsonstr = '\'' + split_para.Replace("'", "\"") + '\'';
+                    //Console.WriteLine("After Replacing the Value : {0}", tem);
+
+
+
+                    string Show_payment_mode = "NB,DC,CC,UPI";
                     Easebuzz t = new Easebuzz(salt, Key, env);
-                    string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode, split_payments);
+                    string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode, jsonstr, model.registerbyAffilateId);
                     //   Page.Controls.Add(new LiteralControl(strForm));
                     //var postid = await _advertisementInfoServices.CreateAsync(obj);
                     //int id = Convert.ToInt32(postid);
 
                     return Content(strForm, System.Net.Mime.MediaTypeNames.Text.Html);
 
-                     
+
 
                 }
             }
@@ -775,7 +805,7 @@ namespace plathora.Areas.Admin.Controllers
                 ViewBag.citiesList = _CityRegistrationservices.GetAllCities();
                 ViewBag.sectorList = _sectorRegistrationServices.GetAllsector();
                 ViewBag.CompanyList = GetAllCompanybyCustomerId();
-                 
+
                 return View(model);
 
             }
@@ -833,7 +863,7 @@ namespace plathora.Areas.Admin.Controllers
                 foreach (string merc_hash_var in merc_hash_vars_seq)
                 {
                     merc_hash_string += "|";
-                    merc_hash_string = merc_hash_string + (Request.Form[merc_hash_var].ToString() != null ? Request.Form[merc_hash_var].ToString() :"");
+                    merc_hash_string = merc_hash_string + (Request.Form[merc_hash_var].ToString() != null ? Request.Form[merc_hash_var].ToString() : "");
 
                 }
                 merc_hash = Easebuzz_Generatehash512(merc_hash_string).ToLower();
@@ -856,19 +886,19 @@ namespace plathora.Areas.Admin.Controllers
                         var obj1 = _advertisementInfoServices.GetById(Convert.ToInt32(order_id));
                         obj1.TransactionId = order_id;
                         obj1.PaymentStatus = "Paid";
-                       await  _advertisementInfoServices.UpdateAsync(obj1);
+                        await _advertisementInfoServices.UpdateAsync(obj1);
                         //int id = Convert.ToInt32(postid);
 
-                          
-                       ViewBag.result = "Payment Done Successfully";
+
+                        ViewBag.result = "Payment Done Successfully";
                         //Response.Write(Request.Form);
-                       
+
                     }
                     else
                     {
-                         ViewBag.result = "Failed";
-                       // Response.Write(Request.Form);
-                         
+                        ViewBag.result = "Failed";
+                        // Response.Write(Request.Form);
+
                     }
                     //Hash value did not matched
                 }
@@ -888,6 +918,287 @@ namespace plathora.Areas.Admin.Controllers
         public IActionResult FailureAction()
         {
             return View();
+        }
+
+
+
+
+        [HttpGet]
+        [ActionName("NewBusiness")]
+        public IActionResult NewBusiness1()
+        {
+
+
+
+             
+            var model = new NewBusinessCreateViewModel();
+            ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
+            var BusinessPackageList = _BusinessPackageServices.GetAll().Select(x => new BusinessPackageIndexViewModel
+            {
+                id = x.id,
+                pkgId = x.pkgId,
+                Amount = x.Amount,
+                description = x.description,
+                period = x.period,
+                PackageRegistration = _PackageRegistrationServices.GetById(x.pkgId),
+                gst = x.gst,
+                affilateamt = x.affilateamt,
+                plethoraamt = x.plethoraamt
+
+            }).Select(emp => new SelectListItem()
+            {
+                Text = emp.PackageRegistration.name,
+                Value = emp.id.ToString()
+            });
+            var BusinessRegistrationList = _businessRegistrationServieces.GetAll().Select(emp => new SelectListItem()
+            {
+                Text = emp.name,
+                Value = emp.id.ToString()
+            });
+            var ProductList = _productMasterServices.GetAll().Select(emp => new SelectListItem()
+            {
+                Text = emp.productName,
+                Value = emp.id.ToString()
+            });
+
+
+            ViewBag.BusinessPackageList = BusinessPackageList;
+            ViewBag.BusinessRegistrationList = BusinessRegistrationList;
+            ViewBag.ProductList = ProductList;
+            return View(model);
+            //return View();
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> NewBusiness(NewBusinessCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //---------------------------
+                BusinessOwnerRegi obj = new BusinessOwnerRegi();
+                obj.id = model.id;
+                obj.customerid = model.customerid;
+                obj.description = model.description;
+                obj.Regcertificate = model.Regcertificate;
+                obj.businessid = model.businessid;
+                obj.productid = model.productid;
+                obj.lic = model.lic;
+                obj.MondayOpen = model.MondayOpen;
+                obj.MondayClose = model.MondayClose;
+                obj.TuesdayOpen = model.TuesdayOpen;
+                obj.TuesdayClose = model.TuesdayClose;
+                obj.WednesdayOpen = model.WednesdayOpen;
+                obj.WednesdayClose = model.WednesdayClose;
+                obj.ThursdayOpen = model.ThursdayOpen;
+                obj.ThursdayClose = model.ThursdayClose;
+                obj.FridayOpen = model.FridayOpen;
+                obj.FridayClose = model.FridayClose;
+                obj.SaturdayOpen = model.SaturdayOpen;
+                obj.SaturdayClose = model.SaturdayClose;
+                obj.SundayOpen = model.SundayOpen;
+                obj.SundayClose = model.SundayClose;
+                obj.CallCount = model.CallCount;
+                obj.SMSCount = model.SMSCount;
+                obj.WhatssappCount = model.WhatssappCount;
+                obj.ShareCount = model.ShareCount;
+
+                obj.facebookLink = model.facebookLink;
+                obj.googleplusLink = model.googleplusLink;
+                obj.instagramLink = model.instagramLink;
+                obj.linkedinLink = model.linkedinLink;
+                obj.twitterLink = model.twitterLink;
+                obj.youtubeLink = model.youtubeLink;
+
+
+
+                //------payment ----------------------
+                int BusinessPackageId = (int)model.BusinessPackageId;
+                string month = _BusinessPackageServices.GetById(BusinessPackageId).period;
+
+                obj.Registrationdate = DateTime.Now;
+                obj.Expirydate = DateTime.Now.AddMonths(Convert.ToInt32(month));
+                obj.PaymentStatus = model.PaymentStatus;
+                obj.PaymentAmount = model.PaymentAmount;
+                obj.TransactionId = model.TransactionId;
+                obj.BusinessPackageId = BusinessPackageId;
+
+                // obj.MembershipId = model.MembershipId;
+                obj.house = model.house;
+                obj.landmark = model.landmark;
+                obj.street = model.street;
+                obj.cityid = model.cityid;
+                obj.zipcode = model.zipcode;
+                obj.latitude = model.latitude;
+                obj.longitude = model.longitude;
+                obj.companyName = model.companyName;
+                obj.gstno = model.gstno;
+                obj.Website = model.Website;
+                obj.businessOperation = model.businessOperation;
+                obj.businessType = model.businessType;
+                obj.registerbyAffilateUniqueId = model.UniqueId;
+                obj.organization = model.organization;
+                if (model.sliderimg1 != null)
+                {
+
+                    var uploadDir = @"uploads/businessowner/slider";
+                    var fileName = Path.GetFileNameWithoutExtension(model.sliderimg1.FileName);
+                    var extesion = Path.GetExtension(model.sliderimg1.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.sliderimg1.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.sliderimg1 = '/' + uploadDir + '/' + fileName;
+
+
+                }
+                else
+                {
+                    obj.sliderimg1 = "";
+
+                }
+                if (model.sliderimg2 != null)
+                {
+
+                    var uploadDir = @"uploads/businessowner/slider";
+                    var fileName = Path.GetFileNameWithoutExtension(model.sliderimg2.FileName);
+                    var extesion = Path.GetExtension(model.sliderimg2.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.sliderimg2.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.sliderimg2 = '/' + uploadDir + '/' + fileName;
+
+
+                }
+                else
+                {
+                    obj.sliderimg2 = "";
+
+                }
+                if (model.sliderimg3 != null)
+                {
+
+                    var uploadDir = @"uploads/businessowner/slider";
+                    var fileName = Path.GetFileNameWithoutExtension(model.sliderimg3.FileName);
+                    var extesion = Path.GetExtension(model.sliderimg3.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.sliderimg3.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.sliderimg3= '/' + uploadDir + '/' + fileName;
+
+
+                }
+                else
+                {
+                    obj.sliderimg3 = "";
+
+                }
+
+                if (model.sliderimg4 != null)
+                {
+
+                    var uploadDir = @"uploads/businessowner/slider";
+                    var fileName = Path.GetFileNameWithoutExtension(model.sliderimg4.FileName);
+                    var extesion = Path.GetExtension(model.sliderimg4.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.sliderimg4.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.sliderimg4 = '/' + uploadDir + '/' + fileName;
+
+
+                }
+                else
+                {
+                    obj.sliderimg4 = "";
+
+                }
+
+                if (model.sliderimg5 != null)
+                {
+
+                    var uploadDir = @"uploads/businessowner/slider";
+                    var fileName = Path.GetFileNameWithoutExtension(model.sliderimg5.FileName);
+                    var extesion = Path.GetExtension(model.sliderimg5.FileName);
+                    var webRootPath = _hostingEnvironment.WebRootPath;
+                    fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
+                    var path = Path.Combine(webRootPath, uploadDir, fileName);
+                    await model.sliderimg5.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.sliderimg5 = '/' + uploadDir + '/' + fileName;
+
+
+                }
+                else
+                {
+                    obj.sliderimg5 = "";
+
+                }
+                if (obj == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+
+                    var postid = await _businessOwnerRegiServices.CreateAsync(obj);
+                    int id = Convert.ToInt32(postid);
+                    return RedirectToAction("BusinessListing");
+
+                }
+
+
+                //-----------------
+
+
+                return View(model);
+            }
+            else
+            {
+                ViewBag.Countries = _CountryRegistrationservices.GetAllCountry();
+                var BusinessPackageList = _BusinessPackageServices.GetAll().Select(x => new BusinessPackageIndexViewModel
+                {
+                    id = x.id,
+                    pkgId = x.pkgId,
+                    Amount = x.Amount,
+                    description = x.description,
+                    period = x.period,
+                    PackageRegistration = _PackageRegistrationServices.GetById(x.pkgId),
+                    gst = x.gst,
+                    affilateamt = x.affilateamt,
+                    plethoraamt = x.plethoraamt
+
+                }).Select(emp => new SelectListItem()
+                {
+                    Text = emp.PackageRegistration.name,
+                    Value = emp.id.ToString()
+                });
+                var BusinessRegistrationList = _businessRegistrationServieces.GetAll().Select(emp => new SelectListItem()
+                {
+                    Text = emp.name,
+                    Value = emp.id.ToString()
+                });
+                var ProductList = _productMasterServices.GetAll().Select(emp => new SelectListItem()
+                {
+                    Text = emp.productName,
+                    Value = emp.id.ToString()
+                });
+
+
+                ViewBag.BusinessPackageList = BusinessPackageList;
+                ViewBag.BusinessRegistrationList = BusinessRegistrationList;
+                ViewBag.ProductList = ProductList;
+                return View(model);
+
+            }
+
+
+
+
+
+
+
         }
     }
 }
