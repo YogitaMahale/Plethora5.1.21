@@ -95,38 +95,44 @@
                                         <span asp-validation-for="BusinessPackageId" class="text-danger"></span>
                                     </div>
                                 </div>
+                                <div class="col-sm-6 col-md-6">
 
-                                @*<div class="col-sm-6 col-md-6">
-                                        <input type="hidden" id="multiplecityIds" asp-for="multipleBusinessid" />
-                                        <div class="form-group">
-                                            <label class="form-label text-dark" asp-for="businessid"></label>
-
-
-                                            <select name="businessid" id="businessId" asp-for="businessid" data-placeholder="Choose Business..." class="chosen-select form-control" multiple tabindex="4"
-                                                    asp-items="@ViewBag.BusinessRegistrationList">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label" asp-for="sectorId"></label>
+                                        @*<select id="sectorId" data-rel="chosen" asp-for="sectorId"  class="form-control" data-placeholder="select Sector">
 
 
-                                            </select>
+        </select>*@
+                                        <select name="sectorId" id="sectorId" asp-for="sectorId" class="form-control"
+                                                asp-items="@ViewBag.sectorList"
+                                                >
+                                            <option>--- Select  ---</option>
+                                        </select>
+                                        @*<select name="sectorId" id="sectorId" asp-for="sectorId" data-placeholder="Choose Sector..." class="select" tabindex="1"
+                                                asp-items="@ViewBag.sectorList">
+                                        </select>*@
 
-                                            <span asp-validation-for="businessid" class="text-danger"></span>
-                                        </div>
-                                    </div>*@
+
+                                        <span asp-validation-for="sectorId" class="text-danger"></span>
+                                    </div>
+                                </div>
+
                                 <input type="hidden" asp-for="multipleBusinessid" />
                                 <div class="col-sm-6 col-md-6">
 
                                     <div class="form-group mb-0">
                                         <label class="form-label" asp-for="businessid"></label>
 
-                                        @*<select name="businessid" id="businessid" asp-for="businessid" data-placeholder="Choose Business..." class="chosen-select form-control" multiple tabindex="4"
-                                                asp-items="@ViewBag.BusinessRegistrationList">
-                                        </select>*@
+                                        <select id="businessid" data-rel="chosen" asp-for="businessid" class="form-control" data-placeholder="select Business" multiple="">
 
-                                        <select name="lblbusinessid" id="lblbusinessid" asp-for="businessid" data-placeholder="Choose City..." class="chosen-select" multiple tabindex="4"
-                                                asp-items="@ViewBag.BusinessRegistrationList">
-
-
-                                            <option>--- Select  ---</option>
+                                            
                                         </select>
+                                        @*<select name="businessid" id="businessid" asp-for="businessid" data-placeholder="Choose City..." class="chosen-select" multiple
+                asp-items="@ViewBag.BusinessRegistrationList">
+
+
+
+        </select>*@
 
 
                                         <span asp-validation-for="businessid" class="text-danger"></span>
@@ -138,16 +144,14 @@
                                 <div class="col-sm-6 col-md-6">
                                     <div class="form-group mb-0">
                                         <label class="form-label" asp-for="productid"></label>
-                                        @*<select name="productid" id="productid" asp-for="productid" class="form-control"
-                                                    asp-items="@ViewBag.ProductList"
-                                                    onchange="DoPostBack();">
-                                                <option>--- Select  ---</option>
-                                            </select>*@
+                                        <select id="productid" data-rel="chosen" asp-for="productid" class="form-control" data-placeholder="select Product" multiple="">
 
-                                    <select name="productid" id="productid" asp-for="productid" data-placeholder="Choose Product..." class="chosen-select form-control" multiple tabindex="4"
-                                            asp-items="@ViewBag.ProductList">
-                                        <option>--- Select  ---</option>
-                                    </select>
+                                            
+                                        </select>
+                                        @*<select name="productid" id="productid" asp-for="productid" data-placeholder="Choose Product..." class="chosen-select form-control" multiple tabindex="4"
+                asp-items="@ViewBag.ProductList">
+
+        </select>*@
                                         <input type="hidden" asp-for="multipleProductid" />
                                         <span asp-validation-for="productid" class="text-danger"></span>
                                     </div>
@@ -678,28 +682,122 @@
 <script src="~/dropdownselect/docsupport/init.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-
     $(document).ready(function () {
+       // loadSector();
+        $("#sectorId").change(function () {
+            loadBusiness($("#sectorId").val());
+        });
 
-        //$("[data-rel='chosen']").chosen();
-        //$("[data-rel='chosen']").trigger("chosen:updated");
-      
+
+    });
+    function loadBusiness(sectorid) {
+        //alert(sectorid);
+            
+
+        $("[data-rel='chosen']").chosen();
+        var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getBusiness?id=' + sectorid;
+          //  var ddlsource = "#countryid";
+            $.getJSON(url,
+
+                function (data) {
+                console.log(data);
+                    var item = '';
+                   // $("#cityid").empty();
+                    var s = '';
+                    $.each(data, function (i, row) {
+
+
+                      //s += '<option value="' +row.value + '">' + row.text + '</option>';
+
+
+                        console.log(row.value + ',' + $("#sectorId").val());
+
+                        if (row.value == $("#sectorId").val()) {
+                                  s += '<option selected="'+"selected"+'" value="' + row.value + '">' + row.text + '</option>';
+                            //    item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
+
+                            }
+                            else {
+                                  s += '<option value="' + row.value + '">' + row.text + '</option>';
+                              //  item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
+
+                            }
+
+                    });
+                    $("#sectorId").html(s);
+                    $("[data-rel='chosen']").trigger("chosen:updated");
+                    console.log(item);
+                   // $("#cityid").html(item);
+                }
+        )
+
+
+
+    }
+
+    $("#businessid").change(function () {
+        $("#multipleBusinessid").val($("#businessid").val());
     });
 
+
+
+    $("#productid").change(function () {
+        $("#multipleProductid").val($("#productid").val());
+    });
+
+    function loadSector() {
+
+           //alert($("#countryid").val());
+
+        $("[data-rel='chosen']").chosen();
+        var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getCity';
+          //  var ddlsource = "#countryid";
+            $.getJSON(url,
+
+                function (data) {
+                console.log(data);
+                    var item = '';
+                   // $("#cityid").empty();
+                    var s = '';
+                    $.each(data, function (i, row) {
+
+
+                      //s += '<option value="' +row.value + '">' + row.text + '</option>';
+
+
+                        console.log(row.value + ',' + $("#sectorId").val());
+
+                        if (row.value == $("#sectorId").val()) {
+                                  s += '<option selected="'+"selected"+'" value="' + row.value + '">' + row.text + '</option>';
+                            //    item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
+
+                            }
+                            else {
+                                  s += '<option value="' + row.value + '">' + row.text + '</option>';
+                              //  item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
+
+                            }
+
+                    });
+                    $("#sectorId").html(s);
+                    $("[data-rel='chosen']").trigger("chosen:updated");
+                    console.log(item);
+                   // $("#cityid").html(item);
+                }
+        )
+
+
+
+    }
     $(function () {
-        $("#lblbusinessid").change(function () {
 
-
-            alert("fdsf");
-
-        });
         $("#productid").change(function () {
 
 
             alert("productid");
 
         });
-        
+
         $("#countryid").change(function () {
 
             var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getstatebyid';
@@ -769,18 +867,7 @@
              });
 
         });
-        //multipleBusinessid
-        //multipleProductid
 
-        //function test()
-        //    {
-        //    alert("test");
-        //    }
-        //$("#businessId").change(function () {
-        //    test();
-        //    //alert($("#businessid").val());
-        //    //$("#multipleBusinessid").val($("#businessid").va())
-        //});
 
     });
 

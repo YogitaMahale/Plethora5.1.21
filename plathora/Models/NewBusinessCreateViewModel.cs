@@ -25,7 +25,7 @@ namespace plathora.Models
         [DisplayName("Regcertificate")]
         public string Regcertificate { get; set; }
 
-         
+        public int sectorId { get; set; }
         [DisplayName("Business")]
         public string businessid { get; set; }
         public string multipleBusinessid { get; set; }
@@ -33,6 +33,8 @@ namespace plathora.Models
         [DisplayName("Product")]
         public string productid { get; set; }
         public string multipleProductid { get; set; }
+
+        [DisplayName("License")]
         public string lic { get; set; }
 
          

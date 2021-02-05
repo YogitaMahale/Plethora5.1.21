@@ -4366,7 +4366,6 @@ E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\mul
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.dll
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.pdb
 E:\yogita 6.8.19\asp.net core\Final backup 4.9.20\plathoraNewDomain\15.12.20\multiple business add\plathora\plathora\plathora\obj\Debug\netcoreapp3.1\plathora.genruntimeconfig.cache
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_front.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\packages\Microsoft.AspNet.WebApi.HelpPage.5.2.7\Content\Areas\HelpPage\Views\Web.config
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.exe.config
 E:\yogita 6.8.19\plathora\plathora\bin\Debug\netcoreapp3.1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\vbc.exe.config
@@ -4975,26 +4974,6 @@ E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\Details.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\Error.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\View.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_CookieConsentPartial.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_customerDashboardMenu.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_front - Copy.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_getOtpNo.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_Layout - Copy.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_Layout.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_Layoutmain.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_LayoutNew.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_LoginPartial - Copy.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_LoginPartial.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_Notification.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_SearchBusinessListView.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_SearchBusinessView.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_SearchProductView.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_SectorPartialView.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_Subscribe.cshtml.g.cs
-E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\backup\_ValidationScriptsPartial.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Details.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 E:\yogita 6.8.19\plathora\plathora\obj\Debug\netcoreapp3.1\Razor\Views\Shared\View.cshtml.g.cs

@@ -18,9 +18,11 @@ namespace plathora.Utility
         //main 
         public static String MerchantKey = "43JVTVB1CX";
         public static String Salt = "T9B5988XNR";
+        public static String env = "prod";
 
         ////test 
         //public static String MerchantKey = "2PBP7IABZ2";
         //public static String Salt = "DAH88E3UWQ";
+        //public static String env = "test";
     }
 }

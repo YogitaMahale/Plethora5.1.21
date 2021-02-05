@@ -751,8 +751,8 @@ namespace plathora.Areas.Admin.Controllers
                     string affilateuniqueId = _db.applicationUsers.Where(x => x.uniqueId == model.registerbyAffilateId).FirstOrDefault().uniqueId;
                     string salt = SD.Salt;
                     string Key = SD.MerchantKey;
-                   // string env = "test";
-                    string env = "prod";
+                    // string env = "test";
+                    string env = SD.env;
                     string amount = model.PaymentAmount.ToString();
                     string firstname = customerDetails.name;
                     string email = customerDetails.Email;
@@ -767,32 +767,17 @@ namespace plathora.Areas.Admin.Controllers
                     string UDF2 = "";
                     string UDF3 = "";
                     string UDF4 = "";
-                    string UDF5 = "";
-
-                    // class split_payments { public string YOG191362 = "0.19"; public string PLE010890 = "2.17"; };
-                    //string str = "{'PLE010890': 2.17,'YOG191362': 0.19 }";
+                    string UDF5 = "";                   
                     string str = "{'PLE010890': "+model.plethoraTotalamt+",'"+model.registerbyAffilateId+"': "+model.affilateTotalamt+" }";
-
-                    //  string jsonstr = JsonConvert.SerializeObject(str);
-                    // jsonstr = jsonstr.Replace("\"", "#").Replace("\'", "\"").Replace("#", "\'");
                     String jsonstr = str.Replace("\'", "\"");
-
 
                     String split_para = "{'PLE010890':" + model.plethoraTotalamt + ", '" + model.registerbyAffilateId + "':" + model.affilateTotalamt + "}";
                     Console.WriteLine("The Value is : {0}", split_para);
 
-                   // String jsonstr = '\'' + split_para.Replace("'", "\"") + '\'';
-                    //Console.WriteLine("After Replacing the Value : {0}", tem);
-
-
-
                     string Show_payment_mode = "NB,DC,CC,UPI";
                     Easebuzz t = new Easebuzz(salt, Key, env);
                     string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode, jsonstr, model.registerbyAffilateId);
-                    //   Page.Controls.Add(new LiteralControl(strForm));
-                    //var postid = await _advertisementInfoServices.CreateAsync(obj);
-                    //int id = Convert.ToInt32(postid);
-
+              
                     return Content(strForm, System.Net.Mime.MediaTypeNames.Text.Html);
 
 
@@ -920,8 +905,21 @@ namespace plathora.Areas.Admin.Controllers
             return View();
         }
 
+        public JsonResult getBusiness(int sectorid)
+        {
 
+            IList<BusinessRegistration> obj = _businessRegistrationServieces.GetAll().Where(x=>x.sectorid== sectorid).ToList();
+            //  obj.Insert(0, new CityRegistration { id = 0, cityName = "select", isactive = false, isdeleted = false });
+            return Json(new SelectList(obj, "id", "name"));
+        }
 
+        public JsonResult getCity()
+        {
+
+            IList<SectorRegistration> obj = _sectorRegistrationServices.GetAll().ToList();
+            //  obj.Insert(0, new CityRegistration { id = 0, cityName = "select", isactive = false, isdeleted = false });
+            return Json(new SelectList(obj, "id", "name"));
+        }
 
         [HttpGet]
         [ActionName("NewBusiness")]
@@ -950,21 +948,25 @@ namespace plathora.Areas.Admin.Controllers
                 Text = emp.PackageRegistration.name,
                 Value = emp.id.ToString()
             });
-            var BusinessRegistrationList = _businessRegistrationServieces.GetAll().Select(emp => new SelectListItem()
+            //var BusinessRegistrationList = _businessRegistrationServieces.GetAll().Select(emp => new SelectListItem()
+            //{
+            //    Text = emp.name,
+            //    Value = emp.id.ToString()
+            //});
+            //var ProductList = _productMasterServices.GetAll().Select(emp => new SelectListItem()
+            //{
+            //    Text = emp.productName,
+            //    Value = emp.id.ToString()
+            //});
+            var sectorList = _sectorRegistrationServices.GetAll().Select(emp => new SelectListItem()
             {
                 Text = emp.name,
                 Value = emp.id.ToString()
             });
-            var ProductList = _productMasterServices.GetAll().Select(emp => new SelectListItem()
-            {
-                Text = emp.productName,
-                Value = emp.id.ToString()
-            });
-
 
             ViewBag.BusinessPackageList = BusinessPackageList;
-            ViewBag.BusinessRegistrationList = BusinessRegistrationList;
-            ViewBag.ProductList = ProductList;
+            //ViewBag.BusinessRegistrationList = BusinessRegistrationList;
+            //ViewBag.ProductList = ProductList;
             return View(model);
             //return View();
 
@@ -981,8 +983,8 @@ namespace plathora.Areas.Admin.Controllers
                 obj.customerid = model.customerid;
                 obj.description = model.description;
                 obj.Regcertificate = model.Regcertificate;
-                obj.businessid = model.businessid;
-                obj.productid = model.productid;
+                obj.businessid = model.multipleBusinessid;
+                obj.productid = model.multipleProductid;
                 obj.lic = model.lic;
                 obj.MondayOpen = model.MondayOpen;
                 obj.MondayClose = model.MondayClose;
