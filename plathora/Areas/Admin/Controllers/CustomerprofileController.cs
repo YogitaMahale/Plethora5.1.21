@@ -758,8 +758,11 @@ namespace plathora.Areas.Admin.Controllers
                     string email = customerDetails.Email;
                     string phone = customerDetails.PhoneNumber;
                     string productinfo = model.title;
-                    string surl = "https://localhost:44322/Admin/Customerprofile/SuccessAction";
-                    string furl = "https://localhost:44322/Admin/Customerprofile/FailureAction";
+                    //string surl = "https://localhost:44322/Admin/Customerprofile/SuccessAction";
+                    //string furl = "https://localhost:44322/Admin/Customerprofile/FailureAction";
+                    string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
+                    string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
+
                     //string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
                     //string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
                     string Txnid = postid.ToString();//(lastId + 1).ToString();
@@ -767,8 +770,18 @@ namespace plathora.Areas.Admin.Controllers
                     string UDF2 = "";
                     string UDF3 = "";
                     string UDF4 = "";
-                    string UDF5 = "";                   
-                    string str = "{'PLE010890': "+model.plethoraTotalamt+",'"+model.registerbyAffilateId+"': "+model.affilateTotalamt+" }";
+                    string UDF5 = "";
+                    string str = "";
+                   //  string str = "{'PLE010890': " + model.plethoraTotalamt + ",'" + model.registerbyAffilateId + "': " + model.affilateTotalamt + " }";
+                    if (string.IsNullOrEmpty(model.registerbyAffilateId))
+                    {
+                        str = "{'PLE010890': " + model.PaymentAmount + " }";
+                    }
+                    else
+                    {
+                        str = "{'PLE010890': " + model.plethoraTotalamt + ",'" + model.registerbyAffilateId + "': " + model.affilateTotalamt + " }";
+                    }
+                    
                     String jsonstr = str.Replace("\'", "\"");
 
                     String split_para = "{'PLE010890':" + model.plethoraTotalamt + ", '" + model.registerbyAffilateId + "':" + model.affilateTotalamt + "}";
@@ -881,6 +894,10 @@ namespace plathora.Areas.Admin.Controllers
                     }
                     else
                     {
+                        var obj1 = _advertisementInfoServices.GetById(Convert.ToInt32(order_id));
+                        obj1.TransactionId = order_id;
+                        obj1.PaymentStatus = "Failed";
+                        await _advertisementInfoServices.UpdateAsync(obj1);
                         ViewBag.result = "Failed";
                         // Response.Write(Request.Form);
 
@@ -983,16 +1000,23 @@ namespace plathora.Areas.Admin.Controllers
             //return View();
 
         }
+        public JsonResult getBusinessPakageDetails(int id)
+        {
 
+            BusinessPackage obj = _BusinessPackageServices.GetById(id);
+
+            return Json(obj);
+        }
         [HttpPost]
         public async Task<IActionResult> NewBusiness(NewBusinessCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var customerId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 //---------------------------
                 BusinessOwnerRegi obj = new BusinessOwnerRegi();
                 obj.id = model.id;
-                obj.customerid = model.customerid;
+                obj.customerid = customerId;
                 obj.description = model.description;
                 obj.Regcertificate = model.Regcertificate;
                 obj.businessid = model.multipleBusinessid;
@@ -1033,7 +1057,7 @@ namespace plathora.Areas.Admin.Controllers
                 obj.Registrationdate = DateTime.Now;
                 obj.Expirydate = DateTime.Now.AddMonths(Convert.ToInt32(month));
                 obj.PaymentStatus = model.PaymentStatus;
-                obj.PaymentAmount = model.PaymentAmount;
+                obj.PaymentAmount = model.packageAmount;
                 obj.TransactionId = model.TransactionId;
                 obj.BusinessPackageId = BusinessPackageId;
 
@@ -1159,8 +1183,59 @@ namespace plathora.Areas.Admin.Controllers
                     {
                         var postid = await _businessOwnerRegiServices.CreateAsync(obj);
                         int id = Convert.ToInt32(postid);
-                        return RedirectToAction("BusinessListing");
+                       // return RedirectToAction("BusinessListing");
+                        #region "Payment"
+                        //var businessdetails = _businessOwnerRegiServices.GetById(model.businessid);
+                        var customerDetails = _db.applicationUsers.Where(x => x.Id == customerId).FirstOrDefault();
+                       // string affilateuniqueId = _db.applicationUsers.Where(x => x.uniqueId == model.registerbyAffilateId).FirstOrDefault().uniqueId;
+                        string salt = SD.Salt;
+                        string Key = SD.MerchantKey;
+                        // string env = "test";
+                        string env = SD.env;
+                        string amount = model.packageAmount.ToString();
+                        string firstname = customerDetails.name;
+                        string email = customerDetails.Email;
+                        string phone = customerDetails.PhoneNumber;
+                        string productinfo = model.companyName;
+                        //string surl = "https://localhost:44322/Admin/Customerprofile/BusinessSuccessAction";
+                        //string furl = "https://localhost:44322/Admin/Customerprofile/BusinessFailureAction";
 
+
+                        string surl = "http://tingtongindia.com/Admin/Customerprofile/BusinessSuccessAction";
+                        string furl = "http://tingtongindia.com/Admin/Customerprofile/BusinessFailureAction";
+
+
+                        //string surl = "http://tingtongindia.com/Admin/Customerprofile/SuccessAction";
+                        //string furl = "http://tingtongindia.com/Admin/Customerprofile/FailureAction";
+                        string Txnid = postid.ToString();//(lastId + 1).ToString();
+                        string UDF1 = "";
+                        string UDF2 = "";
+                        string UDF3 = "";
+                        string UDF4 = "";
+                        string UDF5 = "";
+                        string str = "";
+                        //  string str = "{'PLE010890': " + model.plethoraTotalamt + ",'" + model.registerbyAffilateId + "': " + model.affilateTotalamt + " }";
+                        if (string.IsNullOrEmpty(model.UniqueId))
+                        {
+                            str = "{'PLE010890': " + model.packageAmount + " }";
+                        }
+                        else
+                        {
+                            str = "{'PLE010890': " + model.plethoraamt + ",'" + model.UniqueId + "': " + model.affilateamt + " }";
+                        }
+
+                        String jsonstr = str.Replace("\'", "\"");
+
+                        //String split_para = "{'PLE010890':" + model.plethoraamt + ", '" + model.registerbyAffilateId + "':" + model.affilateamt + "}";
+                        //Console.WriteLine("The Value is : {0}", split_para);
+
+                        string Show_payment_mode = "NB,DC,CC,UPI";
+                        Easebuzz t = new Easebuzz(salt, Key, env);
+                        string strForm = t.initiatePaymentAPI(amount, firstname, email, phone, productinfo, surl, furl, Txnid, UDF1, UDF2, UDF3, UDF4, UDF5, Show_payment_mode, jsonstr, model.UniqueId);
+
+                        return Content(strForm, System.Net.Mime.MediaTypeNames.Text.Html);
+
+                        #endregion 
                     }
                     catch (Exception p)
                     { }
@@ -1221,6 +1296,94 @@ namespace plathora.Areas.Admin.Controllers
 
 
 
+        }
+
+        [HttpPost]
+        [ActionName("BusinessSuccessAction")]
+        public async Task<IActionResult> BusinessSuccessAction()
+        {
+            try
+            {
+
+                string[] merc_hash_vars_seq;
+                string merc_hash_string = string.Empty;
+                string merc_hash = string.Empty;
+                string order_id = string.Empty;
+                string hash_seq = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
+
+
+                merc_hash_vars_seq = hash_seq.Split('|');
+                Array.Reverse(merc_hash_vars_seq);
+                merc_hash_string = SD.Salt + "|" + Request.Form["status"];
+
+
+                foreach (string merc_hash_var in merc_hash_vars_seq)
+                {
+                    merc_hash_string += "|";
+                    merc_hash_string = merc_hash_string + (Request.Form[merc_hash_var].ToString() != null ? Request.Form[merc_hash_var].ToString() : "");
+
+                }
+                merc_hash = Easebuzz_Generatehash512(merc_hash_string).ToLower();
+
+
+
+                if (merc_hash != Request.Form["hash"])
+                {
+                    //  Response.Write("Hash value did not matched");
+                    ViewBag.result = "Hash value did not matched";
+                }
+                else
+                {
+                    order_id = Request.Form["txnid"];
+                    ViewBag.result = "value matched";
+                    //Response.Write("value matched");
+                    if (Request.Form["status"] == "success")
+                    {
+
+                      
+
+                        var obj1 = _businessOwnerRegiServices.GetById(Convert.ToInt32(order_id));
+                        obj1.TransactionId = order_id;
+                        obj1.PaymentStatus = "Paid";
+                        await _businessOwnerRegiServices.UpdateAsync(obj1);
+                        //int id = Convert.ToInt32(postid);
+
+
+                        ViewBag.result = "Payment Done Successfully";
+                        //Response.Write(Request.Form);
+
+                    }
+                    else
+                    {
+
+                        var obj1 = _businessOwnerRegiServices.GetById(Convert.ToInt32(order_id));
+                        obj1.TransactionId = order_id;
+                        obj1.PaymentStatus = "Failed";
+                        await _businessOwnerRegiServices.UpdateAsync(obj1);
+
+ 
+                        ViewBag.result = "Failed";
+                        // Response.Write(Request.Form);
+
+                    }
+                    //Hash value did not matched
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.result = "Failed";
+                //   ViewBag.result = "<span style='color:red'>" + ex.Message + "</span>";
+                //   Response.Write("<span style='color:red'>" + ex.Message + "</span>");
+
+            }
+            return View();
+        }
+        [HttpPost]
+        public IActionResult BusinessFailureAction()
+        {
+            return View();
         }
     }
 }

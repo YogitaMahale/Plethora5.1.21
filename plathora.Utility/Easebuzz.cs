@@ -72,16 +72,19 @@ namespace plathora.Utility
 			data.Add("udf4", udf4.Trim());
 			data.Add("udf5", udf5.Trim());
 			data.Add("show_payment_mode", ShowPaymentMode.Trim());
-			if (String.IsNullOrEmpty(registerbyAffilateid))
-			{
+			//if (String.IsNullOrEmpty(registerbyAffilateid))
+			//{
 
-			}
-			else
-			{
+			//}
+			//else
+			//{
+			//	//string test = "'" + "{\"YOG191362\" : 2.00,\"PLE010890\" : 2.17}" + "'";
+			//	data.Add("split_payments", split_payments1);
+			//}
+			 
 				//string test = "'" + "{\"YOG191362\" : 2.00,\"PLE010890\" : 2.17}" + "'";
 				data.Add("split_payments", split_payments1);
-			}
-
+			 
 			// generate hash
 			hashVarsSeq = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10".Split('|'); // spliting hash sequence from config
 			hash_string = "";

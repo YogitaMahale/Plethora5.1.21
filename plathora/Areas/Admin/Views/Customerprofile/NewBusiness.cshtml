@@ -89,12 +89,38 @@
                                         <label class="form-label" asp-for="BusinessPackageId"></label>
                                         <select name="BusinessPackageId" id="BusinessPackageId" asp-for="BusinessPackageId" class="form-control"
                                                 asp-items="@ViewBag.BusinessPackageList">
-                                                @*onchange="DoPostBack();">*@
+                                            @*onchange="DoPostBack();">*@
                                             <option>--- Select  ---</option>
                                         </select>
                                         <span asp-validation-for="BusinessPackageId" class="text-danger"></span>
                                     </div>
                                 </div>
+                                <div class="col-sm-6 col-md-6">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label" asp-for="packageAmount"></label>
+                                        <input type="text" class="form-control" readonly id="packageAmount" asp-for="packageAmount" placeholder="Package Amount">
+
+                                        <span asp-validation-for="packageAmount" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6" style="display:none;">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label" asp-for="affilateamt"></label>
+                                        <input type="text" class="form-control" readonly id="affilateamt" asp-for="affilateamt" placeholder="affilateamt">
+
+                                        <span asp-validation-for="affilateamt" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6" style="display:none;">
+                                    <div class="form-group mb-0">
+                                        <label class="form-label" asp-for="plethoraamt"></label>
+                                        <input type="text" class="form-control" readonly id="plethoraamt" asp-for="plethoraamt" placeholder="plethoraamt">
+
+                                        <span asp-validation-for="plethoraamt" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-sm-6 col-md-6">
 
                                     <div class="form-group mb-0">
@@ -102,16 +128,16 @@
                                         @*<select id="sectorId" data-rel="chosen" asp-for="sectorId"  class="form-control" data-placeholder="select Sector">
 
 
-        </select>*@
+                </select>*@
                                         <select name="sectorId" id="sectorId" asp-for="sectorId" class="form-control"
-                                                asp-items="@ViewBag.sectorList" >
-                                                @*onchange="DoPostBack();"*@
-                                                
+                                                asp-items="@ViewBag.sectorList">
+                                            @*onchange="DoPostBack();"*@
+
                                             <option>--- Select  ---</option>
                                         </select>
                                         @*<select name="sectorId" id="sectorId" asp-for="sectorId" data-placeholder="Choose Sector..." class="select" tabindex="1"
-                                                asp-items="@ViewBag.sectorList">
-                                        </select>*@
+                        asp-items="@ViewBag.sectorList">
+                </select>*@
 
 
                                         <span asp-validation-for="sectorId" class="text-danger"></span>
@@ -125,15 +151,13 @@
                                         <label class="form-label" asp-for="businessid"></label>
 
                                         <select id="businessid" data-rel="chosen" asp-for="businessid" class="form-control" data-placeholder="select Business" multiple="">
-
-                                            
                                         </select>
                                         @*<select name="businessid" id="businessid" asp-for="businessid" data-placeholder="Choose City..." class="chosen-select" multiple
-                asp-items="@ViewBag.BusinessRegistrationList">
+                        asp-items="@ViewBag.BusinessRegistrationList">
 
 
 
-        </select>*@
+                </select>*@
 
 
                                         <span asp-validation-for="businessid" class="text-danger"></span>
@@ -146,13 +170,11 @@
                                     <div class="form-group mb-0">
                                         <label class="form-label" asp-for="productid"></label>
                                         <select id="productid" data-rel="chosen" asp-for="productid" class="form-control" data-placeholder="select Product" multiple="">
-
-                                            
                                         </select>
                                         @*<select name="productid" id="productid" asp-for="productid" data-placeholder="Choose Product..." class="chosen-select form-control" multiple tabindex="4"
-                asp-items="@ViewBag.ProductList">
+                        asp-items="@ViewBag.ProductList">
 
-        </select>*@
+                </select>*@
                                         <input type="hidden" asp-for="multipleProductid" />
                                         <span asp-validation-for="productid" class="text-danger"></span>
                                     </div>
@@ -658,7 +680,7 @@
                     <div class="card-footer">
                         @*<button type="submit" style="margin-right:5px;" class="btn btn-primary "><i class="fa fa-edit" style="margin-right:0.7em"></i>Update</button>*@
 
-                        <button type="submit" class="btn btn-secondary">Updated Profile</button>
+                        <button type="submit" class="btn btn-secondary">Submit</button>
                     </div>
                 </form>
 
@@ -699,22 +721,44 @@
         });
         $("#cityid1").change(function () {
             $("#selectedcityid").val($("#cityid1").val());
-            alert($("#cityid1").val());
+          //  alert($("#cityid1").val());
         });
-        
+        $("#BusinessPackageId").change(function () {
+ 
+            var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getBusinessPakageDetails';
+            var ddlsource = "#BusinessPackageId";
+            $.getJSON(url,
+                { id: $(ddlsource).val() },
+                function (data) {                   
+
+                    var gstamt = ((data.amount * data.gst) / 100);
+                    var tot1 = data.amount + gstamt;
+
+                    $("#packageAmount").val(tot1);
+                    //$("#packageAmount").val(data.amount);
+                    $("#affilateamt").val(data.affilateamt);
+                    $("#plethoraamt").val(data.plethoraamt);
+                    
+                }
+        )
+
+        });
+
+
+
     });
     function loadBusiness(sectorid) {
         //alert(sectorid);
         var s = '';
-       
+
 
         $("[data-rel='chosen']").chosen();
         var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getBusiness?sectorid=' + sectorid;
           //  var ddlsource = "#countryid";
             $.getJSON(url,
 
-                function (data) {               
-                   
+                function (data) {
+
                     $.each(data, function (i, row) {
                         s += '<option value="' + row.value + '">' + row.text + '</option>';
 
@@ -727,7 +771,7 @@
         )
 
 
-      
+
     }
     function loadProduct(businessid) {
         //alert(sectorid);
@@ -735,11 +779,11 @@
 
         $("[data-rel='chosen']").chosen();
         var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getProduct?businessid=' + businessid;
-          
+
             $.getJSON(url,
 
                 function (data) {
-                
+
                     var item = '';
                     var s = '';
                     $.each(data, function (i, row) {
@@ -749,7 +793,7 @@
                     $("#productid").html(s);
                     $("[data-rel='chosen']").trigger("chosen:updated");
                     console.log(item);
-                   
+
                 }
         )
 
@@ -768,10 +812,10 @@
         $("#multipleProductid").val($("#productid").val());
     });
 
-    
+
     $(function () {
 
-        
+
 
         $("#countryid").change(function () {
 

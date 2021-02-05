@@ -166,3 +166,17 @@ E:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.S
 E:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.csproj.CopyComplete
 E:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.dll
 E:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.pdb
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Services.deps.json
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Services.dll
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Services.pdb
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Entity.dll
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Persistence.dll
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Entity.pdb
+F:\yogita 6.8.19\plathora\plathora.Services\bin\Release\netcoreapp3.1\plathora.Persistence.pdb
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.csprojAssemblyReference.cache
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.AssemblyInfoInputs.cache
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.AssemblyInfo.cs
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.csproj.CoreCompileInputs.cache
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.csproj.CopyComplete
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.dll
+F:\yogita 6.8.19\plathora\plathora.Services\obj\Release\netcoreapp3.1\plathora.Services.pdb

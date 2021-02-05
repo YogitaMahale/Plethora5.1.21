@@ -165,10 +165,13 @@ namespace plathora.Models
 
 
 
+        [Required]
+        [Display(Name = "Package Amount")]
+        public decimal packageAmount { get; set; } = 0;
 
-       
-       
-        
+         
+        public decimal affilateamt { get; set; } = 0;
+        public decimal plethoraamt { get; set; } = 0;
 
     }
 }

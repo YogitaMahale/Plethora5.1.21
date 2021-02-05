@@ -34,3 +34,12 @@ E:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Ut
 E:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.AssemblyInfo.cs
 E:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.dll
 E:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.pdb
+F:\yogita 6.8.19\plathora\plathora.Utility\bin\Release\netcoreapp3.1\plathora.Utility.deps.json
+F:\yogita 6.8.19\plathora\plathora.Utility\bin\Release\netcoreapp3.1\plathora.Utility.dll
+F:\yogita 6.8.19\plathora\plathora.Utility\bin\Release\netcoreapp3.1\plathora.Utility.pdb
+F:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.csprojAssemblyReference.cache
+F:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.AssemblyInfoInputs.cache
+F:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.AssemblyInfo.cs
+F:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.csproj.CoreCompileInputs.cache
+F:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.dll
+F:\yogita 6.8.19\plathora\plathora.Utility\obj\Release\netcoreapp3.1\plathora.Utility.pdb

@@ -114,3 +114,12 @@ E:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entit
 E:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.dll
 E:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.pdb
 E:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.csprojAssemblyReference.cache
+F:\yogita 6.8.19\plathora\plathora.Entity\bin\Debug\netcoreapp3.1\plathora.Entity.deps.json
+F:\yogita 6.8.19\plathora\plathora.Entity\bin\Debug\netcoreapp3.1\plathora.Entity.dll
+F:\yogita 6.8.19\plathora\plathora.Entity\bin\Debug\netcoreapp3.1\plathora.Entity.pdb
+F:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.csprojAssemblyReference.cache
+F:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.AssemblyInfoInputs.cache
+F:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.AssemblyInfo.cs
+F:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.csproj.CoreCompileInputs.cache
+F:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.dll
+F:\yogita 6.8.19\plathora\plathora.Entity\obj\Debug\netcoreapp3.1\plathora.Entity.pdb
