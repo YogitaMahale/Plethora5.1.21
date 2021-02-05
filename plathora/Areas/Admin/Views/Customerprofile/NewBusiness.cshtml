@@ -104,7 +104,7 @@
 
         </select>*@
                                         <select name="sectorId" id="sectorId" asp-for="sectorId" class="form-control"
-                                                asp-items="@ViewBag.sectorList"
+                                                asp-items="@ViewBag.sectorList"   onchange="DoPostBack();"
                                                 >
                                             <option>--- Select  ---</option>
                                         </select>
@@ -692,47 +692,49 @@
     });
     function loadBusiness(sectorid) {
         //alert(sectorid);
-            
+
 
         $("[data-rel='chosen']").chosen();
-        var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getBusiness?id=' + sectorid;
+        var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getBusiness?sectorid=' + sectorid;
           //  var ddlsource = "#countryid";
             $.getJSON(url,
 
                 function (data) {
-                console.log(data);
+               // console.log(data);
                     var item = '';
-                   // $("#cityid").empty();
                     var s = '';
                     $.each(data, function (i, row) {
-
-
-                      //s += '<option value="' +row.value + '">' + row.text + '</option>';
-
-
-                        console.log(row.value + ',' + $("#sectorId").val());
-
-                        if (row.value == $("#sectorId").val()) {
-                                  s += '<option selected="'+"selected"+'" value="' + row.value + '">' + row.text + '</option>';
-                            //    item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
-
-                            }
-                            else {
-                                  s += '<option value="' + row.value + '">' + row.text + '</option>';
-                              //  item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
-
-                            }
+                        s += '<option value="' + row.value + '">' + row.text + '</option>';
 
                     });
-                    $("#sectorId").html(s);
+                    $("#businessid").html(s);
                     $("[data-rel='chosen']").trigger("chosen:updated");
                     console.log(item);
                    // $("#cityid").html(item);
                 }
         )
 
+        $("[data-rel='chosen']").chosen();
+        var url1 = '@Url.Content("~/")' + 'Admin/Customerprofile/getProduct?sectorid=' + sectorid;
+          //  var ddlsource = "#countryid";
+            $.getJSON(url1,
 
+                function (data) {
+               // console.log(data);
+                    var item1 = '';
+                    var s1 = '';
+                    $.each(data, function (i, row) {
+                        s1 += '<option value="' + row.value + '">' + row.text + '</option>';
 
+                    });
+                    $("#productid").html(s1);
+                    //$("[data-rel='chosen']").trigger("chosen:updated");
+                  //  console.log(item);
+                   // $("#cityid").html(item);
+                }
+        )
+       // 
+        $("[data-rel='chosen']").trigger("chosen:updated");
     }
 
     $("#businessid").change(function () {
@@ -745,7 +747,7 @@
         $("#multipleProductid").val($("#productid").val());
     });
 
-    function loadSector() {
+    @*function loadSector() {
 
            //alert($("#countryid").val());
 
@@ -788,7 +790,7 @@
 
 
 
-    }
+    }*@
     $(function () {
 
         $("#productid").change(function () {

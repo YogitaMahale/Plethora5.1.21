@@ -904,7 +904,18 @@ namespace plathora.Areas.Admin.Controllers
         {
             return View();
         }
+        public JsonResult getProduct(int sectorid)
+        {
+            var parameter = new DynamicParameters();
+            parameter.Add("@sectorid", sectorid);
 
+
+            var obj = _sP_Call.List<ProductMaster>("getProductbySectorID", parameter);
+
+
+             
+            return Json(new SelectList(obj, "id", "productName"));
+        }
         public JsonResult getBusiness(int sectorid)
         {
 
@@ -958,12 +969,13 @@ namespace plathora.Areas.Admin.Controllers
             //    Text = emp.productName,
             //    Value = emp.id.ToString()
             //});
-            var sectorList = _sectorRegistrationServices.GetAll().Select(emp => new SelectListItem()
-            {
-                Text = emp.name,
-                Value = emp.id.ToString()
-            });
-
+            //var sectorList = _sectorRegistrationServices.GetAll().Select(emp => new SelectListItem()
+            //{
+            //    Text = emp.name,
+            //    Value = emp.id.ToString()
+            //});
+            var sectorList = _sectorRegistrationServices.GetAllsector();
+            ViewBag.sectorList = sectorList;
             ViewBag.BusinessPackageList = BusinessPackageList;
             //ViewBag.BusinessRegistrationList = BusinessRegistrationList;
             //ViewBag.ProductList = ProductList;
