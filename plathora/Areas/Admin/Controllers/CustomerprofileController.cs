@@ -904,10 +904,10 @@ namespace plathora.Areas.Admin.Controllers
         {
             return View();
         }
-        public JsonResult getProduct(int sectorid)
+        public JsonResult getProduct(string  businessid)
         {
             var parameter = new DynamicParameters();
-            parameter.Add("@sectorid", sectorid);
+            parameter.Add("@businessid", businessid);
 
 
             var obj = _sP_Call.List<ProductMaster>("getProductbySectorID", parameter);
@@ -1041,7 +1041,7 @@ namespace plathora.Areas.Admin.Controllers
                 obj.house = model.house;
                 obj.landmark = model.landmark;
                 obj.street = model.street;
-                obj.cityid = model.cityid;
+                obj.cityid = model.selectedcityid;
                 obj.zipcode = model.zipcode;
                 obj.latitude = model.latitude;
                 obj.longitude = model.longitude;
@@ -1155,11 +1155,16 @@ namespace plathora.Areas.Admin.Controllers
                 }
                 else
                 {
+                    try
+                    {
+                        var postid = await _businessOwnerRegiServices.CreateAsync(obj);
+                        int id = Convert.ToInt32(postid);
+                        return RedirectToAction("BusinessListing");
 
-                    var postid = await _businessOwnerRegiServices.CreateAsync(obj);
-                    int id = Convert.ToInt32(postid);
-                    return RedirectToAction("BusinessListing");
-
+                    }
+                    catch (Exception p)
+                    { }
+                 
                 }
 
 
@@ -1188,21 +1193,24 @@ namespace plathora.Areas.Admin.Controllers
                     Text = emp.PackageRegistration.name,
                     Value = emp.id.ToString()
                 });
-                var BusinessRegistrationList = _businessRegistrationServieces.GetAll().Select(emp => new SelectListItem()
-                {
-                    Text = emp.name,
-                    Value = emp.id.ToString()
-                });
-                var ProductList = _productMasterServices.GetAll().Select(emp => new SelectListItem()
-                {
-                    Text = emp.productName,
-                    Value = emp.id.ToString()
-                });
+                //var BusinessRegistrationList = _businessRegistrationServieces.GetAll().Select(emp => new SelectListItem()
+                //{
+                //    Text = emp.name,
+                //    Value = emp.id.ToString()
+                //});
+                //var ProductList = _productMasterServices.GetAll().Select(emp => new SelectListItem()
+                //{
+                //    Text = emp.productName,
+                //    Value = emp.id.ToString()
+                //});
 
+                var sectorList = _sectorRegistrationServices.GetAllsector();
+                ViewBag.sectorList = sectorList;
+                ViewBag.BusinessPackageList = BusinessPackageList;
 
                 ViewBag.BusinessPackageList = BusinessPackageList;
-                ViewBag.BusinessRegistrationList = BusinessRegistrationList;
-                ViewBag.ProductList = ProductList;
+                //ViewBag.BusinessRegistrationList = BusinessRegistrationList;
+                //ViewBag.ProductList = ProductList;
                 return View(model);
 
             }

@@ -88,8 +88,8 @@
                                     <div class="form-group mb-0">
                                         <label class="form-label" asp-for="BusinessPackageId"></label>
                                         <select name="BusinessPackageId" id="BusinessPackageId" asp-for="BusinessPackageId" class="form-control"
-                                                asp-items="@ViewBag.BusinessPackageList"
-                                                onchange="DoPostBack();">
+                                                asp-items="@ViewBag.BusinessPackageList">
+                                                @*onchange="DoPostBack();">*@
                                             <option>--- Select  ---</option>
                                         </select>
                                         <span asp-validation-for="BusinessPackageId" class="text-danger"></span>
@@ -104,8 +104,9 @@
 
         </select>*@
                                         <select name="sectorId" id="sectorId" asp-for="sectorId" class="form-control"
-                                                asp-items="@ViewBag.sectorList"   onchange="DoPostBack();"
-                                                >
+                                                asp-items="@ViewBag.sectorList" >
+                                                @*onchange="DoPostBack();"*@
+                                                
                                             <option>--- Select  ---</option>
                                         </select>
                                         @*<select name="sectorId" id="sectorId" asp-for="sectorId" data-placeholder="Choose Sector..." class="select" tabindex="1"
@@ -273,8 +274,8 @@
                                     <div class="form-group mb-0">
                                         <label class="form-label" asp-for="countryid"></label>
                                         <select name="countryid" id="countryid" asp-for="countryid" class="form-control"
-                                                asp-items="@ViewBag.Countries"
-                                                onchange="DoPostBack();">
+                                                asp-items="@ViewBag.Countries">
+                                                @*onchange="DoPostBack();">*@
                                             <option>--- Select  ---</option>
                                         </select>
                                         <span asp-validation-for="countryid" class="text-danger"></span>
@@ -294,6 +295,7 @@
                                         <span asp-validation-for="stateid" class="text-danger"></span>
                                     </div>
                                 </div>
+                                <input type="hidden" id="selectedcityid" asp-for="selectedcityid" />
                                 <div class="col-sm-4 col-md-4">
                                     <div class="form-group mb-0">
                                         <label class="form-label" asp-for="cityid"></label>
@@ -686,23 +688,33 @@
        // loadSector();
         $("#sectorId").change(function () {
             loadBusiness($("#sectorId").val());
+            //loadProduct($("#sectorId").val());
+
         });
 
+        $("#businessid").change(function () {
+            loadProduct($("#businessid").val());
+            //loadProduct($("#sectorId").val());
 
+        });
+        $("#cityid1").change(function () {
+            $("#selectedcityid").val($("#cityid1").val());
+            alert($("#cityid1").val());
+        });
+        
     });
     function loadBusiness(sectorid) {
         //alert(sectorid);
-
+        var s = '';
+       
 
         $("[data-rel='chosen']").chosen();
         var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getBusiness?sectorid=' + sectorid;
           //  var ddlsource = "#countryid";
             $.getJSON(url,
 
-                function (data) {
-               // console.log(data);
-                    var item = '';
-                    var s = '';
+                function (data) {               
+                   
                     $.each(data, function (i, row) {
                         s += '<option value="' + row.value + '">' + row.text + '</option>';
 
@@ -714,26 +726,35 @@
                 }
         )
 
+
+      
+    }
+    function loadProduct(businessid) {
+        //alert(sectorid);
+
+
         $("[data-rel='chosen']").chosen();
-        var url1 = '@Url.Content("~/")' + 'Admin/Customerprofile/getProduct?sectorid=' + sectorid;
-          //  var ddlsource = "#countryid";
-            $.getJSON(url1,
+        var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getProduct?businessid=' + businessid;
+          
+            $.getJSON(url,
 
                 function (data) {
-               // console.log(data);
-                    var item1 = '';
-                    var s1 = '';
+                
+                    var item = '';
+                    var s = '';
                     $.each(data, function (i, row) {
-                        s1 += '<option value="' + row.value + '">' + row.text + '</option>';
+                        s += '<option value="' + row.value + '">' + row.text + '</option>';
 
                     });
-                    $("#productid").html(s1);
-                    //$("[data-rel='chosen']").trigger("chosen:updated");
-                  //  console.log(item);
-                   // $("#cityid").html(item);
+                    $("#productid").html(s);
+                    $("[data-rel='chosen']").trigger("chosen:updated");
+                    console.log(item);
+                   
                 }
         )
-       // 
+
+
+       //
         $("[data-rel='chosen']").trigger("chosen:updated");
     }
 
@@ -747,58 +768,10 @@
         $("#multipleProductid").val($("#productid").val());
     });
 
-    @*function loadSector() {
-
-           //alert($("#countryid").val());
-
-        $("[data-rel='chosen']").chosen();
-        var url = '@Url.Content("~/")' + 'Admin/Customerprofile/getCity';
-          //  var ddlsource = "#countryid";
-            $.getJSON(url,
-
-                function (data) {
-                console.log(data);
-                    var item = '';
-                   // $("#cityid").empty();
-                    var s = '';
-                    $.each(data, function (i, row) {
-
-
-                      //s += '<option value="' +row.value + '">' + row.text + '</option>';
-
-
-                        console.log(row.value + ',' + $("#sectorId").val());
-
-                        if (row.value == $("#sectorId").val()) {
-                                  s += '<option selected="'+"selected"+'" value="' + row.value + '">' + row.text + '</option>';
-                            //    item += "<option selected='selected' value='" + row.value + "'>" + row.text + "  </option > ";
-
-                            }
-                            else {
-                                  s += '<option value="' + row.value + '">' + row.text + '</option>';
-                              //  item += "<option   value='" + row.value + "'>" + row.text + "  </option > ";
-
-                            }
-
-                    });
-                    $("#sectorId").html(s);
-                    $("[data-rel='chosen']").trigger("chosen:updated");
-                    console.log(item);
-                   // $("#cityid").html(item);
-                }
-        )
-
-
-
-    }*@
+    
     $(function () {
 
-        $("#productid").change(function () {
-
-
-            alert("productid");
-
-        });
+        
 
         $("#countryid").change(function () {
 

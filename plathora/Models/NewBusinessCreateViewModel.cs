@@ -137,7 +137,8 @@ namespace plathora.Models
 
         [Required]
         [Display(Name = "Select City")]
-        public int cityid { get; set; }
+        public int cityid { get; set; }  
+        public int selectedcityid { get; set; }
 
         [DisplayName("Zipcode")]
         public string zipcode { get; set; }
