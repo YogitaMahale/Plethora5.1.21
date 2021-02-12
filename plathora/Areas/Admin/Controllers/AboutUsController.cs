@@ -72,20 +72,24 @@ namespace appFoodDelivery.Controllers
                 {
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     var uploadDir = @"uploads/AboutUs";
-                    //// var filePath =  Server.MapPath("~/Images/" + filename);
-                    //string ss = webRootPath  + storeobj.img;
-                    //if (System.IO.File.Exists(ss))
-                    //{
-                    //    System.IO.File.Delete(ss);
-                    //}
-                    //------------
+                    if (storeobj.img != null)
+                    {
+                        var imagePath = webRootPath + storeobj.img.ToString().Replace("/", "\\");
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+
+                    }
 
                     var fileName = Path.GetFileNameWithoutExtension(model.img.FileName);
                     var extesion = Path.GetExtension(model.img.FileName);
                    // var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    await model.img.CopyToAsync(new FileStream(path, FileMode.Create));
+                    FileStream fs = new FileStream(path, FileMode.Create);
+                    await model.img.CopyToAsync(fs);
+                    fs.Close();
                     storeobj.img = '/' + uploadDir + '/' + fileName;
 
                 }

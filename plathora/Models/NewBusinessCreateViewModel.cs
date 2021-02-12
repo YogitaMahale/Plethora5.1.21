@@ -152,6 +152,7 @@ namespace plathora.Models
         [DisplayName("GST No")]
         public string gstno { get; set; }
         [DisplayName("Website")]
+        [Url(ErrorMessage = "Please enter a valid url")]
         public string Website { get; set; }
 
         [Required]
